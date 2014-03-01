@@ -15,6 +15,8 @@
 		default-lazy-init="true">
 	<description>applicationContext</description>
 	
+	 <context:annotation-config/>
+	 
 	<!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
 	<context:component-scan base-package="com.the3">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
@@ -45,7 +47,7 @@
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 	</bean>
 	
-	<mongo:repositories base-package="com.the3.dao" />
+	<mongo:repositories base-package="com.the3.repository.cms.impl" />
     
 	<!-- Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
 	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
