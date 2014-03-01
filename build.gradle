@@ -1,0 +1,37 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+// tag::repositories[]
+repositories {
+    mavenCentral()
+    maven { url  "http://repository.sonatype.org/content/groups/forge/"}
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+// end::repositories[]
+
+// tag::jar[]
+jar {
+    baseName = 'the3-01'
+    version =  '0.1.0'
+}
+// end::jar[]
+
+// tag::dependencies[]
+dependencies {
+    compile("org.springframework:spring-context:4.0.2.RELEASE")
+    compile("org.springframework.data:spring-data-mongodb:1.4.0.RELEASE")
+    compile("log4j:log4j:1.2.16")
+    compile("org.slf4j:slf4j-api:1.6.1")
+    compile("org.slf4j:jcl-over-slf4j:1.6.1")
+    compile("org.slf4j:slf4j-log4j12:1.6.1")
+		  
+    testCompile("junit:junit:4.11")
+}
+// end::dependencies[]
+
+// tag::wrapper[]
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
+// end::wrapper[]
