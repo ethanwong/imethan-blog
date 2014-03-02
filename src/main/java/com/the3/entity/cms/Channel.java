@@ -1,18 +1,24 @@
 package com.the3.entity.cms;
 
 import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
+/**
+ * Channel.java
+ *
+ * @author ETHAN
+ * @time 2014年3月2日下午4:44:32
+ */
 @Document
 public class Channel {
-	
 	@Id
 	private String id;
 	private String title;
 	private String describe;
 	private Date createTime;
+
 	public String getId() {
 		return id;
 	}

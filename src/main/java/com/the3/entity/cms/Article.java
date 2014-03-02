@@ -3,6 +3,12 @@ package com.the3.entity.cms;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Article.java
+ *
+ * @author ETHAN
+ * @time 2014年3月2日下午4:44:26
+ */
 @Document
 public class Article {
 

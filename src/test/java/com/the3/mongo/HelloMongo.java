@@ -7,11 +7,12 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.the3.entity.mongo.Account;
 import com.the3.entity.mongo.Person;
 
-@Repository
+@Service
 public class HelloMongo {
 
 	@Autowired

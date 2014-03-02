@@ -12,8 +12,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.the3.entity.cms.Channel;
 import com.the3.service.ChannelService;
 
+//@ContextConfiguration({"/main/applicationContext.xml"})
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"/main/applicationContext.xml"})
+@ContextConfiguration(locations = {"classpath:/main/applicationContext.xml"})
 public class ChannelServiceTest {
 	
 	@Autowired
@@ -23,11 +25,12 @@ public class ChannelServiceTest {
 	public void testSave(){
 		
 		Channel channel = new Channel();
-		channel.setTitle("第一个栏目");;
+		channel.setTitle("第一个栏目"+new Date());;
 		channel.setDescribe("第一个栏目的描述");
 		channel.setCreateTime(new Date());
 		
 		System.out.println(channelService.save(channel));
+		
 		
 	}
 	

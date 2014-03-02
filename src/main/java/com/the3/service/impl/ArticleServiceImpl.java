@@ -7,6 +7,12 @@ import com.the3.entity.cms.Article;
 import com.the3.repository.cms.ArticleRepository;
 import com.the3.service.ArticleService;
 
+/**
+ * ArticleServiceImpl.java
+ *
+ * @author ETHAN
+ * @time 2014年3月2日下午4:45:49
+ */
 @Component
 public class ArticleServiceImpl implements ArticleService {
 	
