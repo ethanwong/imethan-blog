@@ -15,6 +15,7 @@ public class HelloWorldController {
 
     @RequestMapping("/helloWorld")
     public String helloWorld(Model model) {
+    	System.out.println("111111111111");
         model.addAttribute("message", "Hello World!");
         return "helloWorld";
     }

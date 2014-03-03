@@ -23,7 +23,7 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
 
-	<context:property-placeholder location="main/mongo.properties"/>
+	<context:property-placeholder location="classpath*:/main/mongo.properties"/>
 
 	<mongo:mongo host="${mongo.host}" port="${mongo.port}">
 	  <mongo:options
