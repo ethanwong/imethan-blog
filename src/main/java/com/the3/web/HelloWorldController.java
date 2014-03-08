@@ -1,4 +1,4 @@
-package com.the3.web.cms;
+package com.the3.web;
 
 import java.util.Date;
 

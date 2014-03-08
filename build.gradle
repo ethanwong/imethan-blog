@@ -19,29 +19,38 @@ jar {
 
 // tag::dependencies[]
 dependencies {
+	//Spring begin
     compile 'org.springframework:spring-context:4.0.2.RELEASE'
     compile 'org.springframework:spring-test:4.0.2.RELEASE'
     compile 'org.springframework:spring-webmvc:4.0.2.RELEASE'
     
     compile 'org.springframework.data:spring-data-mongodb:1.4.0.RELEASE'
 	compile 'org.springframework.data:spring-data-jpa:1.5.0.RELEASE'
+	//Spring end
 	
 	//JSON begin
 	compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
 	compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
 	//JSON end
 	
+	//servlet begin
 	compile 'javax.servlet:jstl:1.2'
 	compile 'taglibs:standard:1.1.2'
 	compile 'javax.servlet:servlet-api:2.5'
 	compile 'javax.servlet.jsp:jsp-api:2.0'
+	//servlet end
 	
-		
-			
+	//log begin
     compile 'log4j:log4j:1.2.16'
     compile 'org.slf4j:slf4j-api:1.6.1'
     compile 'org.slf4j:jcl-over-slf4j:1.6.1'
     compile 'org.slf4j:slf4j-log4j12:1.6.1'
+    //log end
+    
+    //sitemesh begin
+    compile 'opensymphony:sitemesh:2.4.2'
+    //sitemesh end
+    
 		  
     testCompile("junit:junit:4.11")
 }

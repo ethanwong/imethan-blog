@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>::the3:index::</h1>
-	<h1>${root}</h1>
+${message}
 </body>
 </html>

@@ -12,14 +12,17 @@
            http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
 	default-lazy-init="true">
 	
+	<!-- 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理 -->
+	<mvc:resources mapping="/theme/**" location="/theme/" />
+	<mvc:resources mapping="/decorators/**" location="/decorators/" />
+	
 	<!-- 自动扫描且只扫描@Controller -->
 	<context:component-scan base-package="com.the3" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 
-
-	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" enableMatrixVariables="true">
 		<mvc:message-converters register-defaults="true">
 	        <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
 	        <!-- 将StringHttpMessageCOnverter的默认编码设为UTF-8 -->
