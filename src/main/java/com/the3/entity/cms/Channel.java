@@ -17,7 +17,7 @@ public class Channel {
 	private String id;
 	private String title;
 	private String describe;
-	private Date createTime;
+	private Date createTime = new Date();
 
 	public String getId() {
 		return id;

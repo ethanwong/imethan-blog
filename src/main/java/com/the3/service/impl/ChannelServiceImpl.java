@@ -1,11 +1,23 @@
 package com.the3.service.impl;
 
+import java.util.List;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.AbstractPageRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
+import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.cms.Channel;
 import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.ChannelService;
+import com.the3.utils.Debug;
 
 /**
  * ChannelServiceImpl.java
@@ -16,13 +28,31 @@ import com.the3.service.ChannelService;
 @Service
 public class ChannelServiceImpl implements ChannelService {
 	
+	private Logger logger = Logger.getLogger(ChannelServiceImpl.class);  
+	
 	@Autowired
 	private ChannelRepository channelRepository;
 
 	@Override
-	public Channel save(Channel entity) {
+	public ServiceReturnDto<Channel> save(Channel entity) {
+		boolean isSuccess = true;
+		try {
+			entity = channelRepository.save(entity);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Debug.println(e.getMessage());
+			isSuccess = false;
+			logger.error(e.getMessage());
+		}
+		return new ServiceReturnDto<Channel>(isSuccess,entity);
+	}
+
+	@Override
+	public Page<Channel> getPage(PageRequest pageable) {
 		
-		return channelRepository.save(entity);
+		Page<Channel> page = channelRepository.findAll(pageable);
+		return page;
 	}
 
 }

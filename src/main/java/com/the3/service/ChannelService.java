@@ -1,5 +1,9 @@
 package com.the3.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
+import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.cms.Channel;
 
 /**
@@ -15,7 +19,10 @@ public interface ChannelService  {
 	 * @param entity
 	 * @return
 	 */
-	public Channel save(Channel entity);
+	public ServiceReturnDto<Channel> save(Channel entity);
+	
+	
+	public Page<Channel> getPage(PageRequest pageable);
 	
 	
 	
