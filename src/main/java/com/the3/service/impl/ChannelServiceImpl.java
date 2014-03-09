@@ -41,7 +41,6 @@ public class ChannelServiceImpl implements ChannelService {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			Debug.println(e.getMessage());
 			isSuccess = false;
 			logger.error(e.getMessage());
 		}
@@ -53,6 +52,31 @@ public class ChannelServiceImpl implements ChannelService {
 		
 		Page<Channel> page = channelRepository.findAll(pageable);
 		return page;
+	}
+
+	@Override
+	public Channel getById(String id) {
+		Channel entity = null;
+		try {
+			entity = channelRepository.findOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+		return entity;
+	}
+
+	@Override
+	public boolean deleteById(String id) {
+		boolean isSuccess = true;
+		try {
+			channelRepository.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			isSuccess = false;
+		}
+		return isSuccess;
 	}
 
 }

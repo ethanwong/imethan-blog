@@ -9,7 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>ImEthan Example</title>
-
   </head>
 
   <body>
@@ -17,12 +16,11 @@
       <div class="jumbotron">
         <h1>ImEthan example</h1>
         <p>This example is base Spring.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">About more</a></p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
      </div>
    
    <!-- Standard button -->
 	<a href="#"><button type="button" class="btn btn-default" >Default</button></a>
-	
 	<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 	<button type="button" class="btn btn-primary">Primary</button>
 	
@@ -40,5 +38,39 @@
 	
 	<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
 	<button type="button" class="btn btn-link">Link</button>
-  </body>
+	
+	<div style="margin: 20px;"></div>
+	<div class="well">
+		<a href="#" id="exampleasdf" class="btn btn-success" rel="popover" data-content="It's so simple to create a tooltop for my website!" data-original-title="Bootstrap Popover">hover for popover</a>
+		<!-- Button trigger modal -->
+		<button class="btn btn-primary" data-toggle="modal" data-target="#channel-detail" >
+		  Launch demo modal
+		</button>
+		
+		<a data-toggle="modal"  data-target="#channel-detail" href="${root}/index.jsp">modal</a>
+	</div>
+	
+	<div class="modal fade" id="channel-detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">提示框</h4>
+	      </div>
+	      <div class="modal-body">
+	       		 确认删除吗？
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="alert alert-block" id="warning-block">
+	    <button type="button" class="close" data-dismiss="alert">&times;</button>
+	    <h4>Warning!</h4>Best check yo self, you're not...
+	</div>
+</body>
 </html>

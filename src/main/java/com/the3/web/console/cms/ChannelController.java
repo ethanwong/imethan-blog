@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -67,6 +68,40 @@ public class ChannelController{
 		return "console/cms/channel-input";
 	}
 	
+	@RequestMapping(value="/jsondetail/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Channel jsondetail(Model model,@PathVariable String id){
+		Channel channel  = channelService.getById(id);
+		Debug.println("id:"+id);
+		model.addAttribute("message","This is jsondetail");
+		Debug.println("channel:"+channel);
+		return channel;
+	}
+	
+	@RequestMapping(value="/detail/{id}", method = RequestMethod.GET)
+	public String detail(Model model,@PathVariable String id){
+		
+		Channel channel  = channelService.getById(id);
+		Debug.println("id:"+id);
+		model.addAttribute("message","This is detail");
+		model.addAttribute("channel",channel);
+		Debug.println("channel:"+channel);
+		return "console/cms/channel-detail";
+	}
+	
+	@RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean delete(Model model,@PathVariable String id){
+		boolean isSuccess = channelService.deleteById(id);
+		String message = "";
+		if(isSuccess){
+			message = "删除成功。";
+		}else{
+			message = "删除失败。";
+		}
+		return isSuccess;
+	}
+	
 	
 	@RequestMapping(value="/list1/{title}", method = RequestMethod.GET)
 	public String list1(@PathVariable String title,@MatrixVariable int q) {
@@ -80,6 +115,5 @@ public class ChannelController{
 		System.out.println("title:"+title);
 		model.addAttribute("message", "This is channel!");
 		return "console/cms/channel";
-	}
-	
+	}	
 }

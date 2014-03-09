@@ -21,8 +21,11 @@ public interface ChannelService  {
 	 */
 	public ServiceReturnDto<Channel> save(Channel entity);
 	
-	
 	public Page<Channel> getPage(PageRequest pageable);
+
+	public Channel getById(String id);
+	
+	public boolean deleteById(String id);
 	
 	
 	

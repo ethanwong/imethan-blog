@@ -12,7 +12,7 @@
     <title>ImEthan Example</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="${root}/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${root}/theme/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="${root}/theme/css/console/navbar-static-top.css" rel="stylesheet">
@@ -42,7 +42,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="${root}/console/home">Home</a></li>
+            <li><a href="${root}/console/home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
@@ -50,37 +50,98 @@
               <ul class="dropdown-menu">
                 <li><a href="${root}/console/cms/channel/0/10">Channel</a></li>
                 <li><a href="#">Article</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+<!--                 <li class="divider"></li> -->
+<!--                 <li class="dropdown-header">Nav header</li> -->
+<!--                 <li><a href="#">Separated link</a></li> -->
+<!--                 <li><a href="#">One more separated link</a></li> -->
               </ul>
             </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Default</a></li>
-            <li><a href="#">Static top</a></li>
-            <li><a href="#">Fixed top</a></li>
-          </ul>
+<!--           <ul class="nav navbar-nav navbar-right"> -->
+<!--             <li><a href="#">Default</a></li> -->
+<!--             <li><a href="#">Static top</a></li> -->
+<!--             <li><a href="#">Fixed top</a></li> -->
+<!--           </ul> -->
+          
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-default">Sign in</button>
+          </form>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-	<div class="container">	
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Library</a></li>
+			<li class="active">Data</li>
+		</ol>
 		<decorator:body></decorator:body>
-    </div>
-    <!-- /container -->
+	</div>
+	<!-- /container -->
     
     <div class="footer">
       <div class="container">
         <p class="text-muted">A simple website by ethan.</p>
       </div>
     </div>
+    
+    <!-- common -->
+    <!-- common warn Modal -->  
+     <div class="modal fade" id="warnModal" tabindex="-1" role="dialog" aria-labelledby="warnModalLabel" aria-hidden="true">  
+	   	 <div class="modal-dialog">
+		     <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">提示信息</h4>
+		      </div>
+		      <div class="modal-body">
+		       		 确认删除吗？
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		      </div>
+		     </div>
+		 </div>
+         <!-- /.modal-dialog -->  
+     </div>  
+     <!-- /.modal -->  
+     
+     <!-- common result Modal -->  
+     <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">  
+	   	 <div class="modal-dialog">
+		     <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">提示信息</h4>
+		      </div>
+		      <div class="modal-body">
+		       		 确认删除吗？
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		      </div>
+		     </div>
+		 </div>
+         <!-- /.modal-dialog -->  
+     </div>  
+     <!-- /.modal -->  
+    
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
     <script src="${root}/theme/js/bootstrap.min.js"></script>
+    <script src="${root}/theme/js/popover.js"></script>
+    <script src="${root}/theme/js/tooltip.js"></script>
+    <script src="${root}/theme/js/alert.js"></script>
+    <script src="${root}/theme/js/console/common.js"></script>
   </body>
 </html>

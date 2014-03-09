@@ -12,6 +12,9 @@ import com.the3.entity.cms.Channel;
  * @time 2014年3月2日下午4:44:45
  */
 @Repository
-public interface ChannelRepository extends MongoRepository<Channel, Long> {
+public interface ChannelRepository extends MongoRepository<Channel, String> {
+
+	Channel findById(String id);
+
 	
 }

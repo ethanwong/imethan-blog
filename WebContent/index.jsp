@@ -11,3 +11,6 @@
 	<h1>${root}</h1>
 </body>
 </html>
+<jsp:forward page="console/home" />
+
+
