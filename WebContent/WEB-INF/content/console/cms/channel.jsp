@@ -39,7 +39,6 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>ID</th>
 						<th>Title</th>
 						<th>Create Time</th>
 						<th>Manage</th>
@@ -48,13 +47,15 @@
 				<tbody>
 					<c:forEach var="item" items="${result.content}" varStatus="status">
 						<tr>
-							<td><c:out value="${status.count}" /></td>
 							<td><c:out value="${item.title}" /></td>
 							<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 							<td>
 								modify
-								<button type="button" class="btn btn-link" onclick="showDetail('jsondetail','${item.id}','channel-detail-modal')" >value</button>
-								<button type="button" class="btn btn-link" onclick="deleteOne('delete','${item.id}')" >delete</button>
+								<button type="button" class="btn btn-default btn-xs" onclick="showDetailModal('channel-detail-modal','<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')" >View</button>
+<%-- 								<button type="button" class="btn btn-default btn-xs" onclick="showDetail('jsondetail','${item.id}','channel-detail-modal', --%>
+<%-- 								'<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')" >View</button> --%>
+								
+								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('delete','${item.id}',this)" >Delete</button>
 							</td>
 						</tr>
 					</c:forEach>

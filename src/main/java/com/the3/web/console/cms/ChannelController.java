@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.the3.base.web.SuperController;
 import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Channel;
 import com.the3.service.ChannelService;
 import com.the3.utils.Debug;
@@ -29,7 +31,7 @@ import com.the3.utils.Debug;
  */
 @Controller
 @RequestMapping("/console/cms/channel")
-public class ChannelController{
+public class ChannelController extends SuperController{
 	
 	private ServiceReturnDto<Channel> returnDto;
 	private int page = 0;
@@ -56,16 +58,18 @@ public class ChannelController{
 	}
 	
 	@RequestMapping(value="/save",method = RequestMethod.POST)
-	public String save(@ModelAttribute("channel") Channel channel, BindingResult result, Model model) {
+	@ResponseBody
+	public WebReturnDto save(@ModelAttribute("channel") Channel channel, BindingResult result, Model model) {
 		boolean isSuccess = true;
+		String message = "添加成功。";
 		if(result.hasErrors()||StringUtils.isEmpty(channel.getTitle())||StringUtils.isEmpty(channel.getDescribe())){
 			isSuccess = false;
+			message = "添加失败，标题和描述为必填项。";
 		}else{
 			isSuccess = channelService.save(channel).isSuccess();
 		}
-		Debug.println("channel:"+channel);
-		model.addAttribute("isSuccess", isSuccess);
-		return "console/cms/channel-input";
+		
+		return new WebReturnDto(isSuccess,message);
 	}
 	
 	@RequestMapping(value="/jsondetail/{id}", method = RequestMethod.GET)
@@ -93,6 +97,7 @@ public class ChannelController{
 	@ResponseBody
 	public boolean delete(Model model,@PathVariable String id){
 		boolean isSuccess = channelService.deleteById(id);
+//		boolean isSuccess = true;
 		String message = "";
 		if(isSuccess){
 			message = "删除成功。";

@@ -75,13 +75,20 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+    
+    <div class="container">
+    	<!-- 顶部可关闭提醒框 -->
+	    <div id="topWarn" class="alert alert-success alert-dismissable" hidden >
+		  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		  <strong>Warning!</strong> <p style="display: inline;">Best check you self, you're not looking too good.</p>
+		</div>
 
-	<div class="container">
-		<ol class="breadcrumb">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">Library</a></li>
-			<li class="active">Data</li>
-		</ol>
+		<!-- 面包屑导航 -->
+<!-- 		<ol class="breadcrumb"> -->
+<!-- 			<li><a href="#">Home</a></li> -->
+<!-- 			<li><a href="#">Library</a></li> -->
+<!-- 			<li class="active">Data</li> -->
+<!-- 		</ol> -->
 		<decorator:body></decorator:body>
 	</div>
 	<!-- /container -->
@@ -99,13 +106,14 @@
 		     <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title" id="myModalLabel">提示信息</h4>
+		        <h4 class="modal-title" id="myModalLabel">Warning</h4>
 		      </div>
 		      <div class="modal-body">
-		       		 确认删除吗？
+		       		 你真的要删除吗？
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		      	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button id="warnModalClick" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
 		      </div>
 		     </div>
 		 </div>
@@ -122,7 +130,7 @@
 		        <h4 class="modal-title" id="myModalLabel">提示信息</h4>
 		      </div>
 		      <div class="modal-body">
-		       		 确认删除吗？
+		      ...
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
@@ -143,5 +151,7 @@
     <script src="${root}/theme/js/tooltip.js"></script>
     <script src="${root}/theme/js/alert.js"></script>
     <script src="${root}/theme/js/console/common.js"></script>
+    
   </body>
 </html>
+

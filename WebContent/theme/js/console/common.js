@@ -12,51 +12,70 @@ $(function() {
 
 
 //查看详情，弹出详情
-function showDetail(method, id,modal) {
+function showDetail(method, id,modal,content) {
 	$.ajax({
 		type : "get",
 		url : "../" + method + "/" + id,
 		dataType : "json",
 		success : function(entity) {
-			showModal(entity,modal);
+			showModal(entity,modal,content);
 		}
 	});
 };
 
 //排版详情页面
-function showModal(entity,modal) {
+function showModal(entity,modal,content) {
 	$('#'+modal).modal(
 			$('#'+modal+' .modal-title').html("Detail"),
-			$('#'+modal+' .modal-body').html(
-					"<strong>Title</strong><br>" + entity.title + "<br>"
-							+ "<strong>Describe</strong><br>" + entity.describe
-							+ "<br>" + "<strong>CreateTime</strong><br>"
-							+ entity.createTime));
+			$('#'+modal+' .modal-body').html(content));
 };
 
-function deleteOne(method, id){
+//排版详情页面
+function showDetailModal(modal,content) {
+	$('#'+modal).modal(
+			$('#'+modal+' .modal-title').html("Detail"),
+			$('#'+modal+' .modal-body').html(content));
+};
+
+
+
+//删除一条记录
+function deleteOne(method, id,row){
 	$('#warnModal').modal(
 			$('#warnModal .modal-body').html("确实删除吗？")
 	);
-	$('#warnModal').on('hidden.bs.modal', function (e) {
+	
+	$("#warnModal #warnModalClick").click(function(){
 		$.ajax({
 			type : "get",
 			url : "../" + method + "/" + id,
 			dataType : "json",
 			success : function(msg) {
-				$('#resultModal').modal(
-						$('#resultModal .modal-title').html("提示信息"),
-						$('#resultModal .modal-body').html("删除成功。"+msg)
-						
-				);
+				showTopWarn("删除成功。");
+				$(row).parent().parent().remove(); 
 			}
 		});
-	});
-	
-	$('#resultModal').on('hidden.bs.modal', function (e) {  
-    	 location.reload();
-  });
+		
+	});	
 };
 
+//提交表单
+function submitForm(current){
+	$.post($(current).parent().attr('action'),
+	  {
+	    title:$('#title').val(),
+	    describe:$('#describe').val()
+	  },
+	  function(data){
+	    showTopWarn(data.message);
+	  },"json");
+	
+};
+
+//展现提示
+function showTopWarn(msg){
+	$('#topWarn').removeAttr("hidden");
+	$('#topWarn p').html(msg);
+}
 
 

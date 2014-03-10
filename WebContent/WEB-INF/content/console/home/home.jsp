@@ -68,9 +68,33 @@
 	  </div>
 	</div>
 	
+	<div class="alert alert-warning alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>Warning!</strong> Best check yo self, you're not looking too good.
+	</div>
+	
+	<div class="alert alert-info">
+	  <a href="#" class="alert-link">...</a>
+	</div>
+	<div class="alert alert-warning">
+	  <a href="#" class="alert-link">...</a>
+	</div>
+	<div class="alert alert-danger">
+	  <a href="#" class="alert-link">...</a>
+	</div>
+	
 	<div class="alert alert-block" id="warning-block">
 	    <button type="button" class="close" data-dismiss="alert">&times;</button>
 	    <h4>Warning!</h4>Best check yo self, you're not...
 	</div>
+	
+	<a id="buttons" onclick="testJs()">buttons</a>
+	<script type="text/javascript">
+	<!--
+	function testJs(){
+		alert("This is a test");
+	}
+	//-->
+	</script>
 </body>
 </html>

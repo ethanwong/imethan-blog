@@ -2,9 +2,13 @@
 <!-- 默认目录 -->
 <decorators defaultdir="/WEB-INF/content/base/decorators">
 
+    <excludes>  
+        <pattern>/index.jsp</pattern>  
+    </excludes>  
+
     <!-- 后台菜单装饰页 -->
-    <decorator name="menu" page="menu.jsp" >
-        <pattern>/*</pattern>
+    <decorator name="menu" page="common.jsp" >
+        <pattern>/console/*</pattern>
     </decorator>
      
     <!-- 只装饰一个页面也可用这种方式定义
