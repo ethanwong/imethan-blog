@@ -8,8 +8,12 @@ package com.the3.dto.web;
  */
 public class WebReturnDto {
 
-	private boolean isSuccess;
-	private String message;
+	private boolean isSuccess = true;
+	private String message = "Successfully!";
+	
+	public WebReturnDto(){
+		
+	}
 	
 	public WebReturnDto(boolean isSuccess, String message) {
 		super();
@@ -29,6 +33,12 @@ public class WebReturnDto {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	@Override
+	public String toString() {
+		return "WebReturnDto [isSuccess=" + isSuccess + ", message=" + message
+				+ "]";
+	}
+	
 }
 
 

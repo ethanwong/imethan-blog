@@ -1,5 +1,7 @@
 package com.the3.service;
 
+import java.util.Map;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -21,7 +23,7 @@ public interface ChannelService  {
 	 */
 	public ServiceReturnDto<Channel> save(Channel entity);
 	
-	public Page<Channel> getPage(PageRequest pageable);
+	public Page<Channel> getPage(Map<String,Object> parameters,PageRequest pageable);
 
 	public Channel getById(String id);
 	

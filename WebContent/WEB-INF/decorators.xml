@@ -2,25 +2,20 @@
 <!-- 默认目录 -->
 <decorators defaultdir="/WEB-INF/content/base/decorators">
 
-    <excludes>  
-        <pattern>/index.jsp</pattern>  
-    </excludes>  
+	<excludes>
+		<pattern>/index.jsp</pattern>
+	</excludes>
 
-    <!-- 后台菜单装饰页 -->
-    <decorator name="menu" page="common.jsp" >
-        <pattern>/console/*</pattern>
-    </decorator>
-     
-    <!-- 只装饰一个页面也可用这种方式定义
-    <decorator name="panel" page="panel.jsp"/> -->
+	<!-- 后台菜单装饰页 -->
+	<decorator name="menu" page="common.jsp">
+		<pattern>/console/*</pattern>
+	</decorator>
 
-    <!-- 装饰velocity模板 
-    <decorator name="velocity" page="velocity.vm">
-        <pattern>/velocity.html</pattern>
-    </decorator>-->
-    
-    <!-- 装饰freeMarker模板 
-    <decorator name="freemarker" page="freemarker.ftl">
-        <pattern>/freemarker.html</pattern>
-    </decorator>-->
+	<!-- 只装饰一个页面也可用这种方式定义 <decorator name="panel" page="panel.jsp"/> -->
+
+	<!-- 装饰velocity模板 <decorator name="velocity" page="velocity.vm"> <pattern>/velocity.html</pattern> 
+		</decorator> -->
+
+	<!-- 装饰freeMarker模板 <decorator name="freemarker" page="freemarker.ftl"> 
+		<pattern>/freemarker.html</pattern> </decorator> -->
 </decorators>

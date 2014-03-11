@@ -1,38 +1,39 @@
 html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  
+	position: relative;
+	min-height: 100%;
 }
 
-body > .container {
-  padding: 2px 15px 0;
+body {
+	/* Margin bottom by footer height */
+	
 }
+
+body>.container {
+	padding: 2px 15px 0;
+}
+
 .container .text-muted {
-  margin: 20px 0;
+	margin: 20px 0;
 }
 
 .navbar-static-top {
-  margin-bottom: 19px;
+	margin-bottom: 19px;
 }
 
 .footer {
-/*   position: absolute; */
-
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
+	/*   position: absolute; */
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
 }
 
-.footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
+.footer>.container {
+	padding-right: 15px;
+	padding-left: 15px;
 }
 
-table{
+table {
 	font-size: 14;
 }

@@ -1,23 +1,17 @@
 package com.the3.service.impl;
 
-import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.AbstractPageRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.domain.Sort.Order;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.cms.Channel;
 import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.ChannelService;
-import com.the3.utils.Debug;
 
 /**
  * ChannelServiceImpl.java
@@ -48,10 +42,13 @@ public class ChannelServiceImpl implements ChannelService {
 	}
 
 	@Override
-	public Page<Channel> getPage(PageRequest pageable) {
+	public Page<Channel> getPage(Map<String,Object> parameters,PageRequest pageable) {
 		
-		Page<Channel> page = channelRepository.findAll(pageable);
-		return page;
+//		Page<Channel> page = channelRepository.findAll(pageable);
+		
+//		Map<String, SearchFilter> filters = SearchFilter.parse(parameters);
+//		Specification<Channel> spec = DynamicSpecifications.bySearchFilter(filters.values(), Channel.class);
+		return channelRepository.findAll(pageable);
 	}
 
 	@Override

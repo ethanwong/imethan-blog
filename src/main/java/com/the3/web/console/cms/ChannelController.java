@@ -1,5 +1,9 @@
 package com.the3.web.console.cms;
 
+import java.util.Map;
+
+import javax.servlet.ServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,8 +19,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
+import org.springframework.web.util.WebUtils;
 
 import com.the3.base.web.SuperController;
+import com.the3.base.web.ServletUtils;
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Channel;
@@ -40,13 +47,18 @@ public class ChannelController extends SuperController{
 	@Autowired
 	private ChannelService channelService;
 	
-	@RequestMapping(value={"/","/{page}/{size}"}, method = RequestMethod.GET)
-	public String list(Model model,@PathVariable int page,@PathVariable int size) {
+	@RequestMapping(value={"list",""}, method = {RequestMethod.GET,RequestMethod.POST})
+	public String list(Model model,ServletRequest request) {
+		Map<String,Object> parameters = WebUtils.getParametersStartingWith(request, "search_");
 		
-		page = page>=0 ? page : 0;
-		size = size>0 ? size : 10;
+		System.out.println(request.getParameter("search_like_title"));
+		page = ServletUtils.getRequestIntParameter(request, "page")>=0 ? ServletUtils.getRequestIntParameter(request, "page") : page;
+		size = ServletUtils.getRequestIntParameter(request, "size")>0 ? ServletUtils.getRequestIntParameter(request, "size") : size;
 		
-		Page<Channel> result = channelService.getPage(new PageRequest(page,size,Direction.DESC,"createTime"));
+		System.out.println("page:"+page);
+		System.out.println("size:"+size);
+		
+		Page<Channel> result = channelService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
 		model.addAttribute("result", result);
 		
 		return "console/cms/channel";
@@ -70,6 +82,20 @@ public class ChannelController extends SuperController{
 		}
 		
 		return new WebReturnDto(isSuccess,message);
+	}
+	
+	@RequestMapping(value="/save2",method = RequestMethod.POST)
+	public String save2(@ModelAttribute("channel") Channel channel, BindingResult result, RedirectAttributesModelMap redirectAttributesModelMap) {
+		boolean isSuccess = true;
+		String message = "添加成功。";
+		if(result.hasErrors()||StringUtils.isEmpty(channel.getTitle())||StringUtils.isEmpty(channel.getDescribe())){
+			isSuccess = false;
+			message = "添加失败，标题和描述为必填项。";
+		}else{
+			isSuccess = channelService.save(channel).isSuccess();
+		}
+		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
+		return "redirect:/console/cms/channel";
 	}
 	
 	@RequestMapping(value="/jsondetail/{id}", method = RequestMethod.GET)
@@ -97,7 +123,6 @@ public class ChannelController extends SuperController{
 	@ResponseBody
 	public boolean delete(Model model,@PathVariable String id){
 		boolean isSuccess = channelService.deleteById(id);
-//		boolean isSuccess = true;
 		String message = "";
 		if(isSuccess){
 			message = "删除成功。";
@@ -115,10 +140,4 @@ public class ChannelController extends SuperController{
 		return "console/cms/channel";
 	}
 	
-	@RequestMapping(value="/list2/{title}", method = RequestMethod.GET,produces="application/json")
-	public String list2(Model model,@PathVariable String title) {
-		System.out.println("title:"+title);
-		model.addAttribute("message", "This is channel!");
-		return "console/cms/channel";
-	}	
 }
