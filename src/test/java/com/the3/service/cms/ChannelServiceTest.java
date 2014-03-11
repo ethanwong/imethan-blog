@@ -45,6 +45,11 @@ public class ChannelServiceTest {
 		channelService.deleteById("531b4b4ca9faac654cc17762");
 	}
 	
+	@Test
+	public void testMongoTemplate(){
+		channelService.testMongoTemplate();
+	}
+	
 	
 
 }

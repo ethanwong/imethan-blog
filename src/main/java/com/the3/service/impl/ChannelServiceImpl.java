@@ -6,8 +6,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
+
+import com.the3.base.web.SearchFilter;
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.cms.Channel;
 import com.the3.repository.cms.ChannelRepository;
@@ -23,6 +26,9 @@ import com.the3.service.ChannelService;
 public class ChannelServiceImpl implements ChannelService {
 	
 	private Logger logger = Logger.getLogger(ChannelServiceImpl.class);  
+	
+	@Autowired
+	private MongoTemplate  mongoTemplate;
 	
 	@Autowired
 	private ChannelRepository channelRepository;
@@ -50,6 +56,14 @@ public class ChannelServiceImpl implements ChannelService {
 //		Specification<Channel> spec = DynamicSpecifications.bySearchFilter(filters.values(), Channel.class);
 		return channelRepository.findAll(pageable);
 	}
+	
+	@Override
+	public Page<Channel> getPage(Pageable pageable) {
+		
+		Page<Channel> page = channelRepository.findAll(pageable);
+		
+		return page;
+	}
 
 	@Override
 	public Channel getById(String id) {
@@ -75,5 +89,18 @@ public class ChannelServiceImpl implements ChannelService {
 		}
 		return isSuccess;
 	}
+
+	@Override
+	public void testMongoTemplate() {
+		Channel channel = new Channel();
+		channel.setTitle("我是黄应锋");
+		channel.setDescribe("asdfasdf");
+		mongoTemplate.insert(channel);
+		channel = mongoTemplate.findById("531dcc820e520e4b51fbecfe", Channel.class);
+		System.out.println("channel:"+channel);
+	}
+	
+	
+
 
 }

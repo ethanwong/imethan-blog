@@ -69,7 +69,7 @@
 								<%-- 								'<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')" >View</button> --%>
 
 								<button type="button" class="btn btn-default btn-xs"
-									onclick="deleteOne('delete','${item.id}',this)">Delete</button>
+									onclick="deleteOne('cms/channel/delete','${item.id}',this)">Delete</button>
 							</td>
 						</tr>
 					</c:forEach>

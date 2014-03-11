@@ -8,12 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,8 +53,6 @@ public class ChannelController extends SuperController{
 		page = ServletUtils.getRequestIntParameter(request, "page")>=0 ? ServletUtils.getRequestIntParameter(request, "page") : page;
 		size = ServletUtils.getRequestIntParameter(request, "size")>0 ? ServletUtils.getRequestIntParameter(request, "size") : size;
 		
-		System.out.println("page:"+page);
-		System.out.println("size:"+size);
 		
 		Page<Channel> result = channelService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
 		model.addAttribute("result", result);
@@ -110,7 +106,6 @@ public class ChannelController extends SuperController{
 	
 	@RequestMapping(value="/detail/{id}", method = RequestMethod.GET)
 	public String detail(Model model,@PathVariable String id){
-		
 		Channel channel  = channelService.getById(id);
 		Debug.println("id:"+id);
 		model.addAttribute("message","This is detail");
@@ -130,14 +125,6 @@ public class ChannelController extends SuperController{
 			message = "删除失败。";
 		}
 		return isSuccess;
-	}
-	
-	
-	@RequestMapping(value="/list1/{title}", method = RequestMethod.GET)
-	public String list1(@PathVariable String title,@MatrixVariable int q) {
-		System.out.println("title:"+title);
-		System.out.println("q:"+q);
-		return "console/cms/channel";
 	}
 	
 }

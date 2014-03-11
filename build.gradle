@@ -25,7 +25,7 @@ dependencies {
     compile 'org.springframework:spring-webmvc:4.0.2.RELEASE'
     
     compile 'org.springframework.data:spring-data-mongodb:1.4.0.RELEASE'
-	compile 'org.springframework.data:spring-data-jpa:1.5.0.RELEASE'
+	//compile 'org.springframework.data:spring-data-jpa:1.5.0.RELEASE'
 	//Spring end
 	
 	//JSON begin
@@ -51,11 +51,11 @@ dependencies {
     compile 'opensymphony:sitemesh:2.4.2'
     //sitemesh end
     
-    //compile 'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final'
+    compile 'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final'
    // compile 'javax.persistence:persistence-api:1.0.2'
-    //compile 'com.google.guava:guava:16.0.1'
-    //compile 'org.apache.commons:commons-lang3:3.0'
-    //compile 'commons-beanutils:commons-beanutils:1.9.1'           
+    compile 'com.google.guava:guava:16.0.1'
+    compile 'org.apache.commons:commons-lang3:3.3'
+    compile 'commons-beanutils:commons-beanutils:1.9.1'           
             
     
 		  

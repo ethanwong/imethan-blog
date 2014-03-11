@@ -19,7 +19,6 @@ public class ServletUtils {
 	 * @return
 	 */
 	public static int getRequestIntParameter(ServletRequest request,String propertyName){
-		System.out.println("------------:"+request.getParameter(propertyName));
 		return !StringUtils.isEmpty(request.getParameter(propertyName))?Integer.valueOf(request.getParameter(propertyName)):0;
 	}
 

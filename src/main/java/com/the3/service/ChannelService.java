@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.cms.Channel;
@@ -28,8 +29,10 @@ public interface ChannelService  {
 	public Channel getById(String id);
 	
 	public boolean deleteById(String id);
+
+	public Page<Channel> getPage(Pageable pageable);
 	
 	
-	
+	public void testMongoTemplate();
 
 }
