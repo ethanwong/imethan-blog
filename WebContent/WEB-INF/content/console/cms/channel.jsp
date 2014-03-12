@@ -6,7 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-
+<script type="text/javascript">
+function alert(){
+	alert("0000000000000000"");
+}
+$('#channel-modify').on('show.bs.modal', function (e) {  
+	alert("打开对话框之前事情");  
+});
+</script>
 </head>
 <body>
 	<div class="row">
@@ -19,26 +26,23 @@
 			<!-- 			</ul> -->
 
 			<div class="list-group">
-				<a href="#" class="list-group-item active">Link</a> <a href="#"
-					class="list-group-item">Link</a> <a href="#"
-					class="list-group-item">Link</a> <a href="#"
-					class="list-group-item">Link</a> <a href="#"
-					class="list-group-item">Link</a> <a href="#"
-					class="list-group-item">Link</a> <a href="#"
-					class="list-group-item">Link</a> <a href="#"
-					class="list-group-item">Link</a> <a href="#"
-					class="list-group-item">Link</a> <a href="#"
-					class="list-group-item">Link</a>
+				<a href="#" class="list-group-item active">Link</a>
+				<a href="#" class="list-group-item">Link</a> 
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a> 
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
 			</div>
-
-
 		</div>
 		<div class="col-md-9">
 			<!--   <div class="table-responsive"> -->
 
-			<label class="col-sm-1 control-label"> <a
-				href="${root}/console/cms/channel/input"><button type="button"
-						class="btn btn-primary">Add</button></a>
+			<label class="col-sm-1 control-label">
+				<a href="${root}/console/cms/channel/input"><button type="button" class="btn btn-primary">Add</button></a>
 			</label>
 			<div class="col-sm-11">
 				<form class="form-inline" role="form" action="${root}/console/cms/channel/list" method="post">
@@ -59,11 +63,11 @@
 						<tr>
 							<td><c:out value="${item.title}" /></td>
 							<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-							<td>modify
+							<td>
+								<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#channel-modify">Modify</button>
 								<button type="button" class="btn btn-default btn-xs" onclick="showDetailModal('channel-detail-modal','<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')">View</button>
-								<%-- 								<button type="button" class="btn btn-default btn-xs" onclick="showDetail('jsondetail','${item.id}','channel-detail-modal', --%>
-								<%-- 								'<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')" >View</button> --%>
-
+								<%-- <button type="button" class="btn btn-default btn-xs" onclick="showDetail('jsondetail','${item.id}','channel-detail-modal', --%>
+								<%-- '<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')" >View</button> --%>
 								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('cms/channel/delete','${item.id}',this)">Delete</button>
 							</td>
 						</tr>
@@ -83,19 +87,44 @@
 			</ul>
 
 			<!-- Modal -->
-			<div class="modal fade" id="channel-detail-modal" tabindex="-1"
-				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="channel-detail-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">&times;</button>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4 class="modal-title" id="myModalLabel">Modal title</h4>
 						</div>
 						<div class="modal-body">...</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<div class="modal fade" id="channel-modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">Modify</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form">
+							  <div class="form-group">
+							    <label for="exampleInputEmail1">Title</label>
+							    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter title">
+							  </div>
+							  <div class="form-group">
+							    <label for="exampleInputPassword1">Describe</label>
+							    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
+							  </div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							 <button type="submit" class="btn btn-default" onclick="alert()">Submit</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 					<!-- /.modal-content -->

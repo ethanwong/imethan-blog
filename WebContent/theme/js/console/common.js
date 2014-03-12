@@ -1,12 +1,12 @@
 $(function() {
 	$("#exampleasdf").popover();
 	
-	 $('#channel-detail').on('hidden.bs.modal', function (e) {  
-	    	alert("关闭事件");  
-	    }) ;
-	    $('#channel-detail').on('show.bs.modal', function (e) {  
-	    	alert("打开对话框之前事情");  
-	  });
+//	 $('#channel-detail').on('hidden.bs.modal', function (e) {  
+//	    	alert("关闭事件");  
+//	    }) ;
+//	    $('#channel-detail').on('show.bs.modal', function (e) {  
+//	    	alert("打开对话框之前事情");  
+//	  });
 });
 
 

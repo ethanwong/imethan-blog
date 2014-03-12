@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
-	prefix="decorator"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 <html>
@@ -58,21 +56,15 @@
 							<!--                 <li><a href="#">One more separated link</a></li> -->
 						</ul></li>
 				</ul>
-				<!--           <ul class="nav navbar-nav navbar-right"> -->
-				<!--             <li><a href="#">Default</a></li> -->
-				<!--             <li><a href="#">Static top</a></li> -->
-				<!--             <li><a href="#">Fixed top</a></li> -->
-				<!--           </ul> -->
+<!-- 				          <ul class="nav navbar-nav navbar-right"> -->
+<!-- 				            <li><a href="#">Default</a></li> -->
+<!-- 				            <li><a href="#">Static top</a></li> -->
+<!-- 				            <li><a href="#">Fixed top</a></li> -->
+<!-- 				          </ul> -->
 
-				<form class="navbar-form navbar-right" role="form">
-					<div class="form-group">
-						<input type="text" placeholder="Email" class="form-control">
-					</div>
-					<div class="form-group">
-						<input type="password" placeholder="Password" class="form-control">
-					</div>
-					<button type="submit" class="btn btn-default">Sign in</button>
-				</form>
+				<div class="navbar-form navbar-right" >
+					<a type="submit" class="btn btn-default" href="${root}/console/signin">Sign in</a>
+				</div>
 			</div>
 			<!--/.nav-collapse -->
 		</div>
@@ -115,20 +107,17 @@
 
 	<!-- common -->
 	<!-- common warn Modal -->
-	<div class="modal fade" id="warnModal" tabindex="-1" role="dialog"
-		aria-labelledby="warnModalLabel" aria-hidden="true">
+	<div class="modal fade" id="warnModal" tabindex="-1" role="dialog" aria-labelledby="warnModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">Warning</h4>
 				</div>
 				<div class="modal-body">你真的要删除吗？</div>
 				<div class="modal-footer">
+					<button id="warnModalClick" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button id="warnModalClick" type="button" class="btn btn-primary"
-						data-dismiss="modal">Delete</button>
 				</div>
 			</div>
 		</div>
@@ -137,13 +126,11 @@
 	<!-- /.modal -->
 
 	<!-- common result Modal -->
-	<div class="modal fade" id="resultModal" tabindex="-1" role="dialog"
-		aria-labelledby="resultModalLabel" aria-hidden="true">
+	<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">提示信息</h4>
 				</div>
 				<div class="modal-body">...</div>

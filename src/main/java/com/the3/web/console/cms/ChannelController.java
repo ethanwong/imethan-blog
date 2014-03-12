@@ -130,4 +130,20 @@ public class ChannelController extends SuperController{
 		return isSuccess;
 	}
 	
+	@RequestMapping(value="/modify",method = RequestMethod.POST)
+	@ResponseBody
+	public WebReturnDto modify(@ModelAttribute("channel") Channel channel, BindingResult result, Model model) {
+		boolean isSuccess = true;
+		String message = "添加成功。";
+		if(result.hasErrors()||StringUtils.isEmpty(channel.getTitle())||StringUtils.isEmpty(channel.getDescribe())){
+			isSuccess = false;
+			message = "添加失败，标题和描述为必填项。";
+		}else{
+//			isSuccess = channelService.save(channel).isSuccess();
+		}
+		
+		return new WebReturnDto(isSuccess,message);
+	} 
+	
+	
 }

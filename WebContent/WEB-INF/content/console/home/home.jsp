@@ -49,20 +49,16 @@
 			data-content="It's so simple to create a tooltop for my website!"
 			data-original-title="Bootstrap Popover">hover for popover</a>
 		<!-- Button trigger modal -->
-		<button class="btn btn-primary" data-toggle="modal"
-			data-target="#channel-detail">Launch demo modal</button>
+		<button class="btn btn-primary" data-toggle="modal" data-target="#channel-detail">Launch demo modal</button>
 
-		<a data-toggle="modal" data-target="#channel-detail"
-			href="${root}/index.jsp">modal</a>
+		<a data-toggle="modal" data-target="#channel-detail" href="${root}/console/home">modal</a>
 	</div>
 
-	<div class="modal fade" id="channel-detail" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="channel-detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">提示框</h4>
 				</div>
 				<div class="modal-body">确认删除吗？</div>

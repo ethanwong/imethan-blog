@@ -19,7 +19,14 @@ public class ServletUtils {
 	 * @return
 	 */
 	public static int getRequestIntParameter(ServletRequest request,String propertyName){
-		return !StringUtils.isEmpty(request.getParameter(propertyName))?Integer.valueOf(request.getParameter(propertyName)):0;
+		int value = 0;
+		try {
+			value = !StringUtils.isEmpty(request.getParameter(propertyName))?Integer.valueOf(request.getParameter(propertyName)):0;
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		
+		return value;
 	}
 
 }
