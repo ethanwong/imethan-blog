@@ -43,7 +43,7 @@
 			<div class="col-sm-11">
 				<form class="form-inline" role="form"
 					action="${root}/console/cms/channel/list" method="post">
-					<input type="text" class="form-control" name="search_like_title"
+					<input type="text" class="form-control" name="search_LIKE_title"
 						placeholder="Enter title">
 					<button type="submit" class="btn btn-default">Search</button>
 				</form>

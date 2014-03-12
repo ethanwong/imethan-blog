@@ -32,7 +32,6 @@ public interface ChannelService  {
 
 	public Page<Channel> getPage(Pageable pageable);
 	
+	public void find();
 	
-	public void testMongoTemplate();
-
 }

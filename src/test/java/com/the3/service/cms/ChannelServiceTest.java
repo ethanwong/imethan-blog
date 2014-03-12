@@ -6,11 +6,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.ContextLoader;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.the3.entity.cms.Channel;
 import com.the3.service.ChannelService;
+import com.the3.service.impl.ChannelServiceImpl;
 
 //@ContextConfiguration({"/main/applicationContext.xml"})
 
@@ -20,6 +20,9 @@ public class ChannelServiceTest {
 	
 	@Autowired
 	private ChannelService channelService;
+	
+	@Autowired
+	private ChannelServiceImpl channelServiceImpl; 
 	
 	@Test
 	public void testSave(){
@@ -45,11 +48,8 @@ public class ChannelServiceTest {
 		channelService.deleteById("531b4b4ca9faac654cc17762");
 	}
 	
-	@Test
-	public void testMongoTemplate(){
-		channelService.testMongoTemplate();
+	public void test(){
+		channelService.find();
 	}
-	
-	
 
 }

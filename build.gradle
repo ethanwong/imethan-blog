@@ -12,7 +12,7 @@ repositories {
 
 // tag::jar[]
 jar {
-    baseName = 'the3-01'
+    baseName = 'the3'
     version =  '0.1.0'
 }
 // end::jar[]

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import org.springframework.web.util.WebUtils;
 
+import com.the3.base.web.SearchFilter;
 import com.the3.base.web.SuperController;
 import com.the3.base.web.ServletUtils;
 import com.the3.dto.service.ServiceReturnDto;
@@ -47,7 +48,7 @@ public class ChannelController extends SuperController{
 	
 	@RequestMapping(value={"list",""}, method = {RequestMethod.GET,RequestMethod.POST})
 	public String list(Model model,ServletRequest request) {
-		Map<String,Object> parameters = WebUtils.getParametersStartingWith(request, "search_");
+		Map<String,Object> parameters = WebUtils.getParametersStartingWith(request, SearchFilter.prefix);
 		
 		System.out.println(request.getParameter("search_like_title"));
 		page = ServletUtils.getRequestIntParameter(request, "page")>=0 ? ServletUtils.getRequestIntParameter(request, "page") : page;

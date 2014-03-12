@@ -19,10 +19,8 @@
 
 	<!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
 	<context:component-scan base-package="com.the3">
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 
 	<context:property-placeholder location="classpath*:/main/mongo.properties" />
@@ -37,18 +35,15 @@
 	</mongo:mongo>
 
 	<!-- Factory bean that creates the Mongo instance -->
-	<mongo:db-factory dbname="${mongo.databaseName}"
-		mongo-ref="mongo" username="${mongo.username}" password="${mongo.password}" />
+	<mongo:db-factory dbname="${mongo.databaseName}" mongo-ref="mongo" username="${mongo.username}" password="${mongo.password}" />
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
 
-	<mongo:repositories base-package="com.the3.repository" />
+	<mongo:repositories base-package="com.the3.repository" mongo-template-ref="mongoTemplate" />
 
-	<!-- Use this post processor to translate any MongoExceptions thrown in 
-		@Repository annotated classes -->
-	<bean
-		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<!-- Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 </beans>
