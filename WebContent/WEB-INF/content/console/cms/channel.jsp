@@ -6,15 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-function alert(){
-	alert("0000000000000000"");
-}
-$('#channel-modify').on('show.bs.modal', function (e) {  
-	alert("打开对话框之前事情");  
-});
-</script>
+
 </head>
+
 <body>
 	<div class="row">
 		<div class="col-md-3">
@@ -39,10 +33,8 @@ $('#channel-modify').on('show.bs.modal', function (e) {
 			</div>
 		</div>
 		<div class="col-md-9">
-			<!--   <div class="table-responsive"> -->
-
-			<label class="col-sm-1 control-label">
-				<a href="${root}/console/cms/channel/input"><button type="button" class="btn btn-primary">Add</button></a>
+			<label class="col-sm-1 control-label" style="float: left;">
+				<a href="${root}/console/cms/channel/input" ><button type="button" class="btn btn-primary">Add</button></a>
 			</label>
 			<div class="col-sm-11">
 				<form class="form-inline" role="form" action="${root}/console/cms/channel/list" method="post">
@@ -55,7 +47,7 @@ $('#channel-modify').on('show.bs.modal', function (e) {
 					<tr>
 						<th>Title</th>
 						<th>Create Time</th>
-						<th>Manage</th>
+						<th >Manage</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -63,8 +55,8 @@ $('#channel-modify').on('show.bs.modal', function (e) {
 						<tr>
 							<td><c:out value="${item.title}" /></td>
 							<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-							<td>
-								<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#channel-modify">Modify</button>
+							<td >
+								<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#channel-modify" onclick="fillContent('${item.id}','${item.title}','${item.describe}')">Modify</button>
 								<button type="button" class="btn btn-default btn-xs" onclick="showDetailModal('channel-detail-modal','<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')">View</button>
 								<%-- <button type="button" class="btn btn-default btn-xs" onclick="showDetail('jsondetail','${item.id}','channel-detail-modal', --%>
 								<%-- '<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')" >View</button> --%>
@@ -75,15 +67,29 @@ $('#channel-modify').on('show.bs.modal', function (e) {
 				</tbody>
 			</table>
 			<ul class="pagination" style="margin-bottom: 100px;">
-				<li><a href="#">&laquo;</a></li>
-				<c:if test="${result.totalPages>1}">
+				<li>
+					<c:if test="${result.number > 0}">
+						<a href="${root}/console/cms/channel/list?page=${result.number-1}&size=${result.size}">&laquo;</a>
+					</c:if>
+					<c:if test="${result.number <= 0}">
+						<a href="#">&laquo;</a>
+					</c:if>
+				</li>
+				<c:if test="${result.totalPages>=1}">
 					<c:forEach var="item" begin="0" end="${result.totalPages-1}">
 						<li <c:if test="${item eq result.number}">class="active"</c:if>>
 							<a href="${root}/console/cms/channel/list?page=${item}&size=${result.size}">${item+1}</a>
 						</li>
 					</c:forEach>
 				</c:if>
-				<li><a href="#">&raquo;</a></li>
+				<li>
+					<c:if test="${result.number < result.totalPages-1}">
+						<a href="${root}/console/cms/channel/list?page=${result.number+1}&size=${result.size}">&raquo;</a>
+					</c:if>
+					<c:if test="${result.number >= result.totalPages-1}">
+						<a href="#">&raquo;</a>
+					</c:if>
+				</li>
 			</ul>
 
 			<!-- Modal -->
@@ -103,29 +109,30 @@ $('#channel-modify').on('show.bs.modal', function (e) {
 				</div>
 				<!-- /.modal-dialog -->
 			</div>
-			<div class="modal fade" id="channel-modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="channel-modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4 class="modal-title" id="myModalLabel">Modify</h4>
 						</div>
-						<div class="modal-body">
-							<form role="form">
-							  <div class="form-group">
-							    <label for="exampleInputEmail1">Title</label>
-							    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter title">
-							  </div>
-							  <div class="form-group">
-							    <label for="exampleInputPassword1">Describe</label>
-							    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
-							  </div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							 <button type="submit" class="btn btn-default" onclick="alert()">Submit</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						</div>
+						<form role="form" method="post" action="${root}/console/cms/channel/modify">
+							<input type="hidden" value="" name="id" id="id">
+							<div class="modal-body">
+								  <div class="form-group">
+								    <label for="exampleInputEmail1">Title</label>
+								    <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value="">
+								  </div>
+								  <div class="form-group">
+								    <label for="exampleInputPassword1">Describe</label>
+								    <textarea class="form-control" rows="3" placeholder="Enter describe" name="describe" id="describe" ></textarea>
+								  </div>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-primary"">Submit</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</form>
 					</div>
 					<!-- /.modal-content -->
 				</div>
@@ -134,5 +141,14 @@ $('#channel-modify').on('show.bs.modal', function (e) {
 			<!-- /.modal -->
 		</div>
 	</div>
+	<script type="text/javascript">
+	<!--
+		function fillContent(id,title,describe){
+			$('#id').attr('value',id);
+			$('#title').attr('value',title);
+			$('#describe').text(describe);
+		};
+	//-->
+	</script>
 </body>
 </html>

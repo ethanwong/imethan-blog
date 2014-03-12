@@ -18,6 +18,7 @@ public class Channel {
 	private String title;
 	private String describe;
 	private Date createTime = new Date();
+	private Date modifyTime = new Date();
 
 	public String getId() {
 		return id;
@@ -44,9 +45,15 @@ public class Channel {
 		this.createTime = createTime;
 	}
 	
+	public Date getModifyTime() {
+		return modifyTime;
+	}
+	public void setModifyTime(Date modifyTime) {
+		this.modifyTime = modifyTime;
+	}
 	@Override
 	public String toString() {
 		return "Channel [id=" + id + ", title=" + title + ", describe="
-				+ describe + ", createTime=" + createTime + "]";
+				+ describe + ", createTime=" + createTime + ",modifyTime=" + modifyTime + "]";
 	}
 }

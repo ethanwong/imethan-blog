@@ -54,7 +54,6 @@ public class ChannelController extends SuperController{
 		page = ServletUtils.getRequestIntParameter(request, "page")>=0 ? ServletUtils.getRequestIntParameter(request, "page") : page;
 		size = ServletUtils.getRequestIntParameter(request, "size")>0 ? ServletUtils.getRequestIntParameter(request, "size") : size;
 		
-		
 		Page<Channel> result = channelService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
 		model.addAttribute("result", result);
 		
@@ -131,18 +130,19 @@ public class ChannelController extends SuperController{
 	}
 	
 	@RequestMapping(value="/modify",method = RequestMethod.POST)
-	@ResponseBody
-	public WebReturnDto modify(@ModelAttribute("channel") Channel channel, BindingResult result, Model model) {
+	public String modify(@ModelAttribute("channel") Channel channel, BindingResult result,RedirectAttributesModelMap redirectAttributesModelMap) {
 		boolean isSuccess = true;
-		String message = "添加成功。";
+		String message = "修改成功。";
+		Debug.println("channel:"+channel);
 		if(result.hasErrors()||StringUtils.isEmpty(channel.getTitle())||StringUtils.isEmpty(channel.getDescribe())){
 			isSuccess = false;
-			message = "添加失败，标题和描述为必填项。";
+			message = "修改失败，标题和描述为必填项。";
 		}else{
-//			isSuccess = channelService.save(channel).isSuccess();
+			isSuccess = channelService.modify(channel).isSuccess();
 		}
 		
-		return new WebReturnDto(isSuccess,message);
+		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
+		return "redirect:/console/cms/channel";
 	} 
 	
 	

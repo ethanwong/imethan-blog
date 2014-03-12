@@ -48,8 +48,5 @@ public class ChannelServiceTest {
 		channelService.deleteById("531b4b4ca9faac654cc17762");
 	}
 	
-	public void test(){
-		channelService.find();
-	}
 
 }

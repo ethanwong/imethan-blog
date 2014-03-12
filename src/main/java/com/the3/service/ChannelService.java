@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Channel;
 
 /**
@@ -31,7 +32,7 @@ public interface ChannelService  {
 	public boolean deleteById(String id);
 
 	public Page<Channel> getPage(Pageable pageable);
-	
-	public void find();
+
+	public WebReturnDto modify(Channel channel);
 	
 }

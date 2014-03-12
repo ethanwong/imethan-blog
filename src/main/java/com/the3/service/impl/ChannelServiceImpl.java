@@ -1,8 +1,8 @@
 package com.the3.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +11,15 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.the3.base.repository.QueryUtils;
 import com.the3.base.web.SearchFilter;
 import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Channel;
 import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.ChannelService;
@@ -65,9 +68,7 @@ public class ChannelServiceImpl implements ChannelService {
 	@Override
 	public Page<Channel> getPage(Pageable pageable) {
 		
-		Page<Channel> page = channelRepository.findAll(pageable);
-		
-		return page;
+		return channelRepository.findAll(pageable);
 	}
 
 	@Override
@@ -94,14 +95,21 @@ public class ChannelServiceImpl implements ChannelService {
 		}
 		return isSuccess;
 	}
-	
-	
-	public void find(){
-		String id = "531aacd75061bb91c2492d71";
-//		Query query = query(where("id").is(id));
-		Channel channel = mongoTemplate.findById(id, Channel.class);
+
+	@Override
+	public WebReturnDto modify(Channel channel) {
+		boolean isSuccess = true;
 		
-		System.out.println("channel:"+channel);
+		try {
+			Update update = new Update().set("title", channel.getTitle()).set("describe", channel.getDescribe()).set("modifyTime", new Date());
+			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(channel.getId())), update, Channel.class);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			isSuccess = false;
+		}
+		return new WebReturnDto(isSuccess,"");
 	}
+
 
 }
