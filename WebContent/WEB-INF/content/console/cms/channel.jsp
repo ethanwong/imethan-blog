@@ -41,10 +41,8 @@
 						class="btn btn-primary">Add</button></a>
 			</label>
 			<div class="col-sm-11">
-				<form class="form-inline" role="form"
-					action="${root}/console/cms/channel/list" method="post">
-					<input type="text" class="form-control" name="search_LIKE_title"
-						placeholder="Enter title">
+				<form class="form-inline" role="form" action="${root}/console/cms/channel/list" method="post">
+					<input type="text" class="form-control" name="search_LIKE_title" placeholder="Enter title">
 					<button type="submit" class="btn btn-default">Search</button>
 				</form>
 			</div>
@@ -60,16 +58,13 @@
 					<c:forEach var="item" items="${result.content}" varStatus="status">
 						<tr>
 							<td><c:out value="${item.title}" /></td>
-							<td><fmt:formatDate value="${item.createTime}"
-									pattern="yyyy-MM-dd HH:mm:ss" /></td>
+							<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 							<td>modify
-								<button type="button" class="btn btn-default btn-xs"
-									onclick="showDetailModal('channel-detail-modal','<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')">View</button>
+								<button type="button" class="btn btn-default btn-xs" onclick="showDetailModal('channel-detail-modal','<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')">View</button>
 								<%-- 								<button type="button" class="btn btn-default btn-xs" onclick="showDetail('jsondetail','${item.id}','channel-detail-modal', --%>
 								<%-- 								'<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')" >View</button> --%>
 
-								<button type="button" class="btn btn-default btn-xs"
-									onclick="deleteOne('cms/channel/delete','${item.id}',this)">Delete</button>
+								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('cms/channel/delete','${item.id}',this)">Delete</button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -77,12 +72,13 @@
 			</table>
 			<ul class="pagination" style="margin-bottom: 100px;">
 				<li><a href="#">&laquo;</a></li>
-				<c:forEach var="item" begin="0" end="${result.totalPages-1}">
-					<li <c:if test="${item eq result.number}">class="active"</c:if>>
-						<a
-						href="${root}/console/cms/channel/list?page=${item}&size=${result.size}">${item+1}</a>
-					</li>
-				</c:forEach>
+				<c:if test="${result.totalPages>1}">
+					<c:forEach var="item" begin="0" end="${result.totalPages-1}">
+						<li <c:if test="${item eq result.number}">class="active"</c:if>>
+							<a href="${root}/console/cms/channel/list?page=${item}&size=${result.size}">${item+1}</a>
+						</li>
+					</c:forEach>
+				</c:if>
 				<li><a href="#">&raquo;</a></li>
 			</ul>
 

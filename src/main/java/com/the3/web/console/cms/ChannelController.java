@@ -58,6 +58,8 @@ public class ChannelController extends SuperController{
 		Page<Channel> result = channelService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
 		model.addAttribute("result", result);
 		
+		Debug.println("result:"+result);
+		
 		return "console/cms/channel";
 	}
 	

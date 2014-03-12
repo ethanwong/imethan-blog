@@ -30,7 +30,7 @@ public class QueryUtils {
 					query.addCriteria(new Criteria(searchFilter.fieldName).ne(searchFilter.value));
 	                break;
 				case LIKE:
-					query.addCriteria(new Criteria(searchFilter.fieldName).regex("+"+searchFilter.value));
+					query.addCriteria(new Criteria(searchFilter.fieldName).regex(searchFilter.value.toString()));
 					break;
 				case GT:
 					query.addCriteria(new Criteria(searchFilter.fieldName).gt(searchFilter.value));
