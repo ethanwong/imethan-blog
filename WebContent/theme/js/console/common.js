@@ -7,8 +7,29 @@ $(function() {
 //	  $('#channel-modify').on('show.bs.modal', function (e) {  
 //	    	alert("打开对话框之前事情");  
 //	  });
+	//表单验证
+	 $("#inputForm").validate();
 });
 
+//删除一条记录
+function deleteOne(method, id,row){
+	$('#warnModal').modal(
+			$('#warnModal .modal-body').html("确实删除吗？")
+	);
+	
+	$("#warnModal #warnModalClick").click(function(){
+		$.ajax({
+			type : "get",
+			url : "../" + method + "/" + id,
+			dataType : "json",
+			success : function(msg) {
+				showTopWarn("删除成功。");
+				$(row).parent().parent().remove(); 
+			}
+		});
+		
+	});	
+};
 
 
 //查看详情，弹出详情
@@ -38,27 +59,6 @@ function showDetailModal(modal,content) {
 };
 
 
-
-//删除一条记录
-function deleteOne(method, id,row){
-	$('#warnModal').modal(
-			$('#warnModal .modal-body').html("确实删除吗？")
-	);
-	
-	$("#warnModal #warnModalClick").click(function(){
-		$.ajax({
-			type : "get",
-			url : "../" + method + "/" + id,
-			dataType : "json",
-			success : function(msg) {
-				showTopWarn("删除成功。");
-				$(row).parent().parent().remove(); 
-			}
-		});
-		
-	});	
-};
-
 //提交表单
 function submitForm(current){
 	$.post($(current).parent().attr('action'),
@@ -71,11 +71,3 @@ function submitForm(current){
 	  },"json");
 	
 };
-
-//展现提示
-function showTopWarn(msg){
-	$('#topWarn').removeAttr("hidden");
-	$('#topWarn p').html(msg);
-}
-
-

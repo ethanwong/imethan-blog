@@ -99,7 +99,6 @@ public class ChannelServiceImpl implements ChannelService {
 	@Override
 	public WebReturnDto modify(Channel channel) {
 		boolean isSuccess = true;
-		
 		try {
 			Update update = new Update().set("title", channel.getTitle()).set("describe", channel.getDescribe()).set("modifyTime", new Date());
 			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(channel.getId())), update, Channel.class);

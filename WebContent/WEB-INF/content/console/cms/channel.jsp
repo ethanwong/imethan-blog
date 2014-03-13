@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -56,10 +55,8 @@
 							<td><c:out value="${item.title}" /></td>
 							<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 							<td >
-								<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#channel-modify" onclick="fillContent('${item.id}','${item.title}','${item.describe}')">Modify</button>
-								<button type="button" class="btn btn-default btn-xs" onclick="showDetailModal('channel-detail-modal','<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')">View</button>
-								<%-- <button type="button" class="btn btn-default btn-xs" onclick="showDetail('jsondetail','${item.id}','channel-detail-modal', --%>
-								<%-- '<strong>Title</strong><br>${item.title}<br><strong>Describe</strong><br>${item.describe}<br><strong>CreateTime</strong><br>${item.createTime}')" >View</button> --%>
+								<a class="btn btn-default btn-xs" data-toggle="modal" data-target="#channel-modify" href="${root}/console/cms/channel/noDecorate/forModify/${item.id}">Modify</a>
+								<a class="btn btn-default btn-xs" data-toggle="modal" data-target="#channel-view" href="${root}/console/cms/channel/noDecorate/view/${item.id}">View</a>
 								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('cms/channel/delete','${item.id}',this)">Delete</button>
 							</td>
 						</tr>
@@ -93,7 +90,7 @@
 			</ul>
 
 			<!-- Modal -->
-			<div class="modal fade" id="channel-detail-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="channel-view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -116,16 +113,16 @@
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4 class="modal-title" id="myModalLabel">Modify</h4>
 						</div>
-						<form role="form" method="post" action="${root}/console/cms/channel/modify">
+						<form role="form" method="post" action="${root}/console/cms/channel/modify" id="inputForm">
 							<input type="hidden" value="" name="id" id="id">
 							<div class="modal-body">
 								  <div class="form-group">
 								    <label for="exampleInputEmail1">Title</label>
-								    <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value="">
+								    <input type="text" class="form-control required" id="title" name="title" placeholder="Enter title" value="">
 								  </div>
 								  <div class="form-group">
 								    <label for="exampleInputPassword1">Describe</label>
-								    <textarea class="form-control" rows="3" placeholder="Enter describe" name="describe" id="describe" ></textarea>
+								    <textarea class="form-control required" rows="3" placeholder="Enter describe" name="describe" id="describe" ></textarea>
 								  </div>
 							</div>
 							<div class="modal-footer">
@@ -141,14 +138,5 @@
 			<!-- /.modal -->
 		</div>
 	</div>
-	<script type="text/javascript">
-	<!--
-		function fillContent(id,title,describe){
-			$('#id').attr('value',id);
-			$('#title').attr('value',title);
-			$('#describe').text(describe);
-		};
-	//-->
-	</script>
 </body>
 </html>

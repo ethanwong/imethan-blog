@@ -3,6 +3,7 @@ package com.the3.web.console.cms;
 import java.util.Map;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -106,14 +107,14 @@ public class ChannelController extends SuperController{
 		return channel;
 	}
 	
-	@RequestMapping(value="/detail/{id}", method = RequestMethod.GET)
-	public String detail(Model model,@PathVariable String id){
+	@RequestMapping(value="noDecorate/view/{id}", method = RequestMethod.GET)
+	public String detail(Model model,@PathVariable String id,ServletResponse response){
 		Channel channel  = channelService.getById(id);
 		Debug.println("id:"+id);
 		model.addAttribute("message","This is detail");
 		model.addAttribute("channel",channel);
 		Debug.println("channel:"+channel);
-		return "console/cms/channel-detail";
+		return "console/cms/channel-view";
 	}
 	
 	@RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
@@ -129,11 +130,20 @@ public class ChannelController extends SuperController{
 		return isSuccess;
 	}
 	
+	@RequestMapping(value="/noDecorate/forModify/{id}", method = RequestMethod.GET)
+	public String forModify(Model model,@PathVariable String id,ServletResponse response){
+		Channel channel  = channelService.getById(id);
+		Debug.println("id:"+id);
+		model.addAttribute("message","This is detail");
+		model.addAttribute("channel",channel);
+		Debug.println("channel:"+channel);
+		return "console/cms/channel-modify";
+	}
+	
 	@RequestMapping(value="/modify",method = RequestMethod.POST)
 	public String modify(@ModelAttribute("channel") Channel channel, BindingResult result,RedirectAttributesModelMap redirectAttributesModelMap) {
 		boolean isSuccess = true;
 		String message = "修改成功。";
-		Debug.println("channel:"+channel);
 		if(result.hasErrors()||StringUtils.isEmpty(channel.getTitle())||StringUtils.isEmpty(channel.getDescribe())){
 			isSuccess = false;
 			message = "修改失败，标题和描述为必填项。";

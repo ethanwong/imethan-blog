@@ -74,17 +74,15 @@
 		<!-- 顶部可关闭提醒框 -->
 		<c:if test="${WebReturnDto.success=='true'}">
 			<div id="topWarn" class="alert alert-success alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert"
-					aria-hidden="true">&times;</button>
-				<strong>Warning!</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+<!-- 				<strong>Warning!</strong> -->
 				<p style="display: inline;">${WebReturnDto.message}</p>
 			</div>
 		</c:if>
 		<c:if test="${WebReturnDto.success=='false'}">
 			<div id="topWarn" class="alert alert-danger alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert"
-					aria-hidden="true">&times;</button>
-				<strong>Warning!</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+<!-- 				<strong>Warning!</strong> -->
 				<p style="display: inline;">${WebReturnDto.message}</p>
 			</div>
 		</c:if>
@@ -147,13 +145,8 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
-	<script src="${root}/theme/js/bootstrap.min.js"></script>
-	<script src="${root}/theme/js/popover.js"></script>
-	<script src="${root}/theme/js/tooltip.js"></script>
-	<script src="${root}/theme/js/alert.js"></script>
-	<script src="${root}/theme/js/console/common.js"></script>
-
+	<%@ include file="/WEB-INF/content/base/js.jsp"%>
+	
 </body>
 </html>
 

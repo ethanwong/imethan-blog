@@ -8,15 +8,14 @@
 </head>
 <body>
 	<h1>Add a channel</h1>
-	<form role="form" action="${root}/console/cms/channel/save2"
-		method="post">
+	<form id="inputForm" role="form" action="${root}/console/cms/channel/save2" method="post">
 		<div class="form-group">
 			<label for="exampleInputTitle">Title</label>
-				<input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+				<input type="text" class="form-control required" id="title" placeholder="Enter title" name="title" >
 		</div>
 		<div class="form-group">
 			<label for="exampleInputDescribe">Describe</label>
-			<textarea class="form-control" rows="3" placeholder="Enter describe" name="describe" id="describe"></textarea>
+			<textarea class="form-control required" rows="3" placeholder="Enter describe" name="describe" id="describe"></textarea>
 		</div>
 		<!-- 	  <a type="submit" class="btn btn-default" onclick="submitForm(this)">Submit</a> -->
 		<button type="submit" class="btn btn-default">Submit</button>
