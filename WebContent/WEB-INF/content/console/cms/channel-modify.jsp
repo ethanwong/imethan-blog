@@ -11,6 +11,7 @@
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		<h4 class="modal-title" id="myModalLabel">Modify</h4>
 	</div>
+	
 	<form role="form"  method="post" action="${root}/console/cms/channel/modify" id="inputForm">
 		<input type="hidden" value="${channel.id}" name="id" id="id">
 		<div class="modal-body">
@@ -28,6 +29,5 @@
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		</div>
 	</form>
-	<%@ include file="/WEB-INF/content/base/js.jsp"%>
 </body>
 </html>

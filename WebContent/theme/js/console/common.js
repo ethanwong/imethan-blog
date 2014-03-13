@@ -9,6 +9,10 @@ $(function() {
 //	  });
 	//表单验证
 	 $("#inputForm").validate();
+	 
+//	 $("#channel-modify").on("hidden.bs.modal", function() {
+//		    $(this).removeData("bs.modal");
+//		});
 });
 
 //删除一条记录

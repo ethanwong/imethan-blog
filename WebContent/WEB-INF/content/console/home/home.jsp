@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -71,8 +70,7 @@
 	</div>
 
 	<div class="alert alert-warning alert-dismissable">
-		<button type="button" class="close" data-dismiss="alert"
-			aria-hidden="true">&times;</button>
+		<button type="button" class="close" data-dismiss="alert"aria-hidden="true">&times;</button>
 		<strong>Warning!</strong> Best check yo self, you're not looking too
 		good.
 	</div>
@@ -92,43 +90,16 @@
 		<h4>Warning!</h4>
 		Best check yo self, you're not...
 	</div>
-	
-	
-	<form id="inputForm" method="get" action="">
-    <p>
-        <label for="firstname">Firstname</label>
-        <input id="firstname" name="firstname" class="required" />
-    </p>
- <p>
-  <label for="email">E-Mail</label>
-  <input id="email" name="email" class="required email" />
- </p>
- <p>
-  <label for="password">Password</label>
-  <input id="password" name="password" type="password" class="{required:true,minlength:5}" />
- </p>
- <p>
-  <label for="confirm_password">确认密码</label>
-  <input id="confirm_password" name="confirm_password" type="password" class="{required:true,minlength:5,equalTo:'#password'}" />
- </p>
-    <p>
-        <input class="submit" type="submit" value="Submit"/>
-    </p>
-</form>
-	
 
 	<a id="buttons" onclick="testJs()">buttons</a>
+	
+	<div style="margin-bottom: 100px;"></div>
 	<script type="text/javascript">
 	<!--
 	function testJs(){
 		alert("This is a test");
 	};
-  
-
 	//-->
 	</script>
-
-
-
 </body>
 </html>
