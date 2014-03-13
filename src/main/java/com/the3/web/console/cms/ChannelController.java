@@ -117,9 +117,12 @@ public class ChannelController extends SuperController{
 		return "console/cms/channel-view";
 	}
 	
-	@RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public boolean delete(Model model,@PathVariable String id){
+	@RequestMapping(value="/delete/{id}", method = {RequestMethod.POST,RequestMethod.GET})
+	public String delete(Model model,@PathVariable String id,RedirectAttributesModelMap redirectAttributesModelMap,ServletRequest request){
+		page = ServletUtils.getRequestIntParameter(request, "page")>=0 ? ServletUtils.getRequestIntParameter(request, "page") : page;
+		size = ServletUtils.getRequestIntParameter(request, "size")>0 ? ServletUtils.getRequestIntParameter(request, "size") : size;
+		
+		
 		boolean isSuccess = channelService.deleteById(id);
 		String message = "";
 		if(isSuccess){
@@ -127,7 +130,8 @@ public class ChannelController extends SuperController{
 		}else{
 			message = "删除失败。";
 		}
-		return isSuccess;
+		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
+		return "redirect:/console/cms/channel/list?page="+page+"&size="+size;
 	}
 	
 	@RequestMapping(value="/noDecorate/forModify/{id}", method = RequestMethod.GET)

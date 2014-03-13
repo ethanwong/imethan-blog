@@ -57,7 +57,7 @@
 							<td>
 								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-keyboard="true" data-target="#channel-modify" href="${root}/console/cms/channel/noDecorate/forModify/${item.id}">Modify</a>
 								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-target="#channel-view" href="${root}/console/cms/channel/noDecorate/view/${item.id}">View</a>
-								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('cms/channel/delete','${item.id}',this)">Delete</button>
+								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('${root}/console/cms/channel/delete/${item.id}?page=${result.number}&size=${result.size}')">Delete</button>
 							</td>
 						</tr>
 					</c:forEach>

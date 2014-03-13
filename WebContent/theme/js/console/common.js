@@ -16,22 +16,13 @@ $(function() {
 });
 
 //删除一条记录
-function deleteOne(method, id,row){
+function deleteOne(url){
 	$('#warnModal').modal(
 			$('#warnModal .modal-body').html("确实删除吗？")
 	);
 	
 	$("#warnModal #warnModalClick").click(function(){
-		$.ajax({
-			type : "get",
-			url : "../" + method + "/" + id,
-			dataType : "json",
-			success : function(msg) {
-				showTopWarn("删除成功。");
-				$(row).parent().parent().remove(); 
-			}
-		});
-		
+		location.href = url;
 	});	
 };
 
