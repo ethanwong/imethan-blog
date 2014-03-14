@@ -1,7 +1,6 @@
 package com.the3.web.console.cms;
 
 import java.util.Map;
-
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
@@ -24,7 +23,7 @@ import com.the3.base.web.SearchFilter;
 import com.the3.base.web.SuperController;
 import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Channel;
-import com.the3.service.ChannelService;
+import com.the3.service.cms.ChannelService;
 import com.the3.utils.Debug;
 
 /**
@@ -37,8 +36,7 @@ import com.the3.utils.Debug;
 @RequestMapping("/console/cms/channel")
 public class ChannelController extends SuperController{
 	
-	private int defaultPage = 0;
-	private int defaultSize = 10;
+
 	
 	@Autowired
 	private ChannelService channelService;
@@ -50,7 +48,6 @@ public class ChannelController extends SuperController{
 	 */
 	@RequestMapping(value="", method = {RequestMethod.GET,RequestMethod.POST})
 	public String channel(RedirectAttributesModelMap redirectAttributesModelMap){
-		System.out.println("--------channel--------");
 		return "redirect:/console/cms/channel/"+defaultPage+"/"+defaultSize;
 	}
 	
@@ -121,6 +118,7 @@ public class ChannelController extends SuperController{
 		Debug.println("channel:"+channel);
 		return "console/cms/channel-view";
 	}
+	
 	
 	/**
 	 * 删除

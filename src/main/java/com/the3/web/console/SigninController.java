@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.the3.entity.cms.Channel;
-import com.the3.service.ChannelService;
+import com.the3.service.cms.ChannelService;
 
 /**
  * LoginController.java

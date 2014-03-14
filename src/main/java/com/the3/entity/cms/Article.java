@@ -1,8 +1,8 @@
 package com.the3.entity.cms;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import com.the3.base.entity.BaseEntity;
 
 /**
@@ -14,9 +14,19 @@ import com.the3.base.entity.BaseEntity;
 @Document
 public class Article extends BaseEntity {
 
-	private String title;
-	private String content;
+	private String title;//标题
+	private String content;//内容
 	
+	@DBRef
+	private Channel channel;//栏目
+	
+	
+	public Channel getChannel() {
+		return channel;
+	}
+	public void setChannel(Channel channel) {
+		this.channel = channel;
+	}
 	public String getTitle() {
 		return title;
 	}

@@ -9,8 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.the3.entity.cms.Channel;
-import com.the3.service.ChannelService;
-import com.the3.service.impl.ChannelServiceImpl;
+import com.the3.service.cms.impl.ChannelServiceImpl;
 
 //@ContextConfiguration({"/main/applicationContext.xml"})
 

@@ -1,13 +1,11 @@
-package com.the3.service.impl;
+package com.the3.service.cms.impl;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -15,13 +13,12 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import com.the3.base.repository.QueryUtils;
-import com.the3.base.web.SearchFilter;
+import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Channel;
 import com.the3.repository.cms.ChannelRepository;
-import com.the3.service.ChannelService;
+import com.the3.service.cms.ChannelService;
 
 /**
  * ChannelServiceImpl.java
@@ -30,7 +27,7 @@ import com.the3.service.ChannelService;
  * @time 2014年3月2日下午4:45:52
  */
 @Service
-public class ChannelServiceImpl implements ChannelService {
+public class ChannelServiceImpl extends BaseServiceImpl<Channel> implements ChannelService {
 	
 	private Logger logger = Logger.getLogger(ChannelServiceImpl.class);  
 	
@@ -57,12 +54,7 @@ public class ChannelServiceImpl implements ChannelService {
 	public Page<Channel> getPage(Map<String,Object> parameters,PageRequest pageable) {
 		
 		try {
-			Query query = QueryUtils.dynamicGenerateQuery(SearchFilter.parse(parameters).entrySet());
-			
-			List<Channel> list =  mongoTemplate.find(query.with(pageable), Channel.class);
-			long count = mongoTemplate.count(query, Channel.class);
-			
-			return new PageImpl<Channel>(list, pageable, count);
+			return super.getPage(parameters, pageable, Channel.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());

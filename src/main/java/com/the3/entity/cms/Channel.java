@@ -15,8 +15,8 @@ import com.the3.base.entity.BaseEntity;
 @Document
 public class Channel extends BaseEntity {
 	
-	private String title;
-	private String describe;
+	private String title;//标题
+	private String describe;//描述
 
 	public String getTitle() {
 		return title;

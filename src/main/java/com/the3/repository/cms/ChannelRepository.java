@@ -14,5 +14,4 @@ import com.the3.entity.cms.Channel;
 @Repository
 public interface ChannelRepository extends MongoRepository<Channel, String> {
 
-	Channel findById(String id);
 }

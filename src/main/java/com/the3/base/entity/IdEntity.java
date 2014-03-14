@@ -1,5 +1,8 @@
 package com.the3.base.entity;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,7 +14,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document
 public class IdEntity {
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 
 	public String getId() {
