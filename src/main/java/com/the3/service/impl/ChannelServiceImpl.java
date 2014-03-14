@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -57,20 +56,20 @@ public class ChannelServiceImpl implements ChannelService {
 	@Override
 	public Page<Channel> getPage(Map<String,Object> parameters,PageRequest pageable) {
 		
-		Query query = QueryUtils.dynamicGenerateQuery(SearchFilter.parse(parameters).entrySet());
-				
-		List<Channel> list =  mongoTemplate.find(query.with(pageable), Channel.class);
-		long count = mongoTemplate.count(query, Channel.class);
-		
-		return new PageImpl<Channel>(list, pageable, count);
+		try {
+			Query query = QueryUtils.dynamicGenerateQuery(SearchFilter.parse(parameters).entrySet());
+			
+			List<Channel> list =  mongoTemplate.find(query.with(pageable), Channel.class);
+			long count = mongoTemplate.count(query, Channel.class);
+			
+			return new PageImpl<Channel>(list, pageable, count);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 	
-	@Override
-	public Page<Channel> getPage(Pageable pageable) {
-		
-		return channelRepository.findAll(pageable);
-	}
-
 	@Override
 	public Channel getById(String id) {
 		Channel entity = null;
@@ -103,7 +102,6 @@ public class ChannelServiceImpl implements ChannelService {
 			Update update = new Update().set("title", channel.getTitle()).set("describe", channel.getDescribe()).set("modifyTime", new Date());
 			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(channel.getId())), update, Channel.class);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			isSuccess = false;
 		}

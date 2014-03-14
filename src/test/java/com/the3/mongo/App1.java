@@ -19,7 +19,6 @@ public class App1 {
 
     MongoOperations mongoOps = new MongoTemplate(new Mongo(), "database");
 
-    mongoOps.insert(new Article("Ethan", "dasdfasd"));
 
     log.info(mongoOps.findOne(new Query(where("title").is("Ethan")), Article.class));
 
