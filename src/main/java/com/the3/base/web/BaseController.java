@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 /**
  * BaseController.java
  *
- * @author suncco
+ * @author Ethan Wong
  * @time 2014年3月8日下午1:17:07
  */
 public interface BaseController {

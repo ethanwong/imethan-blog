@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * IdEntity.java
  *
- * @author ETHAN
+ * @author Ethan Wong
  * @time 2014年3月2日下午4:51:08
  */
 @Document

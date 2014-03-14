@@ -12,7 +12,7 @@ import com.the3.base.web.SearchFilter.Operator;
 /**
  * QueryUtils.java
  *
- * @author suncco
+ * @author Ethan Wong
  * @time 2014年3月12日下午5:08:11
  */
 public class QueryUtils {

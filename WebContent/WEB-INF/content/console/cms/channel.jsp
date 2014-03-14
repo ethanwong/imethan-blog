@@ -36,8 +36,8 @@
 				<a href="${root}/console/cms/channel/input" ><button type="button" class="btn btn-primary">Add</button></a>
 			</label>
 			<div class="col-sm-11">
-				<form class="form-inline" role="form" action="${root}/console/cms/channel/list" method="post">
-					<input type="text" class="form-control" name="search_LIKE_title" placeholder="Enter title">
+				<form class="form-inline" role="form" action="${root}/console/cms/channel/0/10" method="post">
+					<input type="text" class="form-control" name="search_LIKE_title" placeholder="Enter title" value="${search_LIKE_title}">
 					<button type="submit" class="btn btn-default">Search</button>
 				</form>
 			</div>
@@ -55,9 +55,9 @@
 							<td><c:out value="${item.title}" /></td>
 							<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 							<td>
-								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-keyboard="true" data-target="#channel-modify" href="${root}/console/cms/channel/noDecorate/forModify/${item.id}">Modify</a>
+								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-keyboard="true" data-target="#channel-modify" href="${root}/console/cms/channel/noDecorate/forModify/${item.id}/${result.number}/${result.size}">Modify</a>
 								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-target="#channel-view" href="${root}/console/cms/channel/noDecorate/view/${item.id}">View</a>
-								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('${root}/console/cms/channel/delete/${item.id}?page=${result.number}&size=${result.size}')">Delete</button>
+								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('${root}/console/cms/channel/delete/${item.id}/${result.number}/${result.size}')">Delete</button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -66,7 +66,7 @@
 			<ul class="pagination" style="margin-bottom: 100px;">
 				<li>
 					<c:if test="${result.number > 0}">
-						<a href="${root}/console/cms/channel/list?page=${result.number-1}&size=${result.size}">&laquo;</a>
+						<a href="${root}/console/cms/channel/${result.number-1}/${result.size}">&laquo;</a>
 					</c:if>
 					<c:if test="${result.number <= 0}">
 						<a href="#">&laquo;</a>
@@ -75,13 +75,13 @@
 				<c:if test="${result.totalPages>=1}">
 					<c:forEach var="item" begin="0" end="${result.totalPages-1}">
 						<li <c:if test="${item eq result.number}">class="active"</c:if>>
-							<a href="${root}/console/cms/channel/list?page=${item}&size=${result.size}">${item+1}</a>
+							<a href="${root}/console/cms/channel/${item}/${result.size}">${item+1}</a>
 						</li>
 					</c:forEach>
 				</c:if>
 				<li>
 					<c:if test="${result.number < result.totalPages-1}">
-						<a href="${root}/console/cms/channel/list?page=${result.number+1}&size=${result.size}">&raquo;</a>
+						<a href="${root}/console/cms/channel/${result.number+1}/${result.size}">&raquo;</a>
 					</c:if>
 					<c:if test="${result.number >= result.totalPages-1}">
 						<a href="#">&raquo;</a>

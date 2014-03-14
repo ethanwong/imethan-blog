@@ -3,7 +3,7 @@ package com.the3.utils;
 /**
  * Debug.java
  *
- * @author suncco
+ * @author Ethan Wong
  * @time 2014年3月8日下午2:43:57
  */
 public class Debug {

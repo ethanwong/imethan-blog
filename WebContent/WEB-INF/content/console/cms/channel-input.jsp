@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>Add a channel</h1>
-	<form id="inputForm" role="form" action="${root}/console/cms/channel/save2" method="post">
+	<form id="inputForm" role="form" action="${root}/console/cms/channel/save" method="post">
 		<div class="form-group">
 			<label for="exampleInputTitle">Title</label>
 				<input type="text" class="form-control required" id="title" placeholder="Enter title" name="title" >

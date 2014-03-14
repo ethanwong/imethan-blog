@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * Channel.java
  *
- * @author ETHAN
+ * @author Ethan Wong
  * @time 2014年3月2日下午4:44:32
  */
 @Document

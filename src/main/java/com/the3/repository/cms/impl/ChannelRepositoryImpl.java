@@ -21,7 +21,7 @@ import com.the3.entity.cms.Channel;
 /**
  * ChannelRepositoryImpl.java
  *
- * @author ETHAN
+ * @author Ethan Wong
  * @time 2014年3月2日下午4:45:32
  */
 @Service

@@ -3,7 +3,7 @@ package com.the3.dto.web;
 /**
  * WebReturnDto.java
  *
- * @author ETHAN
+ * @author Ethan Wong
  * @time 2014年3月10日下午10:25:57
  */
 public class WebReturnDto {

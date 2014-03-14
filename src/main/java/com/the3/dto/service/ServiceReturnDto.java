@@ -3,7 +3,7 @@ package com.the3.dto.service;
 /**
  * ServiceReturnDto.java
  *
- * @author ETHAN
+ * @author Ethan Wong
  * @param <S>
  * @time 2014年3月8日下午10:29:21
  */

@@ -8,7 +8,7 @@ import com.the3.entity.cms.Channel;
 /**
  * ChannelRepository.java
  *
- * @author ETHAN
+ * @author Ethan Wong
  * @time 2014年3月2日下午4:44:45
  */
 @Repository

@@ -7,7 +7,7 @@ import org.springframework.util.StringUtils;
 /**
  * WebUtils.java
  *
- * @author ETHAN
+ * @author Ethan Wong
  * @time 2014年3月11日下午8:12:40
  */
 public class ServletUtils {

@@ -12,7 +12,7 @@
 		<h4 class="modal-title" id="myModalLabel">Modify</h4>
 	</div>
 	
-	<form role="form"  method="post" action="${root}/console/cms/channel/modify" id="inputForm">
+	<form role="form"  method="post" action="${root}/console/cms/channel/modify/${page}/${size}" id="inputForm">
 		<input type="hidden" value="${channel.id}" name="id" id="id">
 		<div class="modal-body">
 			  <div class="form-group">

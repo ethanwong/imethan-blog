@@ -13,7 +13,7 @@ import com.the3.service.ChannelService;
 /**
  * LoginController.java
  *
- * @author ETHAN
+ * @author Ethan Wong
  * @time 2014年3月2日下午10:32:13
  */
 @Controller

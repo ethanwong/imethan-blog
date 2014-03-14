@@ -27,7 +27,7 @@ import com.the3.service.ChannelService;
 /**
  * ChannelServiceImpl.java
  *
- * @author ETHAN
+ * @author Ethan Wong
  * @time 2014年3月2日下午4:45:52
  */
 @Service
