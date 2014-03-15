@@ -5,7 +5,7 @@
 	<!-- 排除装饰页面 -->
 	<excludes>
 		<pattern>/index.jsp</pattern>
-		<pattern>/console/cms/channel/noDecorate/*</pattern>
+		<pattern>/console/cms/*/noDecorate/*</pattern>
 	</excludes>
 
 	<!-- 后台菜单装饰页 -->

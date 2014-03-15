@@ -41,6 +41,7 @@ table {
 /***********Error Page******************/
 .error_ex{ text-align:center;}
 .error_ex h1{ font-size:140px; font-weight:bold; padding:50px 0; color:#28B779}
+.error_ex h2{ font-size:140px; font-weight:bold; padding:50px 0; color:#a94442}
 
 .error{border-color: #a94442;}
 

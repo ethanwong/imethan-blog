@@ -51,6 +51,8 @@ public interface BaseService<T> {
 	 * @return
 	 */
 	public WebReturnDto modify(T entity); 
+	
+	
 
 }
 

@@ -1,6 +1,8 @@
 package com.the3.service.cms;
 
 
+import java.util.List;
+
 import com.the3.base.service.BaseService;
 import com.the3.entity.cms.Channel;
 
@@ -12,6 +14,10 @@ import com.the3.entity.cms.Channel;
  */
 public interface ChannelService  extends BaseService<Channel> {
 	
-	
+	/**
+	 * 获取列表
+	 * @return
+	 */
+	public List<Channel> getList();
 	
 }

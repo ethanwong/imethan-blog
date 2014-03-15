@@ -31,3 +31,4 @@
 	</form>
 </body>
 </html>
+<%@ include file="/WEB-INF/content/base/js.jsp"%>

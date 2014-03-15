@@ -8,7 +8,13 @@ $(function() {
 //	    	alert("打开对话框之前事情");  
 //	  });
 	//表单验证
-	 $("#inputForm").validate();
+	 $("#inputForm").validate( );
+	 $("#inputForm").submit(function(e){
+		 if($.trim($('#kindeditorContent').val().replace(/&nbsp;/g, '')) == ''){
+			 $('#kindeditorContentError').html('');
+			 $('#kindeditorContentError').append('This field is required.');
+		 }
+	});
 	 
 //	 $("#channel-modify").on("hidden.bs.modal", function() {
 //		    $(this).removeData("bs.modal");

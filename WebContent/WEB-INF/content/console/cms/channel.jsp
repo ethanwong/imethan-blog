@@ -32,8 +32,8 @@
 			</div>
 		</div>
 		<div class="col-md-9">
-			<label class="col-sm-1 control-label" style="float: left;">
-				<a href="${root}/console/cms/channel/input" ><button type="button" class="btn btn-primary">Add</button></a>
+			<label class="col-sm-1 control-label" style="padding: 0px;" >
+				<a  href="${root}/console/cms/channel/input" ><button type="button" class="btn btn-primary">Add</button></a>
 			</label>
 			<div class="col-sm-11">
 				<form class="form-inline" role="form" action="${root}/console/cms/channel/0/10" method="post">
@@ -63,7 +63,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<ul class="pagination" style="margin-bottom: 100px;">
+			<ul class="pagination" style="margin: 10px;">
 				<li>
 					<c:if test="${result.number > 0}">
 						<a href="${root}/console/cms/channel/${result.number-1}/${result.size}">&laquo;</a>
@@ -88,54 +88,49 @@
 					</c:if>
 				</li>
 			</ul>
-
-			<!-- Modal -->
-			<div class="modal fade" id="channel-view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-						</div>
-						<div class="modal-body">...</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-					<!-- /.modal-content -->
+		</div>
+	</div>
+	
+	
+	<div class="modal fade" id="channel-view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
 				</div>
-				<!-- /.modal-dialog -->
-			</div>
-			<div class="modal fade" id="channel-modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="myModalLabel">Modify</h4>
-						</div>
-						<form role="form" method="post" action="${root}/console/cms/channel/modify" id="inputForm">
-							<input type="hidden" value="" name="id" id="id">
-							<div class="modal-body">
-								  <div class="form-group">
-								    <label for="exampleInputEmail1">Title</label>
-								    <input type="text" class="form-control required" id="title" name="title" placeholder="Enter title" value="">
-								  </div>
-								  <div class="form-group">
-								    <label for="exampleInputPassword1">Describe</label>
-								    <textarea class="form-control required" rows="3" placeholder="Enter describe" name="describe" id="describe" ></textarea>
-								  </div>
-							</div>
-							<div class="modal-footer">
-								<button type="submit" class="btn btn-primary"">Submit</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							</div>
-						</form>
-					</div>
-					<!-- /.modal-content -->
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
-				<!-- /.modal-dialog -->
 			</div>
-			<!-- /.modal -->
+		</div>
+	</div>
+	<div class="modal fade" id="channel-modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Modify</h4>
+				</div>
+				<form role="form" method="post" action="${root}/console/cms/channel/modify" id="inputForm">
+					<input type="hidden" value="" name="id" id="id">
+					<div class="modal-body">
+						  <div class="form-group">
+						    <label for="exampleInputEmail1">Title</label>
+						    <input type="text" class="form-control required" id="title" name="title" placeholder="Enter title" value="">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">Describe</label>
+						    <textarea class="form-control required" rows="3" placeholder="Enter describe" name="describe" id="describe" ></textarea>
+						  </div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary"">Submit</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </body>

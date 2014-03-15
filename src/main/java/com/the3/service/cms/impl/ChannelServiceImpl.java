@@ -1,6 +1,7 @@
 package com.the3.service.cms.impl;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -88,16 +89,28 @@ public class ChannelServiceImpl extends BaseServiceImpl<Channel> implements Chan
 	}
 
 	@Override
-	public WebReturnDto modify(Channel channel) {
+	public WebReturnDto modify(Channel entity) {
 		boolean isSuccess = true;
 		try {
-			Update update = new Update().set("title", channel.getTitle()).set("describe", channel.getDescribe()).set("modifyTime", new Date());
-			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(channel.getId())), update, Channel.class);
+			Update update = new Update().set("title", entity.getTitle()).set("describe", entity.getDescribe()).set("modifyTime", new Date());
+			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(entity.getId())), update, Channel.class);
 		} catch (Exception e) {
 			e.printStackTrace();
+			logger.error(e.getMessage());
 			isSuccess = false;
 		}
 		return new WebReturnDto(isSuccess,"");
+	}
+
+	@Override
+	public List<Channel> getList() {
+		try {
+			return channelRepository.findAll();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 

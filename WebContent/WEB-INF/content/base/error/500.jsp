@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="error_ex">
-		<h1>500</h1>
+		<h2>500</h2>
 		<h3>Something is wrong here. Method not allowed!</h3>
 		<p>Access to this page is forbidden</p>
 		<a class="btn btn-warning btn-big" href="${root}/index.jsp">Back to Home</a>
