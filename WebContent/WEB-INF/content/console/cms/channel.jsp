@@ -33,7 +33,9 @@
 		</div>
 		<div class="col-md-9">
 			<label class="col-sm-1 control-label" style="padding: 0px;" >
-				<a  href="${root}/console/cms/channel/input" ><button type="button" class="btn btn-primary">Add</button></a>
+				<shiro:hasPermission name="channel:new">  
+					<a  href="${root}/console/cms/channel/input" ><button type="button" class="btn btn-primary">Add</button></a>
+				</shiro:hasPermission>  
 			</label>
 			<div class="col-sm-11">
 				<form class="form-inline" role="form" action="${root}/console/cms/channel/0/10" method="post">

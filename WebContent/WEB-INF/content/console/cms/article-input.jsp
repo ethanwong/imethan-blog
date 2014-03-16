@@ -8,7 +8,7 @@
 
 </head>
 <body>
-	<h1>Add a article</h1>
+	<h1>Add an article</h1>
 	<form id="inputForm" role="form" action="${root}/console/cms/article/save" method="post">
 		<div class="form-group">
 			<label for="exampleInputTitle">Channel</label>
@@ -24,7 +24,7 @@
 		</div>
 		<div class="form-group">
 			<label for="exampleInputDescribe">Content</label>
-			<textarea style="width: 100% !important;" class="required" rows="5" placeholder="Enter describe" name="content" id="kindeditorContent" ></textarea>
+			<textarea style="width: 100% !important;" class="required" rows="10" placeholder="Enter describe" name="content" id="kindeditorContent" ></textarea>
 			<label for="title" id="kindeditorContentError" ></label>
 		</div>
 		<button type="submit" class="btn btn-default">Submit</button>

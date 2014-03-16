@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		<div class="col-md-9">
-			<label class="col-sm-1 control-label" style="padding: 0px;" >
+			<label class="col-sm-1 control-label" style="padding: 0px;">
 				<a href="${root}/console/cms/article/input" ><button type="button" class="btn btn-primary">Add</button></a>
 			</label>
 			<div class="col-sm-11">

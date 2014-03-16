@@ -10,19 +10,19 @@
            http://www.springframework.org/schema/context/spring-context-3.2.xsd
            http://www.springframework.org/schema/mvc
            http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
-	default-lazy-init="true">
+	default-lazy-init="false">
+	
+	<!-- 默认访问跳转到首页 -->
+    <mvc:view-controller path="/" view-name="forward:/index" />
 
 	<!-- 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理 -->
 	<mvc:resources mapping="/theme/**" location="/theme/" />
 	<mvc:resources mapping="/WEB-INF/content/base/error/**" location="/WEB-INF/content/base/error/" />
 
 	<!-- 自动扫描且只扫描@Controller -->
-	<context:component-scan base-package="com.the3"
-		use-default-filters="false">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-		<context:include-filter type="annotation"
-			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	<context:component-scan base-package="com.the3"	use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 
 	<mvc:annotation-driven
@@ -80,11 +80,29 @@
 		</property>
 	</bean>
 
-
 	<!-- 上传拦截，如最大上传值及最小上传值 -->
 	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> -->
 	<!-- one of the properties available; the maximum file size in bytes -->
 	<!-- <property name="maxUploadSize" value="1000000" /> -->
 	<!-- </bean> -->
+	
+	<!-- Enable Shiro Annotations for Spring-configured beans.  Only run after -->
+	<!-- the lifecycleBeanProcessor has run: -->
+	<!-- 开启Shiro注解的Spring配置方式的beans。在lifecycleBeanPostProcessor之后运行 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor" />
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager" />
+    </bean>
+    
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<!-- 验证不通过跳转 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.apache.shiro.authz.UnauthorizedException">/base/error/403</prop>
+            </props>
+        </property>
+    </bean>
 
 </beans> 

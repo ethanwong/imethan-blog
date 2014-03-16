@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>::ImEthan:Example::</title>
 </head>
 <body>
-	<h1>500</h1>
+	<h1>index</h1>
 </body>
 </html>

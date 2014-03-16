@@ -3,3 +3,4 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%-- <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %> --%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>  

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="
+	    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+	default-lazy-init="false" >
+	<description>applicationContext-shiro</description>
+	
+	<!-- Shiro's main business-tier object for web-enabled applications
+         (use DefaultSecurityManager instead when there is no web environment)-->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="cacheManager" ref="cacheManager"/>
+        <property name="sessionMode" value="native"/>
+		<!-- Single realm app.  If you have multiple realms, use the 'realms' property instead. -->
+        <property name="realm" ref="shiroDbRealm" />
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+    <!-- 項目自定义的Realm -->
+    <bean id="shiroDbRealm" class="com.the3.service.realm.ShiroDbRealm" />
+    
+     <!-- Let's use some enterprise caching support for better performance.  You can replace this with any enterprise
+         caching framework implementation that you like (Terracotta+Ehcache, Coherence, GigaSpaces, etc -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <!-- Set a net.sf.ehcache.CacheManager instance here if you already have one.  If not, a new one
+             will be creaed with a default config:                -->
+<!--         <property name="cacheManager" ref="ehCacheManager"/> -->
+        <!-- If you don't have a pre-built net.sf.ehcache.CacheManager instance to inject, but you want
+             a specific Ehcache configuration to be used, specify that here.  If you don't, a default
+             will be used.:-->
+<!--         <property name="cacheManagerConfigFile" value="classpath:/main/ehcache.xml"/>  -->
+    </bean>
+    
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+          <property name="sessionDAO" ref="sessionDAO"/>
+          <property name="globalSessionTimeout" value="3600000"/>
+   		  <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
+          <property name="sessionValidationSchedulerEnabled" value="true"/>
+    </bean>
+    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+        <property name="activeSessionsCacheName" value="shiro-activeSessionCache"/>
+    </bean>
+    <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler"/>
+   
+   
+    <!-- Shiro Filter -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+        <property name="loginUrl" value="/console/toSignin" />
+        <property name="successUrl" value="/system/main" />
+        <property name="unauthorizedUrl" value="/system/error" />
+        <property name="filterChainDefinitions">
+            <value>
+            /console/toSignin = anon
+            /console/signin = anon
+            /console/validateCode = anon
+            /console/** = authc
+            </value>
+        </property>
+    </bean>
+    
+	<!-- 解决Spring监听事件和Shiro初始化以及的问题 -->
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass">
+			<value>com.the3.service.ShiroRealmServiceBridge</value>
+		</property>
+		<property name="targetMethod">
+			<value>postInject</value>
+		</property>
+		<property name="arguments">
+			<list>
+				<ref bean="shiroDbRealm" />
+				<ref bean="userServiceImpl" />
+			</list>
+		</property>
+	</bean>
+</beans>

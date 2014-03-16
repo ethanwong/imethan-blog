@@ -1,9 +1,11 @@
 package com.the3.web.console.cms;
 
 import java.util.Map;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -77,6 +79,7 @@ public class ChannelController extends SuperController{
 	 * @param model
 	 * @return
 	 */
+	@RequiresPermissions("channel:new")
 	@RequestMapping(value="/input", method = RequestMethod.GET)
 	public String input(Model model) {
 		return "console/cms/channel-input";

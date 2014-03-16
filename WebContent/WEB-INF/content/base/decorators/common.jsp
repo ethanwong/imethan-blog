@@ -54,7 +54,16 @@
 							<!--                 <li class="dropdown-header">Nav header</li> -->
 							<!--                 <li><a href="#">Separated link</a></li> -->
 							<!--                 <li><a href="#">One more separated link</a></li> -->
-						</ul></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">USER<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="${root}/console/user/user">User</a></li>
+							<li><a href="${root}/console/user/role">Role</a></li>
+							<li><a href="${root}/console/user/permission">Permission</a></li>
+						</ul>
+					</li>
 				</ul>
 <!-- 				          <ul class="nav navbar-nav navbar-right"> -->
 <!-- 				            <li><a href="#">Default</a></li> -->
@@ -63,7 +72,14 @@
 <!-- 				          </ul> -->
 
 				<div class="navbar-form navbar-right" >
-					<a type="submit" class="btn btn-default" href="${root}/console/signin">Sign in</a>
+				Hello, <shiro:principal/>,
+					<shiro:guest>  
+						<a type="submit" class="btn btn-default" href="${root}/console/toSignin">Sign in</a>
+					</shiro:guest>
+					<shiro:user>  
+						Hello, <shiro:principal/>, how are you today?  
+						<a type="submit" class="btn btn-default" href="${root}/console/signout">Sign out</a>
+					</shiro:user>
 				</div>
 			</div>
 			<!--/.nav-collapse -->

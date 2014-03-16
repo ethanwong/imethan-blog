@@ -9,16 +9,24 @@
 </head>
 <body>
 	<div class="container" style="width: 300px;">
-      <form class="form-signin" role="form"  >
+      <form class="form-signin" role="form" action="${root}/console/signin" id="inputForm" method="post"  >
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="text" class="form-control" name="username" placeholder="Enter username" required autofocus>
+        <input type="password" class="form-control" name="password" placeholder="Enter password" required>
+       <input type="text" class="form-control" name="validateCode" placeholder="Enter validateCode" required>&nbsp;&nbsp;<img id="validateCodeImg" src="${root}/console/validateCode" />&nbsp;&nbsp;<a href="#" onclick="javascript:reloadValidateCode();">看不清？</a>
         <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="1" name="remember"> Remember me
         </label>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
-
     </div>
+    
+    <script type="text/javascript">
+    <!--
+    function reloadValidateCode(){
+        $("#validateCodeImg").attr("src","${root}/console/validateCode?data=" + new Date() + Math.floor(Math.random()*24));
+    }
+    //-->
+    </script>
 </body>
 </html>

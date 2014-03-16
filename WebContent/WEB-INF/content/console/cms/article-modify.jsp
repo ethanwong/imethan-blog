@@ -27,7 +27,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Describe</label>
-			 		<textarea style="width: 100% !important;" class="required" rows="5" placeholder="Enter content" name="content" id="kindeditorContent" >${entity.content}</textarea>
+			 		<textarea style="width: 100% !important;" class="required" rows="10" placeholder="Enter content" name="content" id="kindeditorContent" >${entity.content}</textarea>
 					<label id="kindeditorContentError" ></label>
 			  </div>
 		     <button type="submit" class="btn btn-default">Submit</button>

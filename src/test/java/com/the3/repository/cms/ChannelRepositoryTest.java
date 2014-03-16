@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.the3.repository.cms.impl.ChannelRepositoryImpl;
-
 /**
  * ChannelRepositoryTest.java
  *
@@ -19,11 +17,11 @@ import com.the3.repository.cms.impl.ChannelRepositoryImpl;
 public class ChannelRepositoryTest {
 	
 	@Autowired
-	private ChannelRepositoryImpl channelRepositoryImpl;
+	private ChannelRepository channelRepository;
 	
 	@Test
 	public void test(){
-		channelRepositoryImpl.find();
+		
 	}
 	
 	
