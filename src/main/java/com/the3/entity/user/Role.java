@@ -23,6 +23,14 @@ public class Role extends BaseEntity {
 	private List<User> users;//用户
 	@DBRef
 	private List<Permission> permissions;//权限
+	@DBRef
+	private List<Resource> resources;//资源
+	public List<Resource> getResources() {
+		return resources;
+	}
+	public void setResources(List<Resource> resources) {
+		this.resources = resources;
+	}
 	public String getRolename() {
 		return rolename;
 	}

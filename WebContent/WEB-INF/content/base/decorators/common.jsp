@@ -72,7 +72,6 @@
 <!-- 				          </ul> -->
 
 				<div class="navbar-form navbar-right" >
-				Hello, <shiro:principal/>,
 					<shiro:guest>  
 						<a type="submit" class="btn btn-default" href="${root}/console/toSignin">Sign in</a>
 					</shiro:guest>

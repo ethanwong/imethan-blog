@@ -1,6 +1,13 @@
 package com.the3.base.web;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 /**
  * BaseController.java
@@ -11,41 +18,70 @@ import org.springframework.ui.Model;
 public interface BaseController {
 	
 	/**
-	 * 查询列表
+	 * 进入模块首页
+	 * @param redirectAttributesModelMap
 	 * @return
 	 */
-	public String list(Model model);
+	@RequestMapping(value="", method = {RequestMethod.GET,RequestMethod.POST})
+	public String index(RedirectAttributesModelMap redirectAttributesModelMap);
+	
+	/**
+	 * 获取列表
+	 * @param model
+	 * @param request
+	 * @param page
+	 * @param size
+	 * @return
+	 */
+	@RequestMapping(value="/{page}/{size}", method = {RequestMethod.GET,RequestMethod.POST})
+	public String list(Model model,ServletRequest request,@PathVariable int page,@PathVariable int size);
+	
+	/**
+	 * 跳转添加页面
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/input", method = RequestMethod.GET)
+	public String input(Model model);
+	
 	
 	/**
 	 * 查看详情
+	 * @param model
+	 * @param id
+	 * @param response
 	 * @return
 	 */
-	public String detail(Model model);
+	@RequestMapping(value="noDecorate/view/{id}", method = RequestMethod.GET)
+	public String detail(Model model,@PathVariable String id,ServletResponse response);
+	
 	
 	/**
-	 * 添加操作
+	 * 准备编辑页面
+	 * @param model
+	 * @param id
+	 * @param page
+	 * @param size
+	 * @param response
 	 * @return
 	 */
-	public String add(Model model);
+	@RequestMapping(value="/forModify/{id}/{page}/{size}", method = RequestMethod.GET)
+	public String forModify(Model model,@PathVariable String id,@PathVariable int page,@PathVariable int size,ServletResponse response);
+	
 	
 	/**
-	 * 保存信息
+	 * 删除
+	 * @param model
+	 * @param id
+	 * @param page
+	 * @param size
+	 * @param redirectAttributesModelMap
+	 * @param request
 	 * @return
 	 */
-	public String save(Model model);
+	@RequestMapping(value="/delete/{id}/{page}/{size}", method = {RequestMethod.POST,RequestMethod.GET})
+	public String delete(Model model,@PathVariable String id,@PathVariable int page,@PathVariable int size,RedirectAttributesModelMap redirectAttributesModelMap,ServletRequest request);
 	
-	/**
-	 * 修改信息
-	 * @return
-	 */
-	public String modify(Model model);
-	
-	/**
-	 * 删除信息
-	 * @return
-	 */
-	public String delete(Model model);
-
 }
 
 

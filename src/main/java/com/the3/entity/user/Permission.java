@@ -60,9 +60,6 @@ public class Permission extends BaseEntity {
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
-	
-	
-
 }
 
 
