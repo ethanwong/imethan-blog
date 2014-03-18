@@ -70,10 +70,10 @@ public class ResourceController extends SuperController implements BaseControlle
 	}
 
 
-	@Override
+	@RequestMapping(value="/input", method = RequestMethod.GET)
 	public String input(Model model) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "console/user/resource-input";
 	}
 
 

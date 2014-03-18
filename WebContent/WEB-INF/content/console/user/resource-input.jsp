@@ -8,23 +8,18 @@
 </head>
 <body>
 	<h1>Add a channel</h1>
-	
-	<mvcform:form id="inputForm" action="${root}/console/cms/channel/save" commandName="channel" method="post">
-<%-- 	<form id="inputForm" role="form" action="${root}/console/cms/channel/save" method="post"  > --%>
+	<form id="inputForm" role="form" action="${root}/console/cms/channel/save" method="post">
 		<div class="form-group">
 			<label for="exampleInputTitle">Title</label>
-<!-- 			required -->
-				<input type="text" class="form-control " id="title" placeholder="Enter title" name="title" >
-				<mvcform:errors path="title"></mvcform:errors>
+				<input type="text" class="form-control required" id="title" placeholder="Enter title" name="title" >
 		</div>
 		<div class="form-group">
 			<label for="exampleInputDescribe">Describe</label>
-			<textarea class="form-control" rows="3" placeholder="Enter describe" name="describe" id="describe"></textarea>
-			<mvcform:errors path='describe' />
+			<textarea class="form-control required" rows="3" placeholder="Enter describe" name="describe" id="describe"></textarea>
 		</div>
+		<!-- 	  <a type="submit" class="btn btn-default" onclick="submitForm(this)">Submit</a> -->
 		<button type="submit" class="btn btn-default">Submit</button>
-<!-- 	</form> -->
-	</mvcform:form>
+	</form>
 
 	<c:if test="${isSuccess eq true}">
 		<div class="alert alert-success">

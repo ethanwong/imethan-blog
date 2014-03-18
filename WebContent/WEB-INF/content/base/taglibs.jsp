@@ -4,3 +4,4 @@
 <%-- <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %> --%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>  
+<%@ taglib prefix="mvcform" uri="http://www.springframework.org/tags/form" %> 

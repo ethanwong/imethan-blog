@@ -28,6 +28,9 @@ dependencies {
     compile 'org.springframework.data:spring-data-mongodb-cross-store:1.4.0.RELEASE'
 	//Spring end
 	
+	//hibernate begin
+	compile "org.hibernate:hibernate-validator:5.1.0.Final"
+	
 	//Shiro begin
 	compile 'org.apache.shiro:shiro-core:1.2.3'
 	compile 'org.apache.shiro:shiro-web:1.2.3'
