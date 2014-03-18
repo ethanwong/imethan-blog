@@ -21,12 +21,13 @@ public class Resource extends BaseEntity {
 	private String module;//模块名称
 	private String url;//URL
 	private String describe;//描述
+	private boolean isRoot;//是否是根节点
 	@DBRef
 	private List<Permission> permissions;//授权
 	@DBRef
 	private Resource parent;//父级
 	@DBRef
-	private List<Resource> childs;//子级
+	private List<Resource> childrens;//子级
 	
 	public String getName() {
 		return name;
@@ -64,13 +65,18 @@ public class Resource extends BaseEntity {
 	public void setParent(Resource parent) {
 		this.parent = parent;
 	}
-	public List<Resource> getChilds() {
-		return childs;
+	public List<Resource> getChildrens() {
+		return childrens;
 	}
-	public void setChilds(List<Resource> childs) {
-		this.childs = childs;
+	public void setChildrens(List<Resource> childrens) {
+		this.childrens = childrens;
 	}
-	
+	public boolean isRoot() {
+		return isRoot;
+	}
+	public void setRoot(boolean isRoot) {
+		this.isRoot = isRoot;
+	}
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);

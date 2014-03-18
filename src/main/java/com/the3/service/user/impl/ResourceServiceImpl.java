@@ -1,5 +1,6 @@
 package com.the3.service.user.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -10,10 +11,8 @@ import org.springframework.stereotype.Service;
 
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
-import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.user.Resource;
 import com.the3.repository.user.ResourceRepository;
-import com.the3.repository.user.UserRepository;
 import com.the3.service.user.ResourceService;
 
 
@@ -34,33 +33,67 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements Re
 
 	@Override
 	public ServiceReturnDto<Resource> save(Resource entity) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean isSuccess = true;
+		try {
+			resourceRepository.save(entity);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+			logger.error(e.getMessage());
+		}
+		return new ServiceReturnDto<Resource>(isSuccess, entity);
 	}
 
 	@Override
 	public Page<Resource> getPage(Map<String, Object> parameters,
 			PageRequest pageable) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return super.getPage(parameters, pageable, Resource.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
 	public Resource getById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return resourceRepository.findOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
 	public boolean deleteById(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isSuccess = true;
+		try {
+			resourceRepository.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+			logger.error(e.getMessage());
+		}
+		return isSuccess;
 	}
 
 	@Override
-	public WebReturnDto modify(Resource entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public ServiceReturnDto<Resource> modify(Resource entity) {
+		boolean isSuccess = true;
+		try {
+			//设置更新字段内容
+			Map<String,Object> entityMap = new HashMap<String,Object>();
+			
+			super.modify(entityMap, Resource.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			isSuccess = false;
+		}
+		return new ServiceReturnDto<Resource>(isSuccess,entity);
 	}
 
 }

@@ -4,9 +4,7 @@ import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-
 import com.the3.dto.service.ServiceReturnDto;
-import com.the3.dto.web.WebReturnDto;
 
 /**
  * BaseService.java
@@ -50,7 +48,7 @@ public interface BaseService<T> {
 	 * @param channel
 	 * @return
 	 */
-	public WebReturnDto modify(T entity); 
+	public ServiceReturnDto<T> modify(T entity); 
 	
 	
 

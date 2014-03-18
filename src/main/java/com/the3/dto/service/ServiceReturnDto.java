@@ -12,6 +12,9 @@ public class ServiceReturnDto<T> {
 	private boolean isSuccess = true;
 	private T entity;
 	
+	public ServiceReturnDto() {
+		
+	}
 	public ServiceReturnDto(boolean isSuccess, T entity) {
 		super();
 		this.isSuccess = isSuccess;

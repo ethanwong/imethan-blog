@@ -1,5 +1,6 @@
 package com.the3.service.user.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
-import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.user.User;
 import com.the3.repository.user.UserRepository;
 import com.the3.service.user.UserService;
@@ -32,33 +32,67 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
 	@Override
 	public ServiceReturnDto<User> save(User entity) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean isSuccess = true;
+		try {
+			userRepository.save(entity);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+			logger.error(e.getMessage());
+		}
+		return new ServiceReturnDto<User>(isSuccess, entity);
 	}
 
 	@Override
 	public Page<User> getPage(Map<String, Object> parameters,
 			PageRequest pageable) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return super.getPage(parameters, pageable, User.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
 	public User getById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return userRepository.findOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
 	public boolean deleteById(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isSuccess = true;
+		try {
+			userRepository.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+			logger.error(e.getMessage());
+		}
+		return isSuccess;
 	}
 
 	@Override
-	public WebReturnDto modify(User entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public ServiceReturnDto<User> modify(User entity) {
+		boolean isSuccess = true;
+		try {
+			//设置更新字段内容
+			Map<String,Object> entityMap = new HashMap<String,Object>();
+			
+			super.modify(entityMap, User.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			isSuccess = false;
+		}
+		return new ServiceReturnDto<User>(isSuccess,entity);
 	}
 
 	@Override

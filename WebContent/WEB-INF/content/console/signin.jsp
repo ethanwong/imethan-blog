@@ -13,7 +13,14 @@
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" class="form-control" name="username" placeholder="Enter username" required autofocus>
         <input type="password" class="form-control" name="password" placeholder="Enter password" required>
-       <input type="text" class="form-control" name="validateCode" placeholder="Enter validateCode" required>&nbsp;&nbsp;<img id="validateCodeImg" src="${root}/console/validateCode" />&nbsp;&nbsp;<a href="#" onclick="javascript:reloadValidateCode();">看不清？</a>
+        <div class="row">
+		  <div class="col-lg-6" >
+        	<input type="text" class="form-control" style="width: 120px;"  name="validateCode" placeholder="Enter validateCode" required>
+		  </div>
+		   <div class="col-lg-6" >
+        	<img id="validateCodeImg" src="${root}/console/validateCode" onclick="javascript:reloadValidateCode();" />
+		  </div>
+		 </div>
         <label class="checkbox">
           <input type="checkbox" value="1" name="remember"> Remember me
         </label>

@@ -7,11 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Add a channel</h1>
-	<form id="inputForm" role="form" action="${root}/console/cms/channel/save" method="post">
+	<h1>Add a <c:if test="${isRoot == '1' }">root</c:if> resource</h1>
+	
+	<form id="inputForm" role="form" action="${root}/console/user/resource/save" method="post">
+		<input type="hidden" name="isRoot" value="${isRoot}">
 		<div class="form-group">
-			<label for="exampleInputTitle">Title</label>
-				<input type="text" class="form-control required" id="title" placeholder="Enter title" name="title" >
+			<label for="exampleInputTitle">Name</label>
+			<input type="text" class="form-control required" id="name" placeholder="Enter name" name="name" >
+		</div>
+		<div class="form-group">
+			<label for="exampleInputTitle">Module</label>
+			<input type="text" class="form-control required" id="module" placeholder="Enter module" name="module" >
+		</div>
+		<div class="form-group">
+			<label for="exampleInputTitle">Url</label>
+			<input type="text" class="form-control required" id="module" placeholder="Enter url" name="url" >
 		</div>
 		<div class="form-group">
 			<label for="exampleInputDescribe">Describe</label>

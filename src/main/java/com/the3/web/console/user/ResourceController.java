@@ -70,12 +70,26 @@ public class ResourceController extends SuperController implements BaseControlle
 	}
 
 
-	@RequestMapping(value="/input", method = RequestMethod.GET)
-	public String input(Model model) {
-		
+	@RequestMapping(value="/input/{isRoot}", method = RequestMethod.GET)
+	public String input(Model model,@PathVariable String isRoot) {
+		System.out.println("------------isRoot:"+isRoot);
+		model.addAttribute("isRoot", isRoot);
 		return "console/user/resource-input";
 	}
-
+	
+	@RequestMapping(value="/save",method = RequestMethod.POST)
+	public String save(@ModelAttribute("resource") Resource resource, BindingResult result, RedirectAttributesModelMap redirectAttributesModelMap) {
+		boolean isSuccess = true;
+		String message = "添加成功。";
+		if(result.hasErrors()){
+			isSuccess = false;
+			message = "添加失败";
+		}else{
+			isSuccess = resourceService.save(resource).isSuccess();
+		}
+		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
+		return "redirect:/console/user/resource/"+defaultPage+"/"+defaultSize;
+	}
 
 	@Override
 	public String detail(Model model, String id, ServletResponse response) {
@@ -96,6 +110,13 @@ public class ResourceController extends SuperController implements BaseControlle
 	public String delete(Model model, String id, int page, int size,
 			RedirectAttributesModelMap redirectAttributesModelMap,
 			ServletRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String input(Model model) {
 		// TODO Auto-generated method stub
 		return null;
 	}

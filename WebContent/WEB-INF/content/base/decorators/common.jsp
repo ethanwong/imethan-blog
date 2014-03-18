@@ -62,6 +62,7 @@
 							<li><a href="${root}/console/user/user">User</a></li>
 							<li><a href="${root}/console/user/role">Role</a></li>
 							<li><a href="${root}/console/user/permission">Permission</a></li>
+							<li><a href="${root}/console/user/resource">Resource</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -76,7 +77,7 @@
 						<a type="submit" class="btn btn-default" href="${root}/console/toSignin">Sign in</a>
 					</shiro:guest>
 					<shiro:user>  
-						Hello, <shiro:principal/>, how are you today?  
+						Hello, <shiro:principal/>!  
 						<a type="submit" class="btn btn-default" href="${root}/console/signout">Sign out</a>
 					</shiro:user>
 				</div>

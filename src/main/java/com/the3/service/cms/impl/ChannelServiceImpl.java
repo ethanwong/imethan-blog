@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
-import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Channel;
 import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.cms.ChannelService;
@@ -89,7 +88,7 @@ public class ChannelServiceImpl extends BaseServiceImpl<Channel> implements Chan
 	}
 
 	@Override
-	public WebReturnDto modify(Channel entity) {
+	public ServiceReturnDto<Channel> modify(Channel entity) {
 		boolean isSuccess = true;
 		try {
 			Update update = new Update().set("title", entity.getTitle()).set("describe", entity.getDescribe()).set("modifyTime", new Date());
@@ -99,7 +98,7 @@ public class ChannelServiceImpl extends BaseServiceImpl<Channel> implements Chan
 			logger.error(e.getMessage());
 			isSuccess = false;
 		}
-		return new WebReturnDto(isSuccess,"");
+		return new ServiceReturnDto<Channel>(isSuccess,entity);
 	}
 
 	@Override

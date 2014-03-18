@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
-import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Article;
 import com.the3.repository.cms.ArticleRepository;
 import com.the3.service.cms.ArticleService;
@@ -87,7 +86,7 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 
 
 	@Override
-	public WebReturnDto modify(Article entity) {
+	public ServiceReturnDto<Article> modify(Article entity) {
 		
 		boolean isSuccess = true;
 		try {
@@ -101,7 +100,7 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 			logger.error(e.getMessage());
 			isSuccess = false;
 		}
-		return new WebReturnDto(isSuccess,"");
+		return new ServiceReturnDto<Article>(isSuccess,entity);
 	}
 
 }

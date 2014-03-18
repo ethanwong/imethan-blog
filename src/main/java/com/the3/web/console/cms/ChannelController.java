@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.validation.Valid;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,7 +93,7 @@ public class ChannelController extends SuperController{
 	 * @return
 	 */
 	@RequestMapping(value="/save",method = RequestMethod.POST)
-	public String save(@Valid @ModelAttribute("channel") Channel channel, BindingResult result, RedirectAttributesModelMap redirectAttributesModelMap) {
+	public String save(@ModelAttribute("channel") Channel channel, BindingResult result, RedirectAttributesModelMap redirectAttributesModelMap) {
 		boolean isSuccess = true;
 		String message = "添加成功。";
 		if(result.hasErrors()){
