@@ -7,6 +7,25 @@
 <title>::ImEthan:Example::</title>
 </head>
 <body>
-	<h1>index</h1>
+	<div class="row">
+		<div class="col-md-9">
+			<h4>这是标题的文字大小 <small>2014-3-31 11:11:12</small></h4>
+			<p>这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容这个是内容</p>
+		</div>
+		<div class="col-md-3">
+			<div class="list-group">
+				<a href="#" class="list-group-item active">Link</a> 
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a> 
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a> 
+				<a href="#" class="list-group-item">Link</a> 
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -4,13 +4,17 @@
 
 	<!-- 排除装饰页面 -->
 	<excludes>
-		<pattern>/index.jsp</pattern>
 		<pattern>/console/cms/*/noDecorate/*</pattern>
 	</excludes>
 
 	<!-- 后台菜单装饰页 -->
 	<decorator name="common" page="common.jsp">
 		<pattern>/console/*</pattern>
+	</decorator>
+	
+	<!-- 前台菜单装饰页 -->
+	<decorator name="front" page="front/menu.jsp">
+		<pattern>/index</pattern>
 	</decorator>
 
 	<!-- 只装饰一个页面也可用这种方式定义 <decorator name="panel" page="panel.jsp"/> -->
