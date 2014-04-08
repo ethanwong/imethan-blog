@@ -22,32 +22,22 @@
 </head>
 <body style="margin: 0px;padding: 0px;background-color: #F03D29;">	
 	<img alt="" src="${root}/theme/images/birthday.jpg" width="100%" height="100%" style="margin: 0px;padding: 0px;">
-	
-<!-- 	<button type="button" class="btn btn-success">Success</button> -->
-	<div class="container">
-<!-- 	<div class="alert alert-info"> -->
-<!-- 	<div class="alert alert-danger"> -->
-<!-- 		<a href="#" class="alert-link">...</a> -->
-<!-- 	</div> -->
-	
-	<div class="panel alert-danger">
-	  <div class="panel-heading">简单页面，简单祝福
-  	</div>
-	  <div class="panel-body">
-	  	怀着对老佛爷无比崇敬和惶恐的心情，特敬上“简单页面，简单祝福”，恭祝老佛爷万寿无疆~
-	  </div>
-	  <div class="panel-footer">
-	 	 2014年4月8日 By EthanWong
-	  </div>
-	</div>
-	
-<!-- 	<div class="panel panel-warning">...</div> -->
-	</div>
-	
-		<div class="footer">
-		<div class="container">
-			<p class="text-muted">Copyright © 2014,A birthday page by ethan.</p>
+	<div class="container" style="padding-bottom: 10px;margin-bottom: 10px;">
+		<div class="panel alert-danger">
+		  <div class="panel-heading"><span class="label label-warning">生日之福</span> 简约页面，简单祝福</div>
+		  	<div class="panel-body">
+		  		寡人近日巡游天下，幸得一<span class="label label-warning">美人</span>归，甚是欢喜，惊爱之心常于心中，今恰缝美人<span class="label label-warning">生日</span>，寡人怀诚惶诚恐之心，特谨慎敬上生日之福，愿美人<span class="label label-warning">常欢颜</span>~
+		  	</div>
+		 	 <div class="panel-footer">
+		 		 Copyright © 2014.4.8,A birthday page by EthanWong.
+		  	</div>
 		</div>
 	</div>
+	
+<!-- 		<div class="footer" > -->
+<!-- 			<div class="container"> -->
+				
+<!-- 			</div> -->
+<!-- 		</div> -->
 </body>
 </html>
