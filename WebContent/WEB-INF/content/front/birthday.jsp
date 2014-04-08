@@ -26,9 +26,22 @@
 <!-- 	<button type="button" class="btn btn-success">Success</button> -->
 	<div class="container">
 <!-- 	<div class="alert alert-info"> -->
-	<div class="alert alert-danger">
-		<a href="#" class="alert-link">...</a>
+<!-- 	<div class="alert alert-danger"> -->
+<!-- 		<a href="#" class="alert-link">...</a> -->
+<!-- 	</div> -->
+	
+	<div class="panel alert-danger">
+	  <div class="panel-heading">简单页面，简单祝福
+  	</div>
+	  <div class="panel-body">
+	  	怀着对老佛爷无比崇敬和惶恐的心情，特敬上“简单页面，简单祝福”，恭祝老佛爷万寿无疆~
+	  </div>
+	  <div class="panel-footer">
+	 	 2014年4月8日 By EthanWong
+	  </div>
 	</div>
+	
+<!-- 	<div class="panel panel-warning">...</div> -->
 	</div>
 	
 		<div class="footer">
