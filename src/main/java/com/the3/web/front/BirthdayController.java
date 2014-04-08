@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @time 2014年3月16日上午12:16:49
  */
 @Controller
-@RequestMapping("/birthday")
-public class IndexController {
+@RequestMapping("/index")
+public class BirthdayController {
 	
     
     @RequestMapping("")
-    public String birthday(Model model) {
+    public String index(Model model) {
         
-        return "front/birthday";
+        return "front/index";
     }
 }
 
