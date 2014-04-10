@@ -10,6 +10,7 @@ body {
 
 body>.container {
 	padding: 2px 15px 0;
+/* 	width: 1000px; */
 }
 
 .container .text-muted {
