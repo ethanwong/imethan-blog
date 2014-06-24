@@ -59,7 +59,7 @@ public class SigninController {
         try {
             user.login(token);
             return "redirect:home";
-        }catch (AuthenticationException e) {
+        }catch (Exception e) {
         	e.printStackTrace();
             token.clear();
             return "redirect:signin";

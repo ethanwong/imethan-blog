@@ -6,20 +6,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 /**
- * IndexController.java
+ * BirthdayController.java
  *
  * @author Ethan Wong
  * @time 2014年3月16日上午12:16:49
  */
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/birthday")
 public class BirthdayController {
 	
-    
     @RequestMapping("")
-    public String index(Model model) {
+    public String birthday(Model model) {
         
-        return "front/index";
+        return "front/birthday";
     }
 }
 

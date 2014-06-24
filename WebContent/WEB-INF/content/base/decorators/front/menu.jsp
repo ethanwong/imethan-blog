@@ -30,7 +30,7 @@
 <body>
 	<!-- Static navbar -->
 	<div class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="container">
+		<div class="container" style="width: 970px;">
 			<div class="navbar-header">
 				<!--           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> -->
 				<!--             <span class="sr-only">Toggle navigation</span> -->
@@ -38,7 +38,7 @@
 				<!--             <span class="icon-bar"></span> -->
 				<!--             <span class="icon-bar"></span> -->
 				<!--           </button> -->
-				<a class="navbar-brand" href="${root}/index">ImEthan</a>
+				<a class="navbar-brand" href="${root}/index"><font  style="font-weight: bold;">ImEthan</font></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -113,9 +113,9 @@
 		<decorator:body></decorator:body>
 	</div>
 	<!-- /container -->
-
+	<div style="margin-top: 20px;"></div>
 	<div class="footer">
-		<div class="container">
+		<div class="container" style="width: 970px;">
 			<p class="text-muted">A simple website by ethan.</p>
 		</div>
 	</div>

@@ -13,7 +13,7 @@
 <!-- </html> -->
 <script type="text/javascript">
 <!--
-location.href = 'console/home'
+location.href = 'index'
 //-->
 </script>
 

@@ -9,8 +9,8 @@ body {
 }
 
 body>.container {
-	padding: 2px 15px 0;
-/* 	width: 1000px; */
+  max-width: none !important;
+  width: 970px;
 }
 
 .container .text-muted {
