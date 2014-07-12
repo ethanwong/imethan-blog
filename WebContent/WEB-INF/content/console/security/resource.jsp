@@ -14,10 +14,13 @@
 		</div>
 		<div class="col-md-9">
 			<label class="col-sm-2 control-label" style="padding: 0px;" >
-				<a  href="${root}/console/user/resource/input/1" ><button type="button" class="btn btn-primary">Add Root</button></a>
+				<a  href="${root}/console/security/resource/input/1" ><button type="button" class="btn btn-primary">Add Root</button></a>
 			</label>
-			<div class="col-sm-10">
-				<form class="form-inline" role="form" action="${root}/console/user/permission/0/10" method="post">
+			<label class="col-sm-2 control-label" style="padding: 0px;" >
+				<a  href="${root}/console/security/resource/input/0" ><button type="button" class="btn btn-primary">Add Sub</button></a>
+			</label>
+			<div class="col-sm-8">
+				<form class="form-inline" role="form" action="${root}/console/security/permission/0/10" method="post">
 					<input type="text" class="form-control" name="search_LIKE_title" placeholder="Enter title" value="${search_LIKE_title}">
 					<button type="submit" class="btn btn-default">Search</button>
 				</form>
@@ -36,10 +39,10 @@
 							<td><c:out value="${item.name}" /></td>
 							<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 							<td>	
-								<a href="${root}/console/user/resource/input/0" ><button type="button" class="btn btn-default btn-xs">Add child</button></a>
-								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-keyboard="true" data-target="#channel-modify" href="${root}/console/user/permission/noDecorate/forModify/${item.id}/${result.number}/${result.size}">Modify</a>
-								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-target="#channel-view" href="${root}/console/user/permission/noDecorate/view/${item.id}">View</a>
-								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('${root}/console/user/permission/delete/${item.id}/${result.number}/${result.size}')">Delete</button>
+								<a href="${root}/console/security/resource/input/0" ><button type="button" class="btn btn-default btn-xs">Add child</button></a>
+								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-keyboard="true" data-target="#channel-modify" href="${root}/console/security/permission/noDecorate/forModify/${item.id}/${result.number}/${result.size}">Modify</a>
+								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-target="#channel-view" href="${root}/console/security/permission/noDecorate/view/${item.id}">View</a>
+								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('${root}/console/security/resource/delete/${item.id}/${result.number}/${result.size}')">Delete</button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -48,7 +51,7 @@
 			<ul class="pagination" style="margin: 10px;">
 				<li>
 					<c:if test="${result.number > 0}">
-						<a href="${root}/console/user/permission/${result.number-1}/${result.size}">&laquo;</a>
+						<a href="${root}/console/security/permission/${result.number-1}/${result.size}">&laquo;</a>
 					</c:if>
 					<c:if test="${result.number <= 0}">
 						<a href="#">&laquo;</a>
@@ -57,13 +60,13 @@
 				<c:if test="${result.totalPages>=1}">
 					<c:forEach var="item" begin="0" end="${result.totalPages-1}">
 						<li <c:if test="${item eq result.number}">class="active"</c:if>>
-							<a href="${root}/console/user/permission/${item}/${result.size}">${item+1}</a>
+							<a href="${root}/console/security/permission/${item}/${result.size}">${item+1}</a>
 						</li>
 					</c:forEach>
 				</c:if>
 				<li>
 					<c:if test="${result.number < result.totalPages-1}">
-						<a href="${root}/console/user/permission/${result.number+1}/${result.size}">&raquo;</a>
+						<a href="${root}/console/security/permission/${result.number+1}/${result.size}">&raquo;</a>
 					</c:if>
 					<c:if test="${result.number >= result.totalPages-1}">
 						<a href="#">&raquo;</a>
@@ -95,7 +98,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">Modify</h4>
 				</div>
-				<form role="form" method="post" action="${root}/console/user/permission/modify" id="inputForm">
+				<form role="form" method="post" action="${root}/console/security/permission/modify" id="inputForm">
 					<input type="hidden" value="" name="id" id="id">
 					<div class="modal-body">
 						  <div class="form-group">

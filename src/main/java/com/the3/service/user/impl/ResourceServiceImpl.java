@@ -1,6 +1,8 @@
 package com.the3.service.user.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -33,9 +35,25 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements Re
 
 	@Override
 	public ServiceReturnDto<Resource> save(Resource entity) {
+		
+		System.out.println("---------------isRoot:"+entity.isRoot());
+		
 		boolean isSuccess = true;
 		try {
+			Resource parent = null;
+			if(!entity.isRoot()){
+				parent = resourceRepository.findOne("53c0f7d1d14d355998867050");
+				entity.setParent(parent);
+			}
 			resourceRepository.save(entity);
+			
+			if(!entity.isRoot()){
+				List<Resource> childrens = new ArrayList<Resource>();
+				childrens.add(entity);
+				parent.setChildrens(childrens);
+				resourceRepository.save(parent);
+			}			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			isSuccess = false;

@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Add a <c:if test="${isRoot == '1' }">root</c:if> resource</h1>
+	<h1>Add a <c:if test="${isRoot == '1' }">root</c:if> resource</h1><c:if test="${isRoot == '0' }">sub</c:if> resource</h1>
 	
-	<form id="inputForm" role="form" action="${root}/console/user/resource/save" method="post">
+	<form id="inputForm" role="form" action="${root}/console/security/resource/save" method="post">
 		<input type="hidden" name="isRoot" value="${isRoot}">
 		<div class="form-group">
 			<label for="exampleInputTitle">Name</label>

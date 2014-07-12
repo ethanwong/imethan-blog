@@ -1,4 +1,4 @@
-package com.the3.web.console.user;
+package com.the3.web.console.security;
 
 import java.util.Map;
 

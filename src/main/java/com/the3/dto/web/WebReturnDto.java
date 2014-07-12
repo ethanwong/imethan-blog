@@ -1,13 +1,17 @@
 package com.the3.dto.web;
 
+import java.io.Serializable;
+
 /**
  * WebReturnDto.java
  *
  * @author Ethan Wong
  * @time 2014年3月10日下午10:25:57
  */
-public class WebReturnDto {
+public class WebReturnDto implements Serializable {
 
+	private static final long serialVersionUID = 7914053967907070806L;
+	
 	private boolean isSuccess = true;
 	private String message = "Successfully!";
 	

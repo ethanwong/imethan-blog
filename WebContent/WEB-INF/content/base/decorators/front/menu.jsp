@@ -38,7 +38,7 @@
 				<!--             <span class="icon-bar"></span> -->
 				<!--             <span class="icon-bar"></span> -->
 				<!--           </button> -->
-				<a class="navbar-brand" href="${root}/index"><font  style="font-weight: bold;">ImEthan</font></a>
+				<a class="navbar-brand" href="${root}/index">ImEthan</a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">

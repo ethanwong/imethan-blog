@@ -11,8 +11,8 @@
 	<div class="container" style="width: 300px;">
       <form class="form-signin" role="form" action="${root}/console/signin" id="inputForm" method="post"  >
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="form-control" name="username" placeholder="Enter username" required autofocus>
-        <input type="password" class="form-control" name="password" placeholder="Enter password" required>
+        <input type="text" class="form-control" name="username" value="admin" placeholder="Enter username" required autofocus>
+        <input type="password" class="form-control" name="password" value="123456" placeholder="Enter password" required>
         <div class="row">
 		  <div class="col-lg-6" >
         	<input type="text" class="form-control" style="width: 120px;"  name="validateCode" placeholder="Enter validateCode" required>

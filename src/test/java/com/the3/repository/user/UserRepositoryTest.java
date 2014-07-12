@@ -24,11 +24,20 @@ public class UserRepositoryTest {
 	private RoleRepository roleRepository;
 	
 	@Test
+	public void testSaveUser(){
+		User user = new User();
+		user.setUsername("ethan");
+		user.setPassword("123456");
+		user.setNickname("hello ethan");
+		userRepository.save(user);
+	}
+	
+	@Test
 	public void testSave(){
 		User user = new User();
-		user.setUsername("channelAdmin");
+		user.setUsername("admin");
 		user.setPassword("123456");
-		user.setNickname("Channel Admin");
+		user.setNickname("system administrator ");
 		
 		
 		user.setRoles(roleRepository.findAll());

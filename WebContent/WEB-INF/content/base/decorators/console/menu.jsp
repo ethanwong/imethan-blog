@@ -30,7 +30,7 @@
 <body>
 	<!-- Static navbar -->
 	<div class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="container">
+		<div class="container" style="width: 970px;">
 			<div class="navbar-header">
 				<!--           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> -->
 				<!--             <span class="sr-only">Toggle navigation</span> -->
@@ -59,10 +59,10 @@
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">USER<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="${root}/console/user/user">User</a></li>
-							<li><a href="${root}/console/user/role">Role</a></li>
-							<li><a href="${root}/console/user/permission">Permission</a></li>
-							<li><a href="${root}/console/user/resource">Resource</a></li>
+							<li><a href="${root}/console/security/user">User</a></li>
+							<li><a href="${root}/console/security/role">Role</a></li>
+							<li><a href="${root}/console/security/permission">Permission</a></li>
+							<li><a href="${root}/console/security/resource">Resource</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -103,18 +103,18 @@
 			</div>
 		</c:if>
 
-		<!-- 面包屑导航 -->
-		<!-- 		<ol class="breadcrumb"> -->
-		<!-- 			<li><a href="#">Home</a></li> -->
-		<!-- 			<li><a href="#">Library</a></li> -->
-		<!-- 			<li class="active">Data</li> -->
-		<!-- 		</ol> -->
+<!-- 		面包屑导航 -->
+<!-- 				<ol class="breadcrumb"> -->
+<!-- 					<li><a href="#">Home</a></li> -->
+<!-- 					<li><a href="#">Library</a></li> -->
+<!-- 					<li class="active">Data</li> -->
+<!-- 				</ol> -->
 		<decorator:body></decorator:body>
 	</div>
 	<!-- /container -->
 
 	<div class="footer">
-		<div class="container">
+		<div class="container" style="width: 970px;">
 			<p class="text-muted">A simple website by ethan.</p>
 		</div>
 	</div>

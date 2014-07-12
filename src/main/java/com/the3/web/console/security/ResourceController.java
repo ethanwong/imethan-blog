@@ -1,4 +1,4 @@
-package com.the3.web.console.user;
+package com.the3.web.console.security;
 
 import java.util.Map;
 
@@ -41,7 +41,7 @@ import com.the3.utils.Debug;
  * @time 2014年3月17日下午10:12:07
  */
 @Controller
-@RequestMapping("/console/user/resource")
+@RequestMapping("/console/security/resource")
 public class ResourceController extends SuperController implements BaseController{
 	
 	@Autowired
@@ -51,7 +51,7 @@ public class ResourceController extends SuperController implements BaseControlle
 	@Override
 	@RequestMapping(value="", method = {RequestMethod.GET,RequestMethod.POST})
 	public String index(RedirectAttributesModelMap redirectAttributesModelMap) {
-		return "redirect:/console/user/resource/"+defaultPage+"/"+defaultSize;
+		return "redirect:/console/security/resource/"+defaultPage+"/"+defaultSize;
 	}
 
 
@@ -66,7 +66,7 @@ public class ResourceController extends SuperController implements BaseControlle
 		Page<Resource> result = resourceService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
 		model.addAttribute("result", result);
 		
-		return "console/user/resource";
+		return "console/security/resource";
 	}
 
 
@@ -74,7 +74,7 @@ public class ResourceController extends SuperController implements BaseControlle
 	public String input(Model model,@PathVariable String isRoot) {
 		System.out.println("------------isRoot:"+isRoot);
 		model.addAttribute("isRoot", isRoot);
-		return "console/user/resource-input";
+		return "console/security/resource-input";
 	}
 	
 	@RequestMapping(value="/save",method = RequestMethod.POST)
@@ -88,7 +88,7 @@ public class ResourceController extends SuperController implements BaseControlle
 			isSuccess = resourceService.save(resource).isSuccess();
 		}
 		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
-		return "redirect:/console/user/resource/"+defaultPage+"/"+defaultSize;
+		return "redirect:/console/security/resource/"+defaultPage+"/"+defaultSize;
 	}
 
 	@Override
@@ -107,11 +107,20 @@ public class ResourceController extends SuperController implements BaseControlle
 
 
 	@Override
-	public String delete(Model model, String id, int page, int size,
+	@RequestMapping(value="/delete/{id}/{page}/{size}", method = {RequestMethod.POST,RequestMethod.GET})
+	public String delete(Model model,@PathVariable String id,@PathVariable int page,@PathVariable int size,
 			RedirectAttributesModelMap redirectAttributesModelMap,
 			ServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		boolean isSuccess = resourceService.deleteById(id);
+		String message = "";
+		if(isSuccess){
+			message = "删除成功。";
+		}else{
+			message = "删除失败。";
+		}
+		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
+		return "redirect:/console/security/resource/"+page+"/"+size;
 	}
 
 

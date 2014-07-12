@@ -8,7 +8,7 @@
 	</excludes>
 
 	<!-- 后台菜单装饰页 -->
-	<decorator name="common" page="common.jsp">
+	<decorator name="console" page="console/menu.jsp">
 		<pattern>/console/*</pattern>
 	</decorator>
 	
