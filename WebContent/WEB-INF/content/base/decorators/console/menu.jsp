@@ -45,6 +45,7 @@
 					<li><a href="${root}/console/home">Home</a></li>
 					<li><a href="#about">About</a></li>
 					<li><a href="#contact">Contact</a></li>
+					
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">CMS <b class="caret"></b></a>
 						<ul class="dropdown-menu">

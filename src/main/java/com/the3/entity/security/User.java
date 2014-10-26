@@ -1,8 +1,14 @@
 package com.the3.entity.security;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -23,7 +29,10 @@ public class User extends BaseEntity {
 	private String password;//密码
 	private String nickname;//昵称
 	
-//	private List<Role> roles;//角色
+	@ManyToMany
+    @JoinTable(name="imethan_security_user_role",joinColumns = { @JoinColumn(name ="user_id" )} ,inverseJoinColumns = { @JoinColumn(name = "role_id")})
+	@OrderBy("id")
+	private Set<Role> roles = new HashSet<Role>();//角色
 
 	public String getUsername() {
 		return username;
@@ -49,13 +58,13 @@ public class User extends BaseEntity {
 		this.nickname = nickname;
 	}
 
-//	public List<Role> getRoles() {
-//		return roles;
-//	}
-//
-//	public void setRoles(List<Role> roles) {
-//		this.roles = roles;
-//	}
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 
 	@Override
 	public String toString() {

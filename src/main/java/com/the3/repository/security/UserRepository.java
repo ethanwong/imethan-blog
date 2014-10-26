@@ -1,6 +1,7 @@
 package com.the3.repository.security;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.the3.entity.security.User;
@@ -12,7 +13,7 @@ import com.the3.entity.security.User;
  * @time 2014年3月16日下午4:58:05
  */
 @Repository
-public interface UserRepository  extends JpaRepository<User, String> {
+public interface UserRepository  extends JpaRepository<User, Long>,CrudRepository<User, Long> {
 
 	User findByUsername(String username);
 

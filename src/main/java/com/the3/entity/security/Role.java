@@ -1,7 +1,13 @@
 package com.the3.entity.security;
 
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -20,6 +26,17 @@ public class Role extends BaseEntity {
 	
 	private String rolename;//角色名称
 	private String intro;//描述
+	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "roles", fetch = FetchType.LAZY)
+	private Set<User> user = new LinkedHashSet<User>();        //用户集合
+
+	public Set<User> getUser() {
+        return user;
+    }
+    public void setUser(Set<User> user) {
+        this.user = user;
+    }
+    
 //	private List<User> users;//用户
 //	private List<Permission> permissions;//权限
 //	private List<Resource> resources;//资源

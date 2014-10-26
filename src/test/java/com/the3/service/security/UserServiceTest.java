@@ -36,7 +36,7 @@ public class UserServiceTest {
 	
 	@Test
 	public void testFindByUsername(){
-		String username = "ethan";
+		String username = "imethan";
 		
 		User user = userService.getByUsername(username);
 		System.out.println("user:"+user);

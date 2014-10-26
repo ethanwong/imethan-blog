@@ -39,9 +39,10 @@ public class ShiroDbRealm extends AuthorizingRealm{
         List<String> permissions = new ArrayList<String>();
         User user = userService.getByUsername(username);
         if(user != null){
-//            if (user.getRoles() != null && user.getRoles().size() > 0) {
-//                for (Role role : user.getRoles()) {
-//                    roles.add(role.getRolename());
+            if (user.getRoles() != null && user.getRoles().size() > 0) {
+                for (Role role : user.getRoles()) {
+                    roles.add(role.getRolename());
+                    
 //                    if (role.getPermissions() != null && role.getPermissions().size() > 0) {
 //                        for (Permission permission : role.getPermissions()) {
 //                            if(!StringUtils.isEmpty(permission.getPermission())){
@@ -49,8 +50,8 @@ public class ShiroDbRealm extends AuthorizingRealm{
 //                            }
 //                        }
 //                    }
-//                }
-//            }
+                }
+            }
         }else{
             throw new AuthorizationException();
         }
