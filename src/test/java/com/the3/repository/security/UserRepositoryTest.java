@@ -1,4 +1,4 @@
-package com.the3.repository.user;
+package com.the3.repository.security;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.the3.entity.user.User;
+import com.the3.entity.security.User;
+import com.the3.repository.security.RoleRepository;
+import com.the3.repository.security.UserRepository;
 
 /**
  * UserRepositoryTest.java
@@ -40,7 +42,7 @@ public class UserRepositoryTest {
 		user.setNickname("system administrator ");
 		
 		
-		user.setRoles(roleRepository.findAll());
+//		user.setRoles(roleRepository.findAll());
 		userRepository.save(user);
 		
 	}

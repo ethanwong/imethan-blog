@@ -26,12 +26,12 @@ import com.the3.base.web.SuperController;
 import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Article;
 import com.the3.entity.cms.Channel;
-import com.the3.entity.user.Permission;
-import com.the3.entity.user.Resource;
+import com.the3.entity.security.Permission;
+import com.the3.entity.security.Resource;
 import com.the3.service.cms.ArticleService;
 import com.the3.service.cms.ChannelService;
-import com.the3.service.user.PermissionService;
-import com.the3.service.user.ResourceService;
+import com.the3.service.security.PermissionService;
+import com.the3.service.security.ResourceService;
 import com.the3.utils.Debug;
 
 /**

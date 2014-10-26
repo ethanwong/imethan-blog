@@ -1,4 +1,4 @@
-package com.the3.repository.user;
+package com.the3.repository.security;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.the3.entity.user.Permission;
-import com.the3.entity.user.User;
+import com.the3.entity.security.Permission;
+import com.the3.entity.security.User;
+import com.the3.repository.security.PermissionRepository;
 
 /**
  * UserRepositoryTest.java

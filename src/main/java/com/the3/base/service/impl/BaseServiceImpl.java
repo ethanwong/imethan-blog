@@ -9,13 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import com.the3.base.repository.QueryUtils;
 import com.the3.base.web.SearchFilter;
 import com.the3.dto.service.ServiceReturnDto;
 
@@ -30,8 +25,6 @@ public class BaseServiceImpl<T> {
 	
 	private Logger logger = Logger.getLogger(BaseServiceImpl.class);  
 	
-	@Autowired
-	protected MongoTemplate  mongoTemplate;
 	
 	/**
 	 * 获取分页列表
@@ -42,12 +35,13 @@ public class BaseServiceImpl<T> {
 	 */
 	protected Page<T> getPage(Map<String, Object> parameters,PageRequest pageable,Class<T> entityClass) {
 		try {
-			Query query = QueryUtils.dynamicGenerateQuery(SearchFilter.parse(parameters).entrySet());
+//			Query query = QueryUtils.dynamicGenerateQuery(SearchFilter.parse(parameters).entrySet());
+//			
+//			List<T> list =  mongoTemplate.find(query.with(pageable),entityClass);
+//			long count = mongoTemplate.count(query, entityClass);
 			
-			List<T> list =  mongoTemplate.find(query.with(pageable),entityClass);
-			long count = mongoTemplate.count(query, entityClass);
-			
-			return new PageImpl<T>(list, pageable, count);
+//			return new PageImpl<T>(list, pageable, count);
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
@@ -65,7 +59,7 @@ public class BaseServiceImpl<T> {
 		ServiceReturnDto<T> serviceReturnDto = new ServiceReturnDto<T>();
 		boolean isSuccess = true;
 		String id = "";
-		Update update = new Update();
+//		Update update = new Update();
 		
 		try {
 			for (Entry<String, Object> entry : entityMap.entrySet()) {
@@ -78,11 +72,11 @@ public class BaseServiceImpl<T> {
 				}
 				
 				//设置更新内容
-				update.set(attributeName, attributeValue);
+//				update.set(attributeName, attributeValue);
 				
 			}
 			
-			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(id)), update, entityClass);
+//			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(id)), update, entityClass);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());

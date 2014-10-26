@@ -1,8 +1,12 @@
 package com.the3.entity.cms;
 
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.the3.base.entity.BaseEntity;
 
 /**
@@ -11,22 +15,23 @@ import com.the3.base.entity.BaseEntity;
  * @author Ethan Wong
  * @time 2014年3月2日下午4:44:26
  */
-@Document
+@Entity
+@Table(name="imethan_cms_article")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Article extends BaseEntity {
 
 	private String title;//标题
 	private String content;//内容
 	
-	@DBRef
-	private Channel channel;//栏目
+//	private Channel channel;//栏目
 	
 	
-	public Channel getChannel() {
-		return channel;
-	}
-	public void setChannel(Channel channel) {
-		this.channel = channel;
-	}
+//	public Channel getChannel() {
+//		return channel;
+//	}
+//	public void setChannel(Channel channel) {
+//		this.channel = channel;
+//	}
 	public String getTitle() {
 		return title;
 	}

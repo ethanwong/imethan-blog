@@ -1,4 +1,4 @@
-package com.the3.service.user.impl;
+package com.the3.service.security.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
-import com.the3.entity.user.Permission;
-import com.the3.repository.user.PermissionRepository;
-import com.the3.service.user.PermissionService;
+import com.the3.entity.security.Permission;
+import com.the3.repository.security.PermissionRepository;
+import com.the3.service.security.PermissionService;
 
 
 /**
@@ -87,11 +87,11 @@ public class PermissionServiceImpl extends BaseServiceImpl<Permission> implement
 			entityMap.put("permission", entity.getPermission());
 			entityMap.put("name", entity.getName());
 			entityMap.put("modifyTime", entity.getModifyTime());
-			entityMap.put("describe", entity.getDescribe());
+//			entityMap.put("describe", entity.getDescribe());
 			
 			//需要测试
-			entityMap.put("parent", entity.getParent());
-			entityMap.put("children", entity.getChildren());
+//			entityMap.put("parent", entity.getParent());
+////			entityMap.put("children", entity.getChildren());
 			
 			super.modify(entityMap, Permission.class);
 		} catch (Exception e) {

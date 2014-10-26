@@ -1,7 +1,7 @@
-package com.the3.service.user;
+package com.the3.service.security;
 
 import com.the3.base.service.BaseService;
-import com.the3.entity.user.Permission;
+import com.the3.entity.security.Permission;
 
 /**
  * PermissionService.java

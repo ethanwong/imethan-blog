@@ -1,7 +1,7 @@
 package com.the3.service;
 
 import com.the3.service.realm.ShiroDbRealm;
-import com.the3.service.user.UserService;
+import com.the3.service.security.UserService;
 
 /**
  * ShiroRealmServiceBridge.java

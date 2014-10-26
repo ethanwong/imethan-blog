@@ -1,10 +1,11 @@
-package com.the3.entity.user;
+package com.the3.entity.security;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.the3.base.entity.BaseEntity;
 
@@ -14,15 +15,15 @@ import com.the3.base.entity.BaseEntity;
  * @author Ethan Wong
  * @time 2014年3月16日下午4:32:34
  */
-@Document
+@Entity
+@Table(name="imethan_security_user")
 public class User extends BaseEntity {
 	
 	private String username;//账号
 	private String password;//密码
 	private String nickname;//昵称
 	
-	@DBRef
-	private List<Role> roles;//角色
+//	private List<Role> roles;//角色
 
 	public String getUsername() {
 		return username;
@@ -48,13 +49,13 @@ public class User extends BaseEntity {
 		this.nickname = nickname;
 	}
 
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+//	public List<Role> getRoles() {
+//		return roles;
+//	}
+//
+//	public void setRoles(List<Role> roles) {
+//		this.roles = roles;
+//	}
 
 	@Override
 	public String toString() {

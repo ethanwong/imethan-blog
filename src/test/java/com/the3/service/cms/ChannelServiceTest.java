@@ -28,8 +28,7 @@ public class ChannelServiceTest {
 		
 		Channel channel = new Channel();
 		channel.setTitle("第一个栏目"+new Date());;
-		channel.setDescribe("第一个栏目的描述");
-		channel.setCreateTime(new Date());
+		channel.setIntro("第一个栏目的描述");
 		
 		System.out.println(channelService.save(channel));
 		

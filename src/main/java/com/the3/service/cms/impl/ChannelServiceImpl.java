@@ -8,10 +8,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.the3.base.service.impl.BaseServiceImpl;
@@ -30,9 +26,6 @@ import com.the3.service.cms.ChannelService;
 public class ChannelServiceImpl extends BaseServiceImpl<Channel> implements ChannelService {
 	
 	private Logger logger = Logger.getLogger(ChannelServiceImpl.class);  
-	
-	@Autowired
-	private MongoTemplate  mongoTemplate;
 	
 	@Autowired
 	private ChannelRepository channelRepository;
@@ -91,8 +84,8 @@ public class ChannelServiceImpl extends BaseServiceImpl<Channel> implements Chan
 	public ServiceReturnDto<Channel> modify(Channel entity) {
 		boolean isSuccess = true;
 		try {
-			Update update = new Update().set("title", entity.getTitle()).set("describe", entity.getDescribe()).set("modifyTime", new Date());
-			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(entity.getId())), update, Channel.class);
+//			Update update = new Update().set("title", entity.getTitle()).set("describe", entity.getDescribe()).set("modifyTime", new Date());
+//			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(entity.getId())), update, Channel.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
@@ -103,14 +96,20 @@ public class ChannelServiceImpl extends BaseServiceImpl<Channel> implements Chan
 
 	@Override
 	public List<Channel> getList() {
-		try {
-			return channelRepository.findAll();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			e.printStackTrace();
-			return null;
-		}
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+//	@Override
+//	public List<Channel> getList() {
+//		try {
+//			return channelRepository.findAll();
+//		} catch (Exception e) {
+//			logger.error(e.getMessage());
+//			e.printStackTrace();
+//			return null;
+//		}
+//	}
 
 
 }

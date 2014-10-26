@@ -15,10 +15,10 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import com.the3.entity.user.Permission;
-import com.the3.entity.user.Role;
-import com.the3.entity.user.User;
-import com.the3.service.user.UserService;
+import com.the3.entity.security.Permission;
+import com.the3.entity.security.Role;
+import com.the3.entity.security.User;
+import com.the3.service.security.UserService;
 
 /**
  * ShiroDbRealm.java
@@ -39,18 +39,18 @@ public class ShiroDbRealm extends AuthorizingRealm{
         List<String> permissions = new ArrayList<String>();
         User user = userService.getByUsername(username);
         if(user != null){
-            if (user.getRoles() != null && user.getRoles().size() > 0) {
-                for (Role role : user.getRoles()) {
-                    roles.add(role.getRolename());
-                    if (role.getPermissions() != null && role.getPermissions().size() > 0) {
-                        for (Permission permission : role.getPermissions()) {
-                            if(!StringUtils.isEmpty(permission.getPermission())){
-                                permissions.add(permission.getPermission());
-                            }
-                        }
-                    }
-                }
-            }
+//            if (user.getRoles() != null && user.getRoles().size() > 0) {
+//                for (Role role : user.getRoles()) {
+//                    roles.add(role.getRolename());
+//                    if (role.getPermissions() != null && role.getPermissions().size() > 0) {
+//                        for (Permission permission : role.getPermissions()) {
+//                            if(!StringUtils.isEmpty(permission.getPermission())){
+//                                permissions.add(permission.getPermission());
+//                            }
+//                        }
+//                    }
+//                }
+//            }
         }else{
             throw new AuthorizationException();
         }

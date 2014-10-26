@@ -182,7 +182,7 @@ public class ChannelController extends SuperController{
 	public String modify(@ModelAttribute("channel") Channel channel, @PathVariable int page,@PathVariable int size,BindingResult result,RedirectAttributesModelMap redirectAttributesModelMap) {
 		boolean isSuccess = true;
 		String message = "修改成功。";
-		if(result.hasErrors()||StringUtils.isEmpty(channel.getTitle())||StringUtils.isEmpty(channel.getDescribe())){
+		if(result.hasErrors()||StringUtils.isEmpty(channel.getTitle())||StringUtils.isEmpty(channel.getIntro())){
 			isSuccess = false;
 			message = "修改失败，标题和描述为必填项。";
 		}else{

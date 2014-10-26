@@ -1,4 +1,4 @@
-package com.the3.service.user;
+package com.the3.service.security;
 
 import java.util.Date;
 
@@ -10,7 +10,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.the3.entity.cms.Article;
 import com.the3.entity.cms.Channel;
-import com.the3.entity.user.User;
+import com.the3.entity.security.User;
+import com.the3.service.security.UserService;
 
 
 /**

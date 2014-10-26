@@ -34,8 +34,8 @@ public class ArticleServiceTest {
 		
 //		Channel channel = channelService.getById("5321d66e01f2fd536c327283");
 		Channel channel = new Channel();
-		channel.setId("5321d66e01f2fd536c327283");
-		entity.setChannel(channel);
+//		channel.setId("5321d66e01f2fd536c327283");
+//		entity.setChannel(channel);
 		
 		articleService.save(entity);
 		

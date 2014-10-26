@@ -3,6 +3,7 @@ package com.the3.web.console;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.the3.entity.user.User;
+import com.the3.entity.security.User;
 import com.the3.utils.ValidateCode;
 
 /**

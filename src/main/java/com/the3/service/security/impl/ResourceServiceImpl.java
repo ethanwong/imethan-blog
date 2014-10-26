@@ -1,4 +1,4 @@
-package com.the3.service.user.impl;
+package com.the3.service.security.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
-import com.the3.entity.user.Resource;
-import com.the3.repository.user.ResourceRepository;
-import com.the3.service.user.ResourceService;
+import com.the3.entity.security.Resource;
+import com.the3.repository.security.ResourceRepository;
+import com.the3.service.security.ResourceService;
 
 
 /**
@@ -43,14 +43,14 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements Re
 			Resource parent = null;
 			if(!entity.isRoot()){
 				parent = resourceRepository.findOne("53c0f7d1d14d355998867050");
-				entity.setParent(parent);
+//				entity.setParent(parent);
 			}
 			resourceRepository.save(entity);
 			
 			if(!entity.isRoot()){
 				List<Resource> childrens = new ArrayList<Resource>();
 				childrens.add(entity);
-				parent.setChildrens(childrens);
+//				parent.setChildrens(childrens);
 				resourceRepository.save(parent);
 			}			
 			

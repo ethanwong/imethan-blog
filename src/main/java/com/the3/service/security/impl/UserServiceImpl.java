@@ -1,4 +1,4 @@
-package com.the3.service.user.impl;
+package com.the3.service.security.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
-import com.the3.entity.user.User;
-import com.the3.repository.user.UserRepository;
-import com.the3.service.user.UserService;
+import com.the3.entity.security.User;
+import com.the3.repository.security.UserRepository;
+import com.the3.service.security.UserService;
 
 /**
  * UserServiceIMpl.java

@@ -1,10 +1,12 @@
 package com.the3.base.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
 /**
  * IdEntity.java
@@ -12,17 +14,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author Ethan Wong
  * @time 2014年3月2日下午4:51:08
  */
-@Document
+@MappedSuperclass 
 public class IdEntity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;//ID
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 }

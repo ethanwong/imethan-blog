@@ -2,7 +2,13 @@ package com.the3.base.entity;
 
 import java.util.Date;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
 /**
  * BaseEntity.java
@@ -10,11 +16,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author Ethan Wong
  * @time 2014年3月14日下午8:23:18
  */
-@Document
-public class BaseEntity extends IdEntity {
+@MappedSuperclass 
+public class BaseEntity extends IdEntity{
 	
 	private Date createTime = new Date();//创建时间
-	private Date modifyTime = new Date();//更新时间
+	private Date modifyTime;//更新时间
 	
 	public Date getCreateTime() {
 		return createTime;

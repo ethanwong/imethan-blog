@@ -7,9 +7,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.the3.base.service.impl.BaseServiceImpl;
@@ -89,17 +86,17 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 	public ServiceReturnDto<Article> modify(Article entity) {
 		
 		boolean isSuccess = true;
-		try {
-			Update update = new Update().set("title", entity.getTitle())
-					.set("content", entity.getContent())
-					.set("modifyTime", new Date())
-					.set("channel", entity.getChannel());
-			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(entity.getId())), update, Article.class);
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
-			isSuccess = false;
-		}
+//		try {
+//			Update update = new Update().set("title", entity.getTitle())
+//					.set("content", entity.getContent())
+//					.set("modifyTime", new Date())
+//					.set("channel", entity.getChannel());
+//			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(entity.getId())), update, Article.class);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			logger.error(e.getMessage());
+//			isSuccess = false;
+//		}
 		return new ServiceReturnDto<Article>(isSuccess,entity);
 	}
 
