@@ -19,6 +19,8 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass 
 public class BaseEntity extends IdEntity{
 	
+	private static final long serialVersionUID = -8052135027431298206L;
+	
 	private Date createTime = new Date();//创建时间
 	private Date modifyTime;//更新时间
 	

@@ -1,11 +1,9 @@
 package com.the3.base.entity;
 
-import javax.persistence.Entity;
+import java.io.Serializable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 
 /**
@@ -15,7 +13,9 @@ import javax.persistence.MappedSuperclass;
  * @time 2014年3月2日下午4:51:08
  */
 @MappedSuperclass 
-public class IdEntity {
+public class IdEntity implements Serializable {
+	
+	private static final long serialVersionUID = 8131134448502938007L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

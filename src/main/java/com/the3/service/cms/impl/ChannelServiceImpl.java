@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
@@ -23,7 +24,8 @@ import com.the3.service.cms.ChannelService;
  * @time 2014年3月2日下午4:45:52
  */
 @Service
-public class ChannelServiceImpl extends BaseServiceImpl<Channel> implements ChannelService {
+@Transactional(readOnly = true)
+public class ChannelServiceImpl implements ChannelService {
 	
 	private Logger logger = Logger.getLogger(ChannelServiceImpl.class);  
 	
@@ -31,6 +33,7 @@ public class ChannelServiceImpl extends BaseServiceImpl<Channel> implements Chan
 	private ChannelRepository channelRepository;
 
 	@Override
+	@Transactional(readOnly = false)
 	public ServiceReturnDto<Channel> save(Channel entity) {
 		boolean isSuccess = true;
 		try {
@@ -47,12 +50,12 @@ public class ChannelServiceImpl extends BaseServiceImpl<Channel> implements Chan
 	public Page<Channel> getPage(Map<String,Object> parameters,PageRequest pageable) {
 		
 		try {
-			return super.getPage(parameters, pageable, Channel.class);
+//			return super.getPage(parameters, pageable, Channel.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
-			return null;
 		}
+		return null;
 	}
 	
 	@Override

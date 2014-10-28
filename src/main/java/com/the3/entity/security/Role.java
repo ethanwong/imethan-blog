@@ -1,13 +1,16 @@
 package com.the3.entity.security;
 
 
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -24,28 +27,32 @@ import com.the3.base.entity.BaseEntity;
 @Table(name="imethan_security_role")
 public class Role extends BaseEntity {
 	
+	private static final long serialVersionUID = -6601962016508223381L;
+	
 	private String rolename;//角色名称
 	private String intro;//描述
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "roles", fetch = FetchType.LAZY)
-	private Set<User> user = new LinkedHashSet<User>();        //用户集合
-
-	public Set<User> getUser() {
-        return user;
-    }
-    public void setUser(Set<User> user) {
-        this.user = user;
-    }
+	private Set<User> users = new HashSet<User>();//用户集合
     
-//	private List<User> users;//用户
-//	private List<Permission> permissions;//权限
-//	private List<Resource> resources;//资源
-//	public List<Resource> getResources() {
-//		return resources;
-//	}
-//	public void setResources(List<Resource> resources) {
-//		this.resources = resources;
-//	}
+	public Set<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
+	@ManyToMany
+	@JoinTable(name="imethan_security_role_resource",joinColumns = { @JoinColumn(name ="role_id" )} ,inverseJoinColumns = { @JoinColumn(name = "resource_id")})
+	@OrderBy("id")
+	private Set<Resource> resources = new HashSet<Resource>();//资源
+	
+	public Set<Resource> getResources() {
+		return resources;
+	}
+	public void setResources(Set<Resource> resources) {
+		this.resources = resources;
+	}
 	public String getRolename() {
 		return rolename;
 	}
@@ -58,23 +65,10 @@ public class Role extends BaseEntity {
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
-	//	public List<User> getUsers() {
-//		return users;
-//	}
-//	public void setUsers(List<User> users) {
-//		this.users = users;
-//	}
-//	public List<Permission> getPermissions() {
-//		return permissions;
-//	}
-//	public void setPermissions(List<Permission> permissions) {
-//		this.permissions = permissions;
-//	}
+	
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
 
 }
-
-

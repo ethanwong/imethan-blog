@@ -33,7 +33,7 @@
 		</div>
 		<div class="col-md-9">
 			<label class="col-sm-1 control-label" style="padding: 0px;" >
-				<shiro:hasPermission name="channel:new">  
+				<shiro:hasPermission name="channel:input">  
 					<a  href="${root}/console/cms/channel/input" ><button type="button" class="btn btn-primary">Add</button></a>
 				</shiro:hasPermission>  
 			</label>

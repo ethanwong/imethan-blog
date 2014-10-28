@@ -18,9 +18,9 @@
 				<mvcform:errors path="title"></mvcform:errors>
 		</div>
 		<div class="form-group">
-			<label for="exampleInputDescribe">Describe</label>
-			<textarea class="form-control" rows="3" placeholder="Enter describe" name="describe" id="describe"></textarea>
-			<mvcform:errors path='describe' />
+			<label for="exampleInputIntro">Intro</label>
+			<textarea class="form-control" rows="3" placeholder="Enter intro" name="intro" id="intro"></textarea>
+			<mvcform:errors path='intro' />
 		</div>
 		<button type="submit" class="btn btn-default">Submit</button>
 <!-- 	</form> -->
@@ -35,7 +35,7 @@
 	<c:if test="${isSuccess eq false}">
 		<div class="alert alert-warning alert-dismissable">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<strong>Warning!</strong> Title and description is required..
+			<strong>Warning!</strong> Title and intro is required..
 		</div>
 	</c:if>
 </body>

@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.validation.Valid;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,6 @@ import com.the3.utils.Debug;
 @Controller
 @RequestMapping("/console/cms/channel")
 public class ChannelController extends SuperController{
-	
-
 	
 	@Autowired
 	private ChannelService channelService;
@@ -79,7 +78,6 @@ public class ChannelController extends SuperController{
 	 * @param model
 	 * @return
 	 */
-	@RequiresPermissions("channel:new")
 	@RequestMapping(value="/input", method = RequestMethod.GET)
 	public String input(Model model) {
 		return "console/cms/channel-input";
@@ -93,7 +91,7 @@ public class ChannelController extends SuperController{
 	 * @return
 	 */
 	@RequestMapping(value="/save",method = RequestMethod.POST)
-	public String save(@ModelAttribute("channel") Channel channel, BindingResult result, RedirectAttributesModelMap redirectAttributesModelMap) {
+	public String save(@Valid @ModelAttribute("channel") Channel channel, BindingResult result, RedirectAttributesModelMap redirectAttributesModelMap) {
 		boolean isSuccess = true;
 		String message = "添加成功。";
 		if(result.hasErrors()){

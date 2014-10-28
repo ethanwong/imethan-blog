@@ -58,7 +58,7 @@
 						</ul>
 					</li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">USER<b class="caret"></b></a>
+						data-toggle="dropdown">SECURITY<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="${root}/console/security/user">User</a></li>
 							<li><a href="${root}/console/security/role">Role</a></li>

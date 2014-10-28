@@ -1,7 +1,6 @@
 package com.the3.entity.security;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -10,9 +9,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import com.the3.base.entity.BaseEntity;
 
 /**
@@ -24,6 +21,8 @@ import com.the3.base.entity.BaseEntity;
 @Entity
 @Table(name="imethan_security_user")
 public class User extends BaseEntity {
+	
+	private static final long serialVersionUID = 2732105841282347957L;
 	
 	private String username;//账号
 	private String password;//密码
@@ -70,8 +69,5 @@ public class User extends BaseEntity {
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
-	
 
 }
-
-

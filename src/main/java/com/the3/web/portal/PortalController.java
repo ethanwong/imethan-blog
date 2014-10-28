@@ -1,4 +1,4 @@
-package com.the3.web.front;
+package com.the3.web.portal;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 /**
- * IndexController.java
+ * PortalController.java
  *
  * @author Ethan Wong
  * @time 2014年3月16日上午12:16:49
  */
 
 @Controller
-@RequestMapping("/index")
-public class IndexController {
+@RequestMapping("/portal")
+public class PortalController {
 	
     @RequestMapping("")
-    public String index(Model model) {
-        return "front/index";
+    public String portal(Model model) {
+        return "portal/portal";
     }
 
 }

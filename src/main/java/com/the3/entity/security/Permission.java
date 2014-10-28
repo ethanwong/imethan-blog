@@ -1,8 +1,12 @@
 package com.the3.entity.security;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -19,12 +23,23 @@ import com.the3.base.entity.BaseEntity;
 @Table(name="imethan_security_permission")
 public class Permission extends BaseEntity {
 	
-	private String name;//权限名称
+	private static final long serialVersionUID = 3002097053120526602L;
+	
+	private String name;//权限名称，格式：“资源名称:操作”，形如：“channel:new”
 	private String intro;//描述
 	private String permission;//权限
 //	private Permission parent;//父级
 //	private List<Permission> children;//子级
 	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "permissions", fetch = FetchType.LAZY)
+	private Set<Resource> resources = new HashSet<Resource>();//资源
+	
+	public Set<Resource> getResources() {
+		return resources;
+	}
+	public void setResources(Set<Resource> resources) {
+		this.resources = resources;
+	}
 	public String getName() {
 		return name;
 	}
@@ -61,5 +76,3 @@ public class Permission extends BaseEntity {
 		return ToStringBuilder.reflectionToString(this);
 	}
 }
-
-

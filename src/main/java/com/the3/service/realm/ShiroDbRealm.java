@@ -16,6 +16,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import com.the3.entity.security.Permission;
+import com.the3.entity.security.Resource;
 import com.the3.entity.security.Role;
 import com.the3.entity.security.User;
 import com.the3.service.security.UserService;
@@ -43,20 +44,26 @@ public class ShiroDbRealm extends AuthorizingRealm{
                 for (Role role : user.getRoles()) {
                     roles.add(role.getRolename());
                     
-//                    if (role.getPermissions() != null && role.getPermissions().size() > 0) {
-//                        for (Permission permission : role.getPermissions()) {
-//                            if(!StringUtils.isEmpty(permission.getPermission())){
-//                                permissions.add(permission.getPermission());
-//                            }
-//                        }
-//                    }
+                    if(role.getResources() !=null && !role.getResources().isEmpty()){
+                    	for(Resource resource : role.getResources()){
+                          if (resource.getPermissions() != null && resource.getPermissions().size() > 0) {
+	                          for (Permission permission : resource.getPermissions()) {
+	                              if(!StringUtils.isEmpty(permission.getPermission())){
+	                                  permissions.add(permission.getPermission());
+	                              }
+	                          }
+                          }
+                    	}
+                    }
                 }
             }
         }else{
             throw new AuthorizationException();
         }
+        System.out.println("roles:"+roles);
         //给当前用户设置角色
         info.addRoles(roles);
+        System.out.println("permissions:"+permissions);
         //给当前用户设置权限
         info.addStringPermissions(permissions); 
         return info;
