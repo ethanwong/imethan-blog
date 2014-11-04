@@ -10,6 +10,7 @@ package com.the3.dto.service;
 public class ServiceReturnDto<T> {
 	
 	private boolean isSuccess = true;
+	private String message = "操作成功";
 	private T entity;
 	
 	public ServiceReturnDto() {
@@ -33,5 +34,12 @@ public class ServiceReturnDto<T> {
 	public void setEntity(T entity) {
 		this.entity = entity;
 	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
 
 }

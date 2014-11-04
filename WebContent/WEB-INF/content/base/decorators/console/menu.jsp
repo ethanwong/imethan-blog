@@ -25,6 +25,11 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+    <%@ include file="/WEB-INF/content/base/js.jsp"%>
 </head>
 
 <body>
@@ -75,11 +80,11 @@
 
 				<div class="navbar-form navbar-right" >
 					<shiro:guest>  
-						<a type="submit" class="btn btn-default" href="${root}/console/toSignin">Sign in</a>
+						<a type="submit" class="btn btn-default btn-sm" href="${root}/console/toSignin">Sign in</a>
 					</shiro:guest>
 					<shiro:user>  
 						Hello, <shiro:principal/>!  
-						<a type="submit" class="btn btn-default" href="${root}/console/signout">Sign out</a>
+						<a type="submit" class="btn btn-default btn-sm" href="${root}/console/signout">Sign out</a>
 					</shiro:user>
 				</div>
 			</div>
@@ -88,28 +93,19 @@
 	</div>
 
 	<div class="container">
-		<!-- 顶部可关闭提醒框 -->
-		<c:if test="${WebReturnDto.success=='true'}">
-			<div id="topWarn" class="alert alert-success alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-<!-- 				<strong>Warning!</strong> -->
-				<p style="display: inline;">${WebReturnDto.message}</p>
-			</div>
-		</c:if>
-		<c:if test="${WebReturnDto.success=='false'}">
-			<div id="topWarn" class="alert alert-danger alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-<!-- 				<strong>Warning!</strong> -->
-				<p style="display: inline;">${WebReturnDto.message}</p>
-			</div>
-		</c:if>
-
-<!-- 		面包屑导航 -->
-<!-- 				<ol class="breadcrumb"> -->
-<!-- 					<li><a href="#">Home</a></li> -->
-<!-- 					<li><a href="#">Library</a></li> -->
-<!-- 					<li class="active">Data</li> -->
-<!-- 				</ol> -->
+		<!-- 面包屑导航 -->
+		<ol class="breadcrumb">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Library</a></li>
+			<li class="active">Data</li>
+		</ol>
+		
+		<!-- 提醒信息 -->
+		<div id="topWarn" class="alert alert-success alert-dismissable" style="display: none">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong></strong>
+			<p style="display: inline;"></p>
+		</div>
 		<decorator:body></decorator:body>
 	</div>
 	<!-- /container -->
@@ -157,13 +153,6 @@
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
-
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<%@ include file="/WEB-INF/content/base/js.jsp"%>
-	
 </body>
 </html>
 

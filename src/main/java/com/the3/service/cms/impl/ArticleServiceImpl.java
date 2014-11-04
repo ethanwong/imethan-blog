@@ -22,7 +22,7 @@ import com.the3.service.cms.ArticleService;
  * @time 2014年3月2日下午4:45:49
  */
 @Service
-public class ArticleServiceImpl extends BaseServiceImpl<Article> implements ArticleService {
+public class ArticleServiceImpl implements ArticleService {
 	
 	private Logger logger = Logger.getLogger(ArticleServiceImpl.class);  
 	
@@ -31,7 +31,7 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 	
 	
 	@Override
-	public ServiceReturnDto<Article> save(Article entity) {
+	public ServiceReturnDto<Article> saveOrModify(Article entity) {
 		boolean isSuccess = true;
 		try {
 			articleRepository.save(entity);
@@ -45,33 +45,35 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 
 
 	@Override
-	public Article getById(String id) {
+	public Article getById(Long id) {
 		try {
-			return articleRepository.findOne(id);
+//			return articleRepository.findOne(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
-			return null;
+			
 		}
+		return null;
 	}
 
 
 	@Override
 	public Page<Article> getPage(Map<String, Object> parameters,PageRequest pageable) {
 		try {
-			return super.getPage(parameters, pageable, Article.class);
+//			return super.getPage(parameters, pageable, Article.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
-			return null;
+			
 		}
+		return null;
 	}
 
 
 	@Override
-	public boolean deleteById(String id) {
+	public boolean deleteById(Long id) {
 		try {
-			articleRepository.delete(id);
+//			articleRepository.delete(id);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,25 +81,4 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 			return false;
 		}
 	}
-		
-
-
-	@Override
-	public ServiceReturnDto<Article> modify(Article entity) {
-		
-		boolean isSuccess = true;
-//		try {
-//			Update update = new Update().set("title", entity.getTitle())
-//					.set("content", entity.getContent())
-//					.set("modifyTime", new Date())
-//					.set("channel", entity.getChannel());
-//			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(entity.getId())), update, Article.class);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			logger.error(e.getMessage());
-//			isSuccess = false;
-//		}
-		return new ServiceReturnDto<Article>(isSuccess,entity);
-	}
-
 }

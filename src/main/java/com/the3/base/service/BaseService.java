@@ -15,11 +15,11 @@ import com.the3.dto.service.ServiceReturnDto;
 public interface BaseService<T> {
 	
 	/**
-	 * 保存
+	 * 保存或更新
 	 * @param entity
 	 * @return
 	 */
-	public ServiceReturnDto<T> save(T entity);
+	public ServiceReturnDto<T> saveOrModify(T entity);
 	
 	/**
 	 * 获取分页
@@ -34,22 +34,14 @@ public interface BaseService<T> {
 	 * @param id
 	 * @return
 	 */
-	public T getById(String id);
+	public T getById(Long id);
 	
 	/**
 	 * 根据ID删除
 	 * @param id
 	 * @return
 	 */
-	public boolean deleteById(String id);
-	
-	/**
-	 * 保存更新
-	 * @param channel
-	 * @return
-	 */
-	public ServiceReturnDto<T> modify(T entity); 
-	
+	public boolean deleteById(Long id);
 	
 
 }

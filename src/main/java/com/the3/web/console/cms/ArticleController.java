@@ -110,7 +110,7 @@ public class ArticleController extends SuperController{
 			isSuccess = false;
 			message = "添加失败，标题和内容为必填项。";
 		}else{
-			isSuccess = articleService.save(article).isSuccess();
+//			isSuccess = articleService.save(article).isSuccess();
 		}
 		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
 		return "redirect:/console/cms/article/"+defaultPage+"/"+defaultSize;
@@ -125,8 +125,8 @@ public class ArticleController extends SuperController{
 	 */
 	@RequestMapping(value="noDecorate/view/{id}", method = RequestMethod.GET)
 	public String detail(Model model,@PathVariable String id,ServletResponse response){
-		Article article  = articleService.getById(id);
-		model.addAttribute("entity",article);
+//		Article article  = articleService.getById(id);
+//		model.addAttribute("entity",article);
 		return "console/cms/article-view";
 	}
 	
@@ -142,9 +142,9 @@ public class ArticleController extends SuperController{
 	 */
 	@RequestMapping(value="/forModify/{id}/{page}/{size}", method = RequestMethod.GET)
 	public String forModify(Model model,@PathVariable String id,@PathVariable int page,@PathVariable int size,ServletResponse response){
-		Article entity  = articleService.getById(id);
+//		Article entity  = articleService.getById(id);
 		Debug.println("id:"+id);
-		model.addAttribute("entity",entity);
+//		model.addAttribute("entity",entity);
 		
 		model.addAttribute("page",page);
 		model.addAttribute("size",size);
@@ -166,14 +166,14 @@ public class ArticleController extends SuperController{
 	 */
 	@RequestMapping(value="/delete/{id}/{page}/{size}", method = {RequestMethod.POST,RequestMethod.GET})
 	public String delete(Model model,@PathVariable String id,@PathVariable int page,@PathVariable int size,RedirectAttributesModelMap redirectAttributesModelMap,ServletRequest request){
-		boolean isSuccess = articleService.deleteById(id);
+//		boolean isSuccess = articleService.deleteById(id);
 		String message = "";
-		if(isSuccess){
-			message = "删除成功。";
-		}else{
-			message = "删除失败。";
-		}
-		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
+//		if(isSuccess){
+//			message = "删除成功。";
+//		}else{
+//			message = "删除失败。";
+//		}
+//		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
 		return "redirect:/console/cms/article/"+page+"/"+size;
 	}
 	
@@ -195,7 +195,7 @@ public class ArticleController extends SuperController{
 			message = "修改失败，标题和描述为必填项。";
 		}else{
 			System.out.println("-----------article:"+article);
-			isSuccess = articleService.modify(article).isSuccess();
+//			isSuccess = articleService.modify(article).isSuccess();
 		}
 		
 		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));

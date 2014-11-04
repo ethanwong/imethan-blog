@@ -53,7 +53,7 @@ public interface BaseController {
 	 * @return
 	 */
 	@RequestMapping(value="noDecorate/view/{id}", method = RequestMethod.GET)
-	public String detail(Model model,@PathVariable String id,ServletResponse response);
+	public String view(Model model,@PathVariable String id,ServletResponse response);
 	
 	
 	/**

@@ -1,15 +1,15 @@
 package com.the3.entity.security;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import com.the3.base.entity.BaseEntity;
 
@@ -21,6 +21,7 @@ import com.the3.base.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_security_permission")
+@JsonIgnoreProperties(value={"resource"})
 public class Permission extends BaseEntity {
 	
 	private static final long serialVersionUID = 3002097053120526602L;
@@ -28,17 +29,16 @@ public class Permission extends BaseEntity {
 	private String name;//权限名称，格式：“资源名称:操作”，形如：“channel:new”
 	private String intro;//描述
 	private String permission;//权限
-//	private Permission parent;//父级
-//	private List<Permission> children;//子级
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "permissions", fetch = FetchType.LAZY)
-	private Set<Resource> resources = new HashSet<Resource>();//资源
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch = FetchType.LAZY)
+	@JoinColumn(name="resource_id")
+	private Resource resource = new Resource();//资源
 	
-	public Set<Resource> getResources() {
-		return resources;
+	public Resource getResource() {
+		return resource;
 	}
-	public void setResources(Set<Resource> resources) {
-		this.resources = resources;
+	public void setResources(Resource resource) {
+		this.resource = resource;
 	}
 	public String getName() {
 		return name;
@@ -58,19 +58,6 @@ public class Permission extends BaseEntity {
 	public void setPermission(String permission) {
 		this.permission = permission;
 	}
-//	public Permission getParent() {
-//		return parent;
-//	}
-//	public void setParent(Permission parent) {
-//		this.parent = parent;
-//	}
-//	public List<Permission> getChildren() {
-//		return children;
-//	}
-//	public void setChildren(List<Permission> children) {
-//		this.children = children;
-//	}
-	
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);

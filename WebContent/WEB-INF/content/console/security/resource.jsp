@@ -7,116 +7,163 @@
 <title>Insert title here</title>
 
 </head>
-
 <body>
+	<!-- ztree begin -->
+	<link rel="stylesheet" href="${root}/theme/jtree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="${root}/theme/jtree/js/jquery.ztree.all-3.5.js"></script>
+	<SCRIPT type="text/javascript">
+		var setting = {
+				view: {
+					showLine: true
+				},
+				data: {
+					key: {
+						children: "childrens"
+					},
+					simpleData: {
+						enable: true
+					}
+				},
+				callback:{
+					onClick:inputResource
+				}
+		};
+		
+		$.ajax({
+			url:"${root}/console/security/resource/json",
+			type:"POST",
+			success:function(msg){
+				var zNodes = msg;
+				$.fn.zTree.init($("#resource-tree"), setting, eval("(" + zNodes + ")"));
+			}
+		});
+
+		function inputResource(event, treeId, treeNode){
+// 			alert("click"+treeNode.name+"-id:"+treeNode.id+"-isRoot:"+treeNode.root+"-treeId:"+treeId);
+			if(treeNode.root == true){
+				$('#input-resource').css("display","block");
+				$("#parentId").attr("value",treeNode.id);
+				$('font').text("child");
+				
+				$('#permission-table').css("display","none");
+			}else{
+				$('#input-resource').css("display","none");
+				
+				//update jqGrid date
+				$('#permission-table').css("display","block");
+				$('#list').setGridParam({
+					postData:{'resourceId':treeNode.id},
+					url: '${root}/console/security/permission/json',
+					datatype: "json",
+				});
+				$('#list').trigger('reloadGrid');
+			}
+		};
+	</SCRIPT>
+	<!-- ztree end -->
+	
+	
+	<!-- jqgrid begin -->
+	<link href="${root}/theme/jqgrid/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+	<link href="${root}/theme/jqgrid/css/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+	<script src="${root}/theme/jqgrid/js/jquery-ui.min.js" type="text/javascript"></script>
+	<script src="${root}/theme/jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+	<script src="${root}/theme/jqgrid/js/i18n/grid.locale-cn.js" type="text/javascript"></script>
+	<script src="${root}/theme/jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			jQuery("#list").jqGrid({
+				postData:{'resourceId':''},
+				url: '${root}/console/security/permission/json',
+				datatype: "json",
+				mtype: 'POST',
+				colNames: ['Id', 'Name', 'Intro', 'CreateTime'],
+				colModel: [{ name: 'id',  width: 40, align: "center"},
+							{ name: 'name',  width: 100, align: "center" },
+							{ name: 'intro', width: 100, align: "center" },
+							{ name: 'createTime', width: 150, align: "center"}],
+				rowList: [10, 20, 30],
+				viewrecords: true,
+				pager: jQuery('#pager'),
+				rowNum: 5,
+				altclass: 'altRowsColour',
+				width: '698px',
+				height: 'auto',
+				caption: "权限管理"
+			}).navGrid('#pager', {add: false, edit: false, del: false,search:false,refresh:true}); 
+		});
+	</script>
+	<!-- jqgrid end -->
+	
+	<script type="text/javascript">
+		function inputRootResource(){
+			$('#input-resource').css("display","block");
+			$("#parentId").attr("value","");
+			$('font').text("root");
+			
+			$('#permission-table').css("display","none");
+		};
+		
+		function submitForm(){
+			  // data: "name=John&location=Boston", //第一种方式传参
+			  // data: {name:"John",location:"Boston"}  //第二种方式传参
+			  // data: {foo:["bar1", "bar2"]} 转换为 '&foo=bar1&foo=bar2'
+			$.ajax({
+				url:"${root}/console/",
+				type:"POST",
+				dateType:"json",
+				error:function(){alert('error');},
+				date:$("#input-form").serializeArray(),
+				success:function(msg){
+					alert("success");
+					
+					showMsg("success","操作成功");
+				}
+			});
+		}
+	</script>
+	
 	<div class="row">
 		<div class="col-md-3">
+			资源管理
+			<div id="resource-tree" class="ztree"></div>
 		</div>
 		<div class="col-md-9">
-			<label class="col-sm-2 control-label" style="padding: 0px;" >
-				<a  href="${root}/console/security/resource/input/1" ><button type="button" class="btn btn-primary">Add Root</button></a>
-			</label>
-			<label class="col-sm-2 control-label" style="padding: 0px;" >
-				<a  href="${root}/console/security/resource/input/0" ><button type="button" class="btn btn-primary">Add Sub</button></a>
-			</label>
-			<div class="col-sm-8">
-				<form class="form-inline" role="form" action="${root}/console/security/permission/0/10" method="post">
-					<input type="text" class="form-control" name="search_LIKE_title" placeholder="Enter title" value="${search_LIKE_title}">
-					<button type="submit" class="btn btn-default">Search</button>
+			<p><button type="button" class="btn btn-primary btn-sm" onclick="inputRootResource(this)">Add Root Resource</button></p>
+				
+			<div id="input-resource" style="display: none;">
+			
+				<h1>Add a <font></font> resource</h1>
+				<form id="input-form" role="form" action="${root}/console/security/resource/save" method="post">
+					<input type="text" id="parentId" name="parentId" value="">
+					<div class="form-group">
+						<label for="exampleInputTitle">Name</label>
+						<input type="text" class="form-control required" id="name" placeholder="Enter name" name="name" >
+					</div>
+					<div class="form-group">
+						<label for="exampleInputTitle">Module</label>
+						<input type="text" class="form-control required" id="module" placeholder="Enter module" name="module" >
+					</div>
+					<div class="form-group">
+						<label for="exampleInputTitle">Url</label>
+						<input type="text" class="form-control required" id="module" placeholder="Enter url" name="url" >
+					</div>
+					<div class="form-group">
+						<label for="exampleInputDescribe">Intro</label>
+						<textarea class="form-control required" rows="3" placeholder="Enter intro" name="intro" id="intro"></textarea>
+					</div>
+					<button type="submit" class="btn btn-default" onclick="submitForm(this)">Submit</button>
 				</form>
 			</div>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Create Time</th>
-						<th >Manage</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="item" items="${result.content}" varStatus="status">
-						<tr>
-							<td><c:out value="${item.name}" /></td>
-							<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-							<td>	
-								<a href="${root}/console/security/resource/input/0" ><button type="button" class="btn btn-default btn-xs">Add child</button></a>
-								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-keyboard="true" data-target="#channel-modify" href="${root}/console/security/permission/noDecorate/forModify/${item.id}/${result.number}/${result.size}">Modify</a>
-								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-target="#channel-view" href="${root}/console/security/permission/noDecorate/view/${item.id}">View</a>
-								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('${root}/console/security/resource/delete/${item.id}/${result.number}/${result.size}')">Delete</button>
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<ul class="pagination" style="margin: 10px;">
-				<li>
-					<c:if test="${result.number > 0}">
-						<a href="${root}/console/security/permission/${result.number-1}/${result.size}">&laquo;</a>
-					</c:if>
-					<c:if test="${result.number <= 0}">
-						<a href="#">&laquo;</a>
-					</c:if>
-				</li>
-				<c:if test="${result.totalPages>=1}">
-					<c:forEach var="item" begin="0" end="${result.totalPages-1}">
-						<li <c:if test="${item eq result.number}">class="active"</c:if>>
-							<a href="${root}/console/security/permission/${item}/${result.size}">${item+1}</a>
-						</li>
-					</c:forEach>
-				</c:if>
-				<li>
-					<c:if test="${result.number < result.totalPages-1}">
-						<a href="${root}/console/security/permission/${result.number+1}/${result.size}">&raquo;</a>
-					</c:if>
-					<c:if test="${result.number >= result.totalPages-1}">
-						<a href="#">&raquo;</a>
-					</c:if>
-				</li>
-			</ul>
+			
+			<p id="permission-table" style="display: none;">
+				<table id="list"></table>
+				<div id="pager"></div>
+			</p>	
+			
 		</div>
-	</div>
-	
-	
-	<div class="modal fade" id="channel-view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-				</div>
-				<div class="modal-body">...</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="channel-modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Modify</h4>
-				</div>
-				<form role="form" method="post" action="${root}/console/security/permission/modify" id="inputForm">
-					<input type="hidden" value="" name="id" id="id">
-					<div class="modal-body">
-						  <div class="form-group">
-						    <label for="exampleInputEmail1">Title</label>
-						    <input type="text" class="form-control required" id="title" name="title" placeholder="Enter title" value="">
-						  </div>
-						  <div class="form-group">
-						    <label for="exampleInputPassword1">Describe</label>
-						    <textarea class="form-control required" rows="3" placeholder="Enter describe" name="describe" id="describe" ></textarea>
-						  </div>
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary"">Submit</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+		
+	</div>	
 </body>
 </html>

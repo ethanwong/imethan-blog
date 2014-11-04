@@ -34,7 +34,7 @@ public class ChannelServiceImpl implements ChannelService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto<Channel> save(Channel entity) {
+	public ServiceReturnDto<Channel> saveOrModify(Channel entity) {
 		boolean isSuccess = true;
 		try {
 			entity = channelRepository.save(entity);
@@ -59,10 +59,10 @@ public class ChannelServiceImpl implements ChannelService {
 	}
 	
 	@Override
-	public Channel getById(String id) {
+	public Channel getById(Long id) {
 		Channel entity = null;
 		try {
-			entity = channelRepository.findOne(id);
+//			entity = channelRepository.findOne(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
@@ -71,10 +71,10 @@ public class ChannelServiceImpl implements ChannelService {
 	}
 
 	@Override
-	public boolean deleteById(String id) {
+	public boolean deleteById(Long id) {
 		boolean isSuccess = true;
 		try {
-			channelRepository.delete(id);
+//			channelRepository.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
@@ -83,19 +83,6 @@ public class ChannelServiceImpl implements ChannelService {
 		return isSuccess;
 	}
 
-	@Override
-	public ServiceReturnDto<Channel> modify(Channel entity) {
-		boolean isSuccess = true;
-		try {
-//			Update update = new Update().set("title", entity.getTitle()).set("describe", entity.getDescribe()).set("modifyTime", new Date());
-//			mongoTemplate.findAndModify(Query.query(new Criteria("id").is(entity.getId())), update, Channel.class);
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
-			isSuccess = false;
-		}
-		return new ServiceReturnDto<Channel>(isSuccess,entity);
-	}
 
 	@Override
 	public List<Channel> getList() {

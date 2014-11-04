@@ -58,7 +58,8 @@
             /console/toSignin = anon
             /console/signin = anon
             /console/validateCode = anon
-            /console/** = authc
+<!--             /console/** = authc -->
+            /console/** = anon
             </value>
         </property>
     </bean>

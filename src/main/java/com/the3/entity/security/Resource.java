@@ -7,12 +7,15 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import com.the3.base.entity.BaseEntity;
 
@@ -24,6 +27,7 @@ import com.the3.base.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_security_resource")
+@JsonIgnoreProperties(value={"parent","roles","permissions","modifyTime","createTime","intro","module","url"})
 public class Resource extends BaseEntity {
 	
 	private static final long serialVersionUID = 6701956302298630995L;
@@ -33,17 +37,59 @@ public class Resource extends BaseEntity {
 	private String url;//URL
 	private String intro;//描述
 	private boolean isRoot;//是否是根节点
-//	private Resource parent;//父级
-//	private List<Resource> childrens;//子级
+	@Transient
+	private boolean open = true;
+	
+	public boolean isOpen() {
+		return open;
+	}
+	public void setOpen(boolean open) {
+		this.open = open;
+	}
+
+	@Transient
+	private Long parentId;
+	
+	public Long getParentId() {
+		if(parent != null){
+			return this.parent.getId();
+		}else{
+			return 0l;
+		}
+		
+	}
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
+	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch = FetchType.LAZY)
+	@JoinColumn(name="pid")
+	private Resource parent;//父级
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy="parent")
+	@OrderBy("id")
+	private Set<Resource> childrens = new HashSet<Resource>();//子级
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "resources", fetch = FetchType.LAZY)
 	private Set<Role> roles = new HashSet<Role>();//角色
 	
-	@ManyToMany
-    @JoinTable(name="imethan_security_resource_permission",joinColumns = { @JoinColumn(name ="resource_id" )} ,inverseJoinColumns = { @JoinColumn(name = "permission_id")})
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy="resource")
 	@OrderBy("id")
 	private Set<Permission> permissions = new HashSet<Permission>();//授权
 	
+	public Resource getParent() {
+		return parent;
+	}
+	public void setParent(Resource parent) {
+		this.parent = parent;
+	}
+	
+	public Set<Resource> getChildrens() {
+		return childrens;
+	}
+	public void setChildrens(Set<Resource> childrens) {
+		this.childrens = childrens;
+	}
 	public Set<Permission> getPermissions() {
 		return permissions;
 	}
@@ -80,18 +126,6 @@ public class Resource extends BaseEntity {
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
-//	public Resource getParent() {
-//		return parent;
-//	}
-//	public void setParent(Resource parent) {
-//		this.parent = parent;
-//	}
-//	public List<Resource> getChildrens() {
-//		return childrens;
-//	}
-//	public void setChildrens(List<Resource> childrens) {
-//		this.childrens = childrens;
-//	}
 	public boolean isRoot() {
 		return isRoot;
 	}

@@ -11,7 +11,7 @@ import com.the3.entity.security.Resource;
  * @time 2014年3月17日下午10:09:38
  */
 public interface ResourceService extends BaseService<Resource> {
-
+	
 	
 }
 

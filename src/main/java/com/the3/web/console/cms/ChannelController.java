@@ -99,7 +99,7 @@ public class ChannelController extends SuperController{
 			message = "添加失败，标题和描述为必填项。";
 			return "console/cms/channel-input";
 		}else{
-			isSuccess = channelService.save(channel).isSuccess();
+//			isSuccess = channelService.save(channel).isSuccess();
 		}
 		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
 		return "redirect:/console/cms/channel/"+defaultPage+"/"+defaultSize;
@@ -114,10 +114,10 @@ public class ChannelController extends SuperController{
 	 */
 	@RequestMapping(value="noDecorate/view/{id}", method = RequestMethod.GET)
 	public String detail(Model model,@PathVariable String id,ServletResponse response){
-		Channel channel  = channelService.getById(id);
+//		Channel channel  = channelService.getById(id);
 		model.addAttribute("message","This is detail");
-		model.addAttribute("channel",channel);
-		Debug.println("channel:"+channel);
+//		model.addAttribute("channel",channel);
+//		Debug.println("channel:"+channel);
 		return "console/cms/channel-view";
 	}
 	
@@ -134,14 +134,14 @@ public class ChannelController extends SuperController{
 	 */
 	@RequestMapping(value="/delete/{id}/{page}/{size}", method = {RequestMethod.POST,RequestMethod.GET})
 	public String delete(Model model,@PathVariable String id,@PathVariable int page,@PathVariable int size,RedirectAttributesModelMap redirectAttributesModelMap,ServletRequest request){
-		boolean isSuccess = channelService.deleteById(id);
+//		boolean isSuccess = channelService.deleteById(id);
 		String message = "";
-		if(isSuccess){
-			message = "删除成功。";
-		}else{
-			message = "删除失败。";
-		}
-		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
+//		if(isSuccess){
+//			message = "删除成功。";
+//		}else{
+//			message = "删除失败。";
+//		}
+//		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
 		return "redirect:/console/cms/channel/"+page+"/"+size;
 	}
 	
@@ -156,10 +156,10 @@ public class ChannelController extends SuperController{
 	 */
 	@RequestMapping(value="/noDecorate/forModify/{id}/{page}/{size}", method = RequestMethod.GET)
 	public String forModify(Model model,@PathVariable String id,@PathVariable int page,@PathVariable int size,ServletResponse response){
-		Channel channel  = channelService.getById(id);
+//		Channel channel  = channelService.getById(id);
 		Debug.println("id:"+id);
 		model.addAttribute("message","This is detail");
-		model.addAttribute("channel",channel);
+//		model.addAttribute("channel",channel);
 		
 		model.addAttribute("page",page);
 		model.addAttribute("size",size);
@@ -184,7 +184,7 @@ public class ChannelController extends SuperController{
 			isSuccess = false;
 			message = "修改失败，标题和描述为必填项。";
 		}else{
-			isSuccess = channelService.modify(channel).isSuccess();
+//			isSuccess = channelService.modify(channel).isSuccess();
 		}
 		
 		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));

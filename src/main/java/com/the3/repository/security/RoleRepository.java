@@ -13,7 +13,7 @@ import com.the3.entity.security.Role;
  * @time 2014年3月16日下午4:59:21
  */
 @Repository
-public interface RoleRepository  extends JpaRepository<Role, String> {
+public interface RoleRepository  extends JpaRepository<Role, Long> {
 
 }
 

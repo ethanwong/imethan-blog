@@ -30,20 +30,20 @@ public class ChannelServiceTest {
 		channel.setTitle("第一个栏目"+new Date());;
 		channel.setIntro("第一个栏目的描述");
 		
-		System.out.println(channelService.save(channel));
+//		System.out.println(channelService.save(channel));
 		
 		
 	}
 	
 	@Test
 	public void testGetById(){
-		Channel channel = channelService.getById("531b4b4ca9faac654cc17762");
-		System.out.println("channel:"+channel);
+//		Channel channel = channelService.getById("531b4b4ca9faac654cc17762");
+////		System.out.println("channel:"+channel);
 	}
 	
 	@Test
 	public void testDelete(){
-		channelService.deleteById("531b4b4ca9faac654cc17762");
+//		channelService.deleteById("531b4b4ca9faac654cc17762");
 	}
 	
 

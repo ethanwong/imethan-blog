@@ -1,4 +1,24 @@
+/**
+ * 显示提示信息
+ * @param type 提示信息类型,成功:success,失败:error
+ * @param msg 提示信息
+ */
+function showMsg(type,msg){
+	if(type == 'success'){
+		$('#topWarn').removeClass("*").addClass("alert alert-success alert-dismissable");
+		$('#topWarn').css('display','block');
+		$("#topWarn p").text(msg);
+	}
+	if(type == 'error'){
+		$('#topWarn').removeClass("*").addClass("alert alert-danger alert-dismissable");
+		$('#topWarn').css('display','block');
+		$("#topWarn p").text(msg);
+	}
+}
+
+
 $(function() {
+	
 	$("#exampleasdf").popover();
 	
 //	 $('#channel-detail').on('hidden.bs.modal', function (e) {  

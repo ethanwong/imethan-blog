@@ -1,5 +1,7 @@
 package com.the3.service.security;
 
+import java.util.List;
+
 import com.the3.base.service.BaseService;
 import com.the3.entity.security.Permission;
 
@@ -10,6 +12,8 @@ import com.the3.entity.security.Permission;
  * @time 2014年3月16日下午5:00:27
  */
 public interface PermissionService  extends BaseService<Permission> {
+	
+	List<Permission> getByResourceId(Long resourceId);
 
 }
 

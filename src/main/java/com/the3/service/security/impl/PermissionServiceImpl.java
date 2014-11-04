@@ -1,13 +1,23 @@
 package com.the3.service.security.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
@@ -23,85 +33,59 @@ import com.the3.service.security.PermissionService;
  * @time 2014年3月16日下午5:02:56
  */
 @Service
-public class PermissionServiceImpl extends BaseServiceImpl<Permission> implements PermissionService {
+@Transactional(readOnly = true)
+public class PermissionServiceImpl  implements PermissionService {
 	
 	private Logger logger = Logger.getLogger(PermissionServiceImpl.class);  
 	
 	@Autowired
 	private PermissionRepository permissionRepository;
 	
+	@PersistenceContext 
+	private EntityManager entityManger;
+	@PersistenceUnit 
+	private EntityManagerFactory emf;
+	
 	@Override
-	public ServiceReturnDto<Permission> save(Permission entity) {
-		boolean isSuccess = true;
+	public List<Permission> getByResourceId(Long resourceId) {
+		
+		List<Permission> list = new ArrayList<Permission>();
 		try {
-			permissionRepository.save(entity);
+			String jpql = "SELECT p FROM Permission p where p.resource.id = ?1";   
+			Query query =  entityManger.createQuery(jpql);
+			query.setParameter(1, resourceId);
+			list = query.getResultList();   
 		} catch (Exception e) {
 			e.printStackTrace();
-			isSuccess = false;
-			logger.error(e.getMessage());
-		}
-		return new ServiceReturnDto<Permission>(isSuccess, entity);
+		} 
+        
+		return list;
 	}
 
 	@Override
-	public Page<Permission> getPage(Map<String, Object> parameters,PageRequest pageable) {
-		try {
-			return super.getPage(parameters, pageable, Permission.class);
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
-			return null;
-		}
+	public ServiceReturnDto<Permission> saveOrModify(Permission entity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Permission getById(String id) {
-		try {
-			return permissionRepository.findOne(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
-			return null;
-		}
+	public Page<Permission> getPage(Map<String, Object> parameters,
+			PageRequest pageable) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public boolean deleteById(String id) {
-		boolean isSuccess = true;
-		try {
-			permissionRepository.delete(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			isSuccess = false;
-			logger.error(e.getMessage());
-		}
-		return isSuccess;
+	public Permission getById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public ServiceReturnDto<Permission> modify(Permission entity) {
-		boolean isSuccess = true;
-		try {
-			//设置更新字段内容
-			Map<String,Object> entityMap = new HashMap<String,Object>();
-			entityMap.put("permission", entity.getPermission());
-			entityMap.put("name", entity.getName());
-			entityMap.put("modifyTime", entity.getModifyTime());
-//			entityMap.put("describe", entity.getDescribe());
-			
-			//需要测试
-//			entityMap.put("parent", entity.getParent());
-////			entityMap.put("children", entity.getChildren());
-			
-			super.modify(entityMap, Permission.class);
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
-			isSuccess = false;
-		}
-		return new ServiceReturnDto<Permission>(isSuccess,entity);
+	public boolean deleteById(Long id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
-
 }
 
 

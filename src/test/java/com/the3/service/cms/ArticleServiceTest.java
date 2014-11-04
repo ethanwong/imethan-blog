@@ -37,14 +37,14 @@ public class ArticleServiceTest {
 //		channel.setId("5321d66e01f2fd536c327283");
 //		entity.setChannel(channel);
 		
-		articleService.save(entity);
+//		articleService.save(entity);
 		
 	}
 	
 	@Test
 	public void testGetById(){
-		Article article = articleService.getById("532316bb0a5eec8e9684e0ee");
-		System.out.println("article:"+article);
+//		Article article = articleService.getById("532316bb0a5eec8e9684e0ee");
+//		System.out.println("article:"+article);
 	}
 	
 
