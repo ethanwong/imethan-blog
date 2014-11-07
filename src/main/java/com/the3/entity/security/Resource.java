@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -32,13 +34,32 @@ public class Resource extends BaseEntity {
 	
 	private static final long serialVersionUID = 6701956302298630995L;
 	
+	@NotNull
+	@Size(min=4, max=20,message="title must be between 4 and 20")
 	private String name;//名称
+	
+	@NotNull
+	@Size(min=4,message="module must not by null")
 	private String module;//模块名称
+	
+	@NotNull
+	@Size(min=4,message="url must not by null")
 	private String url;//URL
+	
+	@NotNull
+	@Size(min=4,message="intro must not by null")
 	private String intro;//描述
+	
 	private boolean isRoot;//是否是根节点
 	@Transient
 	private boolean open = true;
+	
+	public Resource(){
+	}
+	
+	public Resource(Long id){
+		this.setId(id);
+	}
 	
 	public boolean isOpen() {
 		return open;
@@ -62,7 +83,7 @@ public class Resource extends BaseEntity {
 		this.parentId = parentId;
 	}
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.LAZY)
 	@JoinColumn(name="pid")
 	private Resource parent;//父级
 	

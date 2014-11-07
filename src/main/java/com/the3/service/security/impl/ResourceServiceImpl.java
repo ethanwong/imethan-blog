@@ -1,5 +1,6 @@
 package com.the3.service.security.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -64,6 +65,12 @@ public class ResourceServiceImpl implements ResourceService {
 			isSuccess = false;
 		}
 		return isSuccess;
+	}
+
+	@Override
+	public List<Resource> getRootResource() {
+		List<Resource> list = resourceRepository.findByIsRoot(true);
+		return list;
 	}
 }
 

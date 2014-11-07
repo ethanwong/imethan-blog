@@ -1,5 +1,7 @@
 package com.the3.repository.security;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +17,9 @@ import com.the3.entity.security.Resource;
  */
 @Repository
 public interface ResourceRepository  extends JpaRepository<Resource, Long>,CrudRepository<Resource, Long> {
+
+	
+	List<Resource> findByIsRoot(boolean b);
 
 
 }

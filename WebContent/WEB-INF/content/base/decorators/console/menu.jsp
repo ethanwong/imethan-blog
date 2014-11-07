@@ -30,6 +30,23 @@
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
     <%@ include file="/WEB-INF/content/base/js.jsp"%>
+    
+    
+    
+    <!-- jqgrid begin-->
+	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/jqGrid.bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/grid.locale-cn.js" type="text/javascript"></script>
+	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/jquery.jqGrid.src.js" type="text/javascript"></script>
+	<!-- jqgrid end-->
+	
+	<!-- ztree begin -->
+	<link rel="stylesheet" href="${root}/theme/jtree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="${root}/theme/jtree/js/jquery.ztree.all-3.5.js"></script>
+	<!-- ztree end -->
+	
 </head>
 
 <body>
@@ -102,7 +119,7 @@
 		
 		<!-- 提醒信息 -->
 		<div id="topWarn" class="alert alert-success alert-dismissable" style="display: none">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<button type="button" class="close" onclick="closeTopWarn(this)">&times;</button>
 			<strong></strong>
 			<p style="display: inline;"></p>
 		</div>
@@ -110,11 +127,11 @@
 	</div>
 	<!-- /container -->
 
-	<div class="footer">
-		<div class="container" style="width: 970px;">
-			<p class="text-muted">A simple website by ethan.</p>
-		</div>
-	</div>
+<!-- 	<div class="footer"> -->
+<!-- 		<div class="container" style="width: 970px;"> -->
+<!-- 			<p class="text-muted">A simple website by ethan.</p> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
 	<!-- common -->
 	<!-- common warn Modal -->

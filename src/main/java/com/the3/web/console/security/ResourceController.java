@@ -1,16 +1,12 @@
 package com.the3.web.console.security;
 
-import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.codehaus.jackson.JsonEncoding;
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.JsonGenerator;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import org.springframework.web.util.WebUtils;
 
-import com.the3.base.web.BaseController;
 import com.the3.base.web.SearchFilter;
 import com.the3.base.web.SuperController;
 import com.the3.dto.web.WebReturnDto;
@@ -55,34 +50,47 @@ public class ResourceController extends SuperController {
 	@ResponseBody
 	@RequestMapping(value="json",method=RequestMethod.POST)
 	public String json(){
-		Resource resource = resourceService.getById(1l);
+		List<Resource> resource = resourceService.getRootResource();
 		return JsonUtils.writeValueAsString(resource);
 	}
 	
-	@RequestMapping(value="/{page}/{size}", method = {RequestMethod.GET,RequestMethod.POST})
-	public String list(Model model, ServletRequest request, @PathVariable int page, @PathVariable int size) {
-		Map<String,Object> parameters = WebUtils.getParametersStartingWith(request, SearchFilter.prefix);
-		
-		page = page >=0 ? page : defaultPage;
-		size = size >0 ? size : defaultSize;
-		
-		Page<Resource> result = resourceService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
-		model.addAttribute("result", result);
-		
-		
-		return "console/security/resource";
-	}
+//	@RequestMapping(value="/{page}/{size}", method = {RequestMethod.GET,RequestMethod.POST})
+//	public String list(Model model, ServletRequest request, @PathVariable int page, @PathVariable int size) {
+//		Map<String,Object> parameters = WebUtils.getParametersStartingWith(request, SearchFilter.prefix);
+//		
+//		page = page >=0 ? page : defaultPage;
+//		size = size >0 ? size : defaultSize;
+//		
+//		Page<Resource> result = resourceService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
+//		model.addAttribute("result", result);
+//		
+//		
+//		return "console/security/resource";
+//	}
 
 
-	@RequestMapping(value="/input/{isRoot}", method = RequestMethod.GET)
-	public String input(Model model,@PathVariable String isRoot) {
-		System.out.println("------------isRoot:"+isRoot);
-		model.addAttribute("isRoot", isRoot);
-		return "console/security/resource-input";
-	}
+//	@RequestMapping(value="/input/{isRoot}", method = RequestMethod.GET)
+//	public String input(Model model,@PathVariable String isRoot) {
+//		System.out.println("------------isRoot:"+isRoot);
+//		model.addAttribute("isRoot", isRoot);
+//		return "console/security/resource-input";
+//	}
 	
+	
+	@ResponseBody
 	@RequestMapping(value="/save",method = RequestMethod.POST)
-	public String save(@ModelAttribute("resource") Resource resource, BindingResult result, RedirectAttributesModelMap redirectAttributesModelMap) {
+	public WebReturnDto save(@ModelAttribute("resource") Resource resource, BindingResult result,ServletRequest request) {
+		
+		System.out.println("----------resource:"+resource);
+		System.out.println("----------name:"+request.getParameter("name"));
+		System.out.println("----------parentId:"+request.getParameter("parentId"));
+		if(StringUtils.isBlank(request.getParameter("parentId"))){
+			resource.setRoot(true);
+		}else{
+			String parentId = request.getParameter("parentId");
+			resource.setParent(new Resource(Long.valueOf(parentId.trim())));
+		}
+		
 		boolean isSuccess = true;
 		String message = "添加成功。";
 		if(result.hasErrors()){
@@ -91,8 +99,8 @@ public class ResourceController extends SuperController {
 		}else{
 			isSuccess = resourceService.saveOrModify(resource).isSuccess();
 		}
-		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
-		return "redirect:/console/security/resource/"+defaultPage+"/"+defaultSize;
+		
+		return new WebReturnDto(isSuccess,message);
 	}
 
 	public String view(Model model, String id, ServletResponse response) {
@@ -108,11 +116,10 @@ public class ResourceController extends SuperController {
 	}
 
 
-	@RequestMapping(value="/delete/{id}/{page}/{size}", method = {RequestMethod.POST,RequestMethod.GET})
-	public String delete(Model model,@PathVariable String id,@PathVariable int page,@PathVariable int size,
-			RedirectAttributesModelMap redirectAttributesModelMap,
-			ServletRequest request) {
-		
+//	@RequestMapping(value="/delete/{id}/{page}/{size}", method = {RequestMethod.POST,RequestMethod.GET})
+//	public String delete(Model model,@PathVariable String id,@PathVariable int page,@PathVariable int size,
+//			RedirectAttributesModelMap redirectAttributesModelMap,
+//			ServletRequest request) {
 //		boolean isSuccess = resourceService.deleteById(id);
 //		String message = "";
 //		if(isSuccess){
@@ -121,20 +128,8 @@ public class ResourceController extends SuperController {
 //			message = "删除失败。";
 //		}
 //		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
-		return "redirect:/console/security/resource/"+page+"/"+size;
-	}
+//		return "redirect:/console/security/resource/"+page+"/"+size;
+//	}
 
-
-	public String input(Model model) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public String index(RedirectAttributesModelMap redirectAttributesModelMap) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 
 }
