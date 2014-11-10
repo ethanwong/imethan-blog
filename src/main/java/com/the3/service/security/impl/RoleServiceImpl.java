@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.the3.dto.service.ServiceReturnDto;
+import com.the3.entity.security.Resource;
 import com.the3.entity.security.Role;
 import com.the3.repository.security.RoleRepository;
 import com.the3.service.security.RoleService;
@@ -64,7 +65,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public boolean deleteById(Long id) {
+	public ServiceReturnDto<Resource> deleteById(Long id) {
 		boolean isSuccess = true;
 		try {
 //			roleRepository.delete(id);
@@ -73,7 +74,7 @@ public class RoleServiceImpl implements RoleService {
 			isSuccess = false;
 			logger.error(e.getMessage());
 		}
-		return isSuccess;
+		return null;
 	}
 
 }

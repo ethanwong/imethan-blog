@@ -1,12 +1,13 @@
 package com.the3.service.security.impl;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,9 +31,12 @@ public class ResourceServiceImpl implements ResourceService {
 	
 	@Autowired
 	private ResourceRepository resourceRepository;
+	@PersistenceContext 
+	private EntityManager entityManger;
 	
 
 	@Override
+	@Transactional(readOnly = false)
 	public ServiceReturnDto<Resource> saveOrModify(Resource entity) {
 		boolean isSuccess = true;
 		try {
@@ -45,32 +49,65 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	@Override
-	public Page<Resource> getPage(Map<String, Object> parameters,PageRequest pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Resource getById(Long id) {
 		return resourceRepository.findOne(id);
 	}
 
 	@Override
-	public boolean deleteById(Long id) {
+	@Transactional(readOnly = false)
+	public ServiceReturnDto<Resource> deleteById(Long id) {
 		boolean isSuccess = true;
+		String message = "删除成功";
 		try {
-			resourceRepository.delete(id);
+			if(this.isChildrenExists(id)){
+				message = "删除失败,先删除子节点";
+				isSuccess = false;
+			}else{
+				resourceRepository.delete(id);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			isSuccess = false;
 		}
-		return isSuccess;
+		return new ServiceReturnDto<Resource>(isSuccess,message);
 	}
 
 	@Override
 	public List<Resource> getRootResource() {
 		List<Resource> list = resourceRepository.findByIsRoot(true);
 		return list;
+	}
+	
+	/**
+	 * 是否存在父亲节点
+	 * @param id
+	 * @return
+	 */
+	@SuppressWarnings("unused")
+	private boolean isParentExists(Long id){
+		boolean isExists = false;
+		if(resourceRepository.findOne(id).getParent() != null){
+			isExists = true;
+		}
+		return isExists;
+	}
+	
+	/**
+	 * 是否存在孩子节点
+	 * @param id
+	 * @return
+	 */
+	private boolean isChildrenExists(Long id){
+		boolean isExists = false;
+		Resource resource = resourceRepository.findOne(id);
+		if(resource != null){
+			Set<Resource> list = resource.getChildrens();
+			if(list != null && !list.isEmpty()){
+				isExists = true;
+			}
+		}
+		
+		return isExists;
 	}
 }
 

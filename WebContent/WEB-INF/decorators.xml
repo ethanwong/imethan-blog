@@ -11,7 +11,7 @@
 	</excludes>
 
 	<!-- 后台菜单装饰页 -->
-	<decorator name="console" page="console/menu.jsp">
+	<decorator name="console" page="console/default.jsp">
 		<pattern>/console/*</pattern>
 	</decorator>
 	

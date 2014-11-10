@@ -2,6 +2,8 @@ package com.the3.dto.web;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 /**
  * WebReturnDto.java
  *
@@ -39,8 +41,7 @@ public class WebReturnDto implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "WebReturnDto [isSuccess=" + isSuccess + ", message=" + message
-				+ "]";
+		return ToStringBuilder.reflectionToString(this);
 	}
 	
 }

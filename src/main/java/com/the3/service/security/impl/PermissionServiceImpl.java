@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.security.Permission;
+import com.the3.entity.security.Resource;
 import com.the3.repository.security.PermissionRepository;
 import com.the3.service.security.PermissionService;
 
@@ -82,9 +83,9 @@ public class PermissionServiceImpl  implements PermissionService {
 	}
 
 	@Override
-	public boolean deleteById(Long id) {
+	public ServiceReturnDto<Resource> deleteById(Long id) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 }
 

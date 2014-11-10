@@ -29,13 +29,13 @@ import com.the3.base.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_security_resource")
-@JsonIgnoreProperties(value={"parent","roles","permissions","modifyTime","createTime","intro","module","url"})
+@JsonIgnoreProperties(value={"parent","roles","permissions","modifyTime","createTime","url"})
 public class Resource extends BaseEntity {
 	
 	private static final long serialVersionUID = 6701956302298630995L;
 	
 	@NotNull
-	@Size(min=4, max=20,message="title must be between 4 and 20")
+	@Size(min=4, max=20,message="name must be between 4 and 20")
 	private String name;//名称
 	
 	@NotNull
@@ -67,6 +67,17 @@ public class Resource extends BaseEntity {
 	public void setOpen(boolean open) {
 		this.open = open;
 	}
+	
+	@Transient
+	private String urls;
+
+	public String getUrls() {
+		return url;
+	}
+
+	public void setUrls(String urls) {
+		this.urls = urls;
+	}
 
 	@Transient
 	private Long parentId;
@@ -75,7 +86,7 @@ public class Resource extends BaseEntity {
 		if(parent != null){
 			return this.parent.getId();
 		}else{
-			return 0l;
+			return null;
 		}
 		
 	}
@@ -83,18 +94,18 @@ public class Resource extends BaseEntity {
 		this.parentId = parentId;
 	}
 	
-	@ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.REFRESH},fetch = FetchType.LAZY)
 	@JoinColumn(name="pid")
 	private Resource parent;//父级
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy="parent")
+	@OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY,mappedBy="parent")
 	@OrderBy("id")
 	private Set<Resource> childrens = new HashSet<Resource>();//子级
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "resources", fetch = FetchType.LAZY)
 	private Set<Role> roles = new HashSet<Role>();//角色
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy="resource")
+	@OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY,mappedBy="resource")
 	@OrderBy("id")
 	private Set<Permission> permissions = new HashSet<Permission>();//授权
 	

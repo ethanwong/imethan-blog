@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.cms.Channel;
+import com.the3.entity.security.Resource;
 import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.cms.ChannelService;
 
@@ -71,7 +72,7 @@ public class ChannelServiceImpl implements ChannelService {
 	}
 
 	@Override
-	public boolean deleteById(Long id) {
+	public ServiceReturnDto<Resource> deleteById(Long id) {
 		boolean isSuccess = true;
 		try {
 //			channelRepository.delete(id);
@@ -80,7 +81,7 @@ public class ChannelServiceImpl implements ChannelService {
 			logger.error(e.getMessage());
 			isSuccess = false;
 		}
-		return isSuccess;
+		return null;
 	}
 
 

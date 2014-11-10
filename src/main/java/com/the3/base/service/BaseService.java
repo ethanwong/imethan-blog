@@ -4,7 +4,9 @@ import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
 import com.the3.dto.service.ServiceReturnDto;
+import com.the3.entity.security.Resource;
 
 /**
  * BaseService.java
@@ -41,7 +43,7 @@ public interface BaseService<T> {
 	 * @param id
 	 * @return
 	 */
-	public boolean deleteById(Long id);
+	public ServiceReturnDto<Resource> deleteById(Long id);
 	
 
 }

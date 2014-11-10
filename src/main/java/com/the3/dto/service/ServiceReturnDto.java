@@ -22,6 +22,19 @@ public class ServiceReturnDto<T> {
 		this.entity = entity;
 	}
 	
+	public ServiceReturnDto(boolean isSuccess,String message) {
+		super();
+		this.isSuccess = isSuccess;
+		this.message = message;
+	}
+	
+	public ServiceReturnDto(boolean isSuccess,String message, T entity) {
+		super();
+		this.isSuccess = isSuccess;
+		this.message = message;
+		this.entity = entity;
+	}
+	
 	public boolean isSuccess() {
 		return isSuccess;
 	}

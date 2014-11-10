@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.cms.Article;
+import com.the3.entity.security.Resource;
 import com.the3.repository.cms.ArticleRepository;
 import com.the3.service.cms.ArticleService;
 
@@ -71,14 +72,14 @@ public class ArticleServiceImpl implements ArticleService {
 
 
 	@Override
-	public boolean deleteById(Long id) {
+	public ServiceReturnDto<Resource> deleteById(Long id) {
 		try {
 //			articleRepository.delete(id);
-			return true;
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
-			return false;
+			return null;
 		}
 	}
 }
