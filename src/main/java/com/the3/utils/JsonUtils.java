@@ -1,6 +1,7 @@
 package com.the3.utils;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -19,6 +20,8 @@ public class JsonUtils {
 	
 	static{
 		objectMapper.setSerializationInclusion(Inclusion.NON_NULL);  
+		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		objectMapper.setDateFormat(sdf);
 	}
 	
 	public static String writeValueAsString(Object object) {

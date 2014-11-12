@@ -14,7 +14,7 @@ import com.the3.entity.security.Permission;
  * @time 2014年3月16日下午4:59:32
  */
 @Repository
-public interface PermissionRepository  extends JpaRepository<Permission, String>,CrudRepository<Permission, String> {
+public interface PermissionRepository  extends JpaRepository<Permission, Long>,CrudRepository<Permission, Long> {
 
 }
 

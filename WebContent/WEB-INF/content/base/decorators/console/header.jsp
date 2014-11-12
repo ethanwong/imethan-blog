@@ -34,7 +34,6 @@
 						<ul class="dropdown-menu">
 							<li><a href="${root}/console/security/user">User</a></li>
 							<li><a href="${root}/console/security/role">Role</a></li>
-							<li><a href="${root}/console/security/permission">Permission</a></li>
 							<li><a href="${root}/console/security/resource">Resource</a></li>
 						</ul>
 					</li>

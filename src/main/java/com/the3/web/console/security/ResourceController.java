@@ -35,12 +35,12 @@ public class ResourceController{
 	private ResourceService resourceService;
 	
 	@RequestMapping(value="", method = {RequestMethod.GET,RequestMethod.POST})
-	public String index(Model model, ServletRequest request) {
+	public String resource(Model model, ServletRequest request) {
 		return "console/security/resource";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="json",method=RequestMethod.POST)
+	@RequestMapping(value="json",method = {RequestMethod.GET,RequestMethod.POST})
 	public String json(){
 		List<Resource> resource = resourceService.getRootResource();
 		return JsonUtils.writeValueAsString(resource);
@@ -49,8 +49,6 @@ public class ResourceController{
 	@ResponseBody
 	@RequestMapping(value="/save",method = RequestMethod.POST)
 	public WebReturnDto save(@ModelAttribute("resource") Resource resource, BindingResult result,ServletRequest request) {
-		
-		System.out.println("----------resource:"+resource);
 		
 		//设置父级节点
 		if(StringUtils.isNotBlank(request.getParameter("parentId"))){
@@ -76,6 +74,4 @@ public class ResourceController{
 		ServiceReturnDto<Resource> result = resourceService.deleteById(id);
 		return new WebReturnDto(result.isSuccess(),result.getMessage());
 	}
-
-
 }

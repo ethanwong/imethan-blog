@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>ImEthan Example</title>
+<title>ImEthan</title>
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
 	<link href="${root}/theme/css/bootstrap.css" rel="stylesheet">

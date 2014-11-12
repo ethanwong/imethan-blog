@@ -25,6 +25,7 @@
 					onClick:clickNode
 				}
 		};
+		
 		//初始化ztree
 		function initZtree(){
 			$.ajax({
@@ -39,30 +40,25 @@
 		
 		//点击节点事件
 		function clickNode(event, treeId, treeNode){
-// 			$('#input-resource').css("display","block");
+			//加载资源信息
 			if(treeNode.root==true){
 				$("#isRoot").val("true");
 			}else{
 				$("#isRoot").val("false");
 			}
 			$("font").text("Modify ");
-			
 			$("#id").val(treeNode.id);
 			$("#parentId").val(treeNode.parentId);
 			$("#name").val(treeNode.name);
 			$("#module").val(treeNode.module);
 			$("#url").val(treeNode.urls);
 			$("#intro").val(treeNode.intro);
-			
+			reloadPermission(treeNode.id);//加载授权信息
 		};
-		
 		
 		//页面加载时初始化脚本
 		$(document).ready(function () {
-			
-			//初始化ztree
-			initZtree();
-				
+			initZtree();//初始化ztree
 		});
 		
 		//点击添加根节点
@@ -70,27 +66,40 @@
 			$("font").text("Add root");
 			$("#isRoot").val("true");
 			$('#input-title').css("display","block");
-			
-			clearForm();
-
+			clearForm();//清除表单
 		};
 		
-		//提交表单
+		//提交保存资源表单
 		function submitForm(){
-			$.ajax({
-				url:"${root}/console/security/resource/save?name="+$("#name").val()+"&module="+$("#module").val()+"&url="+$("#url").val()+"&intro="+$("#intro").val()+"&root="+$("#isRoot").val()+"&id="+$("#id").val()+"&parentId="+$("#parentId").val(),
-				type:"POST",
-				dateType:"json",
-				success:function(msg){
-					showMsg("success","操作成功");
-					
-					//初始化ztree
-					initZtree();
-				},
-				error:function(){
-					showMsg("error","操作失败");
-				}
-			});
+			if($("#input-form").valid()){
+				var id = $("#id").val();
+				var name = $("#name").val();
+				var module = $("#module").val();
+				var url = $("#url").val();
+				var intro = $("#intro").val();
+				var root = $("#isRoot").val();
+				var parentId = $("#parentId").val();
+				$.ajax({
+					url:"${root}/console/security/resource/save?name="+name+"&module="+module+"&url="+url+"&intro="+intro+"&root="+root+"&id="+id+"&parentId="+parentId,
+					type:"POST",
+					dateType:"json",
+					success:function(msg){
+						showMsg("success","操作成功");
+						//初始化ztree
+						initZtree();
+						//清除操作表单
+						if(id == ""){
+							$("#name").val("");
+							$("#module").val("");
+							$("#url").val("");
+							$("#intro").val("");
+						}
+					},
+					error:function(){
+						showMsg("error","操作失败");
+					}
+				});
+			}
 		};
 		
 		//清除表单
@@ -103,7 +112,7 @@
 			$("#parentId").val("");
 		};
 		
-		//删除一条记录
+		//删除一条资源记录
 		function deleteOne(){
 			$('#deleteConfirmModal').modal({
 			 	 keyboard: true
@@ -115,16 +124,20 @@
 					dateType:"json",
 					success:function(msg){
 						var result = eval("(" + msg + ")");
-						showMsg("success",result.message);
-						
+						var messageType = "success";
+						if(result.success == false){
+							messageType = "error";
+						}
+						showMsg(messageType,result.message);
 						//初始化ztree
 						initZtree();
-						
-						$("#id").val("");
-						$("#name").val("");
-						$("#module").val("");
-						$("#url").val("");
-						$("#intro").val("");
+						if(result.success == true){
+							$("#id").val("");
+							$("#name").val("");
+							$("#module").val("");
+							$("#url").val("");
+							$("#intro").val("");
+						}
 					},
 					error:function(msg){
 						var result = eval("(" + msg + ")");
@@ -136,20 +149,109 @@
 		
 		//添加子节点
 		function inputSubResource(){
-			
 			$("#parentId").val($("#id").val());//设置父亲节点ID
-			
 			$("#id").val("");
 			$("#name").val("");
 			$("#module").val("");
 			$("#url").val("");
 			$("#intro").val("");
-			
 			$("font").text("Add sub");
 			$("#isRoot").val("false");
 			$('#input-title').css("display","block");
 		};
 		
+		//加载授权信息
+		function reloadPermission(resourceId){
+			$("#permission").css("display","block");
+			$.ajax({
+				url:"${root}/console/security/permission/json/"+resourceId,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					$("#permissionRow").html("");
+					var result = eval("(" + data + ")");
+					$.each(result, function(i, item) {
+			            $("#permissionRow").append(
+			            	"<tr>"+
+								"<td>"+item.permission+"</td>"+
+								"<td><button type='button' class='btn btn-primary btn-xs' onclick='modifyPermission("+item.id+")'>Modify</button> <button type='button' class='btn btn-danger btn-xs' onclick='deletePermission("+item.id+")'>Delete</button></td>"+
+							"</tr>");
+			        });
+				},
+				error:function(data){
+					var result = eval("(" + data + ")");
+				}
+			});
+		};
+		
+		//修改授权
+		function modifyPermission(id){
+			$.ajax({
+				url:"${root}/console/security/permission/detail/"+id,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					$('#modifyPermissionModal').modal(
+						$("#modifyPermissionModal").find("#id").val(result.id),
+						$("#modifyPermissionModal").find("#name").val(result.name),
+						$("#modifyPermissionModal").find("#permission").val(result.permission)
+					);
+				}
+			});
+		};
+		
+		//添加授权信息
+		function inputPermission(){
+			$('#modifyPermissionModal').modal(
+				$("#modifyPermissionModal").find(".modal-title").html("Add Permission"),
+				$("#modifyPermissionModal").find("#id").val(""),
+				$("#modifyPermissionModal").find("#name").val(""),
+				$("#modifyPermissionModal").find("#permission").val("")
+			);
+		}
+		
+		//保存或者更新授权信息
+		function savePermission(){
+			if($("#inputForm").valid()){
+				var id = $("#modifyPermissionModal").find("#id").val();
+				var name = $("#modifyPermissionModal").find("#name").val();
+				var permission = $("#modifyPermissionModal").find("#permission").val();
+				var resourceId = $("#id").val();
+				
+				$.ajax({
+					url:"${root}/console/security/permission/save?id="+id+"&name="+name+"&permission="+permission+"&resourceId="+resourceId,
+					type:"POST",
+					dateType:"json",
+					success:function(data){
+						var result = eval("(" + data + ")");
+						reloadPermission(resourceId);//重新加载授权信息
+						$('#modifyPermissionModal').modal('toggle');
+						showMsg("success",result.message);
+					}
+				});
+			}
+		}
+		
+		//删除授权
+		function deletePermission(id){
+			$('#deleteConfirmModal').modal({
+			 	 keyboard: true
+			});
+			$("#deleteConfirmModalClick").click(function(){
+				var resourceId = $("#id").val();
+				$.ajax({
+					url:"${root}/console/security/permission/delete/"+id,
+					type:"POST",
+					dateType:"json",
+					success:function(data){
+						var result = eval("(" + data + ")");
+						reloadPermission(resourceId);//重新加载授权信息
+						showMsg("success",result.message);
+					}
+				});
+			});
+		};
 	</script>
 	
 	<div class="row">
@@ -157,12 +259,12 @@
 			<button type="button" class="btn btn-primary btn-sm" onclick="inputRootResource(this)">Add Root</button>
 			<div id="resource-tree" class="ztree"></div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-5">
 			<h3 style="display: block;margin-top: 0px;"><font>Add root</font> resource</h3>
 			<form id="input-form" role="form" action="${root}/console/security/resource/save" method="post">
-				<input type="text" id="id" name="id" value="">
-				<input type="text" id="parentId" name="parentId" value="">
-				<input type="text" id="isRoot" name="root" value="true">
+				<input type="hidden" id="id" name="id" value="">
+				<input type="hidden" id="parentId" name="parentId" value="">
+				<input type="hidden" id="isRoot" name="root" value="true">
 				<div class="form-group">
 					<label for="exampleInputTitle">Name</label>
 					<input type="text" class="form-control required" id="name" placeholder="Enter name" name="name" >
@@ -184,10 +286,54 @@
 				<button type="button" class="btn btn-danger" onclick="deleteOne(this)">Delete</button>
 			</form>
 		</div>
-		<div class="col-md-3">
-			Permission Manage
+		<div class="col-md-4">
+			<div id="permission" style="display: none">
+				<button type="button" class="btn btn-primary btn-sm" onclick="inputPermission()">Add Permission</button>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th width="200px;">Permission</th>
+							<th width="160px;">Manage</th>
+						</tr>
+					</thead>
+					<tbody id="permissionRow">
+						
+					</tbody>
+				</table>
+			</div>
 		</div>
 		
 	</div>	
+	
+	
+	<div class="modal fade" id="modifyPermissionModal" tabindex="-1" role="dialog" aria-labelledby="modifyPermissionModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Modify permission</h4>
+				</div>
+				<div class="modal-body">
+					<form role="form"  method="post" action="" id="inputForm">
+						<input type="hidden"  name="id" id="id" value="">
+						<div class="modal-body">
+							  <div class="form-group">
+							    <label for="exampleInputEmail1">Name</label>
+							    <input type="text" class="form-control required" id="name" name="name" placeholder="Enter name" value="">
+							  </div>
+							  <div class="form-group">
+							    <label for="exampleInputEmail1">Permission</label>
+							    <input type="text" class="form-control required" id="permission" name="permission" placeholder="Enter permission" value="">
+							  </div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"  onclick="savePermission()" >Submit</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -30,7 +30,7 @@ public class Permission extends BaseEntity {
 	private String intro;//描述
 	private String permission;//权限
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY)
 	@JoinColumn(name="resource_id")
 	private Resource resource = new Resource();//资源
 	

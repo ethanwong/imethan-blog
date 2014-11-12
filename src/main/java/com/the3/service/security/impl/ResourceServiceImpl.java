@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.the3.dto.service.ServiceReturnDto;
+import com.the3.entity.security.Permission;
 import com.the3.entity.security.Resource;
+import com.the3.repository.security.PermissionRepository;
 import com.the3.repository.security.ResourceRepository;
 import com.the3.service.security.ResourceService;
 
@@ -31,6 +33,8 @@ public class ResourceServiceImpl implements ResourceService {
 	
 	@Autowired
 	private ResourceRepository resourceRepository;
+	@Autowired
+	private PermissionRepository permissionRepository;
 	@PersistenceContext 
 	private EntityManager entityManger;
 	
@@ -62,14 +66,33 @@ public class ResourceServiceImpl implements ResourceService {
 			if(this.isChildrenExists(id)){
 				message = "删除失败,先删除子节点";
 				isSuccess = false;
+			}else if(this.isPermissionExists(id)){
+				message = "删除失败,先删除授权信息";
+				isSuccess = false;
 			}else{
 				resourceRepository.delete(id);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			isSuccess = false;
 		}
 		return new ServiceReturnDto<Resource>(isSuccess,message);
+	}
+	
+	/**
+	 * 判断是否存在授权信息
+	 * @param id
+	 * @return
+	 */
+	private boolean isPermissionExists(Long id) {
+		Resource resource = resourceRepository.findOne(id);
+		Set<Permission> set = resource.getPermissions();
+		if(set != null && !set.isEmpty()){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	@Override
@@ -110,5 +133,3 @@ public class ResourceServiceImpl implements ResourceService {
 		return isExists;
 	}
 }
-
-

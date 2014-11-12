@@ -1,28 +1,19 @@
 package com.the3.service.security.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.security.Permission;
-import com.the3.entity.security.Resource;
 import com.the3.repository.security.PermissionRepository;
 import com.the3.service.security.PermissionService;
 
@@ -44,8 +35,6 @@ public class PermissionServiceImpl  implements PermissionService {
 	
 	@PersistenceContext 
 	private EntityManager entityManger;
-	@PersistenceUnit 
-	private EntityManagerFactory emf;
 	
 	@Override
 	public List<Permission> getByResourceId(Long resourceId) {
@@ -64,29 +53,38 @@ public class PermissionServiceImpl  implements PermissionService {
 	}
 
 	@Override
-	public ServiceReturnDto<Permission> saveOrModify(Permission entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Page<Permission> getPage(Map<String, Object> parameters,
-			PageRequest pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Permission getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return permissionRepository.findOne(id);
 	}
 
 	@Override
-	public ServiceReturnDto<Resource> deleteById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(readOnly = false)
+	public ServiceReturnDto<Permission> deleteById(Long id) {
+		boolean isSuccess = true;
+		String message = "删除成功";
+		try {
+			permissionRepository.delete(id);
+		} catch (Exception e) {
+			isSuccess = false;
+			message = "删除失败";
+			e.printStackTrace();
+		}
+		return new ServiceReturnDto<Permission>(isSuccess,message);
 	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public ServiceReturnDto<Permission> saveOrModify(Permission permission) {
+		boolean isSuccess = true;
+		String message = "操作成功";
+		try {
+			permissionRepository.save(permission);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+			message = "操作失败";
+		}
+		return new ServiceReturnDto<Permission>(isSuccess,message,permission);
+	}
+
 }
-
-

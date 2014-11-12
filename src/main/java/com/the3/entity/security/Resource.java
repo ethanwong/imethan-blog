@@ -35,19 +35,19 @@ public class Resource extends BaseEntity {
 	private static final long serialVersionUID = 6701956302298630995L;
 	
 	@NotNull
-	@Size(min=4, max=20,message="name must be between 4 and 20")
+	@Size(min=1, max=20,message="name must be between 4 and 20")
 	private String name;//名称
 	
 	@NotNull
-	@Size(min=4,message="module must not by null")
+	@Size(min=1,message="module must not by null")
 	private String module;//模块名称
 	
 	@NotNull
-	@Size(min=4,message="url must not by null")
+	@Size(min=1,message="url must not by null")
 	private String url;//URL
 	
 	@NotNull
-	@Size(min=4,message="intro must not by null")
+	@Size(min=1,message="intro must not by null")
 	private String intro;//描述
 	
 	private boolean isRoot;//是否是根节点
