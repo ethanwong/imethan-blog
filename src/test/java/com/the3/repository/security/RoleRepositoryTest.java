@@ -32,7 +32,7 @@ public class RoleRepositoryTest {
 	@Test
 	public void testSave(){
 		Role role = new Role();
-		role.setRolename("栏目管理员");
+		role.setName("栏目管理员");
 		List<Permission> allPermission = permissionRepository.findAll();
 //		role.setPermissions(allPermission);
 		roleRepository.save(role);

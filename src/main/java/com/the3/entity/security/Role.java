@@ -14,6 +14,7 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import com.the3.base.entity.BaseEntity;
 
@@ -25,14 +26,15 @@ import com.the3.base.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_security_role")
+@JsonIgnoreProperties(value = {"users","createTime"})
 public class Role extends BaseEntity {
 	
 	private static final long serialVersionUID = -6601962016508223381L;
 	
-	private String rolename;//角色名称
+	private String name;//角色名称
 	private String intro;//描述
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "roles", fetch = FetchType.LAZY)
+	@ManyToMany(cascade = {CascadeType.PERSIST}, mappedBy = "roles", fetch = FetchType.LAZY)
 	private Set<User> users = new HashSet<User>();//用户集合
     
 	public Set<User> getUsers() {
@@ -53,11 +55,11 @@ public class Role extends BaseEntity {
 	public void setResources(Set<Resource> resources) {
 		this.resources = resources;
 	}
-	public String getRolename() {
-		return rolename;
+	public String getName() {
+		return name;
 	}
-	public void setRolename(String rolename) {
-		this.rolename = rolename;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getIntro() {
 		return intro;

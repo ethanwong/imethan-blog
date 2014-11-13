@@ -174,7 +174,7 @@
 			            $("#permissionRow").append(
 			            	"<tr>"+
 								"<td>"+item.permission+"</td>"+
-								"<td><button type='button' class='btn btn-primary btn-xs' onclick='modifyPermission("+item.id+")'>Modify</button> <button type='button' class='btn btn-danger btn-xs' onclick='deletePermission("+item.id+")'>Delete</button></td>"+
+								"<td><button type='button' class='btn btn-default btn-xs' onclick='modifyPermission("+item.id+")'>Modify</button> <button type='button' class='btn btn-default btn-xs' onclick='deletePermission("+item.id+")'>Delete</button></td>"+
 							"</tr>");
 			        });
 				},

@@ -29,7 +29,7 @@ import com.the3.base.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_security_resource")
-@JsonIgnoreProperties(value={"parent","roles","permissions","modifyTime","createTime","url"})
+@JsonIgnoreProperties(value={"parent","roles","modifyTime","createTime","url"})
 public class Resource extends BaseEntity {
 	
 	private static final long serialVersionUID = 6701956302298630995L;
@@ -54,6 +54,17 @@ public class Resource extends BaseEntity {
 	@Transient
 	private boolean open = true;
 	
+	@Transient
+	private String nodeType = "resource";//Ztree节点类型，resource和permission,在角色授权编辑功能使用到,默认是resource类型
+	
+	public String getNodeType() {
+		return nodeType;
+	}
+
+	public void setNodeType(String nodeType) {
+		this.nodeType = nodeType;
+	}
+
 	public Resource(){
 	}
 	

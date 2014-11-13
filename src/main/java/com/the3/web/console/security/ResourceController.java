@@ -34,13 +34,13 @@ public class ResourceController{
 	@Autowired
 	private ResourceService resourceService;
 	
-	@RequestMapping(value="", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="", method = {RequestMethod.GET})
 	public String resource(Model model, ServletRequest request) {
 		return "console/security/resource";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="json",method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="json",method = {RequestMethod.POST})
 	public String json(){
 		List<Resource> resource = resourceService.getRootResource();
 		return JsonUtils.writeValueAsString(resource);
