@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -54,6 +55,18 @@ public class Role extends BaseEntity {
 	}
 	public void setResources(Set<Resource> resources) {
 		this.resources = resources;
+	}
+	
+	@ManyToMany
+	@JoinTable(name="imethan_security_role_permission",joinColumns = { @JoinColumn(name ="role_id" )} ,inverseJoinColumns = { @JoinColumn(name = "permission_id")})
+	@OrderBy("id")
+	private Set<Permission> permissions = new HashSet<Permission>();//授权
+	
+	public Set<Permission> getPermissions() {
+		return permissions;
+	}
+	public void setPermissions(Set<Permission> permissions) {
+		this.permissions = permissions;
 	}
 	public String getName() {
 		return name;

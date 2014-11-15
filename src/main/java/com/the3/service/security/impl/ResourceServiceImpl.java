@@ -1,5 +1,6 @@
 package com.the3.service.security.impl;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,8 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.security.Permission;
 import com.the3.entity.security.Resource;
+import com.the3.entity.security.Role;
 import com.the3.repository.security.PermissionRepository;
 import com.the3.repository.security.ResourceRepository;
+import com.the3.repository.security.RoleRepository;
 import com.the3.service.security.ResourceService;
 
 
@@ -35,6 +38,8 @@ public class ResourceServiceImpl implements ResourceService {
 	private ResourceRepository resourceRepository;
 	@Autowired
 	private PermissionRepository permissionRepository;
+	@Autowired
+	private RoleRepository roleRepository;
 	@PersistenceContext 
 	private EntityManager entityManger;
 	
@@ -96,8 +101,8 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	@Override
-	public List<Resource> getRootResource() {
-		List<Resource> list = resourceRepository.findByIsRoot(true);
+	public Set<Resource> getRootResource() {
+		Set<Resource> list = resourceRepository.findByIsRoot(true);
 		return list;
 	}
 	
@@ -131,5 +136,55 @@ public class ResourceServiceImpl implements ResourceService {
 		}
 		
 		return isExists;
+	}
+
+	@Override
+	public Set<Resource> getResourcePermissionForRoleInput(Long roleId) {
+		
+		//获取选中的资源和授权信息
+		Role role = roleRepository.findOne(roleId);
+		Set<Resource> checkResourceSet = role.getResources();
+		Set<Permission> checkPermissionSet = role.getPermissions();
+		
+		Set<Resource> resources = resourceRepository.findByIsRoot(true);
+		for(Resource resource : resources){//遍历父级节点
+			
+			//设置父级资源节点是否选中
+			if(checkResourceSet.contains(resource)){
+				resource.setChecked(true);
+			}
+			
+			Set<Resource> childrens = resource.getChildrens();
+			for(Resource children : childrens){//遍历子级节点
+				
+				//设置子级资源节点是否选中
+				if(checkResourceSet.contains(children)){
+					children.setChecked(true);
+					resource.setChecked(true);
+				}
+				
+				Set<Permission> permissions = children.getPermissions();//子级节点的授权信息
+				if(children.getChildrens() ==null || children.getChildrens().isEmpty()){
+					Set<Resource> resourceChildrensTemp = new HashSet<Resource>();
+					
+					for(Permission permission : permissions){
+						Resource resourceChildrenTemp = new Resource();
+						resourceChildrenTemp.setId(permission.getId());
+						resourceChildrenTemp.setName(permission.getName());
+						resourceChildrenTemp.setNodeType("permission");
+						
+						//设置授权节点是否选中
+						if(checkPermissionSet.contains(permission)){
+							resourceChildrenTemp.setChecked(true);
+							children.setChecked(true);
+							resource.setChecked(true);
+						}
+						resourceChildrensTemp.add(resourceChildrenTemp);
+					}
+					children.setChildrens(resourceChildrensTemp);
+				}
+			}
+		}
+		return resources;
 	}
 }

@@ -2,6 +2,7 @@ package com.the3.service.security;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -70,7 +71,7 @@ public class ResourceServiceTest extends AbstractTransactionalJUnit4SpringContex
 	
 	@Test
 	public void testFindByIsRoot(){
-		List<Resource> list = resourceService.getRootResource();
+		Set<Resource> list = resourceService.getRootResource();
 		System.out.println(list);
 	}
 

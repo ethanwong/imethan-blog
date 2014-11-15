@@ -51,12 +51,22 @@ public class Resource extends BaseEntity {
 	private String intro;//描述
 	
 	private boolean isRoot;//是否是根节点
-	@Transient
-	private boolean open = true;
 	
+	@Transient
+	private boolean open = true;//节点是否打开
 	@Transient
 	private String nodeType = "resource";//Ztree节点类型，resource和permission,在角色授权编辑功能使用到,默认是resource类型
+	@Transient
+	private boolean isChecked;//节点是否选中
 	
+	public boolean isChecked() {
+		return isChecked;
+	}
+
+	public void setChecked(boolean isChecked) {
+		this.isChecked = isChecked;
+	}
+
 	public String getNodeType() {
 		return nodeType;
 	}
@@ -113,9 +123,6 @@ public class Resource extends BaseEntity {
 	@OrderBy("id")
 	private Set<Resource> childrens = new HashSet<Resource>();//子级
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "resources", fetch = FetchType.LAZY)
-	private Set<Role> roles = new HashSet<Role>();//角色
-	
 	@OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY,mappedBy="resource")
 	@OrderBy("id")
 	private Set<Permission> permissions = new HashSet<Permission>();//授权
@@ -139,12 +146,7 @@ public class Resource extends BaseEntity {
 	public void setPermissions(Set<Permission> permissions) {
 		this.permissions = permissions;
 	}
-	public Set<Role> getRoles() {
-		return roles;
-	}
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
+
 	public String getName() {
 		return name;
 	}

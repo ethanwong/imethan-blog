@@ -1,6 +1,7 @@
 package com.the3.repository.security;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
@@ -19,7 +20,7 @@ import com.the3.entity.security.Resource;
 public interface ResourceRepository  extends JpaRepository<Resource, Long>,CrudRepository<Resource, Long> {
 
 	
-	List<Resource> findByIsRoot(boolean b);
+	Set<Resource> findByIsRoot(boolean b);
 
 
 }

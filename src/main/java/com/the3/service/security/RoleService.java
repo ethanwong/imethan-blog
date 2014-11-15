@@ -22,9 +22,10 @@ public interface RoleService{
 	/**
 	 * 保存或更新
 	 * @param entity
+	 * @param resourcePermission
 	 * @return
 	 */
-	public ServiceReturnDto<Role> saveOrModify(Role entity);
+	public ServiceReturnDto<Role> saveOrModify(Role entity,String resourcePermission);
 	
 	/**
 	 * 获取分页列表
@@ -45,7 +46,7 @@ public interface RoleService{
 	 * @param id
 	 * @return
 	 */
-	public ServiceReturnDto<Resource> deleteById(Long id);
+	public ServiceReturnDto<Role> deleteById(Long id);
 	
 	/**
 	 * 根据ID获取

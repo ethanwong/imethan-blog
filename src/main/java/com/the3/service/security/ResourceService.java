@@ -1,6 +1,7 @@
 package com.the3.service.security;
 
 import java.util.List;
+import java.util.Set;
 
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.security.Resource;
@@ -39,7 +40,14 @@ public interface ResourceService {
 	 * 获取根节点
 	 * @return
 	 */
-	List<Resource> getRootResource();
+	Set<Resource> getRootResource();
+	
+	/**
+	 * 获取资源和授权关联列表
+	 * @param roleId
+	 * @return
+	 */
+	public Set<Resource> getResourcePermissionForRoleInput(Long roleId);
 	
 	
 }
