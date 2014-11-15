@@ -16,7 +16,7 @@
 		});
 		
 		//加载角色列表
-		function reloadRoleList(){
+		function reloadRoleList(checkedId){
 			$(".list-group").html("");
 			$.ajax({
 				url:"${root}/console/security/role/json",
@@ -25,12 +25,22 @@
 				success:function(data){
 					var result = eval("(" + data + ")");
 					$.each(result, function(i, item) {
-						if(i==0){
-							 $(".list-group").append("<a id='a"+i+"' href='javascript:;'  class='list-group-item active'>"+(i+1)+"、"+item.name+"</a> ");
-							 setDetail(item.id);//默认展开第一个角色信息
+						if(checkedId != undefined){
+							if(item.id == checkedId){
+								$(".list-group").append("<a id='a"+i+"' href='javascript:;'  class='list-group-item active'>"+(i+1)+"、"+item.name+"</a> ");
+								 setDetail(item.id);//展开选中角色信息
+							}else{
+								$(".list-group").append("<a id='a"+i+"' href='javascript:;' class='list-group-item'>"+(i+1)+"、"+item.name+"</a> ");
+							}
 						}else{
-							 $(".list-group").append("<a id='a"+i+"' href='javascript:;' class='list-group-item'>"+(i+1)+"、"+item.name+"</a> ");
-						};
+							if(i==0){
+								 $(".list-group").append("<a id='a"+i+"' href='javascript:;'  class='list-group-item active'>"+(i+1)+"、"+item.name+"</a> ");
+								 setDetail(item.id);//默认展开第一个角色信息
+							}else{
+								 $(".list-group").append("<a id='a"+i+"' href='javascript:;' class='list-group-item'>"+(i+1)+"、"+item.name+"</a> ");
+							};
+						}
+
 						
 						//绑定点击事件
 						$('#a'+i).bind('click', function() { 
@@ -55,7 +65,8 @@
 		//ztree参数设置
 		var setting = {
 				view: {
-					showLine: true
+					showLine: true,
+					fontCss : {size:"14"}
 				},
 				check: {
 					enable: true
@@ -86,7 +97,7 @@
 					$("#id").val(result.id);
 					$("#name").val(result.name);
 					$("#intro").val(result.intro);
-					
+					$("#deleteButton").css("display","inline");
 					setResourcePermissionZtree(result.id);
 				}
 			});
@@ -146,8 +157,9 @@
 						if(result.success == false){
 							messageType = "error";
 						};
+						var checkedId = id;
 						//加载角色列表
-						reloadRoleList();
+						reloadRoleList(checkedId);
 						
 						showMsg(messageType,result.message);
 						
@@ -159,6 +171,7 @@
 		//添加角色
 		function inputRole(object){
 			$("h3").text("Add role");
+			$("#deleteButton").css("display","none");
 			$("#id").val("");
 			$("#name").val("");
 			$("#intro").val("");
@@ -201,7 +214,7 @@
 		<div class="col-md-9">
 			<h3 style="display: block;margin-top: 0px;">Modify role</h3>
 			<form id="input-form" action="" method="post">
-				<input type="text" id="id" name="id" value="">
+				<input type="hidden" id="id" name="id" value="">
 				<div class="form-group">
 					<label for="exampleInputTitle">Name</label>
 					<input type="text" class="form-control required" id="name" placeholder="Enter name" name="name" >
@@ -220,7 +233,7 @@
 					</div>
 				</div>
 				<button type="button" class="btn btn-default" onclick="submitForm(this)">Submit</button>
-				<button type="button" class="btn btn-danger" onclick="deleteRole(this)">Delete</button>
+				<button id="deleteButton" type="button" class="btn btn-danger" onclick="deleteRole(this)">Delete</button>
 			</form>
 		</div>
 	</div>

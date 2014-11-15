@@ -128,12 +128,17 @@ public class RoleServiceImpl implements RoleService {
 		boolean isSuccess = true;
 		String message = "删除成功";
 		try {
-			if(isResourceAndPermissionExists(id)){
-				isSuccess = false;
-				message = "删除失败,请先删除资源和授权";
-			}else{
+//			if(isResourceAndPermissionExists(id)){
+//				isSuccess = false;
+//				message = "删除失败,请先删除资源和授权";
+//			}else{
+				//先清除资源和授权信息
+				Role role = roleRepository.findOne(id);
+				role.setPermissions(null);
+				role.setResources(null);
+				roleRepository.save(role);
 				roleRepository.delete(id);
-			}
+//			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
