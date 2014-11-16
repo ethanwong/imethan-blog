@@ -33,9 +33,8 @@ public class ChannelServiceImpl implements ChannelService {
 	@Autowired
 	private ChannelRepository channelRepository;
 
-	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto<Channel> saveOrModify(Channel entity) {
+	public ServiceReturnDto saveOrModify(Channel entity) {
 		boolean isSuccess = true;
 		try {
 			entity = channelRepository.save(entity);
@@ -44,10 +43,9 @@ public class ChannelServiceImpl implements ChannelService {
 			isSuccess = false;
 			logger.error(e.getMessage());
 		}
-		return new ServiceReturnDto<Channel>(isSuccess,entity);
+		return new ServiceReturnDto(isSuccess,entity);
 	}
 
-	@Override
 	public Page<Channel> getPage(Map<String,Object> parameters,PageRequest pageable) {
 		
 		try {
@@ -59,7 +57,6 @@ public class ChannelServiceImpl implements ChannelService {
 		return null;
 	}
 	
-	@Override
 	public Channel getById(Long id) {
 		Channel entity = null;
 		try {
@@ -71,8 +68,7 @@ public class ChannelServiceImpl implements ChannelService {
 		return entity;
 	}
 
-	@Override
-	public ServiceReturnDto<Resource> deleteById(Long id) {
+	public ServiceReturnDto deleteById(Long id) {
 		boolean isSuccess = true;
 		try {
 //			channelRepository.delete(id);

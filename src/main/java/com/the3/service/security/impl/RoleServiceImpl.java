@@ -44,7 +44,7 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto<Role> saveOrModify(Role entity,String resourcePermission) {
+	public ServiceReturnDto saveOrModify(Role entity,String resourcePermission) {
 		boolean isSuccess = true;
 		try {
 			Map<String,Object> result = this.parseResourcePermission(resourcePermission);
@@ -65,7 +65,7 @@ public class RoleServiceImpl implements RoleService {
 			isSuccess = false;
 			logger.error(e.getMessage());
 		}
-		return new ServiceReturnDto<Role>(isSuccess, entity);
+		return new ServiceReturnDto(isSuccess, entity);
 	}
 	
 	private Map<String,Object> parseResourcePermission(String resourcePermission){
@@ -124,7 +124,7 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto<Role> deleteById(Long id) {
+	public ServiceReturnDto deleteById(Long id) {
 		boolean isSuccess = true;
 		String message = "删除成功";
 		try {
@@ -146,7 +146,7 @@ public class RoleServiceImpl implements RoleService {
 			message = "删除失败";
 			logger.error(e.getMessage());
 		}
-		return new ServiceReturnDto<Role>(isSuccess , message);
+		return new ServiceReturnDto(isSuccess , message);
 	}
 
 	//判断是否存在资源和授权信息

@@ -55,8 +55,8 @@ public class BaseServiceImpl<T> {
 	 * @param entityClass
 	 * @return
 	 */
-	protected  ServiceReturnDto<T> modify(Map<String,Object> entityMap,Class<T> entityClass){
-		ServiceReturnDto<T> serviceReturnDto = new ServiceReturnDto<T>();
+	protected  ServiceReturnDto modify(Map<String,Object> entityMap,Class<T> entityClass){
+		ServiceReturnDto serviceReturnDto = new ServiceReturnDto();
 		boolean isSuccess = true;
 		String id = "";
 //		Update update = new Update();

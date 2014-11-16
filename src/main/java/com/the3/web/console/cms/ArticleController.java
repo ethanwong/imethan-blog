@@ -6,9 +6,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -75,8 +72,8 @@ public class ArticleController extends SuperController{
 		page = page >=0 ? page : defaultPage;
 		size = size >0 ? size : defaultSize;
 		
-		Page<Article> result = articleService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
-		model.addAttribute("result", result);
+//		Page<Article> result = articleService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
+//		model.addAttribute("result", result);
 		
 		this.setChannelList(model);
 		

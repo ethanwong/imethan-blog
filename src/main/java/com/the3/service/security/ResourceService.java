@@ -20,7 +20,7 @@ public interface ResourceService {
 	 * @param entity
 	 * @return
 	 */
-	public ServiceReturnDto<Resource> saveOrModify(Resource entity);
+	public ServiceReturnDto saveOrModify(Resource entity);
 	
 	/**
 	 * 根据ID获取
@@ -34,7 +34,7 @@ public interface ResourceService {
 	 * @param id
 	 * @return
 	 */
-	public ServiceReturnDto<Resource> deleteById(Long id);
+	public ServiceReturnDto deleteById(Long id);
 	
 	/**
 	 * 获取根节点

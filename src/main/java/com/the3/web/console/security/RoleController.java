@@ -62,7 +62,7 @@ public class RoleController {
 	public WebReturnDto save(@ModelAttribute("role") Role role,@RequestParam String resourcePermission){
 		System.out.println("------------role:"+role);
 		System.out.println("------------resourcePermission:"+resourcePermission);
-		ServiceReturnDto<Role> result = roleService.saveOrModify(role,resourcePermission);
+		ServiceReturnDto result = roleService.saveOrModify(role,resourcePermission);
 		return new WebReturnDto(result.isSuccess(),result.getMessage());
 	} 
 	
@@ -75,7 +75,7 @@ public class RoleController {
 	@ResponseBody
 	@RequestMapping(value="/delete/{id}", method = {RequestMethod.POST})
 	public WebReturnDto delete(Model model,@PathVariable Long id,ServletRequest request) {
-		ServiceReturnDto<Role> result = roleService.deleteById(id);
+		ServiceReturnDto result = roleService.deleteById(id);
 		return new WebReturnDto(result.isSuccess(),result.getMessage());
 	}
 

@@ -12,7 +12,7 @@ import com.the3.entity.cms.Channel;
  * @author Ethan Wong
  * @time 2014年3月2日下午4:46:01
  */
-public interface ChannelService  extends BaseService<Channel> {
+public interface ChannelService{
 	
 	/**
 	 * 获取列表

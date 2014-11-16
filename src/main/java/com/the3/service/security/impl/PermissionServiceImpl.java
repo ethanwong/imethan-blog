@@ -59,7 +59,7 @@ public class PermissionServiceImpl  implements PermissionService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto<Permission> deleteById(Long id) {
+	public ServiceReturnDto deleteById(Long id) {
 		boolean isSuccess = true;
 		String message = "删除成功";
 		try {
@@ -69,12 +69,12 @@ public class PermissionServiceImpl  implements PermissionService {
 			message = "删除失败";
 			e.printStackTrace();
 		}
-		return new ServiceReturnDto<Permission>(isSuccess,message);
+		return new ServiceReturnDto(isSuccess,message);
 	}
 
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto<Permission> saveOrModify(Permission permission) {
+	public ServiceReturnDto saveOrModify(Permission permission) {
 		boolean isSuccess = true;
 		String message = "操作成功";
 		try {
@@ -84,7 +84,7 @@ public class PermissionServiceImpl  implements PermissionService {
 			isSuccess = false;
 			message = "操作失败";
 		}
-		return new ServiceReturnDto<Permission>(isSuccess,message,permission);
+		return new ServiceReturnDto(isSuccess,message,permission);
 	}
 
 }

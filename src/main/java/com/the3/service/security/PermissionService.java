@@ -32,14 +32,14 @@ public interface PermissionService{
 	 * @param id
 	 * @return
 	 */
-	ServiceReturnDto<Permission> deleteById(Long id);
+	ServiceReturnDto deleteById(Long id);
 	
 	/**
 	 * 保存或者删除
 	 * @param permission
 	 * @return
 	 */
-	ServiceReturnDto<Permission> saveOrModify(Permission permission);
+	ServiceReturnDto saveOrModify(Permission permission);
 
 }
 

@@ -21,7 +21,7 @@ public interface BaseService<T> {
 	 * @param entity
 	 * @return
 	 */
-	public ServiceReturnDto<T> saveOrModify(T entity);
+	public ServiceReturnDto saveOrModify(T entity);
 	
 	/**
 	 * 获取分页
@@ -43,7 +43,7 @@ public interface BaseService<T> {
 	 * @param id
 	 * @return
 	 */
-	public ServiceReturnDto<Resource> deleteById(Long id);
+	public ServiceReturnDto deleteById(Long id);
 	
 
 }

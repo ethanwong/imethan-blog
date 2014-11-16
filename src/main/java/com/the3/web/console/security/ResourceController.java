@@ -75,7 +75,7 @@ public class ResourceController{
 	@ResponseBody
 	@RequestMapping(value="/delete/{id}", method = {RequestMethod.POST})
 	public WebReturnDto delete(Model model,@PathVariable Long id,ServletRequest request) {
-		ServiceReturnDto<Resource> result = resourceService.deleteById(id);
+		ServiceReturnDto result = resourceService.deleteById(id);
 		return new WebReturnDto(result.isSuccess(),result.getMessage());
 	}
 }

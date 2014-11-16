@@ -31,8 +31,7 @@ public class ArticleServiceImpl implements ArticleService {
 	private ArticleRepository articleRepository;
 	
 	
-	@Override
-	public ServiceReturnDto<Article> saveOrModify(Article entity) {
+	public ServiceReturnDto saveOrModify(Article entity) {
 		boolean isSuccess = true;
 		try {
 			articleRepository.save(entity);
@@ -41,11 +40,10 @@ public class ArticleServiceImpl implements ArticleService {
 			isSuccess = false;
 			logger.error(e.getMessage());
 		}
-		return new ServiceReturnDto<Article>(isSuccess, entity);
+		return new ServiceReturnDto(isSuccess, entity);
 	}
 
 
-	@Override
 	public Article getById(Long id) {
 		try {
 //			return articleRepository.findOne(id);
@@ -58,7 +56,6 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 
-	@Override
 	public Page<Article> getPage(Map<String, Object> parameters,PageRequest pageable) {
 		try {
 //			return super.getPage(parameters, pageable, Article.class);
@@ -71,8 +68,7 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 
-	@Override
-	public ServiceReturnDto<Resource> deleteById(Long id) {
+	public ServiceReturnDto deleteById(Long id) {
 		try {
 //			articleRepository.delete(id);
 			return null;

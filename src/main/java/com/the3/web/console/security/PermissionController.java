@@ -81,7 +81,7 @@ public class PermissionController{
 	@ResponseBody
 	@RequestMapping(value="/delete/{id}", method = {RequestMethod.POST})
 	public WebReturnDto delete(Model model,@PathVariable Long id,ServletRequest request) {
-		ServiceReturnDto<Permission> result = permissionService.deleteById(id);
+		ServiceReturnDto result = permissionService.deleteById(id);
 		return new WebReturnDto(result.isSuccess(),result.getMessage());
 	}
 

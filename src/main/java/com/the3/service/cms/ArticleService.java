@@ -10,7 +10,7 @@ import com.the3.entity.cms.Article;
  * @author Ethan Wong
  * @time 2014年3月2日下午4:45:56
  */
-public interface ArticleService extends BaseService<Article> {
+public interface ArticleService {
 	
 
 }

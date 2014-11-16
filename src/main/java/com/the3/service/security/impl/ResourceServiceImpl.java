@@ -46,7 +46,7 @@ public class ResourceServiceImpl implements ResourceService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto<Resource> saveOrModify(Resource entity) {
+	public ServiceReturnDto saveOrModify(Resource entity) {
 		boolean isSuccess = true;
 		try {
 			resourceRepository.save(entity);
@@ -54,7 +54,7 @@ public class ResourceServiceImpl implements ResourceService {
 			e.printStackTrace();
 			isSuccess = false;
 		}
-		return new ServiceReturnDto<Resource>(isSuccess, entity);
+		return new ServiceReturnDto(isSuccess, entity);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class ResourceServiceImpl implements ResourceService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto<Resource> deleteById(Long id) {
+	public ServiceReturnDto deleteById(Long id) {
 		boolean isSuccess = true;
 		String message = "删除成功";
 		try {
@@ -82,7 +82,7 @@ public class ResourceServiceImpl implements ResourceService {
 			e.printStackTrace();
 			isSuccess = false;
 		}
-		return new ServiceReturnDto<Resource>(isSuccess,message);
+		return new ServiceReturnDto(isSuccess,message);
 	}
 	
 	/**
