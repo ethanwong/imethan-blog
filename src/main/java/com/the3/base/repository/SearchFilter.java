@@ -1,10 +1,9 @@
-package com.the3.base.web;
-
 /*******************************************************************************
  * Copyright (c) 2005, 2014 springside.github.io
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  *******************************************************************************/
+package com.the3.base.repository;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -14,11 +13,9 @@ import org.apache.commons.lang3.StringUtils;
 import com.google.common.collect.Maps;
 
 public class SearchFilter {
-	
-	public static String prefix = "search_";//搜索前缀
 
 	public enum Operator {
-		EQ, NEQ, LIKE, GT, LT, GTE, LTE
+		EQ, LIKE, GT, LT, GTE, LTE
 	}
 
 	public String fieldName;
@@ -57,6 +54,7 @@ public class SearchFilter {
 			SearchFilter filter = new SearchFilter(filedName, operator, value);
 			filters.put(key, filter);
 		}
+
 		return filters;
 	}
 }

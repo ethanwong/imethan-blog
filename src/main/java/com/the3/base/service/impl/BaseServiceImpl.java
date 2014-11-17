@@ -11,7 +11,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.the3.base.web.SearchFilter;
 import com.the3.dto.service.ServiceReturnDto;
 
 /**

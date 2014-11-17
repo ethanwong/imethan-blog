@@ -4,12 +4,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.the3.base.entity.BaseEntity;
 
 /**
@@ -28,7 +31,7 @@ public class User extends BaseEntity {
 	private String password;//密码
 	private String nickname;//昵称
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="imethan_security_user_role",joinColumns = { @JoinColumn(name ="user_id" )} ,inverseJoinColumns = { @JoinColumn(name = "role_id")})
 	@OrderBy("id")
 	private Set<Role> roles = new HashSet<Role>();//角色

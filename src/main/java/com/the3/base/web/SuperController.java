@@ -9,8 +9,8 @@ package com.the3.base.web;
  */
 public class SuperController {
 	
-	protected int defaultPage = 0;//默认页位置
-	protected int defaultSize = 10;//默认页大小
+	protected int page = 0;//默认页位置
+	protected int size = 10;//默认页大小
 
 }
 

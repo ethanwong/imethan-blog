@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import org.springframework.web.util.WebUtils;
 
-import com.the3.base.web.SearchFilter;
 import com.the3.base.web.SuperController;
 import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Article;
@@ -51,11 +50,11 @@ public class ArticleController extends SuperController{
 	 * @param redirectAttributesModelMap
 	 * @return
 	 */
-	@RequestMapping(value="", method = {RequestMethod.GET,RequestMethod.POST})
-	public String article(RedirectAttributesModelMap redirectAttributesModelMap){
-		System.out.println("--------article--------");
-		return "redirect:/console/cms/article/"+defaultPage+"/"+defaultSize;
-	}
+//	@RequestMapping(value="", method = {RequestMethod.GET,RequestMethod.POST})
+//	public String article(RedirectAttributesModelMap redirectAttributesModelMap){
+//		System.out.println("--------article--------");
+//		return "redirect:/console/cms/article/"+defaultPage+"/"+defaultSize;
+//	}
 	
 	/**
 	 * 获取栏目列表
@@ -67,15 +66,6 @@ public class ArticleController extends SuperController{
 	 */
 	@RequestMapping(value="/{page}/{size}", method = {RequestMethod.GET,RequestMethod.POST})
 	public String list(Model model,ServletRequest request,@PathVariable int page,@PathVariable int size) {
-		Map<String,Object> parameters = WebUtils.getParametersStartingWith(request, SearchFilter.prefix);
-		
-		page = page >=0 ? page : defaultPage;
-		size = size >0 ? size : defaultSize;
-		
-//		Page<Article> result = articleService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
-//		model.addAttribute("result", result);
-		
-		this.setChannelList(model);
 		
 		return "console/cms/article";
 	}
@@ -110,7 +100,7 @@ public class ArticleController extends SuperController{
 //			isSuccess = articleService.save(article).isSuccess();
 		}
 		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
-		return "redirect:/console/cms/article/"+defaultPage+"/"+defaultSize;
+		return "";
 	}
 	
 	/**

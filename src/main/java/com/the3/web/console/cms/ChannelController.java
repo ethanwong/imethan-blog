@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import org.springframework.web.util.WebUtils;
 
-import com.the3.base.web.SearchFilter;
 import com.the3.base.web.SuperController;
 import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.cms.Channel;
@@ -49,7 +48,7 @@ public class ChannelController extends SuperController{
 	 */
 	@RequestMapping(value="", method = {RequestMethod.GET,RequestMethod.POST})
 	public String channel(RedirectAttributesModelMap redirectAttributesModelMap){
-		return "redirect:/console/cms/channel/"+defaultPage+"/"+defaultSize;
+		return "";
 	}
 	
 	/**
@@ -62,10 +61,10 @@ public class ChannelController extends SuperController{
 	 */
 	@RequestMapping(value="/{page}/{size}", method = {RequestMethod.GET,RequestMethod.POST})
 	public String list(Model model,ServletRequest request,@PathVariable int page,@PathVariable int size) {
-		Map<String,Object> parameters = WebUtils.getParametersStartingWith(request, SearchFilter.prefix);
+//		Map<String,Object> parameters = WebUtils.getParametersStartingWith(request, SearchFilter.prefix);
 		
-		page = page >=0 ? page : defaultPage;
-		size = size >0 ? size : defaultSize;
+//		page = page >=0 ? page : defaultPage;
+//		size = size >0 ? size : defaultSize;
 		
 //		Page<Channel> result = channelService.getPage(parameters,new PageRequest(page,size,Direction.DESC,"createTime"));
 //		model.addAttribute("result", result);
@@ -102,7 +101,7 @@ public class ChannelController extends SuperController{
 //			isSuccess = channelService.save(channel).isSuccess();
 		}
 		redirectAttributesModelMap.addFlashAttribute("WebReturnDto", new WebReturnDto(isSuccess,message));
-		return "redirect:/console/cms/channel/"+defaultPage+"/"+defaultSize;
+		return "";
 	}
 	
 	/**
