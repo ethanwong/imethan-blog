@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.the3.base.repository.SearchFilter;
 import com.the3.base.web.SuperController;
+import com.the3.dto.page.JqGridPageDto;
 import com.the3.entity.security.User;
 import com.the3.service.security.UserService;
 import com.the3.utils.JsonUtils;
@@ -41,10 +42,8 @@ public class UserController extends SuperController {
 	public String json(){
 		PageRequest pageable = new PageRequest(page, size, Direction.DESC, "id");
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();
-		
 		Page<User> result = userService.findPage(filters, pageable);
-		
-		return  JsonUtils.writeValueAsString(result);
+		return  JsonUtils.writeValueAsString(new JqGridPageDto<User>(result));
 	}
 }
 
