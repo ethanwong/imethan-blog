@@ -14,11 +14,11 @@
         <input type="text" class="form-control" name="username" value="imethan" placeholder="Enter username" required autofocus>
         <input type="password" class="form-control" name="password" value="imethan" placeholder="Enter password" required>
         <div class="row">
-		  <div class="col-lg-6" >
-        	<input type="text" class="form-control" style="width: 120px;"  name="validateCode" placeholder="Enter validateCode" required>
+		  <div class="col-lg-6" style="width: 120px;">
+        	<input type="text" class="form-control" style="width: 110px;"  name="validateCode" placeholder="validateCode" required />
 		  </div>
-		   <div class="col-lg-6" >
-        	<img id="validateCodeImg" src="${root}/console/validateCode" onclick="javascript:reloadValidateCode();" />
+		   <div class="col-lg-6" style="width: 120px;" >
+        	<img style="display: inline;" id="validateCodeImg" src="${root}/console/validateCode" onclick="javascript:reloadValidateCode();" />
 		  </div>
 		 </div>
         <label class="checkbox">

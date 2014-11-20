@@ -43,16 +43,11 @@ public class ShiroDbRealm extends AuthorizingRealm{
             if (user.getRoles() != null && user.getRoles().size() > 0) {
                 for (Role role : user.getRoles()) {
                     roles.add(role.getName());
-                    
-                    if(role.getResources() !=null && !role.getResources().isEmpty()){
-                    	for(Resource resource : role.getResources()){
-//                          if (resource.getPermissions() != null && resource.getPermissions().size() > 0) {
-//	                          for (Permission permission : resource.getPermissions()) {
-//	                              if(!StringUtils.isEmpty(permission.getPermission())){
-//	                                  permissions.add(permission.getPermission());
-//	                              }
-//	                          }
-//                          }
+                    if(role.getPermissions() != null && !role.getPermissions().isEmpty()){
+                    	for(Permission permission : role.getPermissions()){
+                              if(!StringUtils.isEmpty(permission.getPermission())){
+                                  permissions.add(permission.getPermission());
+                              }
                     	}
                     }
                 }

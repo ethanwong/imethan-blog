@@ -16,5 +16,6 @@
               <p>We can not find the page you're looking for.</p>
               <a class="btn btn-warning btn-big"  href="${root}/index.jsp">Back to Home</a> </div>
           </div>
+          <%@ page session="false" %>
 </body>
 </html>

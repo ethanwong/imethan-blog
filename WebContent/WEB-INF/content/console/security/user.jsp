@@ -18,6 +18,7 @@
 			mtype: 'POST',
 			autowidth : true,
 			autoheight : true,
+			height : 230,
 			rowNum: 10,
 			rowList: [10, 20, 30],
 			colNames: ['Nickname','Username', 'Rolename','Password', 'CreateTime','操作'],
@@ -48,8 +49,9 @@
 		};
 		
 		function operation(cellvalue, options, rowObject) {
-			var operations = "<a id='operation1' href='javascript:;' onclick='modifyUser("+cellvalue+")' >Modify</a>";
-			return operations;
+			var modifyOperation = "<shiro:hasPermission name='user:modify'><a id='operation1' href='javascript:;' onclick='modifyUser("+cellvalue+")' >Modify</a></shiro:hasPermission>";
+			var deleteOPeration = "<shiro:hasPermission name='user:delete'><a id='operation2' href='javascript:;' onclick='deleteUser("+cellvalue+")' >Delete</a></shiro:hasPermission>";
+			return modifyOperation + " " + deleteOPeration;
 		};
 		
 		// Setup buttons
@@ -59,7 +61,7 @@
 			del : false,
 			search : false
 		}, {
-// 			height : 200,
+			
 			reloadAfterSubmit : true
 		});
 		$(".ui-jqgrid-titlebar-close*").remove();
@@ -105,6 +107,31 @@
 		});
 	};
 	
+	//添加
+	function inputUser(){
+		$('#modifyUserModal').modal(
+				$("#modifyUserModal").find("#id").val(""),
+				$("#modifyUserModal").find("#nickname").val(""),
+				$("#modifyUserModal").find("#username").val(""),
+				$("#modifyUserModal").find("#password").val("")
+			);
+			
+			//加载角色信息
+			$.ajax({
+				url:"${root}/console/security/role/json",
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					$("#roleId").html("");
+					$.each(result, function(i, item) {
+// 						$("#roleinfo").append("<input type='checkbox' name='roleId' value='"+item.id+"'>"+item.name);
+						$("#roleId").append("<option value='"+item.id+"'>"+item.name+"</option>");
+					});
+				}
+			});
+	}
+	
 	//保存
 	function saveUser(){
 		if($("#inputForm").valid()){
@@ -136,6 +163,26 @@
 		}
 	}
 	
+	//删除
+	function deleteUser(id){
+		$('#deleteConfirmModal').modal({
+		 	 keyboard: true
+		});
+		$("#deleteConfirmModalClick").click(function(){
+			$.ajax({
+				url:"${root}/console/security/user/delete/"+id,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					//加载用户列表
+					$('#list').trigger('reloadGrid');
+					showMsg("success",result.message);
+				}
+			});
+		});
+	}
+	
 	
 	</script>
 	
@@ -143,10 +190,14 @@
 	
 	<div class="row">
 		<div class="col-md-12">
-			<button type="button" class="btn btn-primary btn-sm" onclick="inputRootResource(this)" >Add User</button>
-			<div style="height: 10px;"></div>
-			<table id="list"></table>
-			<div id="pager"></div>
+			<shiro:hasPermission name="user:input">  
+				<button type="button" class="btn btn-primary btn-sm" onclick="inputUser(this)" >Add User</button>
+			</shiro:hasPermission>
+			<shiro:hasPermission name="user:list">  
+				<div style="height: 10px;"></div>
+				<table id="list"></table>
+				<div id="pager"></div>
+			</shiro:hasPermission>
 		</div>
 	</div>
 	
@@ -179,6 +230,11 @@
 							    <select id="roleId" name="roleId" class="form-control required">
 							    </select>
 							  </div>
+<!-- 							  <div class="checkbox"> -->
+<!-- 							    <label id="roleinfo"> -->
+<!-- 							      <input type="checkbox" name="roleId" value=""> -->
+							    </label>
+<!-- 							  </div> -->
 						</div>
 					</form>
 				</div>

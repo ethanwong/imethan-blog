@@ -26,7 +26,7 @@ public class JqGridPageDto<T> {
 	}
 	
 	public int getPage() {
-		return page;
+		return page+1;
 	}
 	public void setPage(int page) {
 		this.page = page;

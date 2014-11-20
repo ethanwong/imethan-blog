@@ -19,7 +19,7 @@
 					<li><a href="#contact">Contact</a></li>
 					
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">CMS <b class="caret"></b></a>
+						data-toggle="dropdown">Cms <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="${root}/console/cms/channel">Channel</a></li>
 							<li><a href="${root}/console/cms/article">Article</a></li>
@@ -29,14 +29,16 @@
 							<!--                 <li><a href="#">One more separated link</a></li> -->
 						</ul>
 					</li>
+					<shiro:hasRole name="系统管理员">  
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">SECURITY<b class="caret"></b></a>
+						data-toggle="dropdown">Security<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="${root}/console/security/user">User</a></li>
 							<li><a href="${root}/console/security/role">Role</a></li>
 							<li><a href="${root}/console/security/resource">Resource</a></li>
 						</ul>
 					</li>
+					</shiro:hasRole>
 				</ul>
 <!-- 				          <ul class="nav navbar-nav navbar-right"> -->
 <!-- 				            <li><a href="#">Default</a></li> -->
@@ -44,13 +46,13 @@
 <!-- 				            <li><a href="#">Fixed top</a></li> -->
 <!-- 				          </ul> -->
 
-				<div class="navbar-form navbar-right" >
+				<div class="navbar-form navbar-right" style="padding-top: 8px;">
 					<shiro:guest>  
-						<a type="submit" class="btn btn-default btn-sm" href="${root}/console/toSignin">Sign in</a>
+						<a type="submit" class="btn btn-danger btn-xs" href="${root}/console/toSignin">Sign in</a>
 					</shiro:guest>
 					<shiro:user>  
-						Hello, <shiro:principal/>!  
-						<a type="submit" class="btn btn-default btn-sm" href="${root}/console/signout">Sign out</a>
+						<span>Hello,<shiro:principal/>  </span>
+						<a type="submit" class="btn btn-danger btn-xs" href="${root}/console/signout">Sign out</a>
 					</shiro:user>
 				</div>
 			</div>

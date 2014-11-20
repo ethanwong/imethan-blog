@@ -15,6 +15,6 @@
 		<p>Access to this page is forbidden</p>
 		<a class="btn btn-warning btn-big" href="${root}/index.jsp">Back to Home</a>
 	</div>
-
+ 	<%@ page session="false" %>
 </body>
 </html>
