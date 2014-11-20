@@ -2,7 +2,6 @@ package com.the3.entity.security;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -10,6 +9,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -35,6 +35,21 @@ public class User extends BaseEntity {
     @JoinTable(name="imethan_security_user_role",joinColumns = { @JoinColumn(name ="user_id" )} ,inverseJoinColumns = { @JoinColumn(name = "role_id")})
 	@OrderBy("id")
 	private Set<Role> roles = new HashSet<Role>();//角色
+	
+	@Transient
+	private Long roleId;//角色ID
+
+	public Long getRoleId() {
+		if(roles != null && !roles.isEmpty()){
+			return roles.iterator().next().getId();
+		}else{
+			return roleId;
+		}
+	}
+
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
 
 	public String getUsername() {
 		return username;

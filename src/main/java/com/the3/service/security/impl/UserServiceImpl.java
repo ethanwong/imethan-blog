@@ -1,6 +1,9 @@
 package com.the3.service.security.impl;
 
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +19,9 @@ import com.the3.base.repository.DynamicSpecifications;
 import com.the3.base.repository.SearchFilter;
 import com.the3.dto.page.PageDto;
 import com.the3.dto.service.ServiceReturnDto;
+import com.the3.entity.security.Role;
 import com.the3.entity.security.User;
+import com.the3.repository.security.RoleRepository;
 import com.the3.repository.security.UserRepository;
 import com.the3.service.security.UserService;
 
@@ -34,6 +39,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private RoleRepository roleRepository;
 
 	@Override
 	public User getByUsername(String username) {
@@ -72,9 +79,21 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional(readOnly = false)
 	public ServiceReturnDto save(User entity) {
+		System.out.println("---------------entity:"+entity);
 		boolean isSuccess = true;
 		String message = "保存成功";
 		try {
+			//设置角色信息
+			Long roleId = entity.getRoleId();
+			System.out.println("-----------roleId:"+roleId);
+			Role role = roleRepository.findOne(roleId);
+			Set<Role> roles = new HashSet<Role>();
+			roles.add(role);
+			entity.setRoles(roles);
+			
+			if(entity.getId() != null){
+				entity.setModifyTime(new Date());
+			}
 			userRepository.save(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
