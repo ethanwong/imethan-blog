@@ -2,8 +2,12 @@ package com.the3.service.cms;
 
 
 import java.util.List;
+import java.util.Map;
 
-import com.the3.base.service.BaseService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
+import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.cms.Channel;
 
 /**
@@ -15,9 +19,38 @@ import com.the3.entity.cms.Channel;
 public interface ChannelService{
 	
 	/**
+	 * 保存或更新
+	 * @param entity
+	 * @return
+	 */
+	public ServiceReturnDto saveOrModify(Channel entity);
+	
+	/**
 	 * 获取列表
 	 * @return
 	 */
 	public List<Channel> getList();
+	
+	/**
+	 * 获取分页列表
+	 * @param parameters
+	 * @param pageable
+	 * @return
+	 */
+	public Page<Channel> getPage(Map<String,Object> parameters,PageRequest pageable);
+	
+	/**
+	 * 删除
+	 * @param id
+	 * @return
+	 */
+	public ServiceReturnDto deleteById(Long id);
+	
+	/**
+	 * 根据ID获取
+	 * @param id
+	 * @return
+	 */
+	public Channel getById(Long id);
 	
 }

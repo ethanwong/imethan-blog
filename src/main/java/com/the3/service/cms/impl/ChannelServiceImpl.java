@@ -11,10 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.the3.base.service.impl.BaseServiceImpl;
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.entity.cms.Channel;
-import com.the3.entity.security.Resource;
 import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.cms.ChannelService;
 
@@ -34,20 +32,28 @@ public class ChannelServiceImpl implements ChannelService {
 	private ChannelRepository channelRepository;
 
 	@Transactional(readOnly = false)
+	@Override
 	public ServiceReturnDto saveOrModify(Channel entity) {
 		boolean isSuccess = true;
+		String message = "保存成功";
 		try {
+			if(entity.getId() != null){
+				entity.setModifyTime(new Date());
+			}else{
+				entity.setCreateTime(new Date());
+			}
 			entity = channelRepository.save(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
 			isSuccess = false;
+			message = "保存失败";
 			logger.error(e.getMessage());
 		}
-		return new ServiceReturnDto(isSuccess,entity);
+		return new ServiceReturnDto(isSuccess,message,entity);
 	}
-
+	
+	@Override
 	public Page<Channel> getPage(Map<String,Object> parameters,PageRequest pageable) {
-		
 		try {
 //			return super.getPage(parameters, pageable, Channel.class);
 		} catch (Exception e) {
@@ -57,46 +63,44 @@ public class ChannelServiceImpl implements ChannelService {
 		return null;
 	}
 	
+	@Override
 	public Channel getById(Long id) {
-		Channel entity = null;
+		Channel entity = new Channel();
 		try {
-//			entity = channelRepository.findOne(id);
+			entity = channelRepository.findOne(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
 		return entity;
 	}
-
+	
+	@Override
+	@Transactional(readOnly = false)
 	public ServiceReturnDto deleteById(Long id) {
 		boolean isSuccess = true;
+		String message = "删除成功";
 		try {
-//			channelRepository.delete(id);
+			channelRepository.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 			isSuccess = false;
+			message = "删除失败";
 		}
-		return null;
+		return new ServiceReturnDto(isSuccess,message);
 	}
 
 
 	@Override
 	public List<Channel> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return channelRepository.findAll();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
 	}
-
-//	@Override
-//	public List<Channel> getList() {
-//		try {
-//			return channelRepository.findAll();
-//		} catch (Exception e) {
-//			logger.error(e.getMessage());
-//			e.printStackTrace();
-//			return null;
-//		}
-//	}
-
 
 }

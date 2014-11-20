@@ -16,7 +16,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import com.the3.entity.security.Permission;
-import com.the3.entity.security.Resource;
 import com.the3.entity.security.Role;
 import com.the3.entity.security.User;
 import com.the3.service.security.UserService;

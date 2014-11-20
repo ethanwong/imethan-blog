@@ -11,31 +11,14 @@
 <body>
 	<div class="row">
 		<div class="col-md-3">
-
-			<!-- 			<ul class="nav nav-pills nav-stacked "> -->
-			<!-- 				<li><a href="#">Home</a></li> -->
-			<!-- 				<li><a href="#">Profile</a></li> -->
-			<!-- 				<li><a href="#">Messages</a></li> -->
-			<!-- 			</ul> -->
-
 			<div class="list-group">
 				<a href="#" class="list-group-item active">Link</a>
 				<a href="#" class="list-group-item">Link</a> 
-				<a href="#" class="list-group-item">Link</a>
-				<a href="#" class="list-group-item">Link</a>
-				<a href="#" class="list-group-item">Link</a> 
-				<a href="#" class="list-group-item">Link</a>
-				<a href="#" class="list-group-item">Link</a>
-				<a href="#" class="list-group-item">Link</a>
-				<a href="#" class="list-group-item">Link</a>
-				<a href="#" class="list-group-item">Link</a>
 			</div>
 		</div>
 		<div class="col-md-9">
 			<label class="col-sm-1 control-label" style="padding: 0px;" >
-				<shiro:hasPermission name="channel:input">  
 					<a  href="${root}/console/cms/channel/input" ><button type="button" class="btn btn-primary">Add</button></a>
-				</shiro:hasPermission>  
 			</label>
 			<div class="col-sm-11">
 				<form class="form-inline" role="form" action="${root}/console/cms/channel/0/10" method="post">

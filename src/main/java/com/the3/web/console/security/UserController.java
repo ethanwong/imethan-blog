@@ -3,8 +3,6 @@ package com.the3.web.console.security;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletRequest;
-
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

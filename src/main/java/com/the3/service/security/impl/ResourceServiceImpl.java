@@ -1,7 +1,6 @@
 package com.the3.service.security.impl;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;

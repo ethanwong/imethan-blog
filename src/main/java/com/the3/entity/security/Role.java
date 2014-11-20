@@ -12,7 +12,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;

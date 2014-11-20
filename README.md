@@ -12,3 +12,5 @@ ImEthan the3 web project
 7、使用Jquery作为脚本语言
 8、使用的数据库是MySQL 5
 9、使用Gradle为项目的集成
+10、使用JqGrid作为表格渲染
+11、使用Ztree作为树形展现

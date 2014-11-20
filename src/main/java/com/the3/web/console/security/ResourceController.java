@@ -1,7 +1,5 @@
 package com.the3.web.console.security;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletRequest;
@@ -19,9 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.the3.dto.service.ServiceReturnDto;
 import com.the3.dto.web.WebReturnDto;
-import com.the3.entity.security.Permission;
 import com.the3.entity.security.Resource;
-import com.the3.entity.security.Role;
 import com.the3.service.security.ResourceService;
 import com.the3.utils.JsonUtils;
 
