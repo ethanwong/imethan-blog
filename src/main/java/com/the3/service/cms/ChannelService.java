@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.cms.Channel;
 
 /**
@@ -23,7 +23,7 @@ public interface ChannelService{
 	 * @param entity
 	 * @return
 	 */
-	public ServiceReturnDto saveOrModify(Channel entity);
+	public ReturnDto saveOrModify(Channel entity);
 	
 	/**
 	 * 获取列表
@@ -44,7 +44,7 @@ public interface ChannelService{
 	 * @param id
 	 * @return
 	 */
-	public ServiceReturnDto deleteById(Long id);
+	public ReturnDto deleteById(Long id);
 	
 	/**
 	 * 根据ID获取

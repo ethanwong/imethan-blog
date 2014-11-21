@@ -176,7 +176,7 @@
 			$("#name").val("");
 			$("#intro").val("");
 			$("#resourcePermission").val("");
-			setResourcePermissionZtree(result.id);
+			setResourcePermissionZtree(0);
 		};
 		
 		//删除角色

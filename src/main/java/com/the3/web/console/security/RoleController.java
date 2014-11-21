@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.the3.dto.service.ServiceReturnDto;
-import com.the3.dto.web.WebReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.Resource;
 import com.the3.entity.security.Role;
 import com.the3.service.security.ResourceService;
@@ -58,24 +57,23 @@ public class RoleController {
 	
 	@ResponseBody
 	@RequestMapping(value = "save" , method = {RequestMethod.POST})
-	public WebReturnDto save(@ModelAttribute("role") Role role,@RequestParam String resourcePermission){
+	public ReturnDto save(@ModelAttribute("role") Role role,@RequestParam String resourcePermission){
 		System.out.println("------------role:"+role);
 		System.out.println("------------resourcePermission:"+resourcePermission);
-		ServiceReturnDto result = roleService.saveOrModify(role,resourcePermission);
-		return new WebReturnDto(result.isSuccess(),result.getMessage());
+		return roleService.saveOrModify(role,resourcePermission);
 	} 
 	
 	@ResponseBody
 	@RequestMapping(value = "resourcepermission/{roleId}" , method = {RequestMethod.POST})
 	public Set<Resource> resourcePermissionForRoleInput(@PathVariable Long roleId){
+		System.out.println("-------roleId:"+roleId);
 		return resourceService.getResourcePermissionForRoleInput(roleId);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/delete/{id}", method = {RequestMethod.POST})
-	public WebReturnDto delete(Model model,@PathVariable Long id,ServletRequest request) {
-		ServiceReturnDto result = roleService.deleteById(id);
-		return new WebReturnDto(result.isSuccess(),result.getMessage());
+	public ReturnDto delete(Model model,@PathVariable Long id,ServletRequest request) {
+		return roleService.deleteById(id);
 	}
 
 }

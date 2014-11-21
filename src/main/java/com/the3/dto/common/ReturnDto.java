@@ -1,34 +1,40 @@
-package com.the3.dto.service;
+package com.the3.dto.common;
+
+import java.io.Serializable;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
- * ServiceReturnDto.java
+ * ReturnDto.java
  *
  * @author Ethan Wong
  * @param <S>
  * @time 2014年3月8日下午10:29:21
  */
-public class ServiceReturnDto {
+public class ReturnDto implements Serializable {
+	
+	private static final long serialVersionUID = -5166483670926027917L;
 	
 	private boolean isSuccess = true;
-	private String message = "操作成功";
+	private String message = "Successfully!";
 	private Object entity;
 	
-	public ServiceReturnDto() {
+	public ReturnDto() {
 		
 	}
-	public ServiceReturnDto(boolean isSuccess, Object entity) {
+	public ReturnDto(boolean isSuccess, Object entity) {
 		super();
 		this.isSuccess = isSuccess;
 		this.entity = entity;
 	}
 	
-	public ServiceReturnDto(boolean isSuccess,String message) {
+	public ReturnDto(boolean isSuccess,String message) {
 		super();
 		this.isSuccess = isSuccess;
 		this.message = message;
 	}
 	
-	public ServiceReturnDto(boolean isSuccess,String message, Object entity) {
+	public ReturnDto(boolean isSuccess,String message, Object entity) {
 		super();
 		this.isSuccess = isSuccess;
 		this.message = message;
@@ -54,5 +60,9 @@ public class ServiceReturnDto {
 		this.message = message;
 	}
 	
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
 
 }

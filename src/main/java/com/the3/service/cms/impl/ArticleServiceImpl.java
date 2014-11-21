@@ -10,7 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.the3.base.service.impl.BaseServiceImpl;
-import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.cms.Article;
 import com.the3.entity.security.Resource;
 import com.the3.repository.cms.ArticleRepository;
@@ -31,7 +31,7 @@ public class ArticleServiceImpl implements ArticleService {
 	private ArticleRepository articleRepository;
 	
 	
-	public ServiceReturnDto saveOrModify(Article entity) {
+	public ReturnDto saveOrModify(Article entity) {
 		boolean isSuccess = true;
 		try {
 			articleRepository.save(entity);
@@ -40,7 +40,7 @@ public class ArticleServiceImpl implements ArticleService {
 			isSuccess = false;
 			logger.error(e.getMessage());
 		}
-		return new ServiceReturnDto(isSuccess, entity);
+		return new ReturnDto(isSuccess, entity);
 	}
 
 
@@ -68,7 +68,7 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 
-	public ServiceReturnDto deleteById(Long id) {
+	public ReturnDto deleteById(Long id) {
 		try {
 //			articleRepository.delete(id);
 			return null;

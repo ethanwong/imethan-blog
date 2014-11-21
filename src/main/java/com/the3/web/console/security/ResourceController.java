@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.the3.dto.service.ServiceReturnDto;
-import com.the3.dto.web.WebReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.Resource;
 import com.the3.service.security.ResourceService;
 import com.the3.utils.JsonUtils;
@@ -48,7 +47,7 @@ public class ResourceController{
 	
 	@ResponseBody
 	@RequestMapping(value="/save",method = RequestMethod.POST)
-	public WebReturnDto save(@ModelAttribute("resource") Resource resource, BindingResult result,ServletRequest request) {
+	public ReturnDto save(@ModelAttribute("resource") Resource resource, BindingResult result,ServletRequest request) {
 		
 		//设置父级节点
 		if(StringUtils.isNotBlank(request.getParameter("parentId"))){
@@ -62,16 +61,17 @@ public class ResourceController{
 			isSuccess = false;
 			message = "添加失败";
 		}else{
-			isSuccess = resourceService.saveOrModify(resource).isSuccess();
+			ReturnDto returnDto = resourceService.saveOrModify(resource);
+			isSuccess = returnDto.isSuccess();
+			message = returnDto.getMessage();
 		}
 		
-		return new WebReturnDto(isSuccess,message);
+		return new ReturnDto(isSuccess,message);
 	}
 
 	@ResponseBody
 	@RequestMapping(value="/delete/{id}", method = {RequestMethod.POST})
-	public WebReturnDto delete(Model model,@PathVariable Long id,ServletRequest request) {
-		ServiceReturnDto result = resourceService.deleteById(id);
-		return new WebReturnDto(result.isSuccess(),result.getMessage());
+	public ReturnDto delete(Model model,@PathVariable Long id,ServletRequest request) {
+		return resourceService.deleteById(id);
 	}
 }

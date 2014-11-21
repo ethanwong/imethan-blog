@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.Permission;
 import com.the3.entity.security.Resource;
 import com.the3.entity.security.Role;
@@ -45,7 +45,7 @@ public class ResourceServiceImpl implements ResourceService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto saveOrModify(Resource entity) {
+	public ReturnDto saveOrModify(Resource entity) {
 		boolean isSuccess = true;
 		try {
 			resourceRepository.save(entity);
@@ -53,7 +53,7 @@ public class ResourceServiceImpl implements ResourceService {
 			e.printStackTrace();
 			isSuccess = false;
 		}
-		return new ServiceReturnDto(isSuccess, entity);
+		return new ReturnDto(isSuccess, entity);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class ResourceServiceImpl implements ResourceService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto deleteById(Long id) {
+	public ReturnDto deleteById(Long id) {
 		boolean isSuccess = true;
 		String message = "删除成功";
 		try {
@@ -81,7 +81,7 @@ public class ResourceServiceImpl implements ResourceService {
 			e.printStackTrace();
 			isSuccess = false;
 		}
-		return new ServiceReturnDto(isSuccess,message);
+		return new ReturnDto(isSuccess,message);
 	}
 	
 	/**
@@ -142,8 +142,13 @@ public class ResourceServiceImpl implements ResourceService {
 		
 		//获取选中的资源和授权信息
 		Role role = roleRepository.findOne(roleId);
-		Set<Resource> checkResourceSet = role.getResources();
-		Set<Permission> checkPermissionSet = role.getPermissions();
+		
+		Set<Resource> checkResourceSet = new HashSet<Resource>();
+		Set<Permission> checkPermissionSet = new HashSet<Permission>();
+		if(role != null){
+			checkResourceSet = role.getResources();
+			checkPermissionSet = role.getPermissions();
+		}
 		
 		Set<Resource> resources = resourceRepository.findByIsRoot(true);
 		for(Resource resource : resources){//遍历父级节点

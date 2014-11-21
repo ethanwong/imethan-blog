@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 import com.the3.base.repository.SearchFilter;
-import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.User;
 
 /**
@@ -44,13 +44,13 @@ public interface UserService{
 	 * @param entity
 	 * @return
 	 */
-	public ServiceReturnDto save(User entity);
+	public ReturnDto save(User entity);
 	
 	/**
 	 * 根据ID删除
 	 * @param id
 	 * @return
 	 */
-	public ServiceReturnDto deleteById(Long id);
+	public ReturnDto deleteById(Long id);
 	
 }

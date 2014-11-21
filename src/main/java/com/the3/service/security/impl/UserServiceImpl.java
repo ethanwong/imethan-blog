@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.the3.base.repository.DynamicSpecifications;
 import com.the3.base.repository.SearchFilter;
-import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.Role;
 import com.the3.entity.security.User;
 import com.the3.repository.security.RoleRepository;
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto save(User entity) {
+	public ReturnDto save(User entity) {
 		System.out.println("---------------entity:"+entity);
 		boolean isSuccess = true;
 		String message = "保存成功";
@@ -97,12 +97,12 @@ public class UserServiceImpl implements UserService {
 			isSuccess = false;
 			message = "保存失败";
 		}
-		return new ServiceReturnDto(isSuccess,message);
+		return new ReturnDto(isSuccess,message);
 	}
 
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto deleteById(Long id) {
+	public ReturnDto deleteById(Long id) {
 		boolean isSuccess = true;
 		String message = "删除成功";
 		try {
@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService {
 			isSuccess = false;
 			message = "删除失败";
 		}
-		return new ServiceReturnDto(isSuccess,message);
+		return new ReturnDto(isSuccess,message);
 	}
 
 }

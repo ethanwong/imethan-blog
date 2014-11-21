@@ -2,7 +2,7 @@ package com.the3.service.security;
 
 import java.util.List;
 
-import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.Permission;
 
 /**
@@ -32,14 +32,14 @@ public interface PermissionService{
 	 * @param id
 	 * @return
 	 */
-	ServiceReturnDto deleteById(Long id);
+	ReturnDto deleteById(Long id);
 	
 	/**
 	 * 保存或者删除
 	 * @param permission
 	 * @return
 	 */
-	ServiceReturnDto saveOrModify(Permission permission);
+	ReturnDto saveOrModify(Permission permission);
 
 }
 

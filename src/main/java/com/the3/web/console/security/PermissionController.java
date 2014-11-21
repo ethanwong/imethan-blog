@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.the3.dto.service.ServiceReturnDto;
-import com.the3.dto.web.WebReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.Permission;
 import com.the3.entity.security.Resource;
 import com.the3.service.security.PermissionService;
@@ -57,7 +56,7 @@ public class PermissionController{
 	
 	@ResponseBody
 	@RequestMapping(value="/save",method = RequestMethod.POST)
-	public WebReturnDto save(@ModelAttribute("permission") Permission permission, BindingResult result,ServletRequest request) {
+	public ReturnDto save(@ModelAttribute("permission") Permission permission, BindingResult result,ServletRequest request) {
 		
 		String resourceId = request.getParameter("resourceId");
 		
@@ -72,17 +71,18 @@ public class PermissionController{
 			isSuccess = false;
 			message = "添加失败";
 		}else{
-			isSuccess = permissionService.saveOrModify(permission).isSuccess();
+			ReturnDto returnDto = permissionService.saveOrModify(permission);
+			isSuccess = returnDto.isSuccess();
+			message = returnDto.getMessage();
 		}
 		
-		return new WebReturnDto(isSuccess,message);
+		return new ReturnDto(isSuccess,message);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/delete/{id}", method = {RequestMethod.POST})
-	public WebReturnDto delete(Model model,@PathVariable Long id,ServletRequest request) {
-		ServiceReturnDto result = permissionService.deleteById(id);
-		return new WebReturnDto(result.isSuccess(),result.getMessage());
+	public ReturnDto delete(Model model,@PathVariable Long id,ServletRequest request) {
+		return permissionService.deleteById(id);
 	}
 
 }

@@ -2,7 +2,7 @@ package com.the3.service.security;
 
 import java.util.Set;
 
-import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.Resource;
 
 
@@ -19,7 +19,7 @@ public interface ResourceService {
 	 * @param entity
 	 * @return
 	 */
-	public ServiceReturnDto saveOrModify(Resource entity);
+	public ReturnDto saveOrModify(Resource entity);
 	
 	/**
 	 * 根据ID获取
@@ -33,7 +33,7 @@ public interface ResourceService {
 	 * @param id
 	 * @return
 	 */
-	public ServiceReturnDto deleteById(Long id);
+	public ReturnDto deleteById(Long id);
 	
 	/**
 	 * 获取根节点

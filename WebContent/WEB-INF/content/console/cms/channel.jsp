@@ -9,113 +9,158 @@
 </head>
 
 <body>
+	<script type="text/javascript">
+		//页面加载时初始化脚本
+		$(document).ready(function () {
+			//加载栏目列表
+			reloadChannelList();
+		});
+		
+		//加载栏目列表
+		function reloadChannelList(checkedId){
+			$(".list-group").html("");
+			$.ajax({
+				url:"${root}/console/cms/channel/json",
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					$.each(result, function(i, item) {
+						if(checkedId != undefined){
+							if(item.id == checkedId){
+								$(".list-group").append("<a id='a"+i+"' href='javascript:;'  class='list-group-item active'>"+(i+1)+"、"+item.name+"</a> ");
+								 setDetail(item.id);//展开选中栏目信息
+							}else{
+								$(".list-group").append("<a id='a"+i+"' href='javascript:;' class='list-group-item'>"+(i+1)+"、"+item.name+"</a> ");
+							}
+						}else{
+							if(i==0){
+								 $(".list-group").append("<a id='a"+i+"' href='javascript:;'  class='list-group-item active'>"+(i+1)+"、"+item.name+"</a> ");
+								 setDetail(item.id);//默认展开第一个栏目信息
+							}else{
+								 $(".list-group").append("<a id='a"+i+"' href='javascript:;' class='list-group-item'>"+(i+1)+"、"+item.name+"</a> ");
+							};
+						}
+
+						
+						//绑定点击事件
+						$('#a'+i).bind('click', function() { 
+							//设置选中样式
+							$.each(result, function(j, item2) {
+								if(j != i){
+									$("#a"+j).attr("class","list-group-item");
+								}else{
+									$("#a"+j).attr("class","list-group-item active");
+								}
+							});
+							//展开右侧信息
+							setDetail(item.id);
+						}); 
+			        });
+				},
+				error:function(data){
+				}
+			});
+		};
+		
+		//设置栏目详情
+		function setDetail(id){
+			$.ajax({
+				url:"${root}/console/cms/channel/detail/"+id,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					$("#id").val(result.id);
+					$("#name").val(result.name);
+					$("#intro").val(result.intro);
+					$("#deleteButton").css("display","inline");
+				}
+			});
+		};
+		
+		function inputChannel(object){
+			$("h3").text("Add channel");
+			$("#deleteButton").css("display","none");
+			$("#id").val("");
+			$("#name").val("");
+			$("#intro").val("");
+		};
+		
+		
+		
+		//保存栏目
+		function saveChannel(object){
+			if($("#input-form").valid()){
+				var id = $("#id").val();
+				var name = $("#name").val();
+				var intro = $("#intro").val();
+				$.ajax({
+					url:"${root}/console/cms/channel/save?id="+id+"&name="+name+"&intro="+intro,
+					type:"POST",
+					dateType:"json",
+					success:function(data){
+						var result = eval("(" + data + ")");
+						var messageType = "success";
+						if(result.success == false){
+							messageType = "error";
+						};
+						var checkedId = id;
+						//加载角色列表
+						reloadChannelList(checkedId);
+						
+						showMsg(messageType,result.message);
+						
+					}
+				});
+			};
+		};
+		
+		//删除栏目
+		function deleteChannel(object){
+			$('#deleteConfirmModal').modal({
+			 	 keyboard: true
+			});
+			$("#deleteConfirmModalClick").click(function(){
+				var id = $("#id").val();
+				$.ajax({
+					url:"${root}/console/cms/channel/delete/"+id,
+					type:"POST",
+					dateType:"json",
+					success:function(data){
+						var result = eval("(" + data + ")");
+						//加载角色列表
+						reloadChannelList();
+						showMsg("success",result.message);
+					}
+				});
+			});
+		};
+	</script>
 	<div class="row">
 		<div class="col-md-3">
-			<div class="list-group">
+			<button type="button" class="btn btn-primary btn-sm" onclick="inputChannel(this)">Add Channel</button>
+			<div class="list-group" style="padding-top: 10px;">
 				<a href="#" class="list-group-item active">Link</a>
 				<a href="#" class="list-group-item">Link</a> 
 			</div>
 		</div>
 		<div class="col-md-9">
-			<label class="col-sm-1 control-label" style="padding: 0px;" >
-					<a  href="${root}/console/cms/channel/input" ><button type="button" class="btn btn-primary">Add</button></a>
-			</label>
-			<div class="col-sm-11">
-				<form class="form-inline" role="form" action="${root}/console/cms/channel/0/10" method="post">
-					<input type="text" class="form-control" name="search_LIKE_title" placeholder="Enter title" value="${search_LIKE_title}">
-					<button type="submit" class="btn btn-default">Search</button>
-				</form>
-			</div>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Title</th>
-						<th>Create Time</th>
-						<th >Manage</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="item" items="${result.content}" varStatus="status">
-						<tr>
-							<td><c:out value="${item.title}" /></td>
-							<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-							<td>
-								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-keyboard="true" data-target="#channel-modify" href="${root}/console/cms/channel/noDecorate/forModify/${item.id}/${result.number}/${result.size}">Modify</a>
-								<a class="btn btn-default btn-xs" data-toggle="modal" data-backdrop="static" data-target="#channel-view" href="${root}/console/cms/channel/noDecorate/view/${item.id}">View</a>
-								<button type="button" class="btn btn-default btn-xs" onclick="deleteOne('${root}/console/cms/channel/delete/${item.id}/${result.number}/${result.size}')">Delete</button>
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<ul class="pagination" style="margin: 10px;">
-				<li>
-					<c:if test="${result.number > 0}">
-						<a href="${root}/console/cms/channel/${result.number-1}/${result.size}">&laquo;</a>
-					</c:if>
-					<c:if test="${result.number <= 0}">
-						<a href="#">&laquo;</a>
-					</c:if>
-				</li>
-				<c:if test="${result.totalPages>=1}">
-					<c:forEach var="item" begin="0" end="${result.totalPages-1}">
-						<li <c:if test="${item eq result.number}">class="active"</c:if>>
-							<a href="${root}/console/cms/channel/${item}/${result.size}">${item+1}</a>
-						</li>
-					</c:forEach>
-				</c:if>
-				<li>
-					<c:if test="${result.number < result.totalPages-1}">
-						<a href="${root}/console/cms/channel/${result.number+1}/${result.size}">&raquo;</a>
-					</c:if>
-					<c:if test="${result.number >= result.totalPages-1}">
-						<a href="#">&raquo;</a>
-					</c:if>
-				</li>
-			</ul>
-		</div>
-	</div>
-	
-	
-	<div class="modal fade" id="channel-view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+			<h3 style="display: block;margin-top: 0px;">Modify channel</h3>
+			<form id="input-form" action="" method="post">
+				<input type="hidden" id="id" name="id" value="">
+				<div class="form-group">
+					<label for="exampleInputTitle">Name</label>
+					<input type="text" class="form-control required" id="name" placeholder="Enter name" name="name" >
 				</div>
-				<div class="modal-body">...</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<div class="form-group">
+					<label for="exampleInputTitle">Intro</label>
+					<textarea rows="3" cols="20" class="form-control required" id="intro" placeholder="Enter intro" name="intro"></textarea>
 				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="channel-modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Modify</h4>
-				</div>
-				<form role="form" method="post" action="${root}/console/cms/channel/modify" id="inputForm">
-					<input type="hidden" value="" name="id" id="id">
-					<div class="modal-body">
-						  <div class="form-group">
-						    <label for="exampleInputEmail1">Title</label>
-						    <input type="text" class="form-control required" id="title" name="title" placeholder="Enter title" value="">
-						  </div>
-						  <div class="form-group">
-						    <label for="exampleInputPassword1">Describe</label>
-						    <textarea class="form-control required" rows="3" placeholder="Enter describe" name="describe" id="describe" ></textarea>
-						  </div>
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary"">Submit</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</form>
-			</div>
+				
+				<button type="button" class="btn btn-default" onclick="saveChannel(this)">Submit</button>
+				<button id="deleteButton" type="button" class="btn btn-danger" onclick="deleteChannel(this)">Delete</button>
+			</form>
 		</div>
 	</div>
 </body>

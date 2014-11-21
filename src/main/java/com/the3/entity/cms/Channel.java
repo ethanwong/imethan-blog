@@ -22,18 +22,18 @@ public class Channel extends BaseEntity {
 	private static final long serialVersionUID = 567346114281964527L;
 	
 	@NotNull
-	@Size(min=4, max=20,message="title must be between 4 and 20")
-	private String title;//标题
+	@Size(min=1, max=20,message="name must be between 1 and 20")
+	private String name;//标题
 	
 	@NotNull
 	@Size(min=1,message="intro must not by null")
 	private String intro;//介绍
-
-	public String getTitle() {
-		return title;
+	
+	public String getName() {
+		return name;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getIntro() {
 		return intro;

@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.cms.Channel;
 import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.cms.ChannelService;
@@ -33,7 +33,7 @@ public class ChannelServiceImpl implements ChannelService {
 
 	@Transactional(readOnly = false)
 	@Override
-	public ServiceReturnDto saveOrModify(Channel entity) {
+	public ReturnDto saveOrModify(Channel entity) {
 		boolean isSuccess = true;
 		String message = "保存成功";
 		try {
@@ -49,7 +49,7 @@ public class ChannelServiceImpl implements ChannelService {
 			message = "保存失败";
 			logger.error(e.getMessage());
 		}
-		return new ServiceReturnDto(isSuccess,message,entity);
+		return new ReturnDto(isSuccess,message,entity);
 	}
 	
 	@Override
@@ -77,7 +77,7 @@ public class ChannelServiceImpl implements ChannelService {
 	
 	@Override
 	@Transactional(readOnly = false)
-	public ServiceReturnDto deleteById(Long id) {
+	public ReturnDto deleteById(Long id) {
 		boolean isSuccess = true;
 		String message = "删除成功";
 		try {
@@ -88,7 +88,7 @@ public class ChannelServiceImpl implements ChannelService {
 			isSuccess = false;
 			message = "删除失败";
 		}
-		return new ServiceReturnDto(isSuccess,message);
+		return new ReturnDto(isSuccess,message);
 	}
 
 

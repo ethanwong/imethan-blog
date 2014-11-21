@@ -19,9 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.the3.base.repository.SearchFilter;
 import com.the3.base.web.SuperController;
+import com.the3.dto.common.ReturnDto;
 import com.the3.dto.page.JqGridPageDto;
-import com.the3.dto.service.ServiceReturnDto;
-import com.the3.dto.web.WebReturnDto;
 import com.the3.entity.security.User;
 import com.the3.service.security.UserService;
 import com.the3.utils.JsonUtils;
@@ -59,22 +58,19 @@ public class UserController extends SuperController {
 	@ResponseBody
 	@RequestMapping(value = "detail/{id}" , method = {RequestMethod.POST})
 	public User detail(@PathVariable Long id){
-		User user = userService.getById(id);
-		return user;
+		return userService.getById(id);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/save",method = RequestMethod.POST)
-	public WebReturnDto save(@ModelAttribute("user") User user){
-		ServiceReturnDto serviceReturnDto = userService.save(user);
-		return new WebReturnDto(serviceReturnDto.isSuccess(),serviceReturnDto.getMessage());
+	public ReturnDto save(@ModelAttribute("user") User user){
+		return userService.save(user);
 	} 
 	
 	@ResponseBody
 	@RequestMapping(value="/delete/{id}",method = RequestMethod.POST)
-	public WebReturnDto delete(@PathVariable Long id){
-		ServiceReturnDto serviceReturnDto = userService.deleteById(id);
-		return new WebReturnDto(serviceReturnDto.isSuccess(),serviceReturnDto.getMessage());
+	public ReturnDto delete(@PathVariable Long id){
+		return userService.deleteById(id);
 	}
 }
 

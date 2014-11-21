@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import com.the3.dto.service.ServiceReturnDto;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.Role;
 
 
@@ -24,7 +24,7 @@ public interface RoleService{
 	 * @param resourcePermission
 	 * @return
 	 */
-	public ServiceReturnDto saveOrModify(Role entity,String resourcePermission);
+	public ReturnDto saveOrModify(Role entity,String resourcePermission);
 	
 	/**
 	 * 获取分页列表
@@ -45,7 +45,7 @@ public interface RoleService{
 	 * @param id
 	 * @return
 	 */
-	public ServiceReturnDto deleteById(Long id);
+	public ReturnDto deleteById(Long id);
 	
 	/**
 	 * 根据ID获取

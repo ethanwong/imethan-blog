@@ -2,13 +2,20 @@ package com.the3.web.console.cms;
 
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.the3.base.web.SuperController;
+import com.the3.dto.common.ReturnDto;
 import com.the3.entity.cms.Channel;
 import com.the3.service.cms.ChannelService;
 
@@ -37,5 +44,32 @@ public class ChannelController extends SuperController{
 		return list;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "save" , method = RequestMethod.POST)
+	public ReturnDto save(@Valid @ModelAttribute("channel") Channel channel, BindingResult result,ServletRequest request){
+		System.out.println("------------channel:"+channel);
+		ReturnDto returnDto = new ReturnDto();
+		if(result.hasFieldErrors()){
+			
+			returnDto.setMessage("参数验证出现异常:"+result.getFieldError().getDefaultMessage());
+			returnDto.setSuccess(false);
+		}else{
+			returnDto = channelService.saveOrModify(channel);
+		}
+		return returnDto;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "delete/{id}" , method = RequestMethod.POST)
+	public ReturnDto delete(@PathVariable Long id){
+		
+		return channelService.deleteById(id);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "detail/{id}" , method = RequestMethod.POST)
+	public Channel detail(@PathVariable Long id){
+		return channelService.getById(id);
+	}
 	
 }
