@@ -1,9 +1,15 @@
 package com.the3.entity.cms;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import com.the3.base.entity.BaseEntity;
 
@@ -15,6 +21,7 @@ import com.the3.base.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_cms_article")
+@JsonIgnoreProperties(value={"channel"})
 public class Article extends BaseEntity {
 
 	private static final long serialVersionUID = 3135828776040100046L;
@@ -22,8 +29,23 @@ public class Article extends BaseEntity {
 	private String title;//标题
 	private String content;//内容
 	
+	@ManyToOne(cascade = {CascadeType.REFRESH},fetch = FetchType.LAZY)
+	@JoinColumn(name="channelId")
 	private Channel channel;//栏目
 	
+	@Transient
+	private String channelName;//栏目名称
+	
+	public String getChannelName() {
+		if(channel != null){
+			return channel.getName();
+		}else{
+			return channelName;
+		}
+	}
+	public void setChannelName(String channelName) {
+		this.channelName = channelName;
+	}
 	public Channel getChannel() {
 		return channel;
 	}

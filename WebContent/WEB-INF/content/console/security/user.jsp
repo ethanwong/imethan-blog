@@ -61,7 +61,6 @@
 			del : false,
 			search : false
 		}, {
-			
 			reloadAfterSubmit : true
 		});
 		$(".ui-jqgrid-titlebar-close*").remove();

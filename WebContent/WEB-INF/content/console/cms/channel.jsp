@@ -105,7 +105,8 @@
 						if(result.success == false){
 							messageType = "error";
 						};
-						var checkedId = id;
+						var checkedId = result.entity.id;
+						$("#id").val(checkedId);
 						//加载角色列表
 						reloadChannelList(checkedId);
 						

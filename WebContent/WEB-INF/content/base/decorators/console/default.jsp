@@ -45,11 +45,15 @@
 	<jsp:include page="/WEB-INF/content/base/decorators/console/header.jsp"></jsp:include>
 	<div class="container">
 		<!-- 面包屑导航 -->
-<!-- 		<ol class="breadcrumb"> -->
+		<ol class="breadcrumb">
+			<c:forEach var="path" items="${pathList}" varStatus="status">
+				<li><a href="#" <c:if test="${status.count eq '3'}">class="active"</c:if>>${path}</a></li>
+			</c:forEach>
+			
 <!-- 			<li><a href="#">Home</a></li> -->
 <!-- 			<li><a href="#">Library</a></li> -->
 <!-- 			<li class="active">Data</li> -->
-<!-- 		</ol> -->
+		</ol>
 		
 		<!-- 提醒信息 -->
 		<div id="topWarn" class="alert alert-success alert-dismissable" style="display: none">

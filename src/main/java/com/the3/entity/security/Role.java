@@ -45,7 +45,7 @@ public class Role extends BaseEntity {
 	}
 
 	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinTable(name="imethan_security_role_resource",joinColumns = { @JoinColumn(name ="role_id" )} ,inverseJoinColumns = { @JoinColumn(name = "resource_id")})
+	@JoinTable(name="imethan_security_role_resource",joinColumns = { @JoinColumn(name ="roleId" )} ,inverseJoinColumns = { @JoinColumn(name = "resourceId")})
 	@OrderBy("id")
 	private Set<Resource> resources = new HashSet<Resource>();//资源
 	
@@ -57,7 +57,7 @@ public class Role extends BaseEntity {
 	}
 	
 	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinTable(name="imethan_security_role_permission",joinColumns = { @JoinColumn(name ="role_id" )} ,inverseJoinColumns = { @JoinColumn(name = "permission_id")})
+	@JoinTable(name="imethan_security_role_permission",joinColumns = { @JoinColumn(name ="roleId" )} ,inverseJoinColumns = { @JoinColumn(name = "permissionId")})
 	@OrderBy("id")
 	private Set<Permission> permissions = new HashSet<Permission>();//授权
 	

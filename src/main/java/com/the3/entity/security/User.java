@@ -32,7 +32,7 @@ public class User extends BaseEntity {
 	private String nickname;//昵称
 	
 	@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name="imethan_security_user_role",joinColumns = { @JoinColumn(name ="user_id" )} ,inverseJoinColumns = { @JoinColumn(name = "role_id")})
+    @JoinTable(name="imethan_security_user_role",joinColumns = { @JoinColumn(name ="userId" )} ,inverseJoinColumns = { @JoinColumn(name = "roleId")})
 	@OrderBy("id")
 	private Set<Role> roles = new HashSet<Role>();//角色
 	

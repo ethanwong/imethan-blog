@@ -1,19 +1,22 @@
 package com.the3.service.cms.impl;
 
 import java.util.Date;
-import java.util.Map;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.the3.base.service.impl.BaseServiceImpl;
+import com.the3.base.repository.DynamicSpecifications;
+import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
 import com.the3.entity.cms.Article;
-import com.the3.entity.security.Resource;
 import com.the3.repository.cms.ArticleRepository;
+import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.cms.ArticleService;
 
 /**
@@ -23,59 +26,72 @@ import com.the3.service.cms.ArticleService;
  * @time 2014年3月2日下午4:45:49
  */
 @Service
+@Transactional(readOnly = true)
 public class ArticleServiceImpl implements ArticleService {
 	
 	private Logger logger = Logger.getLogger(ArticleServiceImpl.class);  
 	
 	@Autowired
 	private ArticleRepository articleRepository;
+	@Autowired
+	private ChannelRepository channelRepository;
 	
-	
+	@Override
+	@Transactional(readOnly = false)
 	public ReturnDto saveOrModify(Article entity) {
 		boolean isSuccess = true;
+		String message = "保存成功";
 		try {
+			if(entity.getId() !=null){
+				entity.setModifyTime(new Date());
+			}
+			entity.setChannel(channelRepository.getOne(entity.getChannel().getId()));
 			articleRepository.save(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
 			isSuccess = false;
+			message = "保存失败";
 			logger.error(e.getMessage());
 		}
-		return new ReturnDto(isSuccess, entity);
+		return new ReturnDto(isSuccess , message , entity);
 	}
 
-
+	@Override
 	public Article getById(Long id) {
+		Article article = new Article();
 		try {
-//			return articleRepository.findOne(id);
+			article = articleRepository.findOne(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
-			
 		}
-		return null;
+		return article;
 	}
 
-
-	public Page<Article> getPage(Map<String, Object> parameters,PageRequest pageable) {
-		try {
-//			return super.getPage(parameters, pageable, Article.class);
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
-			
-		}
-		return null;
-	}
-
-
+	@Override
+	@Transactional(readOnly = false)
 	public ReturnDto deleteById(Long id) {
+		boolean isSuccess = true;
+		String message = "删除成功";
 		try {
-//			articleRepository.delete(id);
-			return null;
+			articleRepository.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
-			return null;
 		}
+		return new ReturnDto(isSuccess , message);
+	}
+
+
+	@Override
+	public Page<Article> findPage(List<SearchFilter> filters, PageRequest pageable) {
+		Page<Article> result = null;
+		try {
+			Specification<Article> spec = DynamicSpecifications.bySearchFilter(filters, Article.class);
+			result = articleRepository.findAll(spec, pageable);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

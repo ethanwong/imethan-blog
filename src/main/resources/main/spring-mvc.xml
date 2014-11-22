@@ -24,6 +24,13 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/console/**"/>
+			<bean class="com.the3.web.interceptor.ConsoleInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<mvc:annotation-driven
 		content-negotiation-manager="contentNegotiationManager"

@@ -31,7 +31,7 @@ public class Permission extends BaseEntity {
 	private String permission;//权限
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY)
-	@JoinColumn(name="resource_id")
+	@JoinColumn(name="resourceId")
 	private Resource resource = new Resource();//资源
 	
 	public Resource getResource() {
