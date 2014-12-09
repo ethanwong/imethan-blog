@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<link href="${root}/theme/css/console/signin.css" rel="stylesheet">
+<%-- <link href="${root}/theme/css/console/signin.css" rel="stylesheet"> --%>
 </head>
 <body>
 	<div class="container" style="width: 300px;">

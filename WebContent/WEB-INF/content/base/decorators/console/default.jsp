@@ -40,6 +40,7 @@
 	<link rel="stylesheet" href="${root}/theme/jtree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 	<script type="text/javascript" src="${root}/theme/jtree/js/jquery.ztree.all-3.5.js"></script>
 	<!-- ztree end -->
+	<decorator:head></decorator:head>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/content/base/decorators/console/header.jsp"></jsp:include>

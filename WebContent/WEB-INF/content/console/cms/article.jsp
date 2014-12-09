@@ -125,6 +125,7 @@
 			$('#inputModal').modal(
 				$("#inputModal").find("#id").val(""),
 				$("#inputModal").find("#title").val(""),
+				$("#inputModal").find("h4").html("Input article"),
 				$(".ke-edit-iframe").contents().find(".ke-content").html("")
 			);
 		};
