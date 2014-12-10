@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>::ImEthan:Example::</title>
+<title>ImEthan</title>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
@@ -21,7 +21,7 @@
 				
 				$.each(result, function(i, item) {
 					var article = ""+
-					"<h4>"+
+					"<h4 style='color: #428bca;''>"+
 					item.title+
 					"<small style='float: right;' >"+
 					item.createTime+
@@ -31,6 +31,8 @@
 					"<p style='color: #333 !important;line-height: 26px;'>"+
 					item.content+
 					"</p>"+
+// 					"<small>"+item.channelName+"</small>"+
+					"<small><span class='label label-info'>"+item.channelName+"</span></small>"+
 					"<br><br>";
 					$("#article").append(article);
 				});
@@ -51,9 +53,8 @@
 <!-- 	<div class="well well-sm">欢迎您百忙之中抽空访问"www.imethan.cn"，这里是一个WEB开发者展现内心独白的的平台，作为一个IT从业者，特别是WEB设计开发人员，没有一个属于自己的站点一直是个遗憾，因为2006年就给自己定下这样的小目标，要有自己的一个小网站，在正式进入IT行业3年后的今天，"imethan"的上线填补了个人的这个遗憾，希望接下来的日子里能好好的开发以及维护，也将其作为一个职业技能训练和巩固的平台。</div> -->
 	<div class="row">
 		<div class="col-md-3">
-<!-- 			<h4>ABOUT ME</h4> -->
-			<ul class="list-group">
-				<li class="list-group-item" align="middle"><img  src="${root}/theme/images/pic.jpg" alt="" width="160px" height="160px" ></li>
+			<ul class="list-group" style="width: 210px;">
+				<li class="list-group-item" align="middle"><img class="img-thumbnail" src="${root}/theme/images/20131110-ethan.jpg" alt="www.imethan.cn" width="180px" height="180px" ></li>
 				<li class="list-group-item"><strong>Name</strong><br>Ethan Wong</li>
 				<li class="list-group-item"><strong>Locate</strong><br>XiaMen.China</li>
 				<li class="list-group-item"><strong>Email</strong><br>ethanwong@qq.com</li>
@@ -81,8 +82,8 @@
 <!-- 				那么你就是一位黑客。 -->
 <!-- 				</div> -->
 <!-- 			</div> -->
-<!-- 			<div id="article"> -->
-<!-- 				<h4 style="color: black;">这是标题的文字大小 <small style="float: right;">2014-3-31 11:11:12</small></h4> -->
+			<div id="article">
+<!-- 				<h4 style="color: #428bca;">这是标题的文字大小 <small style="float: right;">2014-3-31 11:11:12</small></h4> -->
 <!-- 				<hr width="698px;" size="2" style="padding: 0;margin:0;margin-bottom: 10px;"> -->
 <!-- 				<p style="color: #333 !important;line-height: 26px;"> -->
 <!-- 				这可以追溯到几十年前第一台分时小型电脑诞生, ARPAnet 实验也刚展开的 -->
@@ -93,7 +94,7 @@
 <!-- 				</p> -->
 <!-- 				<small>Someone famous in <cite title="Source Title">Source Title</cite></small> -->
 <!-- 				<br><br> -->
-<!-- 			</div> -->
+			</div>
 		</div>
 	</div>
 </body>

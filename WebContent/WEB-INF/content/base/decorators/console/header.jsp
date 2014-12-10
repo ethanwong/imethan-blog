@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 	<!-- Static navbar -->
 	<div class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="container" style="width: 970px;">
+		<div class="container" >
 			<div class="navbar-header">
 				<!--           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> -->
 				<!--             <span class="sr-only">Toggle navigation</span> -->
@@ -10,7 +10,7 @@
 				<!--             <span class="icon-bar"></span> -->
 				<!--             <span class="icon-bar"></span> -->
 				<!--           </button> -->
-				<a class="navbar-brand" href="${root}/console/home">ImEthan</a>
+				<a class="navbar-brand" href="${root}/console/home"><img class="img-circle" src="${root}/theme/images/20131110-ethan.jpg" alt="" width="26px" height="26px" />  ImEthan</a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">

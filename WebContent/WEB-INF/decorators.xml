@@ -16,7 +16,7 @@
 	</decorator>
 	
 	<!-- 前台菜单装饰页 -->
-	<decorator name="front" page="front/menu.jsp">
+	<decorator name="front" page="front/default.jsp">
 		<pattern>/index</pattern>
 	</decorator>
 
