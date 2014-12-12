@@ -10,6 +10,8 @@
 	<script type="text/javascript">
 		//页面加载时初始化脚本
 		$(document).ready(function () {
+			
+			console.log(encodeURIComponent("123123123"));
 			//加载栏目列表
 			reloadChannelList();
 			
@@ -142,6 +144,7 @@
 					$('#inputModal').modal(
 						$("#inputModal").find("#id").val(result.id),
 						$("#inputModal").find("#title").val(result.title),
+// 						$("#inputModal").find("#content").val(result.content)
 						$(".ke-edit-iframe").contents().find(".ke-content").html(result.content)
 					);
 				}
@@ -172,18 +175,21 @@
 		//保存文章
 		function saveArticle(){
 			var content = $("#kindeditorContent").val();
-			if(content == "" || $.trim(content) == ""){
-				$("#kindeditorContentError").html("This field is required.");
-// 				return false;
-			};
+// 			var content = $("#content").val();
+// 			content = $.md5(content)
+// 			if(content == "" || $.trim(content) == ""){
+// 				$("#kindeditorContentError").html("This field is required.");
+// 			};
+			console.log(content);
 			if($("#inputForm").valid()){
 				var id = $("#id").val();
 				var title = $("#title").val();
 				var channelId = $("#channelId").val();
 				$.ajax({
-					url:"${root}/console/cms/article/save?id="+id+"&title="+title+"&content="+content+"&channel.id="+channelId,
 					type:"POST",
-					dateType:"json",
+					url:"${root}/console/cms/article/save",
+					data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content),
+				    dateType:"json",
 					success:function(data){
 						var result = eval("(" + data + ")");
 						var messageType = "success";
@@ -263,6 +269,7 @@
 							  </div>
 							  <div class="form-group">
 							    <label for="exampleInputEmail1">Content</label>
+<!-- 							    <textarea style="width: 100% !important;" class="form-control required" rows="10" cols="" name="content" id="content" placeholder="Enter content"></textarea> -->
 							  	<textarea oninput="validkindeditorContent(this)"  style="width: 100% !important;" class="form-control required" rows="14" placeholder="Enter content" name="content" id="kindeditorContent"></textarea>
 								<label id="kindeditorContentError" ></label>
 							  </div>

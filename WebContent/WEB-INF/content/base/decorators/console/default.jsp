@@ -12,6 +12,7 @@
 <title>ImEthan</title>
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
+	<script src="${root}/theme/js/jQuery.md5.js"></script>
 	<link href="${root}/theme/css/bootstrap.css" rel="stylesheet">
 	<script src="${root}/theme/js/jquery.validate.js"></script>
 	<script src="${root}/theme/js/messages-cn.js"></script>

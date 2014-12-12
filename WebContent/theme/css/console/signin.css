@@ -2,6 +2,7 @@ body {
   padding-top: 0px;
   padding-bottom: 40px;
   background-color: #eee;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
 }
 
 .form-signin {

@@ -18,32 +18,32 @@
 					<li><a href="#Blog">Blog</a></li>
 					<li><a href="#About">About</a></li>
 					<li><a href="#Contact">Contact</a></li>
-<!-- 					<li class="dropdown"><a href="#" class="dropdown-toggle" -->
-<!-- 						data-toggle="dropdown">CMS <b class="caret"></b></a> -->
-<!-- 						<ul class="dropdown-menu"> -->
-<%-- 							<li><a href="${root}/console/cms/channel">Channel</a></li> --%>
-<%-- 							<li><a href="${root}/console/cms/article">Article</a></li> --%>
-<!-- 							                <li class="divider"></li> -->
-<!-- 							                <li class="dropdown-header">Nav header</li> -->
-<!-- 							                <li><a href="#">Separated link</a></li> -->
-<!-- 							                <li><a href="#">One more separated link</a></li> -->
-<!-- 						</ul> -->
-<!-- 					</li> -->
-<!-- 					<li class="dropdown"><a href="#" class="dropdown-toggle" -->
-<!-- 						data-toggle="dropdown">USER<b class="caret"></b></a> -->
-<!-- 						<ul class="dropdown-menu"> -->
-<%-- 							<li><a href="${root}/console/user/user">User</a></li> --%>
-<%-- 							<li><a href="${root}/console/user/role">Role</a></li> --%>
-<%-- 							<li><a href="${root}/console/user/permission">Permission</a></li> --%>
-<%-- 							<li><a href="${root}/console/user/resource">Resource</a></li> --%>
-<!-- 						</ul> -->
-<!-- 					</li> -->
+					<li><a href="${root}/portal">Portal</a></li>
+<%-- 					<li><a href="${root}/console">Console</a></li> --%>
+					
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Separated link</a></li>
+			                <li class="divider"></li>
+			                <li class="dropdown-header">Nav header</li>
+			                <li><a href="#">Separated link</a></li>
+			                <li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
 				</ul>
-<!-- 				          <ul class="nav navbar-nav navbar-right"> -->
-<!-- 				            <li><a href="#">Default</a></li> -->
-<!-- 				            <li><a href="#">Static top</a></li> -->
-<!-- 				            <li><a href="#">Fixed top</a></li> -->
-<!-- 				          </ul> -->
+<!-- 		          <ul class="nav navbar-nav navbar-right"> -->
+<%-- 		            <li><a href="${root}/portal">Portal</a></li> --%>
+<!-- 		            <li><a href="#">Static top</a></li> -->
+<!-- 		            <li><a href="#">Fixed top</a></li> -->
+<!-- 		          </ul> -->
+		          
+		          <form class="navbar-form navbar-right" role="search">
+					  <div class="form-group">
+					    	<input type="text" class="form-control" placeholder="Search" style="width: 260px;height: 30px;">
+					  </div>
+					  <button type="submit" class="btn btn-default btn-sm" >Submit</button>
+				</form>
 
 <!-- 				<div class="navbar-form navbar-right" > -->
 <%-- 					<shiro:guest>   --%>

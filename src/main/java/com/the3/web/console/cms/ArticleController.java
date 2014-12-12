@@ -65,9 +65,9 @@ public class ArticleController extends SuperController{
 	} 
 	
 	@ResponseBody
-	@RequestMapping(value = "save" , method = RequestMethod.POST)
+	@RequestMapping(value = "save" , method = {RequestMethod.POST,RequestMethod.GET })
 	public ReturnDto save(@Valid @ModelAttribute("article") Article article, BindingResult result,ServletRequest request){
-		System.out.println("------------article:"+article);
+		System.out.println("------------article:"+article.getContent());
 		ReturnDto returnDto = new ReturnDto();
 		if(result.hasFieldErrors()){
 			

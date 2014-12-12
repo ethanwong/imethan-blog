@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>::ImEthan:Example::</title>
+	<title>ImEthan</title>
 	<meta name="author" content="ImEthan" />
 	<meta name="description" content="ImEthan" />
 	<meta name="keywords"  content="ImEthan" />
@@ -46,6 +46,7 @@
 	    	<h1>我真的是程序员</h1>
 			<p>I'm really a programmer.</p>
 			<p>Keywords:Programmer,Readboy,Guitarist</p>
+			<p><a href="${root}/index" style="font-style: normal;">Enter ImEthan</a></p>
 	    </div>
 	    <div class="section" id="section2">
 	    	<div class="intro">

@@ -10,21 +10,24 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>ImEthan</title>
-<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
-<!-- Bootstrap core CSS -->
-<link href="${root}/theme/css/bootstrap.css" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link href="${root}/theme/css/console/common.css" rel="stylesheet">
+	<!-- bootstrap begin -->
+	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
+	<script src="${root}/theme/js/jQuery.md5.js"></script>
+	<link href="${root}/theme/css/bootstrap.css" rel="stylesheet">
+	<script src="${root}/theme/js/jquery.validate.js"></script>
+	<script src="${root}/theme/js/messages-cn.js"></script>
+	<script src="${root}/theme/js/bootstrap.min.js"></script>
+	<script src="${root}/theme/js/popover.js"></script>
+	<script src="${root}/theme/js/tooltip.js"></script>
+	<script src="${root}/theme/js/alert.js"></script>
+	<script src="${root}/theme/js/transition.js"></script>
+	<!-- bootstrap end -->
+	
+	
+	
+	<link href="${root}/theme/css/console/common.css" rel="stylesheet">
 
-<!-- Just for debugging purposes. Don't actually copy this line! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <decorator:head></decorator:head>
 </head>
 
