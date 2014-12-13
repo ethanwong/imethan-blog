@@ -23,6 +23,9 @@
 	<script src="${root}/theme/js/alert.js"></script>
 	<script src="${root}/theme/js/transition.js"></script>
 	<!-- bootstrap end -->
+	<script src="${root}/theme/js/readmore.js"></script>
+	<script src="${root}/theme/js/jquery.infinitescroll.js"></script>
+	<script src="${root}/theme/js/debug.js"></script>
 	
 	
 	

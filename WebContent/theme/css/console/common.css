@@ -52,18 +52,37 @@ table {
 	font-size: 14;
 }
 
+.articleList{
+	
+}
+
+.articleList .article{
+	margin-bottom:20px;
+	display: block;
+}
+.articleList .article .channel{
+	color: #428bca;
+}
 
 /*article css*/
-.article .title{
-	color: #4183c4;
+.articleList .article .title{
+/* 	color: #4183c4; */
+	color:#777;
 	margin-top:5px;
-	margin-bottom:5px;
+	margin-bottom:5px;		
+	width:698px;
+	line-height: 32px;
 }
-.article .content{
-	margin: 10 0 10 0;
+.articleList .article .content{
+	margin-top:10px;
 	color:#333 !important;
 	line-height: 28px;
 	font-size: 14px;
+	width:698px;
+}
+
+.readmore-js-toggle{
+	padding-left: 600px;
 }
 
 /*Error Page*/

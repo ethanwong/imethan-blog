@@ -44,10 +44,10 @@ public class IndexController extends SuperController{
     }
     
     @ResponseBody
-    @RequestMapping(value = "/article/{page}" , method = RequestMethod.POST)
+    @RequestMapping(value = "/article/{page}" , method = {RequestMethod.POST,RequestMethod.GET})
     public List<Article> getArticleList(@PathVariable Integer page){
     	List<Article> list = new ArrayList<Article>();
-    	
+    	size = 2;
     	PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "id");
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();
 //		SearchFilter searchFilter = new SearchFilter("channel.id",SearchFilter.Operator.EQ,channelId.toString());

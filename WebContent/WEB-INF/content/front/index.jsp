@@ -6,43 +6,81 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>ImEthan</title>
 <script type="text/javascript">
+	
 	//页面加载时初始化脚本
 	$(document).ready(function () {
-		reloadArticle();
 		
-// 		$("#rightBox").pin();
+		//加载第一页文章
+		loadPageOneArticle();
 		
-
+		//滚动加载文章
+		$(".articleList").infinitescroll({  
+            navSelector: "#navigation",
+            nextSelector: "#navigation a",  
+            itemSelector: ".articleList" , 
+            debug        : true,  
+            loading:{
+                finishedMsg: '没有更多内容了...',//结束显示信息
+                msgText: "正在加载内容...",
+                img: '${root}/theme/images/ajax-loader.gif'//loading图片
+            },
+            dataType: 'json',
+            appendCallback: false,
+            animate: true,  
+            maxPage: 10,
+            extraScrollPx: 50,  
+			template: function(data) {
+                return data;
+            }
+        }, 
+        function(data,opt) {
+        	generateArticle(data);
+         });
+		
 	});
 	
-	function reloadArticle(){
+	//加载第一页文章
+	function loadPageOneArticle(){
 		$.ajax({
 			url:"${root}/index/article/1",
 			type:"POST",
 			dateType:"json",
 			success:function(data){
 				var result = eval("(" + data + ")");
-				
-				$.each(result, function(i, item) {
-					var article = ""+
-					"<h3 class='title'>"+
-						item.title+
-// 						"<small>  "+item.createTime+"</small>"+
-// 					"<span class='label label-default'>"+item.channelName+"</span>"+
-					"</h3>"+
-					"<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>"+
-					"<small><span class='label label-primary'>"+item.channelName+"</span></small>"+
-					"<small>&nbsp;&nbsp;"+item.createTime+"</small>"+
-					"<p class='content'>"+
-					item.content+
-					"</p>"+
-// 					"<small><span class='label label-info'>"+item.channelName+"</span></small>"+
-					"";
-					$("#article").append(article);
-				});
+				generateArticle(result);
 			}
 		});
 	};
+	
+	//加载文章信息
+	function generateArticle(json){
+		$.each(json, function(i, item) {
+			var article = ""+
+			"<div class='article'>"+
+			"<h3 class='title'>"+
+				item.title+
+//					"<small>  "+item.createTime+"</small>"+
+//				"<span class='label label-default'>"+item.channelName+"</span>"+
+			"</h3>"+
+			"<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>"+
+			"<small class='channel'><strong>"+item.channelName+"</strong></small>"+
+			"<small>&nbsp;&nbsp;"+item.createTime+"</small>"+
+			"<div class='content'>"+
+			item.content+
+			"</div>"+
+//				"<small><span class='label label-info'>"+item.channelName+"</span></small>"+
+			"</div>";
+			
+			$(".articleList").append(article);
+			
+			$('.content').readmore({
+				  speed: 1000,
+				  maxHeight: 200,
+				  moreLink:"<a href='#'>Read More</a>",
+				  lessLink:"<a href='#'>Close More</a>"
+			});
+		});
+	}
 
 </script>
 </head>
@@ -53,17 +91,13 @@
 <!-- 	  <p><a class="btn btn-primary" role="button">About more</a></p> -->
 <!-- 	</div> -->
 	<div class="row">
-		<div class="col-md-9">
-			<div id="article" class="article"></div>
-		</div>
 		<div class="col-md-3">
 			<div class="rightBox">
 				<p>
 					<img class="img-thumbnail" src="${root}/theme/images/pic.jpg" alt="www.imethan.cn" width="180px" height="180px" >
 				</p>
-				
 				<font size="4">Ethan Wong</font>
-				<hr width='200px;' size='2' style='margin-top: 4px;margin-bottom: 4px;margin-left: 0px;'>
+				<hr width='200px;' size='2' style='margin-top: 4px;margin-bottom: 4px;margin-left: 0px;'/>
 				<p style="line-height: 30px;">
 					<address>
 					  <strong>Locate</strong><br>
@@ -90,13 +124,24 @@
 				</p>
 			</div>
 		</div>
+		
+		<div class="col-md-9" >
+			<div class="articleList">
+				
+			</div>
+			
+			<div id="navigation" align="center">
+        		<a href="${root}/index/article/2"></a>  
+   			 </div>
+   			
+		</div>
 	</div>
 	
-	<script src="${root}/theme/js/jquery.pin.js"></script>
-	<script type="text/javascript">
-		$(".rightBox").pin({
-		      containerSelector: ".row"
-		});
-	</script>
+<%-- 	<script src="${root}/theme/js/jquery.pin.js"></script> --%>
+<!-- 	<script type="text/javascript"> -->
+<!-- // 		$(".rightBox").pin({ -->
+<!-- // 		      containerSelector: ".row" -->
+<!-- // 		}); -->
+<!-- 	</script> -->
 </body>
 </html>
