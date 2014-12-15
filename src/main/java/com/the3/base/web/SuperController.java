@@ -10,7 +10,7 @@ package com.the3.base.web;
 public class SuperController {
 	
 	protected int page = 0;//默认页位置
-	protected int size = 10;//默认页大小
+	protected int size = 2;//默认页大小
 	
 	
 

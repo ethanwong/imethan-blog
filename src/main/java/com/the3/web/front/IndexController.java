@@ -28,7 +28,6 @@ import com.the3.service.cms.ChannelService;
  * @author Ethan Wong
  * @time 2014年3月16日上午12:16:49
  */
-
 @Controller
 @RequestMapping("/index")
 public class IndexController extends SuperController{
@@ -47,7 +46,6 @@ public class IndexController extends SuperController{
     @RequestMapping(value = "/article/{page}" , method = {RequestMethod.POST,RequestMethod.GET})
     public List<Article> getArticleList(@PathVariable Integer page){
     	List<Article> list = new ArrayList<Article>();
-    	size = 2;
     	PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "id");
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();
 //		SearchFilter searchFilter = new SearchFilter("channel.id",SearchFilter.Operator.EQ,channelId.toString());

@@ -6,8 +6,8 @@
 		<div class="container" >
 			<p class="text-muted">
 				A simple website by ethan.At the beginning of 2014.
-				<a href="${root}/console"><span class="label label-default">console</span></a>
+<%-- 				<a href="${root}/console"><span class="label label-default">console</span></a> --%>
 			</p>
-			
+			<jsp:include page="/WEB-INF/content/base/tongji.jsp"></jsp:include>
 		</div>
 	</div>
