@@ -4,14 +4,9 @@
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 <html>
 <head>
-<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>ImEthan</title>
-
+	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
+	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
+	<title>ImEthan</title>
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
 	<script src="${root}/theme/js/jQuery.md5.js"></script>
@@ -29,8 +24,16 @@
 	<script src="${root}/theme/js/debug.js"></script>
 	
 	
-	
 	<link href="${root}/theme/css/console/common.css" rel="stylesheet">
+	
+	<!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="${root}/theme/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
     <decorator:head></decorator:head>
 </head>

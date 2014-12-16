@@ -4,14 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan</title>
+<title>ImEthan:Blog</title>
 <script type="text/javascript">
 	
 	//页面加载时初始化脚本
 	$(document).ready(function () {
 		//加载栏目列表
 		reloadChannelList();
-		
 		
 		//滚动加载文章
 		$(".articleList").infinitescroll({  
@@ -51,17 +50,17 @@
 				$.each(result, function(i, item) {
 					if(checkedId != undefined){
 						if(item.id == checkedId){
-							$(".list-group").append("<a id='a"+i+"' href='javascript:;'  class='list-group-item active'>"+(i+1)+"、"+item.name+"</a> ");
+							$(".list-group").append("<a id='a"+i+"' href='javascript:;'  class='list-group-item active'>"+(i+1)+"、"+item.name+"<span class='badge'>"+item.articleAmount+"</span></a> ");
 							 setArticle(item.id);//展开选中栏目信息
 						}else{
-							$(".list-group").append("<a id='a"+i+"' href='javascript:;' class='list-group-item'>"+(i+1)+"、"+item.name+"</a> ");
+							$(".list-group").append("<a id='a"+i+"' href='javascript:;' class='list-group-item'>"+(i+1)+"、"+item.name+"<span class='badge'>"+item.articleAmount+"</span></a> ");
 						}
 					}else{
 // 						if(i==0){
 // 							 $(".list-group").append("<a id='a"+i+"' href='javascript:;'  class='list-group-item active'>"+(i+1)+"、"+item.name+"</a> ");
 // 							 setArticle(item.id);//默认展开第一个栏目信息
 // 						}else{
-							 $(".list-group").append("<a id='a"+i+"' href='javascript:;' class='list-group-item'>"+(i+1)+"、"+item.name+"</a> ");
+							 $(".list-group").append("<a id='a"+i+"' href='javascript:;' class='list-group-item'>"+(i+1)+"、"+item.name+"<span class='badge'>"+item.articleAmount+"</span></a> ");
 // 						};
 					    setArticle(0);//展开全部文章信息
 					}

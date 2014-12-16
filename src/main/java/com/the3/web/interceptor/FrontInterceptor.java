@@ -10,13 +10,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+
 /**
- * ConsoleInterceptor.java
+ * FrontInterceptor.java
  *
  * @author Ethan Wong
- * @time 2014年11月22日下午9:10:57
+ * @time 2014年12月16日下午10:09:16
  */
-public class ConsoleInterceptor implements HandlerInterceptor  {
+public class FrontInterceptor implements HandlerInterceptor  {
 	
 	/** 
      * preHandle方法是进行处理器拦截用的，顾名思义，该方法将在Controller处理之前进行调用，SpringMVC中的Interceptor拦截器是链式的，可以同时存在 
@@ -42,19 +43,17 @@ public class ConsoleInterceptor implements HandlerInterceptor  {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		
-		System.out.println("-----------ConsoleInterceptor-------------");
-		
-		//设置面包屑导航
+		System.out.println("-----------FrontInterceptor-------------");
+		//设置导航选中效果
 		String servletPath = request.getServletPath();
 		String[] paths = StringUtils.split(servletPath, "/");
 		List<String> pathList = new ArrayList<String>();
 		for(String path:paths){
-			pathList.add(path);
+			request.setAttribute("module", path);
+			break;
 		}
-		System.out.println(request.getServletPath());
-		System.out.println("pathList:"+pathList);
-		request.setAttribute("pathList", pathList);
+		System.out.println("servletPath:"+servletPath);
+		
 	}
 	
 	/** 

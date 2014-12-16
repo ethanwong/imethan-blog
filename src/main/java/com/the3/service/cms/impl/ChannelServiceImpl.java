@@ -96,6 +96,7 @@ public class ChannelServiceImpl implements ChannelService {
 	public List<Channel> getList() {
 		try {
 			return channelRepository.findAll();
+			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			e.printStackTrace();

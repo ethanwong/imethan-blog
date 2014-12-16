@@ -15,6 +15,7 @@ import com.the3.base.repository.DynamicSpecifications;
 import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
 import com.the3.entity.cms.Article;
+import com.the3.entity.cms.Channel;
 import com.the3.repository.cms.ArticleRepository;
 import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.cms.ArticleService;
@@ -42,10 +43,15 @@ public class ArticleServiceImpl implements ArticleService {
 		boolean isSuccess = true;
 		String message = "保存成功";
 		try {
+			Channel channel = channelRepository.getOne(entity.getChannel().getId());
 			if(entity.getId() !=null){
 				entity.setModifyTime(new Date());
+			}else{
+				//更新文章数量
+				channel.setArticleAmount(channel.getArticleAmount()+1);
+				channelRepository.save(channel);
 			}
-			entity.setChannel(channelRepository.getOne(entity.getChannel().getId()));
+			entity.setChannel(channel);
 			articleRepository.save(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,9 +77,19 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	@Transactional(readOnly = false)
 	public ReturnDto deleteById(Long id) {
+	
+		
 		boolean isSuccess = true;
 		String message = "删除成功";
 		try {
+			//更新文章数
+			Article article = articleRepository.getOne(id);
+			Channel channel = article.getChannel();
+			
+			channel.setArticleAmount(channel.getArticleAmount()-1);
+			channelRepository.save(channel);
+			channelRepository.flush();
+			
 			articleRepository.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();

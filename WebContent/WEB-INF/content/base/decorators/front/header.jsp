@@ -14,47 +14,32 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="${root}/index">Home</a></li>
-					<li><a href="${root}/blog">Blog</a></li>
-					<li><a href="#About">About</a></li>
-					<li><a href="#Contact">Contact</a></li>
-					<li><a href="${root}/portal">Portal</a></li>
+				
+				
+					<li <c:if test="${module eq 'index'}">class="active"</c:if>><a href="${root}/index">Home</a></li>
+					<li <c:if test="${module eq 'blog'}">class="active"</c:if>><a href="${root}/blog">Blog</a></li>
+					<li <c:if test="${module eq 'contact'}">class="active"</c:if>><a href="${root}/contact">Contact</a></li>
+					<li <c:if test="${module eq 'about'}">class="active"</c:if>><a href="${root}/about">About</a></li>
+<%-- 					<li><a href="${root}/portal">Portal</a></li> --%>
 <%-- 					<li><a href="${root}/console">Console</a></li> --%>
 					
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Separated link</a></li>
-			                <li class="divider"></li>
-			                <li class="dropdown-header">Nav header</li>
-			                <li><a href="#">Separated link</a></li>
-			                <li><a href="#">One more separated link</a></li>
-						</ul>
-					</li>
+<!-- 					<li class="dropdown"><a href="#" class="dropdown-toggle" -->
+<!-- 						data-toggle="dropdown">Dropdown <b class="caret"></b></a> -->
+<!-- 						<ul class="dropdown-menu"> -->
+<!-- 							<li><a href="#">Separated link</a></li> -->
+<!-- 			                <li class="divider"></li> -->
+<!-- 			                <li class="dropdown-header">Nav header</li> -->
+<!-- 			                <li><a href="#">Separated link</a></li> -->
+<!-- 			                <li><a href="#">One more separated link</a></li> -->
+<!-- 						</ul> -->
+<!-- 					</li> -->
 				</ul>
-<!-- 		          <ul class="nav navbar-nav navbar-right"> -->
-<%-- 		            <li><a href="${root}/portal">Portal</a></li> --%>
-<!-- 		            <li><a href="#">Static top</a></li> -->
-<!-- 		            <li><a href="#">Fixed top</a></li> -->
-<!-- 		          </ul> -->
-		          
-		          <form class="navbar-form navbar-right" role="search">
+		         <form class="navbar-form navbar-right" role="search">
 					  <div class="form-group">
 					    	<input type="text" class="form-control" placeholder="Search" style="width: 260px;height: 30px;">
 					  </div>
 					  <button type="submit" class="btn btn-default btn-sm" >Submit</button>
 				</form>
-
-<!-- 				<div class="navbar-form navbar-right" > -->
-<%-- 					<shiro:guest>   --%>
-<%-- 						<a type="submit" class="btn btn-default" href="${root}/console/toSignin">Sign in</a> --%>
-<%-- 					</shiro:guest> --%>
-<%-- 					<shiro:user>   --%>
-<%-- 						Hello, <shiro:principal/>!   --%>
-<%-- 						<a type="submit" class="btn btn-default" href="${root}/console/signout">Sign out</a> --%>
-<%-- 					</shiro:user> --%>
-<!-- 				</div> -->
 			</div>
-			<!--/.nav-collapse -->
 		</div>
 	</div>

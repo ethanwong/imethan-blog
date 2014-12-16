@@ -29,6 +29,14 @@ public class Channel extends BaseEntity {
 	@Size(min=1,message="intro must not by null")
 	private String intro;//介绍
 	
+	private int articleAmount = 0;//文章数量
+	
+	public int getArticleAmount() {
+		return articleAmount;
+	}
+	public void setArticleAmount(int articleAmount) {
+		this.articleAmount = articleAmount;
+	}
 	public String getName() {
 		return name;
 	}

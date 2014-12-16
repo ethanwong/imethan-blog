@@ -30,6 +30,10 @@
 			<mvc:mapping path="/console/**"/>
 			<bean class="com.the3.web.interceptor.ConsoleInterceptor" />
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/*"/>
+			<bean class="com.the3.web.interceptor.FrontInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 	<mvc:annotation-driven
