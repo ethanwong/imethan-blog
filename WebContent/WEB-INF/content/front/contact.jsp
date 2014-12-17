@@ -17,12 +17,9 @@
 <body>
 	<div class="row">
 		<div class="col-md-3">
-			<p style="padding-top: 22px;">
-				<img src="${root}/theme/images/20131110-ethan.jpg" alt="..." class="img-thumbnail" width="180px">
-			</p>
-			<font size="4">ImEthan</font>
-			<hr width='200px;' size='2' style='margin-top: 4px;margin-bottom: 4px;margin-left: 0px;'/>
-			<p style="line-height: 30px;">
+			<div class="panel panel-default" >
+			  <div class="panel-heading">Contact</div>
+			  <div class="panel-body">
 				<address>
 				  <strong>Phone</strong><br>
 				  15960203283<br>
@@ -31,22 +28,21 @@
 				  <strong>Email</strong><br>
 				  <a href="mailto:#">ethanwong@qq.com</a>
 				</address>
-			</p>
-			
+			  </div>
+			</div>
 		</div>
-		
 		<div class="col-md-9" >
-			<h3>You can leave a message</h3>
+			<h2 style="margin-top: 0px;">Can you leave a message</h2>
 			<form role="form" action="#" method="post">
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">Email</label>
-			    <input type="email" class="form-control" id="email" placeholder="Enter email">
+			    <input type="email" class="form-control" id="email" placeholder="Enter you email">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Message</label>
-			    <textarea  class="form-control" id="message" placeholder="Enter message" rows="6"></textarea>
+			    <textarea  class="form-control" id="message" placeholder="Enter you message" rows="6"></textarea>
 			  </div>
-			  <button type="submit" class="btn btn-default">Submit</button>
+			  <button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 		</div>
 	</div>

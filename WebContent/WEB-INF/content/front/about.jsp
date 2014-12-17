@@ -17,7 +17,7 @@
 <body>
 	<div class="row">
 		<div class="col-md-3">
-			<div class="list-group" style="padding-top: 10px;">
+			<div class="list-group" >
 <!-- 				<a href="#" class="list-group-item active">Link</a> -->
 				<a href="#" class="list-group-item">Link</a>
 				<a href="#" class="list-group-item">Link</a> 
@@ -25,7 +25,7 @@
 		</div>
 		
 		<div class="col-md-9" >
-			<h3>Information about imethan</h3>
+			<h2 style="margin-top: 0px;">Information about imethan</h2>
 			<p>
 				This is content!
 			</p>

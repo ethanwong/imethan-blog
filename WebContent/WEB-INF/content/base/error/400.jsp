@@ -4,18 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>405</title>
+<title>400</title>
 <link href="${root}/theme/css/bootstrap.css" rel="stylesheet">
 <link href="${root}/theme/css/console/common.css" rel="stylesheet">
 </head>
 <body>
-         <div class="widget-content">
-           <div class="error_ex">
-             <h1>405</h1>
-             <h3>Something is wrong here. Method not allowed!</h3>
-             <p>Access to this page is forbidden</p>
-             <a class="btn btn-warning btn-big"  href="${root}/index.jsp">Back to Home</a> </div>
-         </div>
-          <%@ page session="false" %>
+	<div class="error_ex">
+		<h2>400</h2>
+		<h3>Opps, You're lost.</h3>
+		<p>Your request is wrong!</p>
+		<a class="btn btn-warning btn-big" href="${root}/index.jsp">Back to Home</a>
+	</div>
+ 	<%@ page session="false" %>
 </body>
 </html>

@@ -9,8 +9,9 @@
 	<title>ImEthan</title>
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
-	<script src="${root}/theme/js/jQuery.md5.js"></script>
-	<link href="${root}/theme/css/bootstrap.css" rel="stylesheet">
+		<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
+	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
+	
 	<script src="${root}/theme/js/jquery.validate.js"></script>
 	<script src="${root}/theme/js/messages-cn.js"></script>
 	<script src="${root}/theme/js/bootstrap.min.js"></script>
@@ -26,7 +27,6 @@
 	<!-- custom defin end -->
 	
     <!-- jqgrid begin-->
-	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/jqGrid.bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" rel="stylesheet" type="text/css" />
 	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/grid.locale-cn.js" type="text/javascript"></script>

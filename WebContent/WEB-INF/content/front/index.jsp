@@ -27,7 +27,7 @@
             dataType: 'json',
             appendCallback: false,
             animate: true,  
-            maxPage: 10,
+            maxPage: 100,
             extraScrollPx: 50,  
 			template: function(data) {
                 return data;
@@ -92,7 +92,7 @@
 <!-- 	</div> -->
 	<div class="row">
 		<div class="col-md-3">
-			<div class="rightBox">
+			<div class="userinfo">
 				<p>
 					<img class="img-thumbnail" src="${root}/theme/images/pic.jpg" alt="www.imethan.cn" width="180px" height="180px" >
 				</p>
