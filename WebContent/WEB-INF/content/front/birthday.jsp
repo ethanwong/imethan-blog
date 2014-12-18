@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>::甜馨23岁了：生日快乐::</title>
 <!-- Bootstrap core CSS -->
-<link href="${root}/theme/css/bootstrap.css" rel="stylesheet">
+<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="${root}/theme/css/console/common.css" rel="stylesheet">
@@ -33,11 +33,5 @@
 		  	</div>
 		</div>
 	</div>
-	
-<!-- 		<div class="footer" > -->
-<!-- 			<div class="container"> -->
-				
-<!-- 			</div> -->
-<!-- 		</div> -->
 </body>
 </html>

@@ -13,7 +13,7 @@
 	default-lazy-init="true">
 	
 	<!-- 默认访问跳转到首页 -->
-    <mvc:view-controller path="/" view-name="forward:/portal" />
+    <mvc:view-controller path="/" view-name="forward:/index" />
 
 	<!-- 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理 -->
 	<mvc:resources mapping="/theme/**" location="/theme/" />

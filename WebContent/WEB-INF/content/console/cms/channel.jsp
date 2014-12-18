@@ -142,8 +142,7 @@
 		<div class="col-md-3">
 			<button type="button" class="btn btn-primary btn-sm" onclick="inputChannel(this)">Add Channel</button>
 			<div class="list-group" style="padding-top: 10px;">
-				<a href="#" class="list-group-item active">Link</a>
-				<a href="#" class="list-group-item">Link</a> 
+				
 			</div>
 		</div>
 		<div class="col-md-9">

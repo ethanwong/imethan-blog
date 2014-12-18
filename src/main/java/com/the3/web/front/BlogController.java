@@ -78,7 +78,7 @@ public class BlogController extends SuperController{
     }
     
     @ResponseBody
-    @RequestMapping(value = "/article/{channelId}/{page}" , method = {RequestMethod.POST})
+    @RequestMapping(value = "/article/{channelId}/{page}" , method = {RequestMethod.POST,RequestMethod.GET})
     public List<Article> getArticleList(@PathVariable Integer page,@PathVariable Long channelId){
     	
     	PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "id");

@@ -35,7 +35,21 @@ public class Article extends BaseEntity {
 	
 	@Transient
 	private String channelName;//栏目名称
+	@Transient
+	private Long channelId;//栏目ID
 	
+	
+	public Long getChannelId() {
+		if(channel != null){
+			return channel.getId();
+		}else{
+			return channelId;
+		}
+		
+	}
+	public void setChannelId(Long channelId) {
+		this.channelId = channelId;
+	}
 	public String getChannelName() {
 		if(channel != null){
 			return channel.getName();

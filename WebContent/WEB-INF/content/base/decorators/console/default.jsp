@@ -4,12 +4,12 @@
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 <html>
 <head>
-	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
-	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
 	<title>ImEthan</title>
+	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
+	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
-		<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
+	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
 	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
 	
 	<script src="${root}/theme/js/jquery.validate.js"></script>
@@ -95,7 +95,9 @@
 			</div>
 		</div>
 	</div>
+	<div align="center">
+		<jsp:include page="/WEB-INF/content/base/tongji.jsp"></jsp:include>
+	</div>
 	
-	<jsp:include page="/WEB-INF/content/base/tongji.jsp"></jsp:include>
 </body>
 </html>

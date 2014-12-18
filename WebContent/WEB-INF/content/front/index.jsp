@@ -63,7 +63,7 @@
 //				"<span class='label label-default'>"+item.channelName+"</span>"+
 			"</h3>"+
 			"<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>"+
-			"<small class='channel'><strong>"+item.channelName+"</strong></small>"+
+			"<a href='${root}/blog/"+item.channelId+"'><small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
 			"<small>&nbsp;&nbsp;"+item.createTime+"</small>"+
 			"<div class='content'>"+
 			item.content+

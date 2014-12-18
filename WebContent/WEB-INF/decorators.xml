@@ -7,7 +7,7 @@
 		<pattern>/console/cms/*/noDecorate/*</pattern>
 		<pattern>/console/cms/*/noDecorate/*</pattern>
 		<pattern>/portal</pattern>
-<!-- 		<pattern>/console/security/resource</pattern> -->
+		<pattern>/birthday</pattern>
 	</excludes>
 
 	<!-- 后台菜单装饰页 -->

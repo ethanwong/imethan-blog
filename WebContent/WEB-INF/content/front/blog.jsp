@@ -53,7 +53,7 @@
 //				"<span class='label label-default'>"+item.channelName+"</span>"+
 			"</h3>"+
 			"<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>"+
-			"<small class='channel'><strong>"+item.channelName+"</strong></small>"+
+			"<a href='${root}/blog/"+item.channelId+"'><small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
 			"<small>&nbsp;&nbsp;"+item.createTime+"</small>"+
 			"<div class='content'>"+
 			item.content+
@@ -76,8 +76,14 @@
 </head>
 <body>
 	<div class="row">
-<!-- 		<h2>Blog</h2> -->
-<!-- 		<hr> -->
+		<form class="form-horizontal" role="form">
+		  <div class="form-group">
+		    <label class="col-sm-8 control-label" style="margin: 0px;padding-top: 0px;padding-bottom: 0px;"><h2 style="padding-left: 20px;margin:0px;float: left;">Blog</h2></label>
+		    <div class="col-sm-4" style="float: right;margin: 0px;">
+		      <input type="text" class="form-control" placeholder="Search" style="width: 300px;">
+		    </div>
+		  </div>
+		</form>
 		<div class="col-md-3">
 			<div class="list-group">
 				<c:forEach var="channel" items="${channelList}" varStatus="status">
@@ -93,7 +99,7 @@
 					<div class='article'>
 						<h3 class='title'>${article.title}</h3>
 						<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>
-						<small class='channel'><strong>${article.channelName}</strong></small>
+						<a href="${root}/blog/${article.channelId}"><small class='channel'><strong>${article.channelName}</strong></small></a>
 						<small>&nbsp;&nbsp;${article.createTime}</small>
 						<div class='content'>${article.content}</div>
 					</div>

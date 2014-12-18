@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
-	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
 	<title>ImEthan</title>
+	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
+	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
 	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
@@ -26,11 +26,26 @@
 	<script src="${root}/theme/js/jquery.infinitescroll.js"></script>
 	<script src="${root}/theme/js/debug.js"></script>
 	
+	<!-- custom defin begin -->
 	<link href="${root}/theme/css/console/common.css" rel="stylesheet">
+	<script src="${root}/theme/js/console/common.js"></script>
+	<!-- custom defin end -->
+	
+    <!-- jqgrid begin-->
+	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/grid.locale-cn.js" type="text/javascript"></script>
+	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/jquery.jqGrid.src.js" type="text/javascript"></script>
+	<!-- jqgrid end-->
+	
+	<!-- ztree begin -->
+	<link rel="stylesheet" href="${root}/theme/jtree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="${root}/theme/jtree/js/jquery.ztree.all-3.5.js"></script>
+	<!-- ztree end -->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<%--     <script src="${root}/theme/bootstrap-3.3.0/other/ie-emulation-modes-warning.js"></script> --%>
     <script src="${root}/theme/bootstrap-3.3.0/other/ie10-viewport-bug-workaround.js"></script>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

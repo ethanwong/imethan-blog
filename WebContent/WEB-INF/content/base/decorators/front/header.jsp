@@ -18,12 +18,16 @@
 				<li <c:if test="${module eq 'contact'}">class="active"</c:if>><a href="${root}/contact">Contact</a></li>
 				<li <c:if test="${module eq 'about'}">class="active"</c:if>><a href="${root}/about">About</a></li>
 			</ul>
-	         <form class="nav navbar-form navbar-right" role="search">
-				  <div class="form-group">
-				    	<input type="text" class="form-control" placeholder="Search" style="width: 260px;height: 30px;">
-				  </div>
-				  <button type="submit" class="btn btn-default btn-sm" >Submit</button>
-			</form>
+	        
+        	<div class="navbar-form navbar-right" >
+				<shiro:guest>  
+					<a type="submit" class="btn btn-default btn-sm" href="${root}/login">Login</a>
+				</shiro:guest>
+				<shiro:user>  
+					<span>Hello,<shiro:principal/>  </span>
+					<a type="submit" class="btn btn-default btn-sm" href="${root}/login/out">Logout</a>
+				</shiro:user>
+			</div>
 		</div>
 	</div>
 </nav>
