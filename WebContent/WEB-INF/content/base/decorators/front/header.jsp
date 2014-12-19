@@ -19,13 +19,19 @@
 				<li <c:if test="${module eq 'about'}">class="active"</c:if>><a href="${root}/about">About</a></li>
 			</ul>
 	        
-        	<div class="navbar-form navbar-right" >
+        	<div class="navbar-right" >
 				<shiro:guest>  
-					<a type="submit" class="btn btn-default btn-sm" href="${root}/login">Login</a>
+					<div class="loginsetting">
+						<a href="${root}/login" ><span class="glyphicon glyphicon-log-in"></span></a>
+<%-- 						<a type="button" class="btn btn-default btn-sm" href="${root}/login"><span class="glyphicon glyphicon-log-in"></span> Login</a> --%>
+					</div>
 				</shiro:guest>
 				<shiro:user>  
-					<span>Hello,<shiro:principal/>  </span>
-					<a type="submit" class="btn btn-default btn-sm" href="${root}/login/out">Logout</a>
+					<div class="loginsetting">
+						<span class="glyphicon glyphicon-user"></span> <shiro:principal/>
+						<span class="glyphicon glyphicon-cog"></span>
+						<a href="${root}/login/out" ><span class="glyphicon glyphicon-log-out"></span></a>
+					</div>
 				</shiro:user>
 			</div>
 		</div>

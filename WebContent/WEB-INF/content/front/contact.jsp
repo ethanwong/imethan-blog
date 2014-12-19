@@ -21,12 +21,14 @@
 			  <div class="panel-heading">Contact</div>
 			  <div class="panel-body">
 				<address>
-				  <strong>Phone</strong><br>
+<!-- 				  <strong>Phone</strong><br> -->
+				  <span class='glyphicon glyphicon-phone'></span>
 				  15960203283<br>
 				</address>
 				<address>
-				  <strong>Email</strong><br>
-				  <a href="mailto:#">ethanwong@qq.com</a>
+<!-- 				  <strong>Email</strong><br> -->
+				  <span class='glyphicon glyphicon-envelope'></span>
+				  <a href="mailto:ethanwong@qq.com">ethanwong@qq.com</a>
 				</address>
 			  </div>
 			</div>

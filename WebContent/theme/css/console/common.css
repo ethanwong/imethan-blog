@@ -25,6 +25,16 @@ body>.container {
 	width:980px;
 }
 
+.navbar-right{
+	padding-top: 8px;
+}
+.navbar-right .loginsetting{
+	padding-top: 8px;
+}
+.navbar-right .loginsetting span{
+	padding-left: 8px;
+}
+
 .footer {
 	position: relative;
 	bottom: 20;

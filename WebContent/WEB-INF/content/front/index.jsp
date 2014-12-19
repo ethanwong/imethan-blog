@@ -63,7 +63,7 @@
 //				"<span class='label label-default'>"+item.channelName+"</span>"+
 			"</h3>"+
 			"<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>"+
-			"<a href='${root}/blog/"+item.channelId+"'><small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
+			"<a href='${root}/blog/"+item.channelId+"'><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
 			"<small>&nbsp;&nbsp;"+item.createTime+"</small>"+
 			"<div class='content'>"+
 			item.content+
@@ -100,16 +100,16 @@
 				<hr width='200px;' size='2' style='margin-top: 4px;margin-bottom: 4px;margin-left: 0px;'/>
 				<p style="line-height: 30px;">
 					<address>
-					  <strong>Locate</strong><br>
-					  XiaMen.China<br>
+						<span class="glyphicon glyphicon-map-marker"></span>
+					  	XiaMen.China<br>
 					</address>
 					<address>
-					  <strong>Email</strong><br>
-					  <a href="mailto:#">ethanwong@qq.com</a>
+						<span class='glyphicon glyphicon-phone'></span>
+				  		15960203283<br>
 					</address>
 					<address>
-					  <strong>Job</strong><br>
-					  A developer!<br>
+						<span class="glyphicon glyphicon-envelope"></span>
+					  	<a href="mailto:ethanwong@qq.com">ethanwong@qq.com</a>
 					</address>
 				</p>
 				<strong>Tag</strong>

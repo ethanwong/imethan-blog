@@ -53,7 +53,7 @@
 //				"<span class='label label-default'>"+item.channelName+"</span>"+
 			"</h3>"+
 			"<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>"+
-			"<a href='${root}/blog/"+item.channelId+"'><small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
+			"<a href='${root}/blog/"+item.channelId+"'><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
 			"<small>&nbsp;&nbsp;"+item.createTime+"</small>"+
 			"<div class='content'>"+
 			item.content+
@@ -99,7 +99,7 @@
 					<div class='article'>
 						<h3 class='title'>${article.title}</h3>
 						<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>
-						<a href="${root}/blog/${article.channelId}"><small class='channel'><strong>${article.channelName}</strong></small></a>
+						<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
 						<small>&nbsp;&nbsp;${article.createTime}</small>
 						<div class='content'>${article.content}</div>
 					</div>
