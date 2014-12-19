@@ -1,4 +1,4 @@
-ImEthan the3 web project
+ImEthan web project
 
 ============================
 
