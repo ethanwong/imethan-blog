@@ -59,16 +59,13 @@
 			"<div class='article'>"+
 			"<h3 class='title'>"+
 				item.title+
-//					"<small>  "+item.createTime+"</small>"+
-//				"<span class='label label-default'>"+item.channelName+"</span>"+
 			"</h3>"+
 			"<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>"+
 			"<a href='${root}/blog/"+item.channelId+"'><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
-			"<small>&nbsp;&nbsp;"+item.createTime+"</small>"+
+			"&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;"+item.createTime+"</small>"+
 			"<div class='content'>"+
 			item.content+
 			"</div>"+
-//				"<small><span class='label label-info'>"+item.channelName+"</span></small>"+
 			"</div>";
 			
 			$(".articleList").append(article);
@@ -85,11 +82,6 @@
 </script>
 </head>
 <body>
-<!-- 	<div class="jumbotron" style="padding: 30px;"> -->
-<!-- 	  <h2>Hello, world!</h2> -->
-<!-- 	  <p style="font-size: 14px;">在2006年某一天就下定决心要做一个属于自己的网站，在进入IT行业摸爬滚打3年后的今天，"imethan"的上线填补了个人的这个空缺，希望接下来的日子里能好好的开发以及维护，也将其作为一个职业技能训练和巩固的平台。</p> -->
-<!-- 	  <p><a class="btn btn-primary" role="button">About more</a></p> -->
-<!-- 	</div> -->
 	<div class="row">
 		<div class="col-md-3">
 			<div class="userinfo">
@@ -100,16 +92,13 @@
 				<hr width='200px;' size='2' style='margin-top: 4px;margin-bottom: 4px;margin-left: 0px;'/>
 				<p style="line-height: 30px;">
 					<address>
-						<span class="glyphicon glyphicon-map-marker"></span>
-					  	XiaMen.China<br>
+						<span class="glyphicon glyphicon-map-marker"></span>&nbsp;XiaMen.China<br>
 					</address>
 					<address>
-						<span class='glyphicon glyphicon-phone'></span>
-				  		15960203283<br>
+						<span class='glyphicon glyphicon-phone'></span>&nbsp;15960203283<br>
 					</address>
 					<address>
-						<span class="glyphicon glyphicon-envelope"></span>
-					  	<a href="mailto:ethanwong@qq.com">ethanwong@qq.com</a>
+						<span class="glyphicon glyphicon-envelope"></span>&nbsp;<a href="mailto:ethanwong@qq.com">ethanwong@qq.com</a>
 					</address>
 				</p>
 				<strong>Tag</strong>

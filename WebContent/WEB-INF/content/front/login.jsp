@@ -10,7 +10,7 @@
 <body>
 	<div class="container" style="width: 300px;">
 		<form class="form-signin" role="form" action="${root}/login/in" id="inputForm" method="post"  >
-		    <h2 class="form-signin-heading">Member login</h2>
+		    <h2 class="form-signin-heading"><span class="glyphicon glyphicon-user"></span>&nbsp;Member login</h2>
 		    <input type="text" class="form-control" name="username" value="imethan" placeholder="Enter username" required autofocus>
 		    <input type="password" class="form-control" name="password" value="imethan" placeholder="Enter password" required>
 		    <div class="row">

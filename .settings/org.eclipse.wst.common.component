@@ -6,6 +6,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
         <property name="java-output-path" value="/the3/build/classes"/>
-        <property name="context-root" value="the3"/>
+        <property name="context-root" value="imethan"/>
     </wb-module>
 </project-modules>

@@ -3,6 +3,7 @@ package com.the3.web.front;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,6 +37,11 @@ public class BlogController extends SuperController{
 	@Autowired
 	private ArticleService articleService;
 	
+	/**
+	 * blog首页
+	 * @param model
+	 * @return
+	 */
     @RequestMapping(value = "" ,method = {RequestMethod.GET})
     public String blog(Model model) {
     	//获取栏目信息
@@ -54,6 +60,12 @@ public class BlogController extends SuperController{
         return "front/blog";
     }
     
+    /**
+     * 根据栏目加载信息
+     * @param model
+     * @param channelId
+     * @return
+     */
     @RequestMapping(value = "/{channelId}" ,method = {RequestMethod.GET})
     public String channel(Model model,@PathVariable Long channelId){
     	//获取栏目信息
@@ -77,6 +89,12 @@ public class BlogController extends SuperController{
     	return "front/blog";
     }
     
+    /**
+     * readmore加载信息
+     * @param page
+     * @param channelId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/article/{channelId}/{page}" , method = {RequestMethod.POST,RequestMethod.GET})
     public List<Article> getArticleList(@PathVariable Integer page,@PathVariable Long channelId){
@@ -90,6 +108,34 @@ public class BlogController extends SuperController{
     	Page<Article> result = articleService.findPage(filters, pageable);
     	
     	return result.getContent();
+    }
+    
+    @RequiresAuthentication
+	@RequestMapping("/article/input/{channelId}/{articleId}")
+	public String inputArticle(@PathVariable Long channelId,@PathVariable Long articleId,Model model){
+    	//获取栏目信息
+    	List<Channel> list = channelService.getList();
+    	model.addAttribute("channelList", list);
+    	
+    	if(articleId != null && articleId != 0l){
+    		Article article = articleService.getById(articleId);
+    		model.addAttribute("article", article);
+    	}
+		
+		model.addAttribute("channelId", channelId);
+		return "front/article-input";
+	}
+    
+    @RequiresAuthentication
+    @RequestMapping("/channel/input/{channelId}")
+    public String inputChannel(@PathVariable Long channelId,Model model){
+    	
+    	if(channelId != null && channelId !=0l){
+    		Channel channel = channelService.getById(channelId);
+    		model.addAttribute("channel", channel);
+    	}
+    	
+    	return "front/channel-input";
     }
 
 }

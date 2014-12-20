@@ -22,8 +22,8 @@
 	<!-- bootstrap end -->
 	
 	<!-- custom defin begin -->
-	<link href="${root}/theme/css/console/common.css" rel="stylesheet">
-	<script src="${root}/theme/js/console/common.js"></script>
+	<link href="${root}/theme/css/common.css" rel="stylesheet">
+	<script src="${root}/theme/js/common.js"></script>
 	<!-- custom defin end -->
 	
     <!-- jqgrid begin-->
@@ -58,10 +58,6 @@
 			<c:forEach var="path" items="${pathList}" varStatus="status">
 				<li><a href="#" <c:if test="${status.count eq '3'}">class="active"</c:if>>${path}</a></li>
 			</c:forEach>
-			
-<!-- 			<li><a href="#">Home</a></li> -->
-<!-- 			<li><a href="#">Library</a></li> -->
-<!-- 			<li class="active">Data</li> -->
 		</ol>
 		
 		<!-- 提醒信息 -->
@@ -71,30 +67,27 @@
 			<p style="display: inline;"></p>
 		</div>
 		
+		<div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Warning</h4>
+					</div>
+					<div class="modal-body">Sure you want to delete?</div>
+					<div class="modal-footer">
+						<button id="deleteConfirmModalClick" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		<decorator:body></decorator:body>
 		
 	</div>
 	<jsp:include page="/WEB-INF/content/base/decorators/console/footer.jsp"></jsp:include>
-	
-	
-	<!-- common element -->
-	
-	<!-- common warn Modal -->
-	<div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Warning</h4>
-				</div>
-				<div class="modal-body">Sure you want to delete?</div>
-				<div class="modal-footer">
-					<button id="deleteConfirmModalClick" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	<div align="center">
 		<jsp:include page="/WEB-INF/content/base/tongji.jsp"></jsp:include>
 	</div>

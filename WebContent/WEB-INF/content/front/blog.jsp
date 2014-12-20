@@ -46,22 +46,27 @@
 	function generateArticle(json){
 		$.each(json, function(i, item) {
 			var article = ""+
-			"<div class='article'>"+
+			"<div class='article' >"+
 			"<h3 class='title'>"+
 				item.title+
-//					"<small>  "+item.createTime+"</small>"+
-//				"<span class='label label-default'>"+item.channelName+"</span>"+
 			"</h3>"+
 			"<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>"+
 			"<a href='${root}/blog/"+item.channelId+"'><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
-			"<small>&nbsp;&nbsp;"+item.createTime+"</small>"+
+			"&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;"+item.createTime+"</small>"+
+			"<shiro:user>"+
+			"<div class='blog-article-toolbar'>"+
+			"	<a id='article"+item.id+"' href='#' onclick='deleteArticle("+item.id+",this)'><span class='glyphicon glyphicon-minus'></span></a>"+
+			"	<a href='${root}/blog/article/input/"+item.channelId+"/"+item.id+"' ><span class='glyphicon glyphicon-pencil'></span></a>"+
+			"</div>"+
+			"</shiro:user>"+
+			
 			"<div class='content'>"+
 			item.content+
 			"</div>"+
-//				"<small><span class='label label-info'>"+item.channelName+"</span></small>"+
 			"</div>";
 			
 			$(".articleList").append(article);
+			
 			
 			$('.content').readmore({
 				  speed: 1000,
@@ -69,8 +74,53 @@
 				  moreLink:"<a href='#'>Read More</a>",
 				  lessLink:"<a href='#'>Close More</a>"
 			});
+			
 		});
-	}
+	};
+	
+	//删除文章
+	function deleteArticle(id,object){
+		$('#deleteConfirmModal').modal({
+		 	 keyboard: true
+		});
+		$("#deleteConfirmModalClick").click(function(){
+			$.ajax({
+				url:"${root}/console/cms/article/delete/"+id,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					
+					showMsg("success",result.message);
+					
+					$(object).parent().parent().remove();
+				}
+			});
+		});
+	};
+	
+	//删除栏目
+	function deleteChannel(id){
+		$('#deleteConfirmModal').modal({
+		 	 keyboard: true
+		});
+		$("#deleteConfirmModalClick").click(function(){
+			$.ajax({
+				url:"${root}/console/cms/channel/delete/"+id,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					//加载角色列表
+					showMsg("success",result.message);
+					
+					setTimeout(function(){
+						location.href = "${root}/blog";
+					},3000);
+				}
+			});
+		});
+	};
 
 </script>
 </head>
@@ -78,20 +128,17 @@
 	<div class="row">
 		<form class="form-horizontal" role="form">
 		  <div class="form-group">
-		    <label class="col-sm-8 control-label" style="margin: 0px;padding-top: 0px;padding-bottom: 0px;"><h2 style="padding-left: 20px;margin:0px;float: left;">Blog</h2></label>
-		    <div class="col-sm-4" style="float: right;margin: 0px;">
-		      <input type="text" class="form-control" placeholder="Search" style="width: 300px;">
+		    <label class="col-sm-8 control-label" style="margin: 0px;padding-top: 0px;padding-bottom: 0px;">
+		    	<h2 style="padding-left: 14px;margin:0px;float: left;">Blog</h2>
+		    	<shiro:user>
+		    		<a style="padding-top:8px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span></a>
+		    	</shiro:user>
+		    </label>
+		    <div class="col-sm-4" style="padding-right: 30px;" >
+		      	<input style="float: right;width: 215px;" type="text" class="form-control" placeholder="Search blog" >
 		    </div>
 		  </div>
 		</form>
-		<div class="col-md-3">
-			<div class="list-group">
-				<c:forEach var="channel" items="${channelList}" varStatus="status">
-					<a href="${root}/blog/${channel.id}" class="list-group-item <c:if test="${channelId eq channel.id }">active</c:if>">${channel.name}<span class='badge'>${channel.articleAmount}</span></a>
-				</c:forEach>
-				
-			</div>
-		</div>
 		
 		<div class="col-md-9" >
 			<div class="articleList">
@@ -100,7 +147,13 @@
 						<h3 class='title'>${article.title}</h3>
 						<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>
 						<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
-						<small>&nbsp;&nbsp;${article.createTime}</small>
+						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
+						<shiro:user>
+							<div class='blog-article-toolbar'>
+								<a href="#" onclick="deleteArticle(${article.id},this)"><span class='glyphicon glyphicon-minus'></span></a>
+								<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span class='glyphicon glyphicon-pencil'></span></a>
+							</div>
+						</shiro:user>
 						<div class='content'>${article.content}</div>
 					</div>
 				</c:forEach>
@@ -110,6 +163,22 @@
         		<a href="${root}/blog/article/${channelId}/2"></a>  
    			</div>
 		</div>
+		
+		<div class="col-md-3">
+			<div class="list-group">
+				<c:forEach var="channel" items="${channelList}" varStatus="status">
+					<a href="${root}/blog/${channel.id}" class="list-group-item <c:if test="${channelId eq channel.id }">active</c:if>">${channel.name}<span class='badge'>${channel.articleAmount}</span></a>
+				</c:forEach>
+			</div>
+			<shiro:user>
+				<div class="blog-channel-toolbar">
+					<a href="${root}/blog/channel/input/${channelId}"><span class="glyphicon glyphicon-pencil"></span></a>
+					<a href="#" onclick="deleteChannel(${channelId})"><span class="glyphicon glyphicon-minus"></span></a>
+					<a href="${root}/blog/channel/input/0"><span class="glyphicon glyphicon-plus"></span></a>
+				</div>
+			</shiro:user>
+		</div>
+		
 	</div>
 </body>
 </html>

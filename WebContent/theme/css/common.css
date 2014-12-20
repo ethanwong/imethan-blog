@@ -1,3 +1,7 @@
+a{
+	color:#777;
+}
+
 html {
 	position: relative;
 	min-height: 100%;
@@ -72,7 +76,7 @@ table {
 	display: block;
 }
 .articleList .article .channel{
-	color: #428bca;
+/* 	color: #428bca; */
 }
 
 /*article css*/
@@ -94,7 +98,7 @@ table {
 
 .readmore-js-toggle{
 	padding-top:4px;
-	padding-left: 600px;
+	padding-left: 620px;
 }
 
 /*Error Page*/
@@ -105,3 +109,24 @@ table {
 .error{border-color: #a94442;}
 
 form{margin: 0;}
+
+
+.blog-article-toolbar{
+	display: inline;
+	float: right;
+	padding-right: 10px;
+}
+.blog-article-toolbar span{
+	padding-left: 4px;
+}
+.blog-channel-toolbar{
+	
+}
+.blog-channel-toolbar span{
+	float:right;
+	padding-right: 4px;
+}
+
+.list-group{
+	margin-bottom: 10px;
+}

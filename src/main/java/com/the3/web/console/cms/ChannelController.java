@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -44,6 +45,7 @@ public class ChannelController extends SuperController{
 		return list;
 	}
 	
+	@RequiresAuthentication
 	@ResponseBody
 	@RequestMapping(value = "save" , method = RequestMethod.POST)
 	public ReturnDto save(@Valid @ModelAttribute("channel") Channel channel, BindingResult result,ServletRequest request){
@@ -59,6 +61,7 @@ public class ChannelController extends SuperController{
 		return returnDto;
 	}
 	
+	@RequiresAuthentication
 	@ResponseBody
 	@RequestMapping(value = "delete/{id}" , method = RequestMethod.POST)
 	public ReturnDto delete(@PathVariable Long id){

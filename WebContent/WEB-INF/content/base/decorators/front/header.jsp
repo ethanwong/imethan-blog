@@ -29,7 +29,7 @@
 				<shiro:user>  
 					<div class="loginsetting">
 						<span class="glyphicon glyphicon-user"></span> <shiro:principal/>
-						<span class="glyphicon glyphicon-cog"></span>
+						<a href="${root}/setting" ><span class="glyphicon glyphicon-cog"></span></a>
 						<a href="${root}/login/out" ><span class="glyphicon glyphicon-log-out"></span></a>
 					</div>
 				</shiro:user>

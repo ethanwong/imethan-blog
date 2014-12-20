@@ -153,6 +153,7 @@
 		
 		//删除文章
 		function deleteArticle(id){
+			console.log("id"+id)
 			$('#deleteConfirmModal').modal({
 			 	 keyboard: true
 			});

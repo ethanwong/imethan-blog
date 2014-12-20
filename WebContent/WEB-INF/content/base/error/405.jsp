@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>405</title>
 <link href="${root}/theme/css/bootstrap.css" rel="stylesheet">
-<link href="${root}/theme/css/console/common.css" rel="stylesheet">
+<link href="${root}/theme/css/common.css" rel="stylesheet">
 </head>
 <body>
          <div class="widget-content">
