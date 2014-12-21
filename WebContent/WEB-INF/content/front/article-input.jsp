@@ -77,7 +77,7 @@
 						  
 						  <div class="form-group">
 						    <label for="content">Content</label>
-						    <textarea id="kindeditorContent" class="form-control required" placeholder="Enter content">${article.content}</textarea>
+						    <textarea id="kindeditorContent" style="height: 260px;" class="form-control required" placeholder="Enter content">${article.content}</textarea>
 						  	<label id="kindeditorContentError" ></label>
 						  </div>
 						  

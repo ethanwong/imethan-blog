@@ -121,6 +121,15 @@
 			});
 		});
 	};
+	
+	//查询文章信息
+	function searchArticle(object){
+		var search_title = $(object).val();
+		console.log("search_title:"+search_title);
+		
+		location.href = "${root}/blog?search_title="+search_title;
+
+	}
 
 </script>
 </head>
@@ -135,13 +144,16 @@
 		    	</shiro:user>
 		    </label>
 		    <div class="col-sm-4" style="padding-right: 30px;" >
-		      	<input style="float: right;width: 215px;" type="text" class="form-control" placeholder="Search blog" >
+		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;width: 215px;" type="search" class="form-control" placeholder="Search blog" >
 		    </div>
 		  </div>
 		</form>
 		
 		<div class="col-md-9" >
 			<div class="articleList">
+				<c:if test="${articleList == null || fn:length(articleList) == 0}">
+					暂时没有内容
+				</c:if>
 				<c:forEach var="article" items="${articleList}" varStatus="status">
 					<div class='article'>
 						<h3 class='title'>${article.title}</h3>
@@ -160,7 +172,8 @@
 			</div>
 			
 			<div id="navigation" align="center">
-        		<a href="${root}/blog/article/${channelId}/2"></a>  
+				
+        		<a href="${root}/blog/article/${channelId}/2<c:if test="${search_title !=null}">?search_title=${search_title}</c:if>"></a>  
    			</div>
 		</div>
 		

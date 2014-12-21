@@ -2,6 +2,7 @@ package com.the3.web.front;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/setting")
 public class SettingController {
 	
-	@RequestMapping("")
-	public String setting(Model model){
-		 return "front/setting";
+	@RequestMapping("/{type}")
+	public String setting(Model model,@PathVariable String type){
+		
+		model.addAttribute("type", type);
+		return "front/setting";
 	}
 
 }

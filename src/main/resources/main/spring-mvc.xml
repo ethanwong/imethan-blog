@@ -31,7 +31,7 @@
 			<bean class="com.the3.web.interceptor.ConsoleInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/*"/>
+			<mvc:mapping path="/**"/>
 			<bean class="com.the3.web.interceptor.FrontInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

@@ -34,6 +34,7 @@ body>.container {
 }
 .navbar-right .loginsetting{
 	padding-top: 8px;
+	padding-right: 12px;
 }
 .navbar-right .loginsetting span{
 	padding-left: 8px;
@@ -129,4 +130,8 @@ form{margin: 0;}
 
 .list-group{
 	margin-bottom: 10px;
+}
+.list-group .selected{
+	color: #428bca;
+	font-weight: bold;
 }

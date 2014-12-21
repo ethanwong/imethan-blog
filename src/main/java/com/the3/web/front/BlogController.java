@@ -3,6 +3,8 @@ package com.the3.web.front;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,14 +46,23 @@ public class BlogController extends SuperController{
 	 * @return
 	 */
     @RequestMapping(value = "" ,method = {RequestMethod.GET})
-    public String blog(Model model) {
+    public String blog(Model model,ServletRequest request) {
+    	//检索条件
+    	List<SearchFilter> filters = new ArrayList<SearchFilter>();
+    	
+    	String searchTitle = request.getParameter("search_title");
+    	if(!StringUtils.isEmpty(searchTitle)){
+    		SearchFilter searchFilter = new SearchFilter("title",SearchFilter.Operator.LIKE,searchTitle);
+    		filters.add(searchFilter);
+    		model.addAttribute("search_title", searchTitle);
+    	}
+    	
     	//获取栏目信息
     	List<Channel> list = channelService.getList();
     	model.addAttribute("channelList", list);
     	
     	//获取默认文章首页
     	PageRequest pageable = new PageRequest(0, size, Direction.DESC, "id");
-		List<SearchFilter> filters = new ArrayList<SearchFilter>();
     	Page<Article> result = articleService.findPage(filters, pageable);
     	model.addAttribute("articleList", result.getContent());
     	
@@ -67,14 +79,24 @@ public class BlogController extends SuperController{
      * @return
      */
     @RequestMapping(value = "/{channelId}" ,method = {RequestMethod.GET})
-    public String channel(Model model,@PathVariable Long channelId){
+    public String channel(Model model,@PathVariable Long channelId,ServletRequest request){
+    	
+    	//检索条件
+    	List<SearchFilter> filters = new ArrayList<SearchFilter>();
+    	
+    	String searchTitle = request.getParameter("search_title");
+    	if(!StringUtils.isEmpty(searchTitle)){
+    		SearchFilter searchFilter = new SearchFilter("title",SearchFilter.Operator.LIKE,searchTitle);
+    		filters.add(searchFilter);
+    		model.addAttribute("search_title", searchTitle);
+    	}
+    	
     	//获取栏目信息
     	List<Channel> list = channelService.getList();
     	model.addAttribute("channelList", list);
     	
     	//获取文章第一页内容
     	PageRequest pageable = new PageRequest(0, size, Direction.DESC, "id");
-		List<SearchFilter> filters = new ArrayList<SearchFilter>();
 		if(channelId != null && channelId != 0){
 			SearchFilter searchFilter = new SearchFilter("channel.id",SearchFilter.Operator.EQ,channelId.toString());
 			filters.add(searchFilter);
@@ -97,10 +119,20 @@ public class BlogController extends SuperController{
      */
     @ResponseBody
     @RequestMapping(value = "/article/{channelId}/{page}" , method = {RequestMethod.POST,RequestMethod.GET})
-    public List<Article> getArticleList(@PathVariable Integer page,@PathVariable Long channelId){
+    public List<Article> getArticleList(Model model,@PathVariable Integer page,@PathVariable Long channelId,ServletRequest request){
+    	
+    	//检索条件
+    	List<SearchFilter> filters = new ArrayList<SearchFilter>();
+    	
+    	String searchTitle = request.getParameter("search_title");
+    	if(!StringUtils.isEmpty(searchTitle)){
+    		SearchFilter searchFilter = new SearchFilter("title",SearchFilter.Operator.LIKE,searchTitle);
+    		filters.add(searchFilter);
+    		model.addAttribute("search_title", searchTitle);
+    	}
+    	
     	
     	PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "id");
-		List<SearchFilter> filters = new ArrayList<SearchFilter>();
 		if(channelId != null && channelId != 0){
 			SearchFilter searchFilter = new SearchFilter("channel.id",SearchFilter.Operator.EQ,channelId.toString());
 			filters.add(searchFilter);
