@@ -11,7 +11,7 @@
 	$(document).ready(function () {
 		
 		//加载第一页文章
-		loadPageOneArticle();
+// 		loadPageOneArticle();
 		
 		//滚动加载文章
 		$(".articleList").infinitescroll({  
@@ -86,19 +86,25 @@
 		<div class="col-md-3">
 			<div class="userinfo">
 				<p>
-					<img class="img-thumbnail" src="${root}/theme/images/pic.jpg" alt="www.imethan.cn" width="180px" height="180px" >
+				
+				<c:if test="${userInfo.avatar == null || userInfo.avatar == ''}">
+					<img class="img-thumbnail" src="${root}/upload/avatar/default-avatar-ethan.jpg" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" >
+				</c:if>
+				<c:if test="${userInfo.avatar != null && userInfo.avatar != ''}">
+					<img class="img-thumbnail" src="${root}/upload/avatar/${userInfo.avatar}" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" >
+				</c:if>
 				</p>
-				<font size="4">Ethan Wong</font>
+				<font size="4">${userInfo.nickname}</font>
 				<hr width='200px;' size='2' style='margin-top: 4px;margin-bottom: 4px;margin-left: 0px;'/>
 				<p style="line-height: 30px;">
 					<address>
-						<span class="glyphicon glyphicon-map-marker"></span>&nbsp;XiaMen.China<br>
+						<span class="glyphicon glyphicon-map-marker"></span>&nbsp;${userInfo.locate}<br>
 					</address>
 					<address>
-						<span class='glyphicon glyphicon-phone'></span>&nbsp;15960203283<br>
+						<span class='glyphicon glyphicon-phone'></span>&nbsp;${userInfo.phone}<br>
 					</address>
 					<address>
-						<span class="glyphicon glyphicon-envelope"></span>&nbsp;<a href="mailto:ethanwong@qq.com">ethanwong@qq.com</a>
+						<span class="glyphicon glyphicon-envelope"></span>&nbsp;<a href="mailto:${userInfo.email}">${userInfo.email}</a>
 					</address>
 				</p>
 				<strong>Tag</strong>
@@ -116,6 +122,18 @@
 		
 		<div class="col-md-9" >
 			<div class="articleList">
+				<c:if test="${articleList == null || fn:length(articleList) == 0}">
+					暂时没有内容
+				</c:if>
+				<c:forEach var="article" items="${articleList}" varStatus="status">
+					<div class='article'>
+						<h3 class='title'>${article.title}</h3>
+						<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>
+						<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
+						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
+						<div class='content'>${article.content}</div>
+					</div>
+				</c:forEach>
 				
 			</div>
 			

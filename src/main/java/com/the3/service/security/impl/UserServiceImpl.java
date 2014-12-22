@@ -115,6 +115,47 @@ public class UserServiceImpl implements UserService {
 		return new ReturnDto(isSuccess,message);
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto updateProfile(User user) {
+		boolean isSuccess = true;
+		String message = "更新成功";
+		
+		try {
+			User userDb = userRepository.findOne(user.getId());
+			userDb.setEmail(user.getEmail());
+			userDb.setLocate(user.getLocate());
+			userDb.setNickname(user.getNickname());
+			userDb.setPhone(user.getPhone());
+			userRepository.saveAndFlush(userDb);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+			message = "更新失败";
+		}
+		
+		return new ReturnDto(isSuccess,message);
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto updateAvatar(Long userId, String saveFileName) {
+		boolean isSuccess = true;
+		String message = "更新成功";
+		
+		try {
+			User userDb = userRepository.findOne(userId);
+			userDb.setAvatar(saveFileName);
+			userRepository.saveAndFlush(userDb);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+			message = "更新失败";
+		}
+		
+		return new ReturnDto(isSuccess,message);
+	}
+
 }
 
 

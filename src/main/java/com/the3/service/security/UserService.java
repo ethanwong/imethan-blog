@@ -53,4 +53,18 @@ public interface UserService{
 	 */
 	public ReturnDto deleteById(Long id);
 	
+	/**
+	 * 更新用户基本信息
+	 * @param user
+	 * @return
+	 */
+	public ReturnDto updateProfile(User user);
+	
+	/**
+	 * 更新头像
+	 * @param userId
+	 * @param saveFileName
+	 */
+	public ReturnDto updateAvatar(Long userId, String saveFileName);
+	
 }

@@ -38,6 +38,12 @@ public class UserController extends SuperController {
 	@Autowired
 	private UserService userService;
 	
+//	@RequiresPermissions //要求subject中必须同时含有file:read和write:aFile.txt的权限才能执行方法someMethod()。否则抛出异常AuthorizationException。
+//	@RequiresRoles //如果subject中有aRoleName角色才可以访问方法someMethod。如果没有这个权限则会抛出异常AuthorizationException。
+//	@RequiresUser
+//	验证用户是否被记忆，user有两种含义：
+//	一种是成功登录的（subject.isAuthenticated() 结果为true）；
+//	另外一种是被记忆的（subject.isRemembered()结果为true）。
 	@RequiresAuthentication//可以用户类/属性/方法，用于表明当前用户需是经过认证的用户。 
 	//@RequiresGuest //表明该用户需为”guest”用户 
 	@RequiresPermissions("user:list") //当前用户需拥有指定权限 

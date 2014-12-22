@@ -7,7 +7,7 @@ import java.util.List;
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -65,7 +65,7 @@ public class ArticleController extends SuperController{
 		return  JsonUtils.writeValueAsString(new JqGridPageDto<Article>(result));
 	} 
 	
-	@RequiresAuthentication
+	@RequiresUser
 	@ResponseBody
 	@RequestMapping(value = "save" , method = {RequestMethod.POST,RequestMethod.GET })
 	public ReturnDto save(@Valid @ModelAttribute("article") Article article, BindingResult result,ServletRequest request){
@@ -81,7 +81,7 @@ public class ArticleController extends SuperController{
 		return returnDto;
 	}
 	
-	@RequiresAuthentication
+	@RequiresUser
 	@ResponseBody
 	@RequestMapping(value = "delete/{id}" , method = RequestMethod.POST)
 	public ReturnDto delete(@PathVariable Long id){

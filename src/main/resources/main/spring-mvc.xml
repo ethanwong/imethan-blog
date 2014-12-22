@@ -17,6 +17,7 @@
 
 	<!-- 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理 -->
 	<mvc:resources mapping="/theme/**" location="/theme/" />
+	<mvc:resources mapping="/upload/**" location="/upload/" />
 	<mvc:resources mapping="/WEB-INF/content/base/error/**" location="/WEB-INF/content/base/error/" />
 
 	<!-- 自动扫描且只扫描@Controller -->
@@ -28,10 +29,14 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/console/**"/>
+			<mvc:exclude-mapping path="/theme/**"/>
+			<mvc:exclude-mapping path="/upload/**"/>
 			<bean class="com.the3.web.interceptor.ConsoleInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/theme/**"/>
+			<mvc:exclude-mapping path="/upload/**"/>
 			<bean class="com.the3.web.interceptor.FrontInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -92,10 +97,10 @@
 	</bean>
 
 	<!-- 上传拦截，如最大上传值及最小上传值 -->
-	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> -->
-	<!-- one of the properties available; the maximum file size in bytes -->
-	<!-- <property name="maxUploadSize" value="1000000" /> -->
-	<!-- </bean> -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<!--  one of the properties available; the maximum file size in bytes -->
+	<property name="maxUploadSize" value="1000000" />
+	</bean>
 	
 	<!-- Enable Shiro Annotations for Spring-configured beans.  Only run after -->
 	<!-- the lifecycleBeanProcessor has run: -->

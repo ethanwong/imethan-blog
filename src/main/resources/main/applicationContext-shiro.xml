@@ -52,7 +52,7 @@
         <property name="securityManager" ref="securityManager" />
         <property name="loginUrl" value="/console/toSignin" />
         <property name="successUrl" value="/system/main" />
-        <property name="unauthorizedUrl" value="/system/error" />
+        <property name="unauthorizedUrl" value="/login" />
         <property name="filterChainDefinitions">
             <value>
             /console/toSignin = anon

@@ -83,11 +83,13 @@ dependencies {
     compile 'opensymphony:sitemesh:2.4.2'
     //sitemesh end
  	
- 	   
+ 	
     compile 'com.google.guava:guava:16.0.1'
     compile 'org.apache.commons:commons-lang3:3.3'
-            
     
+    //file and io
+    compile 'commons-io:commons-io:2.4'
+    compile 'commons-fileupload:commons-fileupload:1.2'
 		  
     testCompile("junit:junit:4.11")
 }

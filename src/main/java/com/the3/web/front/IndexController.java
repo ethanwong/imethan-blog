@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.the3.base.repository.SearchFilter;
 import com.the3.base.web.SuperController;
+import com.the3.dto.userinfo.UserInfo;
 import com.the3.entity.cms.Article;
+import com.the3.entity.security.User;
 import com.the3.service.cms.ArticleService;
 import com.the3.service.cms.ChannelService;
+import com.the3.service.security.UserService;
 
 
 
@@ -36,9 +39,23 @@ public class IndexController extends SuperController{
 	private ChannelService channelService;
 	@Autowired
 	private ArticleService articleService;
+	@Autowired
+	private UserService userService;
 	
     @RequestMapping("")
     public String index(Model model) {
+    	
+    	//获取用户信息
+    	User curUser = userService.getByUsername("imethan");
+    	UserInfo userInfo = new UserInfo(curUser.getUsername(),curUser.getNickname(),curUser.getEmail(),curUser.getPhone(),curUser.getLocate(),curUser.getAvatar());
+    	model.addAttribute("userInfo", userInfo);
+    	
+    	//获取文章首页信息
+    	PageRequest pageable = new PageRequest(0, size, Direction.DESC, "id");
+		List<SearchFilter> filters = new ArrayList<SearchFilter>();
+    	Page<Article> result = articleService.findPage(filters, pageable);
+    	model.addAttribute("articleList", result.getContent());
+    	
         return "front/index";
     }
     

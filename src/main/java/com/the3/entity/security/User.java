@@ -34,6 +34,7 @@ public class User extends BaseEntity {
 	private String email;//Email
 	private String phone;//手机号码
 	private String locate;//位置
+	private String avatar;//头像
 	
 	
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -110,6 +111,14 @@ public class User extends BaseEntity {
 
 	public void setLocate(String locate) {
 		this.locate = locate;
+	}
+	
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 	@Override
