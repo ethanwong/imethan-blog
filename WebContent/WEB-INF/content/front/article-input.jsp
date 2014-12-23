@@ -5,23 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>ImEthan</title>
+<%@ include file="/WEB-INF/content/base/umeditor.jsp"%>
 <script type="text/javascript">
-	
 	//页面加载时初始化脚本
 	$(document).ready(function () {
-		
+		//实例化编辑器
+		var um = UM.getEditor('editor');
 	});
 	
 	function saveArticle(){
-		var content = $("#kindeditorContent").val();
-		if(content == "" || $.trim(content) == ""){
-			$("#kindeditorContentError").html("This field is required.");
+		
+		if(!UM.getEditor('editor').hasContents()){
+			$("#editorContentError").html("This field is required.");
 		};
 
 		if($("#inputForm").valid()){
 			var id = $("#id").val();
 			var title = $("#title").val();
 			var channelId = $("#channelId").val();
+			var content = UM.getEditor('editor').getContent();
 			$.ajax({
 				type:"POST",
 				url:"${root}/console/cms/article/save",
@@ -49,8 +51,6 @@
 </script>
 </head>
 <body>
-	
-	<%@ include file="/WEB-INF/content/base/kindeditor.jsp"%>
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default">
@@ -77,8 +77,11 @@
 						  
 						  <div class="form-group">
 						    <label for="content">Content</label>
-						    <textarea id="kindeditorContent" style="height: 260px;" class="form-control required" placeholder="Enter content">${article.content}</textarea>
-						  	<label id="kindeditorContentError" ></label>
+						    <!--  
+						    <script type="text/plain" id="editor"  style="width:924px!important;height: 260px;">${article.content}</script>
+ 							-->
+ 							<textarea id="editor"  style="width:924px!important;height: 260px;" >${article.content}</textarea>
+							<label id="editorContentError" ></label>
 						  </div>
 						  
 						  <button type="button" class="btn btn-primary" onclick="saveArticle()">Submit</button>
