@@ -41,7 +41,7 @@ public class ChannelController extends SuperController{
 	@ResponseBody
 	@RequestMapping(value = "json" , method = RequestMethod.POST)
 	public List<Channel> json(){
-		List<Channel> list = channelService.getList();
+		List<Channel> list = channelService.getList(null);
 		return list;
 	}
 	

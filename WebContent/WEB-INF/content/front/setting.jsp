@@ -179,7 +179,7 @@
 									  	<div id="fileList" class="uploader-list" style="width: 100px;height: 100px;margin-bottom: 6px;">
 									  		<img class="img-thumbnail" src="${root}/upload/avatar/${user.avatar}" alt="www.imethan.cn" style="width: 100px;height: 100px;">
 									  	</div>
-									  	<div id="uploader-demo"><div id="filePicker">选择图片</div></div>
+									  	<div id="uploader-demo"><div id="filePicker">选择头像</div></div>
 								  </div>
 								  <div class="form-group">
 								    <label for="exampleInputEmail1">Name</label>

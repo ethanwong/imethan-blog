@@ -14,3 +14,4 @@ ImEthan web project
 9、使用Gradle为项目的集成<br>
 10、使用JqGrid作为表格渲染<br>
 11、使用Ztree作为树形展现<br>
+12、使用Ueditor作为富文章编辑器<br>

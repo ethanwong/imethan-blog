@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -103,6 +104,12 @@ public class ArticleServiceImpl implements ArticleService {
 	public Page<Article> findPage(List<SearchFilter> filters, PageRequest pageable) {
 		Page<Article> result = null;
 		try {
+			//如果没有登录不展现未发布文章
+			if(!SecurityUtils.getSubject().isAuthenticated()){
+		    	SearchFilter articleFilter2 = new SearchFilter("channel.isPublish",SearchFilter.Operator.EQ,true);
+		    	filters.add(articleFilter2);
+			}
+	    	
 			Specification<Article> spec = DynamicSpecifications.bySearchFilter(filters, Article.class);
 			result = articleRepository.findAll(spec, pageable);
 		} catch (Exception e) {

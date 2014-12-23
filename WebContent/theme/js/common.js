@@ -14,7 +14,7 @@ function showMsg(type,msg){
 		$('#topWarn').css('display','block');
 		$("#topWarn p").text(msg);
 	}
-	setTimeout("closeTopWarn(this)", 3000);
+	setTimeout("closeTopWarn(this)", 2000);
 };
 
 /**

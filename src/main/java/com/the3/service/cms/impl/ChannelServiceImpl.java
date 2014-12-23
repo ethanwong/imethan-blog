@@ -5,12 +5,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.the3.base.repository.DynamicSpecifications;
+import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
 import com.the3.entity.cms.Channel;
 import com.the3.repository.cms.ChannelRepository;
@@ -94,10 +98,16 @@ public class ChannelServiceImpl implements ChannelService {
 
 
 	@Override
-	public List<Channel> getList() {
+	public List<Channel> getList(List<SearchFilter> filters) {
 		try {
-			return channelRepository.findAll();
-			
+			//如果没有登录不展现未发布栏目
+			if(!SecurityUtils.getSubject().isAuthenticated()){
+		    	SearchFilter channelFilter = new SearchFilter("isPublish",SearchFilter.Operator.EQ,true);
+		    	filters.add(channelFilter);
+			}
+	    	
+			Specification<Channel> spec = DynamicSpecifications.bySearchFilter(filters, Channel.class);
+			return channelRepository.findAll(spec);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			e.printStackTrace();

@@ -118,7 +118,7 @@
 					
 					setTimeout(function(){
 						location.href = "${root}/blog";
-					},3000);
+					},2000);
 				}
 			});
 		});
@@ -182,7 +182,13 @@
 		<div class="col-md-3">
 			<div class="list-group">
 				<c:forEach var="channel" items="${channelList}" varStatus="status">
-					<a href="${root}/blog/${channel.id}" class="list-group-item <c:if test="${channelId eq channel.id }">active</c:if>">${channel.name}<span class='badge'>${channel.articleAmount}</span></a>
+					<a href="${root}/blog/${channel.id}" class="list-group-item <c:if test="${channelId eq channel.id }">active</c:if>">
+						<c:if test="${channel.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag"></span></c:if>
+						<c:if test="${channel.publish eq false}"><span class="glyphicon glyphicon-flag"></span></c:if>
+						${channel.name}
+						
+						<span class='badge'>${channel.articleAmount}</span>
+					</a>
 				</c:forEach>
 			</div>
 			<shiro:user>

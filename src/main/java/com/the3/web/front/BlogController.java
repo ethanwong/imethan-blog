@@ -47,24 +47,24 @@ public class BlogController extends SuperController{
 	 */
     @RequestMapping(value = "" ,method = {RequestMethod.GET})
     public String blog(Model model,ServletRequest request) {
-    	//检索条件
-    	List<SearchFilter> filters = new ArrayList<SearchFilter>();
-    	
+    	//文章检索条件
     	String searchTitle = request.getParameter("search_title");
+    	List<SearchFilter> articleFilters = new ArrayList<SearchFilter>();
     	if(!StringUtils.isEmpty(searchTitle)){
-    		SearchFilter searchFilter = new SearchFilter("title",SearchFilter.Operator.LIKE,searchTitle);
-    		filters.add(searchFilter);
+    		SearchFilter articleFilter1 = new SearchFilter("title",SearchFilter.Operator.LIKE,searchTitle);
+    		articleFilters.add(articleFilter1);
     		model.addAttribute("search_title", searchTitle);
     	}
-    	
-    	//获取栏目信息
-    	List<Channel> list = channelService.getList();
-    	model.addAttribute("channelList", list);
-    	
     	//获取默认文章首页
     	PageRequest pageable = new PageRequest(0, size, Direction.DESC, "id");
-    	Page<Article> result = articleService.findPage(filters, pageable);
+    	Page<Article> result = articleService.findPage(articleFilters, pageable);
     	model.addAttribute("articleList", result.getContent());
+    	
+    	
+    	//栏目检索条件
+    	List<SearchFilter> channelFilters = new ArrayList<SearchFilter>();
+    	List<Channel> list = channelService.getList(channelFilters);//获取栏目信息
+    	model.addAttribute("channelList", list);
     	
     	//设置默认栏目ID
     	model.addAttribute("channelId", 0);
@@ -81,30 +81,27 @@ public class BlogController extends SuperController{
     @RequestMapping(value = "/{channelId}" ,method = {RequestMethod.GET})
     public String channel(Model model,@PathVariable Long channelId,ServletRequest request){
     	
-    	//检索条件
-    	List<SearchFilter> filters = new ArrayList<SearchFilter>();
-    	
+    	//文章检索条件
     	String searchTitle = request.getParameter("search_title");
+    	List<SearchFilter> filters = new ArrayList<SearchFilter>();
     	if(!StringUtils.isEmpty(searchTitle)){
     		SearchFilter searchFilter = new SearchFilter("title",SearchFilter.Operator.LIKE,searchTitle);
     		filters.add(searchFilter);
     		model.addAttribute("search_title", searchTitle);
     	}
-    	
-    	//获取栏目信息
-    	List<Channel> list = channelService.getList();
-    	model.addAttribute("channelList", list);
-    	
-    	//获取文章第一页内容
     	PageRequest pageable = new PageRequest(0, size, Direction.DESC, "id");
 		if(channelId != null && channelId != 0){
 			SearchFilter searchFilter = new SearchFilter("channel.id",SearchFilter.Operator.EQ,channelId.toString());
 			filters.add(searchFilter);
 		}
-    	Page<Article> result = articleService.findPage(filters, pageable);
+    	Page<Article> result = articleService.findPage(filters, pageable);//获取文章第一页内容
+    	model.addAttribute("articleList", result.getContent());//获取栏目信息
     	
-    	//设置文章内容
-    	model.addAttribute("articleList", result.getContent());
+    	//栏目检索条件
+    	List<SearchFilter> channelFilters = new ArrayList<SearchFilter>();
+    	List<Channel> list = channelService.getList(channelFilters);//获取栏目信息
+    	model.addAttribute("channelList", list);
+    	
     	//设置栏目ID
     	model.addAttribute("channelId", channelId);
     	
@@ -122,22 +119,20 @@ public class BlogController extends SuperController{
     public List<Article> getArticleList(Model model,@PathVariable Integer page,@PathVariable Long channelId,ServletRequest request){
     	
     	//检索条件
-    	List<SearchFilter> filters = new ArrayList<SearchFilter>();
+    	List<SearchFilter> articleFilters = new ArrayList<SearchFilter>();
     	
     	String searchTitle = request.getParameter("search_title");
     	if(!StringUtils.isEmpty(searchTitle)){
     		SearchFilter searchFilter = new SearchFilter("title",SearchFilter.Operator.LIKE,searchTitle);
-    		filters.add(searchFilter);
+    		articleFilters.add(searchFilter);
     		model.addAttribute("search_title", searchTitle);
     	}
-    	
-    	
     	PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "id");
 		if(channelId != null && channelId != 0){
 			SearchFilter searchFilter = new SearchFilter("channel.id",SearchFilter.Operator.EQ,channelId.toString());
-			filters.add(searchFilter);
+			articleFilters.add(searchFilter);
 		}
-    	Page<Article> result = articleService.findPage(filters, pageable);
+    	Page<Article> result = articleService.findPage(articleFilters, pageable);
     	
     	return result.getContent();
     }
@@ -153,7 +148,7 @@ public class BlogController extends SuperController{
 	@RequestMapping("/article/input/{channelId}/{articleId}")
 	public String inputArticle(@PathVariable Long channelId,@PathVariable Long articleId,Model model){
     	//获取栏目信息
-    	List<Channel> list = channelService.getList();
+    	List<Channel> list = channelService.getList(null);
     	model.addAttribute("channelList", list);
     	
     	if(articleId != null && articleId != 0l){

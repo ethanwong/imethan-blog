@@ -48,8 +48,8 @@ public class IndexController extends SuperController{
     	
     	//获取文章首页信息
     	PageRequest pageable = new PageRequest(0, size, Direction.DESC, "id");
-		List<SearchFilter> filters = new ArrayList<SearchFilter>();
-    	Page<Article> result = articleService.findPage(filters, pageable);
+		List<SearchFilter> articleFilters = new ArrayList<SearchFilter>();
+    	Page<Article> result = articleService.findPage(articleFilters, pageable);
     	model.addAttribute("articleList", result.getContent());
     	
         return "front/index";
@@ -59,11 +59,8 @@ public class IndexController extends SuperController{
     @RequestMapping(value = "/article/{page}" , method = {RequestMethod.POST,RequestMethod.GET})
     public List<Article> getArticleList(@PathVariable Integer page){
     	PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "id");
-		List<SearchFilter> filters = new ArrayList<SearchFilter>();
-//		SearchFilter searchFilter = new SearchFilter("channel.id",SearchFilter.Operator.EQ,channelId.toString());
-//		filters.add(searchFilter);
-		
-    	Page<Article> result = articleService.findPage(filters, pageable);
+		List<SearchFilter> articleFilters = new ArrayList<SearchFilter>();
+    	Page<Article> result = articleService.findPage(articleFilters, pageable);
     	return result.getContent();
     }
 

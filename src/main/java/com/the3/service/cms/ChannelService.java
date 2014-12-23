@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
 import com.the3.entity.cms.Channel;
 
@@ -27,9 +28,10 @@ public interface ChannelService{
 	
 	/**
 	 * 获取列表
+	 * @param filters
 	 * @return
 	 */
-	public List<Channel> getList();
+	public List<Channel> getList(List<SearchFilter> filters);
 	
 	/**
 	 * 获取分页列表
