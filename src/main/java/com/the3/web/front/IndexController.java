@@ -16,14 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.the3.base.repository.SearchFilter;
 import com.the3.base.web.SuperController;
-import com.the3.dto.userinfo.UserInfo;
 import com.the3.entity.cms.Article;
-import com.the3.entity.security.User;
 import com.the3.service.cms.ArticleService;
 import com.the3.service.cms.ChannelService;
 import com.the3.service.security.UserService;
-
-
 
 /**
  * IndexController.java
@@ -46,9 +42,9 @@ public class IndexController extends SuperController{
     public String index(Model model) {
     	
     	//获取用户信息
-    	User curUser = userService.getByUsername("imethan");
-    	UserInfo userInfo = new UserInfo(curUser.getUsername(),curUser.getNickname(),curUser.getEmail(),curUser.getPhone(),curUser.getLocate(),curUser.getAvatar());
-    	model.addAttribute("userInfo", userInfo);
+//    	User curUser = userService.getByUsername("imethan");
+//    	UserInfo userInfo = new UserInfo(curUser.getUsername(),curUser.getNickname(),curUser.getEmail(),curUser.getPhone(),curUser.getLocate(),curUser.getAvatar());
+//    	model.addAttribute("userInfo", userInfo);
     	
     	//获取文章首页信息
     	PageRequest pageable = new PageRequest(0, size, Direction.DESC, "id");
@@ -62,7 +58,6 @@ public class IndexController extends SuperController{
     @ResponseBody
     @RequestMapping(value = "/article/{page}" , method = {RequestMethod.POST,RequestMethod.GET})
     public List<Article> getArticleList(@PathVariable Integer page){
-    	List<Article> list = new ArrayList<Article>();
     	PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "id");
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();
 //		SearchFilter searchFilter = new SearchFilter("channel.id",SearchFilter.Operator.EQ,channelId.toString());

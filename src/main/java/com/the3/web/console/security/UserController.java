@@ -3,6 +3,7 @@ package com.the3.web.console.security;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import com.the3.base.repository.SearchFilter;
 import com.the3.base.web.SuperController;
 import com.the3.dto.common.ReturnDto;
 import com.the3.dto.page.JqGridPageDto;
+import com.the3.dto.userinfo.UserInfo;
 import com.the3.entity.security.User;
 import com.the3.service.security.UserService;
 import com.the3.utils.JsonUtils;
@@ -78,6 +80,7 @@ public class UserController extends SuperController {
 	public ReturnDto delete(@PathVariable Long id){
 		return userService.deleteById(id);
 	}
+	
 }
 
 

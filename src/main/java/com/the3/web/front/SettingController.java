@@ -101,8 +101,6 @@ public class SettingController {
 		
 		return "success";
 	}
-	
-	
 
 }
 

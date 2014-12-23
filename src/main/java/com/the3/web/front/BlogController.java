@@ -142,6 +142,13 @@ public class BlogController extends SuperController{
     	return result.getContent();
     }
     
+    /**
+     * 添加文章
+     * @param channelId
+     * @param articleId
+     * @param model
+     * @return
+     */
     @RequiresUser
 	@RequestMapping("/article/input/{channelId}/{articleId}")
 	public String inputArticle(@PathVariable Long channelId,@PathVariable Long articleId,Model model){
@@ -158,6 +165,12 @@ public class BlogController extends SuperController{
 		return "front/article-input";
 	}
     
+    /**
+     * 添加栏目
+     * @param channelId
+     * @param model
+     * @return
+     */
     @RequiresUser
     @RequestMapping("/channel/input/{channelId}")
     public String inputChannel(@PathVariable Long channelId,Model model){
@@ -168,6 +181,20 @@ public class BlogController extends SuperController{
     	}
     	
     	return "front/channel-input";
+    }
+    
+    /**
+     * 文章详情
+     * @param articleId
+     * @return
+     */
+    @RequestMapping(value="/article/{articleId}",method = {RequestMethod.GET})
+    public String article(@PathVariable Long articleId,Model model){
+    	if(articleId != null && articleId != 0l){
+    		Article article = articleService.getById(articleId);
+    		model.addAttribute("article", article);
+    	}
+    	return "front/article-detail";
     }
 
 }

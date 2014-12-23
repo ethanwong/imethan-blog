@@ -17,6 +17,10 @@ public class UserInfo {
 	private String locate;//位置
 	private String avatar;//头像
 	
+	public UserInfo(){
+		
+	}
+	
 	public UserInfo(String username, String nickname, String email,
 			String phone, String locate, String avatar) {
 		super();

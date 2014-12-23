@@ -85,6 +85,11 @@
 		</div>
 
 		<decorator:body></decorator:body>
+		<div style="margin-top: 30px;">
+			<a href="#top" style="float: right;font-weight: bold;">TOP</a>
+<!-- 			<a href="javascript:history.back(-1);" style="float: left;font-weight: bold;">BACK</a> -->
+		</div>
+
 	</div>
 	
 	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>

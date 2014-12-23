@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>ImEthan:Contact</title>
@@ -9,22 +9,42 @@
 	
 	//页面加载时初始化脚本
 	$(document).ready(function () {
-		
-	}
+		//加载用户信息
+		loadUserInfo("imethan");
+	});
+	
+	//加载用户信息
+	function loadUserInfo(username){
+		$.ajax({
+			url:"${root}/userinfo/getUserInfoByUsername/"+username,
+			type:"POST",
+			dateType:"json",
+			success:function(data){
+				var result = eval("(" + data + ")");
+				var avatar = "default-avatar-ethan.jpg";
+				if(result.avatar!=null && result.avatar!=''){
+					avatar = result.avatar;
+				}
+				var email = "<a href='mailto:"+result.email+"'>"+result.email+"</a>"
+				$(".contact").find(".email").html(email);
+				$(".contact").find(".phone").html(result.phone);
+			}
+		});
+	};
 
 </script>
 </head>
 <body>
 	<div class="row">
 		<div class="col-md-3">
-			<div class="panel panel-default" >
+			<div class="panel panel-default contact" >
 			  <div class="panel-heading">Contact</div>
 			  <div class="panel-body">
 				<address>
-				  <span class='glyphicon glyphicon-phone'></span>&nbsp;15960203283<br>
+				  <span class='glyphicon glyphicon-phone'></span>&nbsp;<span class='phone'></span><br>
 				</address>
 				<address>
-				  <span class='glyphicon glyphicon-envelope'></span>&nbsp;<a href="mailto:ethanwong@qq.com">ethanwong@qq.com</a>
+				  <span class='glyphicon glyphicon-envelope'></span>&nbsp;<span class="email"></span>
 				</address>
 			  </div>
 			</div>

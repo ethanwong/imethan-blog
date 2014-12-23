@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>ImEthan</title>
@@ -9,6 +9,9 @@
 	
 	//页面加载时初始化脚本
 	$(document).ready(function () {
+		
+		//加载用户信息
+		loadUserInfo("imethan");
 		
 		//加载第一页文章
 // 		loadPageOneArticle();
@@ -39,6 +42,28 @@
 		
 	});
 	
+	//加载用户信息
+	function loadUserInfo(username){
+		$.ajax({
+			url:"${root}/userinfo/getUserInfoByUsername/"+username,
+			type:"POST",
+			dateType:"json",
+			success:function(data){
+				var result = eval("(" + data + ")");
+				var avatar = "default-avatar-ethan.jpg";
+				if(result.avatar!=null && result.avatar!=''){
+					avatar = result.avatar;
+				};
+				$(".userinfo").find(".img-thumbnail").attr("src","${root}/upload/avatar/"+avatar);
+				$(".userinfo").find(".nickname").html(result.nickname);
+				$(".userinfo").find(".locate").html(result.locate);
+				var email = "<a href='mailto:"+result.email+"'>"+result.email+"</a>"
+				$(".userinfo").find(".email").html(email);
+				$(".userinfo").find(".phone").html(result.phone);
+			}
+		});
+	};
+	
 	//加载第一页文章
 	function loadPageOneArticle(){
 		$.ajax({
@@ -58,9 +83,11 @@
 			var article = ""+
 			"<div class='article'>"+
 			"<h3 class='title'>"+
+			"<a href='${root}/blog/article/"+item.id+"'>"+
 				item.title+
+			"</a>"+
 			"</h3>"+
-			"<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>"+
+			"<hr>"+
 			"<a href='${root}/blog/"+item.channelId+"'><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
 			"&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;"+item.createTime+"</small>"+
 			"<div class='content'>"+
@@ -85,30 +112,26 @@
 	<div class="row">
 		<div class="col-md-3">
 			<div class="userinfo">
-				<p>
-				
-				<c:if test="${userInfo.avatar == null || userInfo.avatar == ''}">
-					<img class="img-thumbnail" src="${root}/upload/avatar/default-avatar-ethan.jpg" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" >
-				</c:if>
-				<c:if test="${userInfo.avatar != null && userInfo.avatar != ''}">
-					<img class="img-thumbnail" src="${root}/upload/avatar/${userInfo.avatar}" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" >
-				</c:if>
+				<p style="line-height: 36px;">
+						<img class="img-thumbnail" src="${root}/upload/avatar/default-avatar-ethan.jpg" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" >
+<%-- 					<c:if test="${userInfo.avatar == null || userInfo.avatar == ''}"> --%>
+<%-- 						<img class="img-thumbnail" src="${root}/upload/avatar/default-avatar-ethan.jpg" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" > --%>
+<%-- 					</c:if> --%>
+<%-- 					<c:if test="${userInfo.avatar != null && userInfo.avatar != ''}"> --%>
+<%-- 						<img class="img-thumbnail" src="${root}/upload/avatar/${userInfo.avatar}" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" > --%>
+<%-- 					</c:if> --%>
 				</p>
-				<font size="4">${userInfo.nickname}</font>
-				<hr width='200px;' size='2' style='margin-top: 4px;margin-bottom: 4px;margin-left: 0px;'/>
-				<p style="line-height: 30px;">
-					<address>
-						<span class="glyphicon glyphicon-map-marker"></span>&nbsp;${userInfo.locate}<br>
-					</address>
-					<address>
-						<span class='glyphicon glyphicon-phone'></span>&nbsp;${userInfo.phone}<br>
-					</address>
-					<address>
-						<span class="glyphicon glyphicon-envelope"></span>&nbsp;<a href="mailto:${userInfo.email}">${userInfo.email}</a>
-					</address>
-				</p>
+				<font size="4" class='nickname'>${userInfo.nickname}</font>
+				<hr>
+				<address style="line-height: 36px;">
+					<span class="glyphicon glyphicon-map-marker"></span>&nbsp;<span class="locate">${userInfo.locate}</span><br>
+					<span class='glyphicon glyphicon-phone'></span>&nbsp;<span class="phone">${userInfo.phone}</span><br>
+					<span class="glyphicon glyphicon-envelope"></span>&nbsp;<span class="email"><a href="mailto:${userInfo.email}">${userInfo.email}</a></span>
+				</address>
+			</div>
+			<div class="tag">
 				<strong>Tag</strong>
-				<hr width='200px;' size='2' style='margin-top: 4px;margin-bottom: 4px;margin-left: 0px;'>
+				<hr>
 				<p style="line-height: 30px;">
 					<span class="label label-default">Default</span>
 					<span class="label label-primary">Primary</span>
@@ -127,8 +150,8 @@
 				</c:if>
 				<c:forEach var="article" items="${articleList}" varStatus="status">
 					<div class='article'>
-						<h3 class='title'>${article.title}</h3>
-						<hr width='698px;' size='2' style='padding: 0;margin:0;margin-bottom: 10px;'>
+						<h3 class='title'><a href="${root}/blog/article/${article.id}">${article.title}</a></h3>
+						<hr>
 						<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
 						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 						<div class='content'>${article.content}</div>
