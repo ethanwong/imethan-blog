@@ -50,16 +50,27 @@
 			dateType:"json",
 			success:function(data){
 				var result = eval("(" + data + ")");
-				var avatar = "default-avatar-ethan.jpg";
-				if(result.avatar!=null && result.avatar!=''){
-					avatar = result.avatar;
-				};
-				$(".userinfo").find(".img-thumbnail").attr("src","${root}/upload/avatar/"+avatar);
 				$(".userinfo").find(".nickname").html(result.nickname);
 				$(".userinfo").find(".locate").html(result.locate);
 				var email = "<a href='mailto:"+result.email+"'>"+result.email+"</a>"
 				$(".userinfo").find(".email").html(email);
 				$(".userinfo").find(".phone").html(result.phone);
+				
+				//判读图片是否可以加载
+				if(result.avatar!=null && result.avatar!=''){
+					var avatar = "${root}/upload/avatar/"+result.avatar;
+					$.ajax({
+						url:avatar,
+						error:function(xhr, error, ex){
+							if (xhr.status == '404') {
+								$(".userinfo").find(".img-thumbnail").attr("src","${root}/upload/avatar/default-avatar-ethan.jpg");
+							}
+						},
+						success:function(){
+							$(".userinfo").find(".img-thumbnail").attr("src",avatar);
+						}
+					});
+				};
 			}
 		});
 	};

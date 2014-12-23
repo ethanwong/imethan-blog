@@ -12,6 +12,21 @@
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
+		
+		//判断头像是否可以加载，不能加载则显示默认头像
+		var avatar = "${root}/upload/avatar/${user.avatar}";
+		$.ajax({
+			url:avatar,
+			error:function(xhr, error, ex){
+				if (xhr.status == '404') {
+					$(".uploader-list").find(".img-thumbnail").attr("src","${root}/upload/avatar/default-avatar-ethan.jpg");
+				}
+			},
+			success:function(){
+				$(".uploader-list").find(".img-thumbnail").attr("src",avatar);
+			}
+		});
+		
 		// 初始化Web Uploader
 		var uploader = WebUploader.create({
 		    // 选完文件后，是否自动上传。
