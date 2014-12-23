@@ -28,6 +28,7 @@
 				var email = "<a href='mailto:"+result.email+"'>"+result.email+"</a>"
 				$(".contact").find(".email").html(email);
 				$(".contact").find(".phone").html(result.phone);
+				$(".contact").find(".locate").html(result.locate);
 			}
 		});
 	};
@@ -40,6 +41,9 @@
 			<div class="panel panel-default contact" >
 			  <div class="panel-heading">Contact</div>
 			  <div class="panel-body">
+			  	<address>
+				  <span class='glyphicon glyphicon-map-marker'></span>&nbsp;<span class='locate'></span><br>
+				</address>
 				<address>
 				  <span class='glyphicon glyphicon-phone'></span>&nbsp;<span class='phone'></span><br>
 				</address>

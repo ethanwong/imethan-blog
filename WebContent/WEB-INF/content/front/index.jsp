@@ -98,7 +98,7 @@
 				item.title+
 			"</a>"+
 			"</h3>"+
-			"<hr>"+
+// 			"<hr>"+
 			"<a href='${root}/blog/"+item.channelId+"'><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
 			"&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;"+item.createTime+"</small>"+
 			"<div class='content'>"+
@@ -162,7 +162,7 @@
 				<c:forEach var="article" items="${articleList}" varStatus="status">
 					<div class='article'>
 						<h3 class='title'><a href="${root}/blog/article/${article.id}">${article.title}</a></h3>
-						<hr>
+<!-- 						<hr> -->
 						<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
 						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 						<div class='content'>${article.content}</div>

@@ -52,7 +52,7 @@
 				item.title+
 			"</a>"+
 			"</h3>"+
-			"<hr>"+
+// 			"<hr>"+
 			"<a href='${root}/blog/"+item.channelId+"'><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
 			"&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;"+item.createTime+"</small>"+
 			"<shiro:user>"+
@@ -150,7 +150,7 @@
 		    </div>
 		  </div>
 		</form>
-		
+		<hr>
 		<div class="col-md-9" >
 			<div class="articleList">
 				<c:if test="${articleList == null || fn:length(articleList) == 0}">
@@ -159,7 +159,7 @@
 				<c:forEach var="article" items="${articleList}" varStatus="status">
 					<div class='article'>
 						<h3 class='title'><a href='${root}/blog/article/${article.id}'>${article.title}</a></h3>
-						<hr>
+<!-- 						<hr> -->
 						<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
 						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 						<shiro:user>
@@ -183,8 +183,10 @@
 			<div class="list-group">
 				<c:forEach var="channel" items="${channelList}" varStatus="status">
 					<a href="${root}/blog/${channel.id}" class="list-group-item <c:if test="${channelId eq channel.id }">active</c:if>">
-						<c:if test="${channel.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag"></span></c:if>
-						<c:if test="${channel.publish eq false}"><span class="glyphicon glyphicon-flag"></span></c:if>
+						<shiro:user>
+							<c:if test="${channel.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag"></span></c:if>
+							<c:if test="${channel.publish eq false}"><span class="glyphicon glyphicon-flag"></span></c:if>
+						</shiro:user>
 						${channel.name}
 						
 						<span class='badge'>${channel.articleAmount}</span>

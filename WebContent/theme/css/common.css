@@ -86,11 +86,13 @@ table {
 
 /*article css*/
 .articleList .article .title{
-/* 	color: #4183c4; */
-	color:#777;
+/* 	color:#777; */
 	margin-top:0px;
 	margin-bottom:5px;		
 	line-height: 32px;
+}
+.articleList .article .title a{
+	color:#4183c4 !important;
 }
 .articleList .article .content{
 	margin-top:20px;
@@ -103,7 +105,8 @@ table {
 
 .readmore-js-toggle{
 	padding-top:4px;
-	padding-left: 620px;
+	display: block;
+	text-align: right;
 }
 
 /*Error Page*/
