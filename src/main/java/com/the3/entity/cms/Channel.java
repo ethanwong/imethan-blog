@@ -29,6 +29,8 @@ public class Channel extends BaseEntity {
 	@Size(min=1,message="intro must not by null")
 	private String intro;//介绍
 	
+	private boolean isPublish;//是否发布
+	
 	private int articleAmount = 0;//文章数量
 	
 	public int getArticleAmount() {
@@ -48,6 +50,13 @@ public class Channel extends BaseEntity {
 	}
 	public void setIntro(String intro) {
 		this.intro = intro;
+	}
+	
+	public boolean isPublish() {
+		return isPublish;
+	}
+	public void setPublish(boolean isPublish) {
+		this.isPublish = isPublish;
 	}
 	@Override
 	public String toString() {

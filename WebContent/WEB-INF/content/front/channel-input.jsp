@@ -18,8 +18,9 @@
 			var id = $("#id").val();
 			var name = $("#name").val();
 			var intro = $("#intro").val();
+			var isPublish = $("#isPublish").val();
 			$.ajax({
-				url:"${root}/console/cms/channel/save?id="+id+"&name="+name+"&intro="+intro,
+				url:"${root}/console/cms/channel/save?id="+id+"&name="+name+"&intro="+intro+"&publish="+isPublish,
 				type:"POST",
 				dateType:"json",
 				success:function(data){
@@ -59,6 +60,16 @@
 						    <label for="name">Name</label>
 						    <input id="name"  type="text" class="form-control required" placeholder="Enter name" value="${channel.name}">
 						  </div>
+						  <div class="radio">
+							  <label>
+								    <input type="radio" name="isPublish" id="isPublish" value="true" <c:if test="${channel.publish eq true }">checked="checked"</c:if>/>
+								    Publish
+							  </label>
+							  <label>
+								    <input type="radio" name="isPublish" id="isPublish" value="false" <c:if test="${channel.publish eq false }">checked="checked"</c:if>/>
+								    Hidden
+							  </label>
+							</div>
 						  
 						  <div class="form-group">
 						    <label for="intro">Intro</label>

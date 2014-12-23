@@ -38,11 +38,12 @@ public class ChannelServiceImpl implements ChannelService {
 		String message = "保存成功";
 		try {
 			if(entity.getId() != null){
+				entity.setArticleAmount(this.getById(entity.getId()).getArticleAmount());
 				entity.setModifyTime(new Date());
 			}else{
 				entity.setCreateTime(new Date());
 			}
-			entity = channelRepository.save(entity);
+			entity = channelRepository.saveAndFlush(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
 			isSuccess = false;
