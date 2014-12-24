@@ -51,12 +51,10 @@ public class LoginController {
 			return "redirect:/login";
 		}
     	
-    	System.out.println("-------currUser-------currUser:"+currUser);
     	Subject user = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(currUser.getUsername(),currUser.getPassword());
 
         if(!StringUtils.isEmpty(request.getParameter("remember"))&&request.getParameter("remember").equals("1")){
-        	System.out.println("-------currUser-------setRememberMe:"+request.getParameter("remember"));
         	token.setRememberMe(true);
         }
         

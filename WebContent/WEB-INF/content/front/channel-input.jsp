@@ -76,7 +76,7 @@
 						    <textarea rows="3" cols="20" class="form-control required" id="intro" placeholder="Enter intro" name="intro">${channel.intro}</textarea>
 						  </div>
 						  
-						  <button type="button" class="btn btn-primary" onclick="saveChannel()">Submit</button>
+						  <button type="button" class="btn btn-info" onclick="saveChannel()">Submit</button>
 						  <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Return</button>
 						</form>
 				  </div>

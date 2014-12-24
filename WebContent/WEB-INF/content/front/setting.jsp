@@ -179,7 +179,7 @@
 									  	<div id="fileList" class="uploader-list" style="width: 100px;height: 100px;margin-bottom: 6px;">
 									  		<img class="img-thumbnail" src="${root}/upload/avatar/${user.avatar}" alt="www.imethan.cn" style="width: 100px;height: 100px;">
 									  	</div>
-									  	<div id="uploader-demo"><div id="filePicker">选择头像</div></div>
+									  	<div id="uploader-demo"><div id="filePicker" >选择头像</div></div>
 								  </div>
 								  <div class="form-group">
 								    <label for="exampleInputEmail1">Name</label>
@@ -198,7 +198,7 @@
 								    <input type="email" class="form-control required" id="email" placeholder="Enter email" name="email" value="${user.email}">
 								  </div>
 		
-								  <button type="button" class="btn btn-primary" onclick="updateProfile()">Update profile</button>
+								  <button type="button" class="btn btn-info" onclick="updateProfile()">Update profile</button>
 							</form>
 						</c:if>
 						
@@ -216,7 +216,7 @@
 								    <label for="confirmNewPassword">Confirm new password</label>
 								    <input type="password" class="form-control required" id="confirmNewPassword" placeholder="Enter new password">
 								  </div>
-								 <button type="submit" class="btn btn-primary">Update password</button>
+								 <button type="submit" class="btn btn-info">Update password</button>
 							</form>
 							
 						</c:if>

@@ -9,26 +9,69 @@
 	
 	//页面加载时初始化脚本
 	$(document).ready(function () {
-		
-	}
+		//加载用户信息
+		loadUserInfo("imethan");
+	});
+	
+	//加载用户信息
+	function loadUserInfo(username){
+		$.ajax({
+			url:"${root}/userinfo/getUserInfoByUsername/"+username,
+			type:"POST",
+			dateType:"json",
+			success:function(data){
+				var result = eval("(" + data + ")");
+				$(".userinfo").find(".nickname").html(result.nickname);
+				$(".userinfo").find(".locate").html(result.locate);
+				var email = "<a href='mailto:"+result.email+"'>"+result.email+"</a>"
+				$(".userinfo").find(".email").html(email);
+				$(".userinfo").find(".phone").html(result.phone);
+				
+				//判读图片是否可以加载
+				if(result.avatar!=null && result.avatar!=''){
+					var avatar = "${root}/upload/avatar/"+result.avatar;
+					$.ajax({
+						url:avatar,
+						error:function(xhr, error, ex){
+							if (xhr.status == '404') {
+								$(".userinfo").find(".img-thumbnail").attr("src","${root}/upload/avatar/default-avatar-ethan.jpg");
+							}
+						},
+						success:function(){
+							$(".userinfo").find(".img-thumbnail").attr("src",avatar);
+						}
+					});
+				};
+			}
+		});
+	};
 
 </script>
 </head>
 <body>
+	<font style="font-size:30px;">Information about imethan</font>
+	<hr>
 	<div class="row">
 		<div class="col-md-3">
-			<div class="list-group" >
-<!-- 				<a href="#" class="list-group-item active">Link</a> -->
-				<a href="#" class="list-group-item">Link</a>
-				<a href="#" class="list-group-item">Link</a> 
+			<div class="userinfo">
+				<p style="line-height: 36px;">
+						<img class="img-thumbnail" src="${root}/upload/avatar/default-avatar-ethan.jpg" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" >
+				</p>
+				<font size="4" class='nickname'>${userInfo.nickname}</font>
+				<hr>
+				<address style="line-height: 36px;">
+					<span class="glyphicon glyphicon-map-marker"></span>&nbsp;<span class="locate">${userInfo.locate}</span><br>
+					<span class='glyphicon glyphicon-phone'></span>&nbsp;<span class="phone">${userInfo.phone}</span><br>
+					<span class="glyphicon glyphicon-envelope"></span>&nbsp;<span class="email"><a href="mailto:${userInfo.email}">${userInfo.email}</a></span>
+				</address>
 			</div>
 		</div>
 		
 		<div class="col-md-9" >
-			<h2 style="margin-top: 0px;">Information about imethan</h2>
-			<p>
-				This is content!
-			</p>
+			<blockquote>
+			  <p>做一个这样的网站给自己三年的职业生涯做一个小结，以此作为一个新的起点，勉励自己往后更加继续努力加油。</p>
+			  <footer>Ethan Wong 2014/12/4</footer>
+			</blockquote>
 		</div>
 	</div>
 </body>

@@ -9,7 +9,8 @@
 		<pattern>/portal</pattern>
 		<pattern>/birthday</pattern>
 		<pattern>/theme/**</pattern>
-		<pattern>/index/new</pattern>
+		<pattern>/index</pattern>
+		
 	</excludes>
 
 	<!-- 后台菜单装饰页 -->
@@ -19,7 +20,11 @@
 	
 	<!-- 前台菜单装饰页 -->
 	<decorator name="front" page="front/default.jsp">
-		<pattern>/*</pattern>
+		<pattern>/blog**</pattern>
+		<pattern>/contact**</pattern>
+		<pattern>/about**</pattern>
+		<pattern>/setting**</pattern>
+		<pattern>/login**</pattern>
 	</decorator>
 
 	<!-- 只装饰一个页面也可用这种方式定义 <decorator name="panel" page="panel.jsp"/> -->

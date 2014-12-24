@@ -84,7 +84,7 @@
 							<label id="editorContentError" ></label>
 						  </div>
 						  
-						  <button type="button" class="btn btn-primary" onclick="saveArticle()">Submit</button>
+						  <button type="button" class="btn btn-info" onclick="saveArticle()">Submit</button>
 						  <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Return</button>
 						</form>
 				  </div>

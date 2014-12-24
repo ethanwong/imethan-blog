@@ -1,185 +1,110 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan</title>
-<script type="text/javascript">
+	<title>ImEthan | Full Stack Engineer</title>
+	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
+	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
+	<!-- bootstrap begin -->
+	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
+	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
+	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
+	<!-- bootstrap end -->
 	
-	//页面加载时初始化脚本
-	$(document).ready(function () {
-		
-		//加载用户信息
-		loadUserInfo("imethan");
-		
-		//加载第一页文章
-// 		loadPageOneArticle();
-		
-		//滚动加载文章
-		$(".articleList").infinitescroll({  
-            navSelector: "#navigation",
-            nextSelector: "#navigation a",  
-            itemSelector: ".articleList" , 
-            debug        : true,  
-            loading:{
-                finishedMsg: '没有更多内容了...',//结束显示信息
-                msgText: "正在加载内容...",
-                img: '${root}/theme/images/ajax-loader.gif'//loading图片
-            },
-            dataType: 'json',
-            appendCallback: false,
-            animate: true,  
-            maxPage: 100,
-            extraScrollPx: 50,  
-			template: function(data) {
-                return data;
-            }
-        }, 
-        function(data,opt) {
-        	generateArticle(data);
-         });
-		
-	});
+	<script src="${root}/theme/js/popover.js"></script>
+	<script src="${root}/theme/js/tooltip.js"></script>
+	<script src="${root}/theme/js/alert.js"></script>
+	<script src="${root}/theme/js/transition.js"></script>
 	
-	//加载用户信息
-	function loadUserInfo(username){
-		$.ajax({
-			url:"${root}/userinfo/getUserInfoByUsername/"+username,
-			type:"POST",
-			dateType:"json",
-			success:function(data){
-				var result = eval("(" + data + ")");
-				$(".userinfo").find(".nickname").html(result.nickname);
-				$(".userinfo").find(".locate").html(result.locate);
-				var email = "<a href='mailto:"+result.email+"'>"+result.email+"</a>"
-				$(".userinfo").find(".email").html(email);
-				$(".userinfo").find(".phone").html(result.phone);
-				
-				//判读图片是否可以加载
-				if(result.avatar!=null && result.avatar!=''){
-					var avatar = "${root}/upload/avatar/"+result.avatar;
-					$.ajax({
-						url:avatar,
-						error:function(xhr, error, ex){
-							if (xhr.status == '404') {
-								$(".userinfo").find(".img-thumbnail").attr("src","${root}/upload/avatar/default-avatar-ethan.jpg");
-							}
-						},
-						success:function(){
-							$(".userinfo").find(".img-thumbnail").attr("src",avatar);
-						}
-					});
-				};
-			}
-		});
-	};
+	<script src="${root}/theme/js/jquery.validate.js"></script>
+	<script src="${root}/theme/js/messages-cn.js"></script>
 	
-	//加载第一页文章
-	function loadPageOneArticle(){
-		$.ajax({
-			url:"${root}/index/article/1",
-			type:"POST",
-			dateType:"json",
-			success:function(data){
-				var result = eval("(" + data + ")");
-				generateArticle(result);
-			}
-		});
-	};
+	<script src="${root}/theme/js/readmore.js"></script>
+	<script src="${root}/theme/js/jquery.infinitescroll.js"></script>
+	<script src="${root}/theme/js/debug.js"></script>
 	
-	//加载文章信息
-	function generateArticle(json){
-		$.each(json, function(i, item) {
-			var article = ""+
-			"<div class='article'>"+
-			"<h3 class='title'>"+
-			"<a href='${root}/blog/article/"+item.id+"'>"+
-				item.title+
-			"</a>"+
-			"</h3>"+
-// 			"<hr>"+
-			"<a href='${root}/blog/"+item.channelId+"'><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
-			"&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;"+item.createTime+"</small>"+
-			"<div class='content'>"+
-			item.content+
-			"</div>"+
-			"</div>";
-			
-			$(".articleList").append(article);
-			
-			$('.content').readmore({
-				  speed: 1000,
-				  maxHeight: 200,
-				  moreLink:"<a href='#'>Read More</a>",
-				  lessLink:"<a href='#'>Close More</a>"
-			});
-		});
-	}
+	<!-- custom defin begin -->
+	<link href="${root}/theme/css/common.css" rel="stylesheet">
+	<link href="${root}/theme/css/index.css" rel="stylesheet">
+	<script src="${root}/theme/js/common.js"></script>
+	<!-- custom defin end -->
+	
+    <!-- jqgrid begin-->
+	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/grid.locale-cn.js" type="text/javascript"></script>
+	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/jquery.jqGrid.src.js" type="text/javascript"></script>
+	<!-- jqgrid end-->
+	
+	<!-- ztree begin -->
+	<link rel="stylesheet" href="${root}/theme/jtree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="${root}/theme/jtree/js/jquery.ztree.all-3.5.js"></script>
+	<!-- ztree end -->
 
-</script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="${root}/theme/bootstrap-3.3.0/other/ie10-viewport-bug-workaround.js"></script>
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
-	<div class="row">
-		<div class="col-md-3">
-			<div class="userinfo">
-				<p style="line-height: 36px;">
-						<img class="img-thumbnail" src="${root}/upload/avatar/default-avatar-ethan.jpg" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" >
-<%-- 					<c:if test="${userInfo.avatar == null || userInfo.avatar == ''}"> --%>
-<%-- 						<img class="img-thumbnail" src="${root}/upload/avatar/default-avatar-ethan.jpg" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" > --%>
-<%-- 					</c:if> --%>
-<%-- 					<c:if test="${userInfo.avatar != null && userInfo.avatar != ''}"> --%>
-<%-- 						<img class="img-thumbnail" src="${root}/upload/avatar/${userInfo.avatar}" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" > --%>
-<%-- 					</c:if> --%>
-				</p>
-				<font size="4" class='nickname'>${userInfo.nickname}</font>
-				<hr>
-				<address style="line-height: 36px;">
-					<span class="glyphicon glyphicon-map-marker"></span>&nbsp;<span class="locate">${userInfo.locate}</span><br>
-					<span class='glyphicon glyphicon-phone'></span>&nbsp;<span class="phone">${userInfo.phone}</span><br>
-					<span class="glyphicon glyphicon-envelope"></span>&nbsp;<span class="email"><a href="mailto:${userInfo.email}">${userInfo.email}</a></span>
-				</address>
-			</div>
-			<div class="tag">
-				<strong>Tag</strong>
-				<hr>
-				<p style="line-height: 30px;">
-					<span class="label label-default">Default</span>
-					<span class="label label-primary">Primary</span>
-					<span class="label label-success">Success</span>
-					<span class="label label-info">Info</span>
-					<span class="label label-warning">Warning</span>
-					<span class="label label-danger" >Danger</span>
-				</p>
-			</div>
-		</div>
-		<div class="col-md-9" >
-			<div class="articleList">
-				<c:if test="${articleList == null || fn:length(articleList) == 0}">
-					暂时没有内容
-				</c:if>
-				<c:forEach var="article" items="${articleList}" varStatus="status">
-					<div class='article'>
-						<h3 class='title'><a href="${root}/blog/article/${article.id}">${article.title}</a></h3>
-<!-- 						<hr> -->
-						<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
-						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
-						<div class='content'>${article.content}</div>
+	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
+	<div class="banner blur">
+		<div class="container" style="width: 980px">
+			<div class="row">
+				<div class="col-md-12">
+					<div style="padding-left: 0px;">
+						<h1 style="font-size: 50px;color: #fff;padding-top: 100px;">Hello ImEthan</h1>
+						<p style="font-size: 20px;color: #fff;">A blog named imethan,based java.</p>
+						<a href="${root}/about"><button type="submit" class="btn btn-info">Learn more</button></a>
 					</div>
-				</c:forEach>
+				</div>
 			</div>
-			
-			<div id="navigation" align="center">
-        		<a href="${root}/index/article/2"></a>  
-   			 </div>
 		</div>
 	</div>
+
+	<div class="container" style="height: 200px;margin-top: 0px;padding-top: 30px;">
+		<div class="row">
+				<div class="col-md-3" style="text-align: center;">
+					<a href="">
+						<span class="glyphicon glyphicon-picture" style="font-size: 100px;text-align: center;color: #5cb85c"></span>
+					</a>
+					<span class="help-block">This is photo album.</span>
+				</div>
+				<div class="col-md-3" style="text-align: center;">
+					<a href="${root}/blog/8">
+						<span class="glyphicon glyphicon-facetime-video" style="font-size: 100px;color: #5bc0de"></span>
+					</a>
+					<span class="help-block">Some video about me.</span>
+				</div>
+				<div class="col-md-3" style="text-align: center;">
+					<a href="${root}/blog">
+						<span class="glyphicon glyphicon-list" style="font-size: 100px;color: #f0ad4e"></span>
+					</a>
+					<span class="help-block">All blogs in site.</span>
+				</div>
+				<div class="col-md-3" style="text-align: center;">
+					<a href="${root}/about">
+						<span class="glyphicon glyphicon-magnet" style="font-size: 100px;color: #d9534f;"></span>
+					</a>
+					<span class="help-block">About me and site.</span>
+				</div>
+		</div>
+	</div>
+
 	
-<%-- 	<script src="${root}/theme/js/jquery.pin.js"></script> --%>
-<!-- 	<script type="text/javascript"> -->
-<!-- // 		$(".rightBox").pin({ -->
-<!-- // 		      containerSelector: ".row" -->
-<!-- // 		}); -->
-<!-- 	</script> -->
+	
+	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
+
 </body>
 </html>
+

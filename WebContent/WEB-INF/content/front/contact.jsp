@@ -36,6 +36,8 @@
 </script>
 </head>
 <body>
+	<font style="font-size:30px;">Contact</font>
+	<hr>
 	<div class="row">
 		<div class="col-md-3">
 			<div class="panel panel-default contact" >
@@ -64,7 +66,7 @@
 			    <label for="exampleInputPassword1">Message</label>
 			    <textarea  class="form-control" id="message" placeholder="Enter you message" rows="6"></textarea>
 			  </div>
-			  <button type="submit" class="btn btn-primary">Submit</button>
+			  <button type="submit" class="btn btn-info">Submit</button>
 			</form>
 		</div>
 	</div>
