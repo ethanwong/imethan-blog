@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+.banner{
+	background-attachment: scroll,	fixed;
+	background-image: url("../../upload/index/banner.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto;
+	width: 100%;
+	height: 400px;
+/* 	background-color: rgb(24, 200, 246); */
+}
+
+/* .blur { */
+/*     filter: url(blur.svg#blur); FireFox, Chrome, Opera */
+/*     -webkit-filter: blur(10px); Chrome, Opera */
+/*        -moz-filter: blur(10px); */
+/*         -ms-filter: blur(10px);    */
+/*             filter: blur(10px); */
+/*     filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); IE6~IE9 */
+/* } */

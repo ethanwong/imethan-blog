@@ -34,11 +34,11 @@ body>.container {
 	width:980px;
 }
 
-.navbar-fixed-top{
-	filter:alpha(opacity=90); 
-	-moz-opacity:0.9; 
-	opacity:0.9;
-}
+/* .navbar-fixed-top{ */
+/* 	filter:alpha(opacity=90);  */
+/* 	-moz-opacity:0.9;  */
+/* 	opacity:0.9; */
+/* } */
 
 .navbar-right{
 	padding-top: 8px;

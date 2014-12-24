@@ -55,7 +55,7 @@ public class IndexController extends SuperController{
         return "front/index";
     }
     
-    @RequestMapping("/one")
+    @RequestMapping("/new")
     public String indexOne(Model model) {
     	
     	//获取用户信息
@@ -69,7 +69,7 @@ public class IndexController extends SuperController{
     	Page<Article> result = articleService.findPage(articleFilters, pageable);
     	model.addAttribute("articleList", result.getContent());
     	
-    	return "front/index-one";
+    	return "front/index-new";
     }
     
     @ResponseBody

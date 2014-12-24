@@ -9,7 +9,7 @@
 		<pattern>/portal</pattern>
 		<pattern>/birthday</pattern>
 		<pattern>/theme/**</pattern>
-		<pattern>/index/one</pattern>
+		<pattern>/index/new</pattern>
 	</excludes>
 
 	<!-- 后台菜单装饰页 -->
