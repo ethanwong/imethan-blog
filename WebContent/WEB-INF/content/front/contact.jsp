@@ -32,6 +32,37 @@
 			}
 		});
 	};
+	
+	//保存消息
+	function saveMessage(){
+		if($("#inputForm").valid()){
+			var name = $("#name").val();
+			var email = $("#email1").val();
+			var content = $("#content").val();
+			$.ajax({
+				type:"POST",
+				url:"${root}/contact/save",
+				data: "name="+name+"&email="+email+"&content="+encodeURIComponent(content),
+			    dateType:"json",
+				success:function(data){
+					
+					var result = eval("(" + data + ")");
+					var messageType = "success";
+					if(result.success == false){
+						messageType = "error";
+					}else{
+						$("#name").val("");
+						$("#email1").val("");
+						$("#content").val("");
+					};
+					
+					showMsg(messageType,result.message);
+					
+	
+				}
+			});
+		};
+	};
 
 </script>
 </head>
@@ -57,16 +88,20 @@
 		</div>
 		<div class="col-md-9" >
 			<h2 style="margin-top: 0px;">Can you leave a message</h2>
-			<form role="form" action="#" method="post">
+			<form role="form" action="#" method="post" id="inputForm">
 			  <div class="form-group">
-			    <label for="exampleInputEmail1">Email</label>
-			    <input type="email" class="form-control" id="email" placeholder="Enter you email">
+			    <label for="name">Name</label>
+			    <input type="text" class="form-control required" id="name"  name='name' placeholder="Enter you name" maxlength="60">
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">Message</label>
-			    <textarea  class="form-control" id="message" placeholder="Enter you message" rows="6"></textarea>
+			    <label for="email1">Email</label>
+			    <input type="email" class="form-control required" id="email1" name="email1" placeholder="Enter you email">
 			  </div>
-			  <button type="submit" class="btn btn-info">Submit</button>
+			  <div class="form-group">
+			    <label for="content">Message</label>
+			    <textarea rows="6" cols="20"  class="form-control required" id="content" name="content" placeholder="Enter you message" ></textarea>
+			  </div>
+			  <button type="button" class="btn btn-info" onclick="saveMessage()">Submit</button>
 			</form>
 		</div>
 	</div>

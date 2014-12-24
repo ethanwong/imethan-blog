@@ -21,7 +21,7 @@
             navSelector: "#navigation",
             nextSelector: "#navigation a",  
             itemSelector: ".articleList" , 
-            debug        : true,  
+//             debug        : true,  
             loading:{
                 finishedMsg: '没有更多内容了...',//结束显示信息
                 msgText: "正在加载内容...",
@@ -52,7 +52,6 @@
 				item.title+
 			"</a>"+
 			"</h3>"+
-// 			"<hr>"+
 			"<a href='${root}/blog/"+item.channelId+"'><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
 			"&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;"+item.createTime+"</small>"+
 			"<shiro:user>"+
@@ -136,21 +135,21 @@
 </script>
 </head>
 <body>
-	<div class="row">
-		<form class="form-horizontal" role="form">
-		  <div class="form-group">
-		    <label class="col-sm-8 control-label" style="margin: 0px;padding-top: 0px;padding-bottom: 0px;">
-		    	<h2 style="padding-left: 14px;margin:0px;float: left;">Blog</h2>
+	<form class="form-horizontal" role="form">
+	  <div class="form-group">
+		    <div class="col-sm-8">
+		    	<font style="font-size:30px;float: left;">Blog</font>
 		    	<shiro:user>
-		    		<a style="padding-top:8px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span></a>
+		    		<a style="padding-top:12px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span></a>
 		    	</shiro:user>
-		    </label>
-		    <div class="col-sm-4" style="padding-right: 30px;" >
+		    </div>
+		    <div class="col-sm-4" style="padding-right: 14px;" >
 		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;width: 215px;" type="search" class="form-control" placeholder="Search blog" >
 		    </div>
-		  </div>
-		</form>
-		<hr>
+	  </div>
+	</form>
+	<hr>
+	<div class="row">
 		<div class="col-md-9" >
 			<div class="articleList">
 				<c:if test="${articleList == null || fn:length(articleList) == 0}">
@@ -159,7 +158,6 @@
 				<c:forEach var="article" items="${articleList}" varStatus="status">
 					<div class='article'>
 						<h3 class='title'><a href='${root}/blog/article/${article.id}'>${article.title}</a></h3>
-<!-- 						<hr> -->
 						<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
 						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 						<shiro:user>

@@ -49,7 +49,7 @@
 </script>
 </head>
 <body>
-	<font style="font-size:30px;">Information about imethan</font>
+	<font style="font-size:30px;">About me</font>
 	<hr>
 	<div class="row">
 		<div class="col-md-3">
@@ -68,10 +68,9 @@
 		</div>
 		
 		<div class="col-md-9" >
-			<blockquote>
-			  <p>做一个这样的网站给自己三年的职业生涯做一个小结，以此作为一个新的起点，勉励自己往后更加继续努力加油。</p>
-			  <footer>Ethan Wong 2014/12/4</footer>
-			</blockquote>
+			<p style="display: block;">
+				${aboutMe.content}
+			</p>
 		</div>
 	</div>
 </body>

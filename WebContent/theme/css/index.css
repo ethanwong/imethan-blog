@@ -19,3 +19,39 @@
 /*             filter: blur(10px); */
 /*     filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); IE6~IE9 */
 /* } */
+
+
+.linkBox{
+	height: 200px;
+	padding-top: 40px !important;
+}
+.linkBox span{
+	font-size: 100px;	
+}
+.linkBox color1{
+	color: #5cb85c;
+}
+.linkBox .icoAlign{
+	text-align: center;
+}
+
+.indexInfo{
+	
+}
+
+.indexInfo .title{
+	font-size: 50px;
+	color: #fff;
+	padding-top: 120px;
+}
+.indexInfo .content{
+	font-size: 20px;
+	color: #fff;
+	padding-bottom: 20px;
+}
+
+
+
+
+
+
