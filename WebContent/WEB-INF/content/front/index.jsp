@@ -153,7 +153,6 @@
 				</p>
 			</div>
 		</div>
-		
 		<div class="col-md-9" >
 			<div class="articleList">
 				<c:if test="${articleList == null || fn:length(articleList) == 0}">
@@ -168,13 +167,11 @@
 						<div class='content'>${article.content}</div>
 					</div>
 				</c:forEach>
-				
 			</div>
 			
 			<div id="navigation" align="center">
         		<a href="${root}/index/article/2"></a>  
    			 </div>
-   			
 		</div>
 	</div>
 	

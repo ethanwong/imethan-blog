@@ -55,6 +55,23 @@ public class IndexController extends SuperController{
         return "front/index";
     }
     
+    @RequestMapping("/one")
+    public String indexOne(Model model) {
+    	
+    	//获取用户信息
+//    	User curUser = userService.getByUsername("imethan");
+//    	UserInfo userInfo = new UserInfo(curUser.getUsername(),curUser.getNickname(),curUser.getEmail(),curUser.getPhone(),curUser.getLocate(),curUser.getAvatar());
+//    	model.addAttribute("userInfo", userInfo);
+    	
+    	//获取文章首页信息
+    	PageRequest pageable = new PageRequest(0, size, Direction.DESC, "id");
+    	List<SearchFilter> articleFilters = new ArrayList<SearchFilter>();
+    	Page<Article> result = articleService.findPage(articleFilters, pageable);
+    	model.addAttribute("articleList", result.getContent());
+    	
+    	return "front/index-one";
+    }
+    
     @ResponseBody
     @RequestMapping(value = "/article/{page}" , method = {RequestMethod.POST,RequestMethod.GET})
     public List<Article> getArticleList(@PathVariable Integer page){

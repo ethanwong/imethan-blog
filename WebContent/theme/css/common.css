@@ -34,6 +34,12 @@ body>.container {
 	width:980px;
 }
 
+.navbar-fixed-top{
+	filter:alpha(opacity=90); 
+	-moz-opacity:0.9; 
+	opacity:0.9;
+}
+
 .navbar-right{
 	padding-top: 8px;
 }
@@ -107,6 +113,7 @@ table {
 	padding-top:4px;
 	display: block;
 	text-align: right;
+	padding-right: 10px;
 }
 
 /*Error Page*/

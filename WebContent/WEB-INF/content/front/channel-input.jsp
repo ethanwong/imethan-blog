@@ -18,7 +18,7 @@
 			var id = $("#id").val();
 			var name = $("#name").val();
 			var intro = $("#intro").val();
-			var isPublish = $("#isPublish").val();
+			var isPublish = $("#isPublish:checked").val();
 			$.ajax({
 				url:"${root}/console/cms/channel/save?id="+id+"&name="+name+"&intro="+intro+"&publish="+isPublish,
 				type:"POST",
