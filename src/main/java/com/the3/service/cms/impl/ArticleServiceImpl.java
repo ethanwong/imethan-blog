@@ -108,7 +108,12 @@ public class ArticleServiceImpl implements ArticleService {
 			if(!SecurityUtils.getSubject().isAuthenticated()){
 		    	SearchFilter articleFilter2 = new SearchFilter("channel.isPublish",SearchFilter.Operator.EQ,true);
 		    	filters.add(articleFilter2);
+		    	
+		    	SearchFilter articleFilter3 = new SearchFilter("isPublish",SearchFilter.Operator.EQ,true);
+		    	filters.add(articleFilter3);
+		    	
 			}
+			
 	    	
 			Specification<Article> spec = DynamicSpecifications.bySearchFilter(filters, Article.class);
 			result = articleRepository.findAll(spec, pageable);

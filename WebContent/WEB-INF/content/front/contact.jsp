@@ -29,6 +29,7 @@
 				$(".contact").find(".email").html(email);
 				$(".contact").find(".phone").html(result.phone);
 				$(".contact").find(".locate").html(result.locate);
+				$(".contact").find(".qq").html(result.qq);
 			}
 		});
 	};
@@ -81,7 +82,10 @@
 				  <span class='glyphicon glyphicon-phone'></span>&nbsp;<span class='phone'></span><br>
 				</address>
 				<address>
-				  <span class='glyphicon glyphicon-envelope'></span>&nbsp;<span class="email"></span>
+				  <img src="${root}/theme/images/QQ-ICO.jpg" width="12px;" height="13px;" /> &nbsp;<span class="qq"></span>
+				</address>
+				<address>
+					<span class="glyphicon glyphicon-envelope"></span>&nbsp;<span class="email"></span>
 				</address>
 			  </div>
 			</div>

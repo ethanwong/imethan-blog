@@ -35,6 +35,7 @@ public class User extends BaseEntity {
 	private String phone;//手机号码
 	private String locate;//位置
 	private String avatar;//头像
+	private String qq;//QQ
 	
 	
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -119,6 +120,12 @@ public class User extends BaseEntity {
 
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+	public String getQq() {
+		return qq;
+	}
+	public void setQq(String qq) {
+		this.qq = qq;
 	}
 
 	@Override

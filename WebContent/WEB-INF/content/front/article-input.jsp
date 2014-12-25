@@ -11,8 +11,46 @@
 	$(document).ready(function () {
 		//实例化编辑器
 		var um = UM.getEditor('editor');
+		um.addListener('blur',function(){
+			saveArticleDraft();
+	    });
+	    um.addListener('focus',function(){
+	        $('#editorWarn').html('')
+	    });
+		
 	});
 	
+	//保存草稿
+	function saveArticleDraft(){
+		
+		if(!UM.getEditor('editor').hasContents()){
+			$("#editorContentError").html("This field is required.");
+		};
+
+		if($("#inputForm").valid()){
+			var id = $("#id").val();
+			var title = $("#title").val();
+			var channelId = $("#channelId").val();
+			var isPublish = $("#isPublish:checked").val();
+			var content = UM.getEditor('editor').getContent();
+			$.ajax({
+				type:"POST",
+				url:"${root}/console/cms/article/save",
+				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content)+"&publish="+isPublish,
+			    dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					$("#editorContentError").html("");
+					$('#editorWarn').html('草稿'+result.message);
+					var id = result.entity.id;
+					console.log("id:"+id);
+					$('#id').val(id);
+				}
+			});
+		};
+	};
+	
+	//提交保存
 	function saveArticle(){
 		
 		if(!UM.getEditor('editor').hasContents()){
@@ -23,11 +61,12 @@
 			var id = $("#id").val();
 			var title = $("#title").val();
 			var channelId = $("#channelId").val();
+			var isPublish = $("#isPublish:checked").val();
 			var content = UM.getEditor('editor').getContent();
 			$.ajax({
 				type:"POST",
 				url:"${root}/console/cms/article/save",
-				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content),
+				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content)+"&publish="+isPublish,
 			    dateType:"json",
 				success:function(data){
 					
@@ -74,6 +113,16 @@
 						    	</c:forEach>
 							</select>
 						  </div>
+						  <div class="radio">
+							  <label>
+								    <input type="radio" name="isPublish" id="isPublish" value="true" <c:if test="${article.publish eq true }">checked="checked"</c:if>/>
+								    Publish
+							  </label>
+							  <label>
+								    <input type="radio" name="isPublish" id="isPublish" value="false" <c:if test="${article.publish eq false }">checked="checked"</c:if> <c:if test="${article.publish == null }">checked="checked"</c:if> />
+								    Hidden
+							  </label>
+						  </div>
 						  
 						  <div class="form-group">
 						    <label for="content">Content</label>
@@ -82,6 +131,7 @@
  							-->
  							<textarea id="editor"  style="width:924px!important;height: 260px;" >${article.content}</textarea>
 							<label id="editorContentError" ></label>
+							<p id="editorWarn"></p>
 						  </div>
 						  
 						  <button type="button" class="btn btn-info" onclick="saveArticle()">Submit</button>

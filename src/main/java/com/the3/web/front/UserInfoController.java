@@ -32,7 +32,7 @@ public class UserInfoController {
     	//获取用户信息
 		if(!StringUtils.isEmpty(username)){
 			User curUser = userService.getByUsername(username);
-			userInfo = new UserInfo(curUser.getUsername(),curUser.getNickname(),curUser.getEmail(),curUser.getPhone(),curUser.getLocate(),curUser.getAvatar());
+			userInfo = new UserInfo(curUser.getUsername(),curUser.getNickname(),curUser.getEmail(),curUser.getPhone(),curUser.getLocate(),curUser.getAvatar(),curUser.getQq());
 		}
 		return userInfo;
 	}

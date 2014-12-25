@@ -127,6 +127,7 @@ public class UserServiceImpl implements UserService {
 			userDb.setLocate(user.getLocate());
 			userDb.setNickname(user.getNickname());
 			userDb.setPhone(user.getPhone());
+			userDb.setQq(user.getQq());
 			userRepository.saveAndFlush(userDb);
 		} catch (Exception e) {
 			e.printStackTrace();

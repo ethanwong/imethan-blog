@@ -28,6 +28,7 @@ public class Article extends BaseEntity {
 	
 	private String title;//标题
 	private String content;//内容
+	private boolean isPublish;//是否发布
 	
 	@ManyToOne(cascade = {CascadeType.REFRESH},fetch = FetchType.LAZY)
 	@JoinColumn(name="channelId")
@@ -79,7 +80,12 @@ public class Article extends BaseEntity {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+	public boolean isPublish() {
+		return isPublish;
+	}
+	public void setPublish(boolean isPublish) {
+		this.isPublish = isPublish;
+	}
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);

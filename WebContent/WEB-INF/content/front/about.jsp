@@ -26,6 +26,7 @@
 				var email = "<a href='mailto:"+result.email+"'>"+result.email+"</a>"
 				$(".userinfo").find(".email").html(email);
 				$(".userinfo").find(".phone").html(result.phone);
+				$(".userinfo").find(".qq").html(result.qq);
 				
 				//判读图片是否可以加载
 				if(result.avatar!=null && result.avatar!=''){
@@ -62,7 +63,8 @@
 				<address style="line-height: 36px;">
 					<span class="glyphicon glyphicon-map-marker"></span>&nbsp;<span class="locate">${userInfo.locate}</span><br>
 					<span class='glyphicon glyphicon-phone'></span>&nbsp;<span class="phone">${userInfo.phone}</span><br>
-					<span class="glyphicon glyphicon-envelope"></span>&nbsp;<span class="email"><a href="mailto:${userInfo.email}">${userInfo.email}</a></span>
+				  	<img src="${root}/theme/images/QQ-ICO.jpg" width="12px;" height="13px;" /> &nbsp;<span class="qq"></span>
+					<br><span class="glyphicon glyphicon-envelope"></span>&nbsp;<span class="email"><a href="mailto:${userInfo.email}">${userInfo.email}</a></span>
 				</address>
 			</div>
 		</div>

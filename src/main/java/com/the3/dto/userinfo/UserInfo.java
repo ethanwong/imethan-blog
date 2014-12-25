@@ -16,13 +16,14 @@ public class UserInfo {
 	private String phone;//手机号码
 	private String locate;//位置
 	private String avatar;//头像
+	private String qq;//QQ
 	
 	public UserInfo(){
 		
 	}
 	
 	public UserInfo(String username, String nickname, String email,
-			String phone, String locate, String avatar) {
+			String phone, String locate, String avatar,String qq) {
 		super();
 		this.username = username;
 		this.nickname = nickname;
@@ -30,6 +31,7 @@ public class UserInfo {
 		this.phone = phone;
 		this.locate = locate;
 		this.avatar = avatar;
+		this.qq = qq;
 	}
 
 	public String getUsername() {
@@ -78,6 +80,14 @@ public class UserInfo {
 
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+
+	public String getQq() {
+		return qq;
+	}
+
+	public void setQq(String qq) {
+		this.qq = qq;
 	}
 
 	@Override

@@ -1,17 +1,113 @@
-ImEthan web project
+<p>
+    <br/>
+</p>
+<p>
+    <span style="color:#548dd4;font-family:微软雅黑, Microsoft YaHei;font-size:24px">开发环境</span>
+</p>
+<ol>
+    <li>
+        <p>
+            IDE使用Spring tool suite,简称“<span style="line-height: 22.8571434020996px; white-space: normal;">STS</span>”，是Spring自行定制的Eclispe，好用，为它点个赞。
+        </p>
+    </li>
+    <li>
+        <p>
+            使用自动化工具Gradle作为项目的构建工具，Gradle为类似Maven类的构建工具，比Maven简洁。
+        </p>
+    </li>
+    <li>
+        <p>
+            本地开发调试使用的是Jetty 6，生产环境使用的是Tomcat 7。
+        </p>
+    </li>
+    <li>
+        <p>
+            在Windows NT环境下开发，部署于Linux环境。
+        </p>
+    </li>
+    <li>
+        <p>
+            数据库使用的是MySQL 5。
+        </p>
+    </li>
+    <li>
+        <p>
+            JDK版本为1.7。
+        </p>
+    </li>
+</ol>
+<p>
+    <br/>
+</p>
+<p>
+    <span style="color:#548dd4;font-family:微软雅黑, Microsoft YaHei;font-size:24px">技术架构</span>
+</p>
+<ol>
+    <li>
+        <p>
+            使用Spring作为IOC容器，实现AOP功能，并且整合项目中用到的其他开源框架，例如:Apache shiro,Hibernate等。<br/>
+        </p>
+    </li>
+    <li>
+        <p>
+            使用Spring data jpa作为数据库持久层规范，底层实现采用的是Hibernate框架，Hibernate是一个轻量级的ORM框架。
+        </p>
+    </li>
+    <li>
+        <p>
+            使用Spring MVC框架，开始使用了Spring MVC后才发现，Struts2是那么的“厚重”。
+        </p>
+    </li>
+    <li>
+        <p>
+            使用Apache shiro作为权限框架，Apache shiro相对会比Spring Security简单,<span style="line-height: 22.8571434020996px; white-space: normal;">Spring Security功能更加强大</span>。
+        </p>
+    </li>
+    <li>
+        <p>
+            为了减少页面开发代码的冗余，还引入了SiteMesh装饰框架，简单易用，提高开发效率。
+        </p>
+    </li>
+    <li>
+        <p>
+            前端页面展现使用了Bootstrap开源框架，做出来效果简洁大方，节省了大量的时间。
+        </p>
+    </li>
+    <li>
+        <p>
+            页面交互使用了较多的Ajax交互，页面渲染性能不是很高，后期学习了NodeJs后再来完善。
+        </p>
+    </li>
+    <li>
+        <p>
+            Jquery插件是使用如下：
+        </p>
+    </li>
+</ol>
+<ul>
+    <li>
+        富文本编辑器，即此刻编写这边文章在用的编辑器使用的百度前端开发团队的UEditor。
+    </li>
+    <li>
+        图片上传插件，使用的也是百度前端开发团队的webuploader。
+    </li>
+    <li>
+        “Blog”模块的下拉滚动插件使<span id="_baidu_bookmark_start_1" style="display: none; line-height: 0px;">‍</span><span id="_baidu_bookmark_start_3" style="display: none; line-height: 0px;">‍</span>用的是<a href="https://github.com/ethanxm/imethan/blob/master/WebContent/theme/js/jquery.infinitescroll.js" id="5634f3947cec655e21a22d0307717713-88633e12e2164348e56f1bd96d515a7747a83eca" title="jquery.infinitescroll.js">jquery.infinitescroll.js<span id="_baidu_bookmark_end_2" style="display: none; line-height: 0px;">‍</span></a>。<span id="_baidu_bookmark_end_4" style="display: none; line-height: 0px;">‍</span>
+    </li>
+    <li>
+        文章阅读更多使<span id="_baidu_bookmark_start_6" style="display: none; line-height: 0px;">‍</span><span id="_baidu_bookmark_start_8" style="display: none; line-height: 0px;">‍</span>用的插件是<a href="https://github.com/ethanxm/imethan/blob/master/WebContent/theme/js/readmore.js" id="f02c54a9a80a30ed724a772e1be05715-3296b45ef8bd194f1e06c9c0e37dcb49fd4ab44e" title="readmore.js">readmore.js<span id="_baidu_bookmark_end_7" style="display: none; line-height: 0px;">‍</span></a>。<span id="_baidu_bookmark_end_9" style="display: none; line-height: 0px;">‍</span>
+    </li>
+    <li>
+        树形展现插件使用的是国产的Ztree。
+    </li>
+</ul>
+<p>
+    <br/>
+</p>
 
-============================
-
-使用的开源框架如下：<br>
-1、采用Spring作为IOC容器<br>
-2、使用Spring Data JPA接口规范，底层为hibernate实现<br>
-3、使用Spring MVC作为表现层实现框架<br>
-4、采用Apache Shiro作为安全和权限控制<br>
-5、采用bootstrap作为页面风格<br>
-6、使用sitemesh作为页面装饰框架<br>
-7、使用Jquery作为脚本语言<br>
-8、使用的数据库是MySQL 5<br>
-9、使用Gradle为项目的集成<br>
-10、使用JqGrid作为表格渲染<br>
-11、使用Ztree作为树形展现<br>
-12、使用Ueditor作为富文章编辑器<br>
+<p>
+    <br/>
+</p>
+<p>
+    <br/>
+</p>

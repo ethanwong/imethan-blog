@@ -131,9 +131,10 @@
 			var locate = $("#locate").val();
 			var phone = $("#phone").val();
 			var email = $("#email").val();
+			var qq = $("#qq").val();
 			
 			$.ajax({
-				url:"${root}/setting/updateProfile?id="+id+"&nickname="+nickname+"&locate="+locate+"&phone="+phone+"&email="+email,
+				url:"${root}/setting/updateProfile?id="+id+"&nickname="+nickname+"&locate="+locate+"&phone="+phone+"&email="+email+"&qq="+qq,
 				type:"POST",
 				dateType:"json",
 				success:function(data){
@@ -192,6 +193,10 @@
 								  <div class="form-group">
 								    <label for="exampleInputPassword1">Phone</label>
 								    <input type="text" class="form-control required" id="phone" placeholder="Enter phone" name="phone" value="${user.phone}">
+								  </div>
+								  <div class="form-group">
+								    <label for="exampleInputPassword1">QQ</label>
+								    <input type="text" class="form-control required" id="qq" placeholder="Enter qq" name="phone" value="${user.qq}">
 								  </div>
 								  <div class="form-group">
 								    <label for="exampleInputPassword1">Email</label>

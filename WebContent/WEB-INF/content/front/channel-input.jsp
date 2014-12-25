@@ -69,7 +69,7 @@
 								    <input type="radio" name="isPublish" id="isPublish" value="false" <c:if test="${channel.publish eq false }">checked="checked"</c:if>/>
 								    Hidden
 							  </label>
-							</div>
+						  </div>
 						  
 						  <div class="form-group">
 						    <label for="intro">Intro</label>
