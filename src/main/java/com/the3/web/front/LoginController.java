@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.the3.base.encode.EncryptUtils;
 import com.the3.entity.security.User;
@@ -45,10 +46,11 @@ public class LoginController {
 	}
     
     @RequestMapping(value="/in",method = {RequestMethod.POST},produces={"application/json;charset=UTF-8"})
-    public String in(Model model,@ModelAttribute("currUser")User currUser,HttpSession session, HttpServletRequest request) {
+    public String in(Model model,@ModelAttribute("currUser")User currUser,HttpSession session, HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		String code = (String) session.getAttribute("validateCode");
 		String submitCode = WebUtils.getCleanParam(request, "validateCode");
 		if (StringUtils.isEmpty(submitCode)	|| !StringUtils.equals(code, submitCode.toLowerCase())) {
+			redirectAttributes.addFlashAttribute("error", "validateCode error");
 			return "redirect:/login";
 		}
     	
@@ -61,10 +63,12 @@ public class LoginController {
         
         try {
             user.login(token);
+            
             return "redirect:/index";
         }catch (Exception e) {
-        	e.printStackTrace();
+//        	e.printStackTrace();
             token.clear();
+            redirectAttributes.addFlashAttribute("error", "username or password error");
             return "redirect:/login";
         }
     }

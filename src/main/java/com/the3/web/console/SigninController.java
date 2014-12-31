@@ -79,7 +79,7 @@ public class SigninController {
         String verifyCode = ValidateCode.generateTextCode(ValidateCode.TYPE_NUM_ONLY, 4, null);
         request.getSession().setAttribute("validateCode", verifyCode);
         response.setContentType("image/jpeg");
-        BufferedImage bim = ValidateCode.generateImageCode(verifyCode, 90, 30, 3, true, Color.WHITE, Color.BLACK, null);
+        BufferedImage bim = ValidateCode.generateImageCode(verifyCode, 80, 30, 3, true, Color.WHITE, Color.BLACK, null);
         ImageIO.write(bim, "JPEG", response.getOutputStream());
     }
     

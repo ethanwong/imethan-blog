@@ -11,6 +11,9 @@
 		if($("#inputForm").valid()){
 			var password = $('#password').val();
 			$('#password').val(CryptoJS.MD5(password));
+			return true;
+		}else{
+			return false;
 		}
 	}
 	
@@ -20,24 +23,34 @@
 	<div class="container" style="width: 300px;">
 		<form class="form-signin" role="form" action="${root}/login/in" id="inputForm" method="post" onsubmit="return login();" >
 		    <h2 class="form-signin-heading"><span class="glyphicon glyphicon-user"></span>&nbsp;Member login</h2>
-		    <input type="text" class="form-control" id="username" name="username" value="" placeholder="Enter username" required autofocus>
-		    <input type="password" class="form-control" id="password"  name="password" value="" placeholder="Enter password" required>
 		    <div class="row">
-				 <div class="col-lg-6" style="width: 120px;">
-					<input type="text" class="form-control" style="width: 110px;"  name="validateCode" placeholder="validateCode" required />
+		    	<div class="col-sm-12" >
+				    <input type="text" class="form-control required" id="username" name="username" value="" placeholder="Enter username"/>
+		    	</div>
+		    </div>
+		    <div class="row">
+		    	<div class="col-sm-12" >
+		    		<input type="password" class="form-control required" id="password"  name="password" value="" placeholder="Enter password" />
+		    	</div>
+		    </div>
+		    <div class="row">
+				 <div class="col-sm-7" >
+					<input type="text" class="form-control required" style="width: 140px;"  name="validateCode" placeholder="Validate code"  />
 				 </div>
-				 <div class="col-lg-6" style="width: 120px;" >
+				 <div class="col-sm-5" >
 					<img style="display: inline;" id="validateCodeImg" src="${root}/login/validateCode" onclick="javascript:reloadValidateCode();" />
 				 </div>
-				 
 			</div>
 			<div style="padding-left: 22px;">
 			    <label class="checkbox">
 			       <input type="checkbox" value="1" name="remember" > Remember me
 			    </label>
 			</div>
-	
 		     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+			<br>
+			 <c:if test="${error != null && error !=''}">
+		     	<p class='bg-danger' style='padding: 15px;width: 270px !important;'>${error}</p>
+		     </c:if>
 		</form>
 	 </div>
     
