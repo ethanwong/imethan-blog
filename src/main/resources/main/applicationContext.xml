@@ -23,7 +23,24 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 
-	<context:property-placeholder location="classpath*:/main/jdbc.properties" />
+<!-- 	<context:property-placeholder location="classpath*:/main/jdbc.properties" /> -->
+
+	<bean class="com.the3.base.config.DecryptPropertyPlaceholderConfigurer">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="false" />
+		<property name="locations">
+			<list>
+				<value>classpath*:/main/jdbc.properties</value>
+			</list>
+		</property>
+		<property name="decodePropertyNames">
+		   <list>
+		   	 <value>jdbc.url</value>
+		     <value>jdbc.username</value>
+		     <value>jdbc.password</value>
+		   </list>
+		</property>
+	</bean>
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="${jdbc.driverClassName}"/>

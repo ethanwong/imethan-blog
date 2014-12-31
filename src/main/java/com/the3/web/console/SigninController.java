@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.the3.base.encode.EncryptUtils;
 import com.the3.entity.security.User;
 import com.the3.utils.ValidateCode;
 
@@ -49,7 +50,7 @@ public class SigninController {
     	
     	System.out.println("-------currUser-------currUser:"+currUser);
     	Subject user = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(currUser.getUsername(),currUser.getPassword());
+        UsernamePasswordToken token = new UsernamePasswordToken(currUser.getUsername(),EncryptUtils.Encrypt(currUser.getPassword(), "SHA-1"));
 
         if(!StringUtils.isEmpty(request.getParameter("remember"))&&request.getParameter("remember").equals("1")){
         	System.out.println("-------currUser-------setRememberMe:"+request.getParameter("remember"));

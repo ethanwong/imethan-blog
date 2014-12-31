@@ -90,6 +90,10 @@ dependencies {
     //file and io
     compile 'commons-io:commons-io:2.4'
     compile 'commons-fileupload:commons-fileupload:1.2'
+    
+    //Apache Commons Codec
+    compile 'commons-codec:commons-codec:1.10'
+    
 		  
     testCompile("junit:junit:4.11")
 }

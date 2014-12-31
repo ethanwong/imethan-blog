@@ -5,13 +5,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${root}/theme/js/cryptojs/crypto-js-md5.js"></script>
+<script type="text/javascript">
+	function login(){
+		if($("#inputForm").valid()){
+			var password = $('#password').val();
+			$('#password').val(CryptoJS.MD5(password));
+		}
+	}
+	
+</script>
 </head>
 <body>
 	<div class="container" style="width: 300px;">
-		<form class="form-signin" role="form" action="${root}/login/in" id="inputForm" method="post"  >
+		<form class="form-signin" role="form" action="${root}/login/in" id="inputForm" method="post" onsubmit="return login();" >
 		    <h2 class="form-signin-heading"><span class="glyphicon glyphicon-user"></span>&nbsp;Member login</h2>
-		    <input type="text" class="form-control" name="username" value="imethan" placeholder="Enter username" required autofocus>
-		    <input type="password" class="form-control" name="password" value="imethan" placeholder="Enter password" required>
+		    <input type="text" class="form-control" id="username" name="username" value="" placeholder="Enter username" required autofocus>
+		    <input type="password" class="form-control" id="password"  name="password" value="" placeholder="Enter password" required>
 		    <div class="row">
 				 <div class="col-lg-6" style="width: 120px;">
 					<input type="text" class="form-control" style="width: 110px;"  name="validateCode" placeholder="validateCode" required />
