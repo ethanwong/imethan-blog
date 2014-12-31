@@ -47,6 +47,12 @@ public class ArticleServiceTest {
 //		System.out.println("article:"+article);
 	}
 	
+	
+	@Test
+	public void testUpdatePublish(){
+		System.out.println(articleService.updatePublish(39l));
+	}
+	
 
 }
 

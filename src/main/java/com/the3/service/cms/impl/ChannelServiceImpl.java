@@ -115,4 +115,42 @@ public class ChannelServiceImpl implements ChannelService {
 		}
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto updatePublish(Long id) {
+		boolean flag = true;
+		String message = "更新成功";
+		boolean publish = true;
+		if(this.getById(id).isPublish()){
+			publish = false;
+		};
+		
+		try {
+			channelRepository.updatePublish(id,publish);
+		} catch (Exception e) {
+			e.printStackTrace();
+			flag = false;
+			message = "更新失败";
+		}
+		
+		return new ReturnDto(flag,message);
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto updateArticleAmount(Long id,int changeAmount) {
+		boolean flag = true;
+		String message = "更新成功";
+		try {
+			int sourceAmount = this.getById(id).getArticleAmount();
+			int targetAmount = sourceAmount+changeAmount;
+			int result = channelRepository.updateArticleAmount(id,targetAmount);
+		} catch (Exception e) {
+			e.printStackTrace();
+			flag = false;
+			message = "更新失败";
+		}
+		return new ReturnDto(flag,message);
+	}
+
 }

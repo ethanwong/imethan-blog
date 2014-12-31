@@ -53,9 +53,6 @@ public class ArticleController extends SuperController{
 	@ResponseBody
 	@RequestMapping(value = "json/{channelId}" , method = {RequestMethod.POST , RequestMethod.GET })
 	public String json(@RequestParam("page") Integer page,@RequestParam("rows") Integer size,@PathVariable("channelId") Long channelId){
-		
-		System.out.println("--------------------channelId:"+channelId);
-		
 		PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "id");
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();
 		SearchFilter searchFilter = new SearchFilter("channel.id",SearchFilter.Operator.EQ,channelId.toString());
@@ -65,14 +62,19 @@ public class ArticleController extends SuperController{
 		return  JsonUtils.writeValueAsString(new JqGridPageDto<Article>(result));
 	} 
 	
+	/**
+	 * 保存文章
+	 * @param article
+	 * @param result
+	 * @param request
+	 * @return
+	 */
 	@RequiresUser
 	@ResponseBody
 	@RequestMapping(value = "save" , method = {RequestMethod.POST,RequestMethod.GET })
 	public ReturnDto save(@Valid @ModelAttribute("article") Article article, BindingResult result,ServletRequest request){
-		System.out.println("------------article:"+article.getContent());
 		ReturnDto returnDto = new ReturnDto();
 		if(result.hasFieldErrors()){
-			
 			returnDto.setMessage("参数验证出现异常:"+result.getFieldError().getDefaultMessage());
 			returnDto.setSuccess(false);
 		}else{
@@ -81,17 +83,38 @@ public class ArticleController extends SuperController{
 		return returnDto;
 	}
 	
+	/**
+	 * 删除文章
+	 * @param id
+	 * @return
+	 */
 	@RequiresUser
 	@ResponseBody
 	@RequestMapping(value = "delete/{id}" , method = RequestMethod.POST)
 	public ReturnDto delete(@PathVariable Long id){
-		
 		return articleService.deleteById(id);
 	}
 	
+	/**
+	 * 查看文章详情
+	 * @param id
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "detail/{id}" , method = RequestMethod.POST)
 	public Article detail(@PathVariable Long id){
 		return articleService.getById(id);
 	} 
+	
+	/**
+	 * 更新发布状态
+	 * @param id
+	 * @return
+	 */
+	@RequiresUser
+	@ResponseBody
+	@RequestMapping(value = "publish/{id}" , method = RequestMethod.POST)
+	public ReturnDto publish(@PathVariable Long id){
+		return articleService.updatePublish(id);
+	}
 }

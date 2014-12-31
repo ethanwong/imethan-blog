@@ -78,9 +78,12 @@
 					
 					showMsg(messageType,result.message);
 					
+					
+					$(".addWarm").html("<p class='bg-primary' style='padding: 9px;display: inline;'>"+result.message+"</p>");
+					
 					setTimeout(function(){
 						location.href = "${root}/blog/${channelId}";
-					},3000);
+					},2000);
 					
 				}
 			});
@@ -136,6 +139,7 @@
 						  
 						  <button type="button" class="btn btn-info" onclick="saveArticle()">Submit</button>
 						  <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Return</button>
+						  <span class="addWarm"></span>
 						</form>
 				  </div>
 			</div>

@@ -47,5 +47,12 @@ public interface ArticleService {
 	 */
 	Page<Article> findPage(List<SearchFilter> filters, PageRequest pageable);
 	
+	/**
+	 * 更新发布状态
+	 * @param id
+	 * @return
+	 */
+	public ReturnDto updatePublish(Long id);
+	
 
 }

@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>ImEthan:Blog</title>
-<script src="${root}/theme/js/front/blog.js"></script>
 <script type="text/javascript">
 //页面加载时初始化脚本
 $(document).ready(function () {
@@ -49,9 +48,9 @@ function generateArticle(json){
 		var publish = item.publish;
 		var titleIco = "";
 		if(publish == "true"){
-			titleIco = "<span style='color:#357ebd;' class='glyphicon glyphicon-flag'></span>";
+			titleIco = "<a href='#' onclick='publishArticle(this,"+item.id+")'><span style='color:#357ebd;' class='glyphicon glyphicon-flag'></span></a>";
 		}else{
-			titleIco = "<span class='glyphicon glyphicon-flag'></span>";
+			titleIco = "<a href='#' onclick='publishArticle(this,"+item.id+")'><span class='glyphicon glyphicon-flag'></span></a>";
 		}
 		
 		var article = ""+
@@ -133,6 +132,46 @@ function deleteChannel(id){
 	});
 };
 
+//更改栏目发布状态
+function publishChannel(object,id){
+	$.ajax({
+		url:"${root}/console/cms/channel/publish/"+id,
+		type:"POST",
+		dateType:"json",
+		success:function(data){
+			var result = eval("(" + data + ")");
+			showMsg("success",result.message);
+			
+			var color = $(object).children("span").css("color");
+			if(color =="rgb(53, 126, 189)"){
+				$(object).children("span").css("color","");
+			}else{
+				$(object).children("span").css("color","rgb(53, 126, 189)");
+			}
+		}
+	});
+};
+
+//更改文章发布状态
+function publishArticle(object,id){
+	$.ajax({
+		url:"${root}/console/cms/article/publish/"+id,
+		type:"POST",
+		dateType:"json",
+		success:function(data){
+			var result = eval("(" + data + ")");
+			showMsg("success",result.message);
+			
+			var color = $(object).children("span").css("color");
+			if(color =="rgb(53, 126, 189)"){
+				$(object).children("span").css("color","");
+			}else{
+				$(object).children("span").css("color","rgb(53, 126, 189)");
+			}
+		}
+	});
+};
+
 //查询文章信息
 function searchArticle(object){
 	var search_title = $(object).val();
@@ -172,8 +211,8 @@ function searchArticle(object){
 						<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
 						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 						<shiro:user>
-								&nbsp;<c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag"></span></c:if>
-								<c:if test="${article.publish eq false}"><span class="glyphicon glyphicon-flag"></span></c:if>
+								&nbsp;<a href="#" onclick="publishArticle(this,${article.id})"><c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag" ></span></c:if>
+								<c:if test="${article.publish eq false}"><span class="glyphicon glyphicon-flag" ></span></c:if></a>
 						</shiro:user>
 						<shiro:user>
 							<div class='blog-article-toolbar'>
@@ -197,8 +236,10 @@ function searchArticle(object){
 				<c:forEach var="channel" items="${channelList}" varStatus="status">
 					<a href="${root}/blog/${channel.id}" class="list-group-item <c:if test="${channelId eq channel.id }">active</c:if>">
 						<shiro:user>
-							<c:if test="${channel.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag"></span></c:if>
-							<c:if test="${channel.publish eq false}"><span class="glyphicon glyphicon-flag"></span></c:if>
+<%-- 							<a href="#" onclick="publishChannel(this,${channel.id})"> --%>
+								<c:if test="${channel.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag"></span></c:if>
+								<c:if test="${channel.publish eq false}"><span class="glyphicon glyphicon-flag"></span></c:if>
+<!-- 							</a> -->
 						</shiro:user>
 						${channel.name}
 						

@@ -20,6 +20,7 @@ import com.the3.entity.cms.Channel;
 import com.the3.repository.cms.ArticleRepository;
 import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.cms.ArticleService;
+import com.the3.service.cms.ChannelService;
 
 /**
  * ArticleServiceImpl.java
@@ -37,6 +38,8 @@ public class ArticleServiceImpl implements ArticleService {
 	private ArticleRepository articleRepository;
 	@Autowired
 	private ChannelRepository channelRepository;
+	@Autowired
+	private ChannelService channelService;
 	
 	@Override
 	@Transactional(readOnly = false)
@@ -44,16 +47,40 @@ public class ArticleServiceImpl implements ArticleService {
 		boolean isSuccess = true;
 		String message = "保存成功";
 		try {
-			Channel channel = channelRepository.getOne(entity.getChannel().getId());
-			if(entity.getId() !=null){
+			Channel channel = null;
+			Long id = entity.getId();
+			
+			if(id !=null){
+				//修改文章
+				Article articleDb = this.getById(entity.getId());
+				Channel channelDb = articleDb.getChannel();
+				
+				Channel channelNow = channelRepository.getOne(entity.getChannel().getId());
+				if(channelDb.getId() != channelNow.getId()){
+					//更新文章数量
+					channelService.updateArticleAmount(channelDb.getId(),-1);
+					channelService.updateArticleAmount(channelNow.getId(),+1);
+					channel = channelNow;
+				}
+				channel = channelDb;
+				
 				entity.setModifyTime(new Date());
+				entity.setChannel(channel);
+				articleRepository.save(entity);
+				
 			}else{
+				//新增加文章
+				
+				//获取栏目信息
+				channel = channelRepository.getOne(entity.getChannel().getId());
+				
 				//更新文章数量
-				channel.setArticleAmount(channel.getArticleAmount()+1);
-				channelRepository.save(channel);
+				channelService.updateArticleAmount(channel.getId(),1);
+				
+				entity.setChannel(channel);
+				articleRepository.save(entity);
 			}
-			entity.setChannel(channel);
-			articleRepository.save(entity);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			isSuccess = false;
@@ -87,9 +114,8 @@ public class ArticleServiceImpl implements ArticleService {
 			Article article = articleRepository.getOne(id);
 			Channel channel = article.getChannel();
 			
-			channel.setArticleAmount(channel.getArticleAmount()-1);
-			channelRepository.save(channel);
-			channelRepository.flush();
+			//更新文章数量
+			channelService.updateArticleAmount(channel.getId(),-1);
 			
 			articleRepository.delete(id);
 		} catch (Exception e) {
@@ -121,5 +147,26 @@ public class ArticleServiceImpl implements ArticleService {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto updatePublish(Long id) {
+		boolean flag = true;
+		String message = "更新成功";
+		boolean publish = true;
+		if(this.getById(id).isPublish()){
+			publish = false;
+		};
+		
+		try {
+			articleRepository.updatePublish(id,publish);
+		} catch (Exception e) {
+			e.printStackTrace();
+			flag = false;
+			message = "更新失败";
+		}
+		
+		return new ReturnDto(flag,message);
 	}
 }

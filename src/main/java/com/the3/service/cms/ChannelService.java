@@ -55,4 +55,19 @@ public interface ChannelService{
 	 */
 	public Channel getById(Long id);
 	
+	/**
+	 * 更新发布状态
+	 * @param id
+	 * @return
+	 */
+	public ReturnDto updatePublish(Long id);
+	
+	/**
+	 * 更新文章数量
+	 * @param id
+	 * @param changeAmount 
+	 * @return
+	 */
+	public ReturnDto updateArticleAmount(Long id,int changeAmount);
+	
 }

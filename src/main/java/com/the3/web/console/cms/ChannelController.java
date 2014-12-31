@@ -75,4 +75,16 @@ public class ChannelController extends SuperController{
 		return channelService.getById(id);
 	}
 	
+	/**
+	 * 更新发布状态
+	 * @param id
+	 * @return
+	 */
+	@RequiresUser
+	@ResponseBody
+	@RequestMapping(value = "publish/{id}" , method = RequestMethod.POST)
+	public ReturnDto publish(@PathVariable Long id){
+		return channelService.updatePublish(id);
+	}
+	
 }

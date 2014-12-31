@@ -17,6 +17,7 @@ function showMsg(type,msg){
 	setTimeout("closeTopWarn(this)", 2000);
 };
 
+
 /**
  * 在Modal显示提示信息
  * @param type 提示信息类型,成功:success,失败:error
