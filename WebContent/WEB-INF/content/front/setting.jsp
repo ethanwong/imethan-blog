@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" type="text/css" href="${root}/theme/webuploader-0.1.5/webuploader.css">
 <script type="text/javascript" src="${root}/theme/webuploader-0.1.5/webuploader.js"></script>
-
+<script type="text/javascript" src="${root}/theme/js/cryptojs/crypto-js-md5.js"></script>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
@@ -121,34 +121,102 @@
 // 		    $( '#'+file.id ).find('.progress').remove();
 // 		});
 		
-	});
-	
+		//密码校验规则
+		$("#passwordForm").validate({
+			rules : {
+				oldPassword:{
+					 required: true,
+					 remote:{                                          //验证用户名是否存在
+			               type:"POST",
+			               url:"${root}/setting/validatePassword", 
+			               data:{
+			                  password:function(){return CryptoJS.MD5($("#oldPassword").val());}
+			               } 
+				     } 
+			     },
+				newPassword : {
+					required : true,
+					minlength : 5
+				},
+				confirmNewPassword : {
+					required : true,
+					minlength : 5,
+					equalTo : "#newPassword"
+				}
+			},
+			messages : {
+				oldPassword:{
+					remote : "密码不正确",
+					required : "请输入原密码"
+				},
+				newPassword : {
+					required : "请输入新密码",
+					minlength : jQuery.format("密码不能小于{0}个字 符")
+				},
+				confirmNewPassword : {
+					required : "请输入确认密码",
+					minlength : "确认密码不能小于5个字符",
+					equalTo : "两次输入密码不一致"
+				}
+			}
+		});
+
+
+});
+
 	//更新用户基本信息
-	function updateProfile(){
-		if($("#profileForm").valid()){
+	function updateProfile() {
+		if ($("#profileForm").valid()) {
 			var id = $("#id").val();
 			var nickname = $("#nickname").val();
 			var locate = $("#locate").val();
 			var phone = $("#phone").val();
 			var email = $("#email").val();
 			var qq = $("#qq").val();
-			
+
 			$.ajax({
-				url:"${root}/setting/updateProfile?id="+id+"&nickname="+nickname+"&locate="+locate+"&phone="+phone+"&email="+email+"&qq="+qq,
-				type:"POST",
-				dateType:"json",
-				success:function(data){
+				url : "${root}/setting/updateProfile?id=" + id + "&nickname="
+						+ nickname + "&locate=" + locate + "&phone=" + phone
+						+ "&email=" + email + "&qq=" + qq,
+				type : "POST",
+				dateType : "json",
+				success : function(data) {
 					var result = eval("(" + data + ")");
 					var messageType = "success";
-					if(result.success == false){
+					if (result.success == false) {
 						messageType = "error";
+					}
+					;
+					showMsg(messageType, result.message);
+				}
+			});
+		}
+		;
+	};
+	
+	//更新密码
+	function updatePassword(){
+		if ($("#passwordForm").valid()) {
+			$.ajax({
+				url : "${root}/setting/updatePassword/"+CryptoJS.MD5($("#newPassword").val()),
+				type : "POST",
+				dateType : "json",
+				success : function(data) {
+					var result = eval("(" + data + ")");
+					var messageType = "success";
+					if (result.success == false) {
+						messageType = "error";
+					}else{
+						$("#oldPassword").val("")
+						$("#newPassword").val("")
+						$("#confirmNewPassword").val("")
 					};
-					showMsg(messageType,result.message);
+
+					showMsg(messageType, result.message);
 				}
 			});
 		};
 	};
-
 </script>
 </head>
 <body>
@@ -208,20 +276,21 @@
 						</c:if>
 						
 						<c:if test="${type eq 'account' }">
-							<form role="form" id="inputForm" method="post">
+						
+							<form role="form" id="passwordForm" method="post">
 								 <div class="form-group">
 								    <label for="oldPassword">Old password</label>
-								    <input type="password" class="form-control required" id="oldPassword" placeholder="Enter old password">
+								    <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Enter old password">
 								  </div>
 								 <div class="form-group">
 								    <label for="newPassword">New password</label>
-								    <input type="password" class="form-control required" id="newPassword" placeholder="Enter new password">
+								    <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Enter new password">
 								  </div>
 								 <div class="form-group">
 								    <label for="confirmNewPassword">Confirm new password</label>
-								    <input type="password" class="form-control required" id="confirmNewPassword" placeholder="Enter new password">
+								    <input type="password" class="form-control " id="confirmNewPassword" name="confirmNewPassword" placeholder="Enter new password">
 								  </div>
-								 <button type="submit" class="btn btn-info">Update password</button>
+								 <button type="button" class="btn btn-info" onclick="updatePassword()">Update password</button>
 							</form>
 							
 						</c:if>

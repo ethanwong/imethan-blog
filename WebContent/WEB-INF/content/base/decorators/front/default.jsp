@@ -14,12 +14,13 @@
 	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
 	<!-- bootstrap end -->
 	
-	<script src="${root}/theme/js/popover.js"></script>
-	<script src="${root}/theme/js/tooltip.js"></script>
-	<script src="${root}/theme/js/alert.js"></script>
-	<script src="${root}/theme/js/transition.js"></script>
+<%-- 	<script src="${root}/theme/js/popover.js"></script> --%>
+<%-- 	<script src="${root}/theme/js/tooltip.js"></script> --%>
+<%-- 	<script src="${root}/theme/js/alert.js"></script> --%>
+<%-- 	<script src="${root}/theme/js/transition.js"></script> --%>
 	
 	<script src="${root}/theme/js/jquery.validate.js"></script>
+	<script src="${root}/theme/js/jquery.metadata.js"></script>
 	<script src="${root}/theme/js/messages-cn.js"></script>
 	
 	<script src="${root}/theme/js/readmore.js"></script>
@@ -30,19 +31,6 @@
 	<link href="${root}/theme/css/common.css" rel="stylesheet">
 	<script src="${root}/theme/js/common.js"></script>
 	<!-- custom defin end -->
-	
-    <!-- jqgrid begin-->
-	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" rel="stylesheet" type="text/css" />
-	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/grid.locale-cn.js" type="text/javascript"></script>
-	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js" type="text/javascript"></script>
-	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/jquery.jqGrid.src.js" type="text/javascript"></script>
-	<!-- jqgrid end-->
-	
-	<!-- ztree begin -->
-	<link rel="stylesheet" href="${root}/theme/jtree/css/zTreeStyle/zTreeStyle.css" type="text/css">
-	<script type="text/javascript" src="${root}/theme/jtree/js/jquery.ztree.all-3.5.js"></script>
-	<!-- ztree end -->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->

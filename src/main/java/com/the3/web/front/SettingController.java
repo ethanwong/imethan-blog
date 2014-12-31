@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.the3.base.encode.EncryptUtils;
 import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.User;
 import com.the3.service.security.UserService;
@@ -41,6 +42,12 @@ public class SettingController {
 	@Autowired
 	private UserService userService;
 	
+	/**
+	 * 系统设置首页
+	 * @param model
+	 * @param type
+	 * @return
+	 */
 	@RequiresUser
 	@RequestMapping("/{type}")
 	public String setting(Model model,@PathVariable String type){
@@ -59,7 +66,13 @@ public class SettingController {
 		return "front/setting";
 	}
 	
-	
+	/**
+	 * 更新基本信息
+	 * @param user
+	 * @param result
+	 * @param request
+	 * @return
+	 */
 	@RequiresUser
 	@ResponseBody
 	@RequestMapping(value = "updateProfile" , method = {RequestMethod.POST})
@@ -75,6 +88,15 @@ public class SettingController {
 		return returnDto;
 	}
 	
+	/**
+	 * 更新头像
+	 * @param file
+	 * @param model
+	 * @param request
+	 * @param userId
+	 * @return
+	 * @throws IOException
+	 */
 	@ResponseBody
 	@RequestMapping("/updateAvatar")
 	public String updateAvatar(@RequestParam MultipartFile file, Model model,HttpServletRequest request,@RequestParam Long userId) throws IOException{
@@ -100,6 +122,44 @@ public class SettingController {
        
 		
 		return "success";
+	}
+	
+	/**
+	 * 密码校验
+	 * @param password
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/validatePassword")
+	public boolean validatePassword(@RequestParam String password){
+		boolean flag = false;
+		Subject subject =SecurityUtils.getSubject();
+		if(subject.getPrincipal() != null){
+			String username = subject.getPrincipal().toString();
+			User user = userService.getByUsername(username);
+			if(EncryptUtils.Encrypt(password, "SHA-1").equals(user.getPassword())){
+				flag = true;
+			}
+		}
+		System.out.println("password:"+password);
+		return flag;
+	}
+	
+	/**
+	 * 更新密码
+	 * @param password
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/updatePassword/{password}")
+	public ReturnDto updatePassword(@PathVariable String password){
+		ReturnDto returnDto = new ReturnDto();
+		Subject subject =SecurityUtils.getSubject();
+		if(subject.getPrincipal() != null){
+			String username = subject.getPrincipal().toString();
+			returnDto = userService.updatePassword(username,EncryptUtils.Encrypt(password, "SHA-1"));
+		}
+		return returnDto;
 	}
 
 }

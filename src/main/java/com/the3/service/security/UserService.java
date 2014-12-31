@@ -67,4 +67,12 @@ public interface UserService{
 	 */
 	public ReturnDto updateAvatar(Long userId, String saveFileName);
 	
+	/**
+	 * 更新密码
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public ReturnDto updatePassword(String username, String password);
+	
 }

@@ -157,6 +157,23 @@ public class UserServiceImpl implements UserService {
 		return new ReturnDto(isSuccess,message);
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto updatePassword(String username, String password) {
+		boolean isSuccess = true;
+		String message = "更新成功";
+		
+		try {
+			int result = userRepository.updatePassword(username,password);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+			message = "更新失败";
+		}
+		
+		return new ReturnDto(isSuccess,message);
+	}
+
 }
 
 
