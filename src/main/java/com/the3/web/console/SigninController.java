@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.the3.base.encode.EncryptUtils;
 import com.the3.entity.security.User;
@@ -34,17 +35,22 @@ import com.the3.utils.ValidateCode;
 @RequestMapping("/console")
 public class SigninController {
 	
-	@RequestMapping("/toSignin")
+	@RequestMapping(value = {"","/toSignin"})
 	public String toSignin(Model model){
-		
-		 return "console/signin";
+		Subject user = SecurityUtils.getSubject();
+		 if(user.isAuthenticated()){
+			 return "redirect:console/home";
+		 }else{
+			 return "console/signin";
+		 }
 	}
     
-    @RequestMapping(value="/signin",method = {RequestMethod.POST},produces={"application/json;charset=UTF-8"})
-    public String signin(Model model,@ModelAttribute("currUser")User currUser,HttpSession session, HttpServletRequest request) {
+    @RequestMapping(value="/signin",method = {RequestMethod.POST,RequestMethod.GET},produces={"application/json;charset=UTF-8"})
+    public String signin(Model model,@ModelAttribute("currUser")User currUser,HttpSession session, HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		String code = (String) session.getAttribute("validateCode");
 		String submitCode = WebUtils.getCleanParam(request, "validateCode");
 		if (StringUtils.isEmpty(submitCode)	|| !StringUtils.equals(code, submitCode.toLowerCase())) {
+			redirectAttributes.addFlashAttribute("error", "validateCode error");
 			return "redirect:toSignin";
 		}
     	
@@ -63,7 +69,8 @@ public class SigninController {
         }catch (Exception e) {
         	e.printStackTrace();
             token.clear();
-            return "redirect:signin";
+            redirectAttributes.addFlashAttribute("error", "username or password error");
+            return "redirect:toSignin";
         }
     }
     

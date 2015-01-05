@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresUser;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,7 +48,7 @@ public class SettingController {
 	 * @param type
 	 * @return
 	 */
-	@RequiresUser
+	@RequiresAuthentication
 	@RequestMapping("/{type}")
 	public String setting(Model model,@PathVariable String type){
 		
@@ -73,7 +73,7 @@ public class SettingController {
 	 * @param request
 	 * @return
 	 */
-	@RequiresUser
+	@RequiresAuthentication
 	@ResponseBody
 	@RequestMapping(value = "updateProfile" , method = {RequestMethod.POST})
 	public ReturnDto updateProfile(@Valid @ModelAttribute("user") User user, BindingResult result,ServletRequest request){
@@ -97,6 +97,7 @@ public class SettingController {
 	 * @return
 	 * @throws IOException
 	 */
+	@RequiresAuthentication
 	@ResponseBody
 	@RequestMapping("/updateAvatar")
 	public String updateAvatar(@RequestParam MultipartFile file, Model model,HttpServletRequest request,@RequestParam Long userId) throws IOException{
@@ -129,6 +130,7 @@ public class SettingController {
 	 * @param password
 	 * @return
 	 */
+	@RequiresAuthentication
 	@ResponseBody
 	@RequestMapping("/validatePassword")
 	public boolean validatePassword(@RequestParam String password){
@@ -150,6 +152,7 @@ public class SettingController {
 	 * @param password
 	 * @return
 	 */
+	@RequiresAuthentication
 	@ResponseBody
 	@RequestMapping("/updatePassword/{password}")
 	public ReturnDto updatePassword(@PathVariable String password){

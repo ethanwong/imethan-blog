@@ -33,7 +33,9 @@ public class FrontInterceptor implements HandlerInterceptor  {
 		
 		
 		Device currentDevice = DeviceUtils.getCurrentDevice(request);
-		System.out.println("FrontInterceptor currentDevice:"+currentDevice.toString());
+		if(currentDevice != null){
+			System.out.println("FrontInterceptor currentDevice:"+currentDevice.toString());
+		}
 		
 		return true;
 	}

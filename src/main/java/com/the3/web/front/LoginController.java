@@ -41,8 +41,12 @@ public class LoginController {
 	
 	@RequestMapping("")
 	public String login(Model model){
-		
-		 return "front/login";
+		 Subject user = SecurityUtils.getSubject();
+		 if(user.isAuthenticated()){
+			 return "redirect:/index";
+		 }else{
+			 return "front/login";
+		 }
 	}
     
     @RequestMapping(value="/in",method = {RequestMethod.POST},produces={"application/json;charset=UTF-8"})

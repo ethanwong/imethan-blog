@@ -61,7 +61,7 @@
 				<a href="${root}/blog/3">
 					<span class="glyphicon glyphicon-list" style="color: #f0ad4e"></span>
 				</a>
-				<p class="help-block">Todo list in site.</p>
+				<p class="help-block">Next todo list.</p>
 			</div>
 			<div class="col-md-3 icoAlign">
 				<a href="${root}/about">

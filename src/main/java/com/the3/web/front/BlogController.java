@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletRequest;
 
-import org.apache.shiro.authz.annotation.RequiresUser;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -144,7 +144,7 @@ public class BlogController extends SuperController{
      * @param model
      * @return
      */
-    @RequiresUser
+    @RequiresAuthentication
 	@RequestMapping("/article/input/{channelId}/{articleId}")
 	public String inputArticle(@PathVariable Long channelId,@PathVariable Long articleId,Model model){
     	//获取栏目信息
@@ -166,7 +166,7 @@ public class BlogController extends SuperController{
      * @param model
      * @return
      */
-    @RequiresUser
+    @RequiresAuthentication
     @RequestMapping("/channel/input/{channelId}")
     public String inputChannel(@PathVariable Long channelId,Model model){
     	

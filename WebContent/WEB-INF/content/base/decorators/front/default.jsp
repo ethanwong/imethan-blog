@@ -25,7 +25,7 @@
 	
 	<script src="${root}/theme/js/readmore.js"></script>
 	<script src="${root}/theme/js/jquery.infinitescroll.js"></script>
-	<script src="${root}/theme/js/debug.js"></script>
+<%-- 	<script src="${root}/theme/js/debug.js"></script> --%>
 	
 	<!-- custom defin begin -->
 	<link href="${root}/theme/css/common.css" rel="stylesheet">
@@ -34,7 +34,7 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="${root}/theme/bootstrap-3.3.0/other/ie10-viewport-bug-workaround.js"></script>
+<%--     <script src="${root}/theme/bootstrap-3.3.0/other/ie10-viewport-bug-workaround.js"></script> --%>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

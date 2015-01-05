@@ -5,26 +5,52 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<%-- <link href="${root}/theme/css/console/signin.css" rel="stylesheet"> --%>
+<script type="text/javascript" src="${root}/theme/js/cryptojs/crypto-js-md5.js"></script>
+<script type="text/javascript">
+	function login(){
+		if($("#inputForm").valid()){
+			var password = $('#password').val();
+			$('#password').val(CryptoJS.MD5(password));
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+</script>
 </head>
 <body>
 	<div class="container" style="width: 300px;">
-      <form class="form-signin" role="form" action="${root}/console/signin" id="inputForm" method="post"  >
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="form-control" name="username" value="imethan" placeholder="Enter username" required autofocus>
-        <input type="password" class="form-control" name="password" value="imethan" placeholder="Enter password" required>
+      <form class="form-signin" role="form" action="${root}/console/signin" id="inputForm" method="post" onsubmit="return login();" >
+        <h2 class="form-signin-heading"><span class="glyphicon glyphicon-user"></span>&nbsp;Console login</h2>
+         <div class="row">
+		    <div class="col-sm-12" >
+        		<input type="text" class="form-control" id="username" name="username" value="imethan" placeholder="Enter username" required autofocus>
+        	</div>
+        </div>
         <div class="row">
-		  <div class="col-lg-6" style="width: 120px;">
-        	<input type="text" class="form-control" style="width: 110px;"  name="validateCode" placeholder="validateCode" required />
-		  </div>
-		   <div class="col-lg-6" style="width: 120px;" >
-        	<img style="display: inline;" id="validateCodeImg" src="${root}/console/validateCode" onclick="javascript:reloadValidateCode();" />
-		  </div>
-		 </div>
-        <label class="checkbox">
-          <input type="checkbox" value="1" name="remember"> Remember me
-        </label>
+		    <div class="col-sm-12" >
+        		<input type="password" class="form-control" id="password" name="password" value="imethan" placeholder="Enter password" required>
+        	</div>
+        </div>
+        <div class="row">
+			<div class="col-sm-7" >
+        		<input type="text" class="form-control" id="validateCode"  style="width: 140px;"  name="validateCode" placeholder="validate code" required />
+		    </div>
+		    <div class="col-sm-5" >
+        		<img style="display: inline;" id="validateCodeImg" src="${root}/console/validateCode" onclick="javascript:reloadValidateCode();" />
+		  	</div>
+		</div>
+		<div style="padding-left: 22px;">
+	        <label class="checkbox">
+	          <input type="checkbox" value="1" name="remember"> Remember me
+	        </label>
+        </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <br>
+		 <c:if test="${error != null && error !=''}">
+	     	<p class='bg-danger' style='padding: 15px;width: 270px !important;'>${error}</p>
+	     </c:if>
       </form>
     </div>
     

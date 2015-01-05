@@ -23,7 +23,6 @@
 				<shiro:guest>  
 					<div class="loginsetting">
 						<a href="${root}/login" ><span class="glyphicon glyphicon-log-in"></span></a>
-<%-- 						<a type="button" class="btn btn-default btn-sm" href="${root}/login"><span class="glyphicon glyphicon-log-in"></span> Login</a> --%>
 					</div>
 				</shiro:guest>
 				<shiro:user>  

@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 <html>
 <head>
-	<title>ImEthan</title>
+	<title>ImEthan | Console | Full Stack Engineer</title>
 	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<!-- bootstrap begin -->
@@ -87,10 +87,5 @@
 		
 	</div>
 	<jsp:include page="/WEB-INF/content/base/decorators/console/footer.jsp"></jsp:include>
-
-	<div align="center">
-		<jsp:include page="/WEB-INF/content/base/tongji.jsp"></jsp:include>
-	</div>
-	
 </body>
 </html>
