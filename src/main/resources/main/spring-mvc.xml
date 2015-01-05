@@ -32,7 +32,22 @@
 			<mvc:mapping path="/mobile/**"/>
   			<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
   		</mvc:interceptor>
-	
+  		
+  		 <!-- On pre-handle, manage the user's site preference (declare after DeviceResolverHandlerInterceptor) -->
+  		<mvc:interceptor>
+  			<mvc:mapping path="/mobile/**"/>
+  			<bean class="org.springframework.mobile.device.site.SitePreferenceHandlerInterceptor" />
+		</mvc:interceptor>
+		
+		<!-- On pre-handle, redirects mobile users to "m.imethan.cn" (declare after DeviceResolverHandlerInterceptor) 
+		<mvc:interceptor>
+			<mvc:mapping path="/mobile/**"/>
+		    <bean class="org.springframework.mobile.device.switcher.SiteSwitcherHandlerInterceptor"  factory-method="mDot">
+		    	<constructor-arg index="0" type="java.lang.String" value="imethan.cn"/>
+    			<constructor-arg index="1" type="java.lang.Boolean" value="true"/>
+		    </bean>
+		</mvc:interceptor>-->
+		
 		<mvc:interceptor>
 			<mvc:mapping path="/console/**"/>
 			<mvc:exclude-mapping path="/theme/**"/>
@@ -67,6 +82,7 @@
 		
 		<mvc:argument-resolvers>
    			<bean class="org.springframework.mobile.device.DeviceWebArgumentResolver" />
+   			<bean class="org.springframework.mobile.device.site.SitePreferenceWebArgumentResolver" />
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 
