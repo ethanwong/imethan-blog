@@ -1,9 +1,10 @@
-package com.the3.repository.contact;
+package com.the3.repository.message;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
-import com.the3.entity.contact.Message;
+
+import com.the3.entity.message.Message;
 
 
 /**

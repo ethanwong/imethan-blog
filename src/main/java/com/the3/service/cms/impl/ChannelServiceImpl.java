@@ -1,6 +1,8 @@
 package com.the3.service.cms.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -151,6 +153,36 @@ public class ChannelServiceImpl implements ChannelService {
 			message = "更新失败";
 		}
 		return new ReturnDto(flag,message);
+	}
+
+	@Override
+	public Map<String, Object> getChannelArticleChartInfo() {
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<SearchFilter> filters = new ArrayList<SearchFilter>();
+		List<Channel> channelList = this.getList(filters);
+		String channelName = "[";
+		String articleAmount = "[";
+		int size = channelList.size();
+		for(Channel channel:channelList){
+			
+			String name = "'"+channel.getName()+"'";
+			String amount = String.valueOf(channel.getArticleAmount());
+			
+			channelName += name;
+			articleAmount += amount;
+			
+			if(channelList.indexOf(channel)!=(size-1)){
+				channelName += ",";
+				articleAmount += ",";
+			}else{
+				channelName += "]";
+				articleAmount += "]";
+			}
+		}
+		map.put("channelName", channelName);
+		map.put("articleAmount", articleAmount);
+		
+		return map;
 	}
 
 }

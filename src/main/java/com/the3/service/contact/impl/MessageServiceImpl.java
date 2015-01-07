@@ -1,15 +1,23 @@
 package com.the3.service.contact.impl;
 
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.the3.base.repository.DynamicSpecifications;
+import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
-import com.the3.entity.contact.Message;
-import com.the3.repository.contact.MessageRepository;
-import com.the3.service.contact.MessageService;
+import com.the3.entity.cms.Article;
+import com.the3.entity.message.Message;
+import com.the3.repository.message.MessageRepository;
+import com.the3.service.message.MessageService;
 
 /**
  * ContactServiceImpl.java
@@ -41,6 +49,22 @@ public class MessageServiceImpl implements MessageService {
 			logger.error(e.getMessage());
 		}
 		return new ReturnDto(isSuccess,message,entity);
+	}
+
+
+	@Override
+	public Page<Message> findPage(List<SearchFilter> filters,PageRequest pageable) {
+		Page<Message> result = null;
+		
+		try {
+			Specification<Message> spec = DynamicSpecifications.bySearchFilter(filters, Message.class);
+			
+			result = messageRepository.findAll(spec, pageable);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }

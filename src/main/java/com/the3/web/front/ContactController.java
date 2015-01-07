@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.the3.base.web.SuperController;
 import com.the3.dto.common.ReturnDto;
 import com.the3.entity.cms.Channel;
-import com.the3.entity.contact.Message;
-import com.the3.service.contact.MessageService;
+import com.the3.entity.message.Message;
+import com.the3.service.message.MessageService;
 
 
 

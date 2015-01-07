@@ -70,4 +70,10 @@ public interface ChannelService{
 	 */
 	public ReturnDto updateArticleAmount(Long id,int changeAmount);
 	
+	/**
+	 * 获取栏目文章统计图信息
+	 * @return
+	 */
+	public Map<String,Object> getChannelArticleChartInfo();
+	
 }

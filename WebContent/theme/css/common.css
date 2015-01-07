@@ -151,3 +151,11 @@ form{margin: 0;}
 .edui-container(){
 	margin-top: 100px;
 }
+
+.breadcrumb{
+	margin-bottom: 10px;
+}
+
+.jumbotron{
+	margin-bottom: 10px;
+}

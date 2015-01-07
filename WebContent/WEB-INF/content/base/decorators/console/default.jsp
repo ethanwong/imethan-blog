@@ -2,19 +2,20 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
-<html>
+<!DOCTYPE html>
+<html lang="zh-cn">
 <head>
 	<title>ImEthan | Console | Full Stack Engineer</title>
 	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
-	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
-	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
+	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
 	
 	<script src="${root}/theme/js/jquery.validate.js"></script>
 	<script src="${root}/theme/js/messages-cn.js"></script>
-	<script src="${root}/theme/js/bootstrap.min.js"></script>
+
 	<script src="${root}/theme/js/popover.js"></script>
 	<script src="${root}/theme/js/tooltip.js"></script>
 	<script src="${root}/theme/js/alert.js"></script>

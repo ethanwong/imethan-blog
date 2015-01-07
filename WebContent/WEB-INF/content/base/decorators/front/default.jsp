@@ -10,8 +10,8 @@
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
-	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
-	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
+	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
 	<!-- bootstrap end -->
 	
 <%-- 	<script src="${root}/theme/js/popover.js"></script> --%>

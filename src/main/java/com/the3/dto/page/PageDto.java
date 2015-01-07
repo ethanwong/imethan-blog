@@ -6,10 +6,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
 /**
- * 
- * @author ETHAN
+ * PageDto.java
  *
- * @param <T>
+ * @author ETHAN
+ * @time 2014年3月8日下午2:42:17
  */
 public class PageDto<T> extends PageImpl<T> implements Page<T> {
 
