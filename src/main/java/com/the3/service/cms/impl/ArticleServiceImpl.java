@@ -61,8 +61,9 @@ public class ArticleServiceImpl implements ArticleService {
 					channelService.updateArticleAmount(channelDb.getId(),-1);
 					channelService.updateArticleAmount(channelNow.getId(),+1);
 					channel = channelNow;
+				}else{
+					channel = channelDb;
 				}
-				channel = channelDb;
 				
 				entity.setModifyTime(new Date());
 				entity.setChannel(channel);
