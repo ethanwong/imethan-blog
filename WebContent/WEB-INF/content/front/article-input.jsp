@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>ImEthan</title>
-<%@ include file="/WEB-INF/content/base/umeditor.jsp"%>
+<%@ include file="/WEB-INF/content/base/ueditor.jsp"%>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
 		//实例化编辑器
-		var um = UM.getEditor('editor');
+		var um = UE.getEditor('editor');
 		um.addListener('blur',function(){
 			saveArticleDraft();
 	    });
@@ -23,7 +23,7 @@
 	//保存草稿
 	function saveArticleDraft(){
 		
-		if(!UM.getEditor('editor').hasContents()){
+		if(!UE.getEditor('editor').hasContents()){
 			$("#editorContentError").html("This field is required.");
 		};
 
@@ -32,7 +32,7 @@
 			var title = $("#title").val();
 			var channelId = $("#channelId").val();
 			var isPublish = $("#isPublish:checked").val();
-			var content = UM.getEditor('editor').getContent();
+			var content = UE.getEditor('editor').getContent();
 			$.ajax({
 				type:"POST",
 				url:"${root}/console/cms/article/save",
@@ -53,7 +53,7 @@
 	//提交保存
 	function saveArticle(){
 		
-		if(!UM.getEditor('editor').hasContents()){
+		if(!UE.getEditor('editor').hasContents()){
 			$("#editorContentError").html("This field is required.");
 		};
 
@@ -62,7 +62,7 @@
 			var title = $("#title").val();
 			var channelId = $("#channelId").val();
 			var isPublish = $("#isPublish:checked").val();
-			var content = UM.getEditor('editor').getContent();
+			var content = UE.getEditor('editor').getContent();
 			$.ajax({
 				type:"POST",
 				url:"${root}/console/cms/article/save",
@@ -132,7 +132,7 @@
 						    <!--  
 						    <script type="text/plain" id="editor"  style="width:924px!important;height: 260px;">${article.content}</script>
  							-->
- 							<textarea id="editor"  style="width:924px!important;height: 260px;" >${article.content}</textarea>
+ 							<textarea id="editor"  style="width:924px!important;height: 320px;display: block;" >${article.content}</textarea>
 							<label id="editorContentError" ></label>
 							<p id="editorWarn"></p>
 						  </div>
