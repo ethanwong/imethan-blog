@@ -75,7 +75,7 @@ function loadCommnet(page){
 				$(".commentList").append(comment);
 			});
 			
-			if(result.total>0){
+			if(result.total>result.size){
 				// 处理上页和下页按钮
 				var next = result.next;
 				var previous = result.previous;
@@ -109,7 +109,8 @@ function loadCommnet(page){
 				$(".pager").append("&nbsp;&nbsp;");
 				$(".pager").append(nextButton);
 				
-			}else{
+			}
+			if(result.total==0){
 				$(".commentList").append("暂无评论");
 			}
 
