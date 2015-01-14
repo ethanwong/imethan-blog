@@ -6,11 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>ImEthan</title>
 <script type="text/javascript">
-	//页面加载时初始化脚本
-	$(document).ready(function () {
-		
-	});
-	
 	//删除文章
 	function deleteArticle(id,object){
 		$('#deleteConfirmModal').modal({
@@ -34,7 +29,6 @@
 			});
 		});
 	};
-	
 
 </script>
 </head>

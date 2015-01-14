@@ -6,7 +6,6 @@
 $(document).ready(function () {
 	loadCommnet(1);
 });
-
 //保存评论
 function saveComment(){
 	if($("#inputForm").valid()){
@@ -16,8 +15,9 @@ function saveComment(){
 		var comment = $("#comment").val();
 		
 		$.ajax({
-			url:"${root}/comment/cms/save?username="+username+"&email="+email+"&content="+encodeURIComponent(comment)+"&extendId="+extendId,
 			type:"POST",
+			url:"${root}/comment/cms/save",
+			data: "username="+username+"&email="+email+"&content="+encodeURIComponent(comment)+"&extendId="+extendId,
 			dateType:"json",
 			success:function(data){
 				var result = eval("(" + data + ")");
@@ -155,7 +155,7 @@ function loadCommnet(page){
 						  </div>
 						  <div class="form-group">
 						    <label for="emails">Email</label>
-						    <input id="email" name="emails"  type="email" class="form-control required" placeholder="Enter email" value="" maxlength="40">
+						    <input id="email" name="emails"  type="email" class="form-control" placeholder="Enter email" value="" maxlength="40">
 						  </div>
 						  <div class="form-group">
 						    <label for="comment">Comment</label>

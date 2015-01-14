@@ -31,6 +31,12 @@ import com.the3.service.comment.CommentService;
 
 
 
+/**
+ * CommentController.java
+ *
+ * @author Ethan Wong
+ * @time 2015年1月14日下午9:05:55
+ */
 @Controller
 @RequestMapping("/comment")
 public class CommentController extends SuperController{
@@ -39,7 +45,7 @@ public class CommentController extends SuperController{
 	private CommentService commentService;
     
 	@ResponseBody
-	@RequestMapping(value = "cms/save" , method = RequestMethod.POST)
+	@RequestMapping(value = "cms/save" , method = {RequestMethod.POST,RequestMethod.GET})
     public ReturnDto saveCmsComment(@Valid @ModelAttribute("comment") Comment comment, BindingResult result,ServletRequest request){
 		ReturnDto returnDto = new ReturnDto();
 		if(result.hasFieldErrors()){
