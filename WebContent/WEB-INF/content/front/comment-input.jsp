@@ -16,7 +16,7 @@ function saveComment(){
 		var comment = $("#comment").val();
 		
 		$.ajax({
-			url:"${root}/comment/cms/save?username="+username+"&email="+email+"&content="+comment+"&extendId="+extendId,
+			url:"${root}/comment/cms/save?username="+username+"&email="+email+"&content="+encodeURIComponent(comment)+"&extendId="+extendId,
 			type:"POST",
 			dateType:"json",
 			success:function(data){
