@@ -49,7 +49,8 @@
 		     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 			<br>
 			 <c:if test="${error != null && error !=''}">
-		     	<p class='bg-danger' style='padding: 15px;width: 270px !important;'>${error}</p>
+			 <script type="text/javascript">showMsg("error",'${error}');</script>
+<%-- 		     	<p class='bg-danger' style='padding: 15px;width: 270px !important;'>${error}</p> --%>
 		     </c:if>
 		</form>
 	 </div>

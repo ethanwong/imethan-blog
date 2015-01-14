@@ -104,7 +104,7 @@ table {
 /* 	line-height: 28px; */
 /* 	font-size: 14px; */
 /* 	width:698px; */
-	display: block;
+	display: block !important;
 }
 
 .readmore-js-toggle{
