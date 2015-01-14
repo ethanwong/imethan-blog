@@ -132,7 +132,7 @@
 						    <!--  
 						    <script type="text/plain" id="editor"  style="width:924px!important;height: 260px;">${article.content}</script>
  							-->
- 							<textarea id="editor"  style="width:924px!important;height: 320px;display: block;" >${article.content}</textarea>
+ 							<textarea id="editor"  style="width:924px!important;height: 300px;display: block;" >${article.content}</textarea>
 							<label id="editorContentError" ></label>
 							<p id="editorWarn"></p>
 						  </div>

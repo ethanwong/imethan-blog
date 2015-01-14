@@ -8,9 +8,11 @@
 	<title>ImEthan | Full Stack Engineer</title>
 	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
+	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${root}/theme/css/common.css" rel="stylesheet">
+	
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
-	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
 	<!-- bootstrap end -->
 	
@@ -26,9 +28,8 @@
 	<script src="${root}/theme/js/readmore.js"></script>
 	<script src="${root}/theme/js/jquery.infinitescroll.js"></script>
 <%-- 	<script src="${root}/theme/js/debug.js"></script> --%>
-	
 	<!-- custom defin begin -->
-	<link href="${root}/theme/css/common.css" rel="stylesheet">
+	
 	<script src="${root}/theme/js/common.js"></script>
 	<!-- custom defin end -->
 

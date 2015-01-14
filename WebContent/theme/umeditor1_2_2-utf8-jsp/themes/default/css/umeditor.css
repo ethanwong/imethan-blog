@@ -47,7 +47,7 @@
     width: 0px;
     height: 0px;
 }
-/*普通按钮*/
+/*鏅�鎸夐挳*/
 .edui-btn-toolbar .edui-btn{
     position: relative;
     display: inline-block;
@@ -70,7 +70,7 @@
     background-image: url(../images/icons.gif) \9;
 }
 
-/*状态反射*/
+/*鐘舵�鍙嶅皠*/
 .edui-btn-toolbar .edui-btn.edui-hover,
 .edui-btn-toolbar .edui-btn.edui-active{
     background-color: #d5e1f2;
@@ -239,7 +239,7 @@
     _border: none;
 }
 
-/*状态反射*/
+/*鐘舵�鍙嶅皠*/
 .edui-btn-toolbar .edui-splitbutton.edui-hover .edui-btn{
     background-color: #d5e1f2;
 }
@@ -370,7 +370,7 @@
     *margin-top: -8px;
 }
 
-/* 字体样式校正 */
+/* 瀛椾綋鏍峰紡鏍℃ */
 
 .edui-combobox-fontsize .edui-combobox-item-0.edui-combobox-checked .edui-combobox-icon {
     background-position: 10px 7px;
@@ -425,7 +425,7 @@
 /*}*/
 
 
-/* 段落样式校正 */
+/* 娈佃惤鏍峰紡鏍℃ */
 /* h1 */
 .edui-combobox-paragraph .edui-combobox-item-1 .edui-combobox-item-label {
     font-size: 32px;
@@ -575,29 +575,29 @@
     line-height: 30px;
     display: none;
 }
-/*图片上传*/
+/*鍥剧墖涓婁紶*/
 .edui-dialog-image-body {
     width: 700px;
     height: 400px;
 }
-/*插入视频*/
+/*鎻掑叆瑙嗛*/
 .edui-dialog-video-body{
     width: 600px;
     height: 350px;
 }
-/*谷歌地图*/
+/*璋锋瓕鍦板浘*/
 .edui-dialog-gmap-body{
     width:550px;
     height: 400px;
 }
 
-/*百度地图*/
+/*鐧惧害鍦板浘*/
 .edui-dialog-map-body{
     width:580px;
     height: 400px;
 }
 
-/*链接*/
+/*閾炬帴*/
 .edui-dialog-link-body{
     width:400px;
     height:200px;
