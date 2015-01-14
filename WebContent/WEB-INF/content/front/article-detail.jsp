@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>ImEthan</title>
-<script src="${root}/theme/js/front/blog.js"></script>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
@@ -35,6 +34,8 @@
 			});
 		});
 	};
+	
+
 </script>
 </head>
 <body>
@@ -55,8 +56,8 @@
 					</shiro:user>
 					<div class='content'>${article.content}</div>
 				</div>
+				<jsp:include page="/WEB-INF/content/front/comment-input.jsp"></jsp:include>
 			</div>
-			
 		</div>
 	</div>
 </body>

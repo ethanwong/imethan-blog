@@ -1,4 +1,4 @@
-package com.the3.service.contact.impl;
+package com.the3.service.message.impl;
 
 
 import java.util.List;
@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.the3.base.repository.DynamicSpecifications;
 import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
-import com.the3.entity.cms.Article;
 import com.the3.entity.message.Message;
 import com.the3.repository.message.MessageRepository;
 import com.the3.service.message.MessageService;

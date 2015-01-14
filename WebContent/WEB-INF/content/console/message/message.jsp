@@ -38,16 +38,15 @@ function loadMessage(page){
 			// 处理上页和下页按钮
 			var next = result.next;
 			var previous = result.previous;
+			var page = result.page;
 			
-			console.log("---next:"+next);
-			console.log("---previous:"+previous);
+// 			console.log("---next:"+next);
+// 			console.log("---previous:"+previous);
 			
 			$(".pager").html("");
 			var disabled = "class='disabled'";
 			var nextButton = "";
 			var previousButton = "";
-			
-			var page = result.page;
 			
 			if(previous ==  true){
 				previousButton ="<li><a href='#' onclick='loadMessage("+(page-1)+")'>Previous</a></li>";
@@ -71,6 +70,7 @@ function loadMessage(page){
 		}
 	});
 };
+	
 </script>
 </head>
 <body>
