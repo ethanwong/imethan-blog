@@ -71,6 +71,28 @@
 	<font style="font-size:30px;">Contact</font>
 	<hr>
 	<div class="row">
+		<div class="col-md-9" >
+			<div class="panel panel-default contact" >
+				<div class="panel-body">
+					<h2 style="margin-top: 0px;">Can you leave a message</h2>
+					<form role="form" action="#" method="post" id="inputForm">
+					  <div class="form-group">
+					    <label for="name">Name</label>
+					    <input type="text" class="form-control required" id="name"  name='name' placeholder="Enter you name" maxlength="60">
+					  </div>
+					  <div class="form-group">
+					    <label for="email1">Email</label>
+					    <input type="email" class="form-control required" id="email1" name="email1" placeholder="Enter you email">
+					  </div>
+					  <div class="form-group">
+					    <label for="content">Message</label>
+					    <textarea rows="6" cols="20"  class="form-control required" id="content" name="content" placeholder="Enter you message" ></textarea>
+					  </div>
+					  <button type="button" class="btn btn-info" onclick="saveMessage()">Save message</button>
+					</form>
+				</div>
+			</div>
+		</div>
 		<div class="col-md-3">
 			<div class="panel panel-default contact" >
 			  <div class="panel-heading">Contact</div>
@@ -89,24 +111,6 @@
 				</address>
 			  </div>
 			</div>
-		</div>
-		<div class="col-md-9" >
-			<h2 style="margin-top: 0px;">Can you leave a message</h2>
-			<form role="form" action="#" method="post" id="inputForm">
-			  <div class="form-group">
-			    <label for="name">Name</label>
-			    <input type="text" class="form-control required" id="name"  name='name' placeholder="Enter you name" maxlength="60">
-			  </div>
-			  <div class="form-group">
-			    <label for="email1">Email</label>
-			    <input type="email" class="form-control required" id="email1" name="email1" placeholder="Enter you email">
-			  </div>
-			  <div class="form-group">
-			    <label for="content">Message</label>
-			    <textarea rows="6" cols="20"  class="form-control required" id="content" name="content" placeholder="Enter you message" ></textarea>
-			  </div>
-			  <button type="button" class="btn btn-info" onclick="saveMessage()">Submit</button>
-			</form>
 		</div>
 	</div>
 </body>

@@ -50,7 +50,7 @@
 </script>
 </head>
 <body>
-	<font style="font-size:30px;">About me</font>
+	<font style="font-size:30px;" >About me</font>
 	<hr>
 	<div class="row">
 		<div class="col-md-3">

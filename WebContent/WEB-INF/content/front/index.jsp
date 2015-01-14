@@ -59,7 +59,7 @@
 			</div>
 			<div class="col-md-3 icoAlign">
 				<a href="${root}/blog/3">
-					<span class="glyphicon glyphicon-list" style="color: #f0ad4e"></span>
+					<span class="glyphicon glyphicon-tasks" style="color: #f0ad4e"></span>
 				</a>
 				<p class="help-block">Next todo list.</p>
 			</div>

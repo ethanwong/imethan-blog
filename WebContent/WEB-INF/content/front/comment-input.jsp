@@ -121,8 +121,8 @@ function loadCommnet(page){
 //-->
 </script>
 	<div class="row" id="comments">
-		<div class="col-md-9" >
-			<h4>Comment list</h4>
+		<div class="col-md-12" >
+			<h4><strong>Comments</strong></h4>
 			<hr>
 			<div class="commentList" >
 <!-- 				<div class="comment"> -->
@@ -140,12 +140,9 @@ function loadCommnet(page){
 <!-- 					</div> -->
 <!-- 				</div> -->
 			</div>
-			<nav>
-	  			<ul class="pager">
-	  	
-	  			</ul>
-			</nav>
-			<h4>Add Comment</h4>
+			<nav><ul class="pager"></ul></nav>
+			
+			<h4><strong>Add Comment</strong></h4>
 			<hr>
 			<div class="panel panel-default">
 				  <div class="panel-body">
@@ -165,7 +162,7 @@ function loadCommnet(page){
 						    <textarea id="comment" rows="5" cols="20" class="form-control required" placeholder="Enter comment" name="comment" maxlength="1000"></textarea>
 						  </div>
 						  
-						  <button type="button" class="btn btn-info" onclick="saveComment()">Submit Comment</button>
+						  <button type="button" class="btn btn-info" onclick="saveComment()">Save Comment</button>
 						  <span class="addWarm"></span>
 						</form>
 				  </div>

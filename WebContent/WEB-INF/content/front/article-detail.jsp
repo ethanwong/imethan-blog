@@ -40,7 +40,7 @@
 </head>
 <body>
 	<div class="row">
-		<div class="col-md-12" >
+		<div class="col-md-9" >
 			<div class='articleList'>
 				<div class='article'>
 					<h3 class='title'><a href="${root}/blog/article/${article.id}">${article.title}</a></h3>
