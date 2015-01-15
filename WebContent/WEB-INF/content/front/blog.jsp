@@ -234,7 +234,7 @@ function searchArticle(object){
 		<div class="col-md-3">
 			<div class="list-group">
 				<c:forEach var="channel" items="${channelList}" varStatus="status">
-					<a href="${root}/blog/${channel.id}" class="list-group-item <c:if test="${channelId eq channel.id }">active</c:if>">
+					<a href="${root}/blog/${channel.id}" class="list-group-item <c:if test="${channelId eq channel.id }">selected</c:if>">
 						<shiro:user>
 <%-- 							<a href="#" onclick="publishChannel(this,${channel.id})"> --%>
 								<c:if test="${channel.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag"></span></c:if>
@@ -242,7 +242,6 @@ function searchArticle(object){
 <!-- 							</a> -->
 						</shiro:user>
 						${channel.name}
-						
 						<span class='badge'>${channel.articleAmount}</span>
 					</a>
 				</c:forEach>

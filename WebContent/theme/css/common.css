@@ -34,6 +34,10 @@ body>.container {
 	width:980px;
 }
 
+.navbar-static-top .container {
+	width:980px;
+}
+
 /* .navbar-fixed-top{ */
 /* 	filter:alpha(opacity=90);  */
 /* 	-moz-opacity:0.9;  */
@@ -147,6 +151,7 @@ form{margin: 0;}
 	color: #428bca;
 	font-weight: bold;
 }
+
 
 .edui-container(){
 	margin-top: 100px;
