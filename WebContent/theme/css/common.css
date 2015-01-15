@@ -152,6 +152,16 @@ form{margin: 0;}
 	font-weight: bold;
 }
 
+.list-group .selected:before {
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+width: 2px;
+content: "";
+background-color: #428bca;
+}
+
 
 .edui-container(){
 	margin-top: 100px;

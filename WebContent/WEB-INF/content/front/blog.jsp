@@ -109,49 +109,6 @@ function deleteArticle(id,object){
 	});
 };
 
-//删除栏目
-function deleteChannel(id){
-	$('#deleteConfirmModal').modal({
-	 	 keyboard: true
-	});
-	$("#deleteConfirmModalClick").click(function(){
-		$.ajax({
-			url:"${root}/console/cms/channel/delete/"+id,
-			type:"POST",
-			dateType:"json",
-			success:function(data){
-				var result = eval("(" + data + ")");
-				//加载角色列表
-				showMsg("success",result.message);
-				
-				setTimeout(function(){
-					location.href = "${root}/blog";
-				},2000);
-			}
-		});
-	});
-};
-
-//更改栏目发布状态
-function publishChannel(object,id){
-	$.ajax({
-		url:"${root}/console/cms/channel/publish/"+id,
-		type:"POST",
-		dateType:"json",
-		success:function(data){
-			var result = eval("(" + data + ")");
-			showMsg("success",result.message);
-			
-			var color = $(object).children("span").css("color");
-			if(color =="rgb(53, 126, 189)"){
-				$(object).children("span").css("color","");
-			}else{
-				$(object).children("span").css("color","rgb(53, 126, 189)");
-			}
-		}
-	});
-};
-
 //更改文章发布状态
 function publishArticle(object,id){
 	$.ajax({
@@ -185,13 +142,13 @@ function searchArticle(object){
 <body>
 	<form class="form-horizontal" role="form">
 	  <div class="form-group">
-		    <div class="col-sm-8">
-		    	<font style="font-size:30px;float: left;">Blog</font>
+		    <div class="col-sm-9">
+		    	<font style="font-size:30px;float: left;">All Blog</font>
 		    	<shiro:user>
 		    		<a style="padding-top:12px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span></a>
 		    	</shiro:user>
 		    </div>
-		    <div class="col-sm-4" style="padding-right: 14px;" >
+		    <div class="col-sm-3" style="padding-right: 14px;" >
 		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;width: 215px;" type="search" class="form-control" placeholder="Search blog" >
 		    </div>
 	  </div>
@@ -226,35 +183,13 @@ function searchArticle(object){
 			</div>
 			
 			<div id="navigation" align="center">
-				
         		<a href="${root}/blog/article/${channelId}/2<c:if test="${search_title !=null}">?search_title=${search_title}</c:if>"></a>  
    			</div>
 		</div>
 		
 		<div class="col-md-3">
-			<div class="list-group">
-				<c:forEach var="channel" items="${channelList}" varStatus="status">
-					<a href="${root}/blog/${channel.id}" class="list-group-item <c:if test="${channelId eq channel.id }">selected</c:if>">
-						<shiro:user>
-<%-- 							<a href="#" onclick="publishChannel(this,${channel.id})"> --%>
-								<c:if test="${channel.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag"></span></c:if>
-								<c:if test="${channel.publish eq false}"><span class="glyphicon glyphicon-flag"></span></c:if>
-<!-- 							</a> -->
-						</shiro:user>
-						${channel.name}
-						<span class='badge'>${channel.articleAmount}</span>
-					</a>
-				</c:forEach>
-			</div>
-			<shiro:user>
-				<div class="blog-channel-toolbar">
-					<a href="${root}/blog/channel/input/${channelId}"><span class="glyphicon glyphicon-pencil"></span></a>
-					<a href="#" onclick="deleteChannel(${channelId})"><span class="glyphicon glyphicon-minus"></span></a>
-					<a href="${root}/blog/channel/input/0"><span class="glyphicon glyphicon-plus"></span></a>
-				</div>
-			</shiro:user>
+			<jsp:include page="/WEB-INF/content/front/blog-channel.jsp"></jsp:include>
 		</div>
-		
 	</div>
 </body>
 </html>

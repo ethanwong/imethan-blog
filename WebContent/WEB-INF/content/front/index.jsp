@@ -38,7 +38,7 @@
 			<div class="indexInfo">
 				<div class="title">Hello ImEthan</div>
 				<div class='content'>A blog named imethan,based java.</div>
-				<a href="${root}/blog/article/25"><button type="submit" class="btn btn-info">Learn more</button></a>
+				<a href="${root}/more"><button type="submit" class="btn btn-info">Learn more</button></a>
 			</div>
 		</div>
 	</div>

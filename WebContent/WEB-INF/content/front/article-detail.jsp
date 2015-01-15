@@ -29,16 +29,33 @@
 			});
 		});
 	};
+	
+	//查询文章信息
+	function searchArticle(object){
+		var search_title = $(object).val();
+		console.log("search_title:"+search_title);
+		
+		location.href = "${root}/blog?search_title="+search_title;
 
+	};
 </script>
 </head>
 <body>
+	<form class="form-horizontal" role="form">
+	  <div class="form-group">
+		    <div class="col-sm-9">
+		    	<font style="font-size:30px;float: left;"><a href="${root}/blog/article/${article.id}">${article.title}</a></font>
+		    </div>
+		    <div class="col-sm-3" style="padding-right: 14px;" >
+		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;width: 215px;" type="search" class="form-control" placeholder="Search blog" >
+		    </div>
+	  </div>
+	</form>
+	<hr>
 	<div class="row">
 		<div class="col-md-9" >
 			<div class='articleList'>
 				<div class='article'>
-					<h3 class='title'><a href="${root}/blog/article/${article.id}">${article.title}</a></h3>
-					<hr>
 					<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
 					&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 					
@@ -52,6 +69,10 @@
 				</div>
 				<jsp:include page="/WEB-INF/content/front/comment-input.jsp"></jsp:include>
 			</div>
+		</div>
+		
+		<div class="col-md-3" >
+			<jsp:include page="/WEB-INF/content/front/blog-channel.jsp"></jsp:include>
 		</div>
 	</div>
 </body>
