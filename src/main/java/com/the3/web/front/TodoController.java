@@ -8,26 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.the3.base.web.SuperController;
 import com.the3.entity.cms.Article;
 import com.the3.service.cms.ArticleService;
+import com.the3.service.todo.TodoService;
 
 /**
- * MoreController.java
+ * TodoController.java
  *
  * @author Ethan Wong
  * @time 2014年12月16日下午10:58:03
  */
 @Controller
-@RequestMapping("/more")
-public class MoreController extends SuperController{
+@RequestMapping("/todo")
+public class TodoController extends SuperController{
 	
 	@Autowired
-	private ArticleService articleService;
+	private TodoService todoService;
 	
     @RequestMapping("")
-    public String more(Model model) {
-    	Long learnMoreId = 25l;
-    	Article article = articleService.getById(learnMoreId);
-    	model.addAttribute("article", article);
-        return "front/more";
+    public String todo(Model model) {
+    	
+        return "front/todo";
     }
     
 }

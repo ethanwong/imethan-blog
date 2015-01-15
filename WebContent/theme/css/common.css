@@ -174,3 +174,8 @@ background-color: #428bca;
 .jumbotron{
 	margin-bottom: 10px;
 }
+
+.todo-list td{
+	vertical-align: middle !important;
+	height: 50px;
+}
