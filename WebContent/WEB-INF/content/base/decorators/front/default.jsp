@@ -16,10 +16,10 @@
 	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
 	<!-- bootstrap end -->
 	
-<%-- 	<script src="${root}/theme/js/popover.js"></script> --%>
-<%-- 	<script src="${root}/theme/js/tooltip.js"></script> --%>
-<%-- 	<script src="${root}/theme/js/alert.js"></script> --%>
-<%-- 	<script src="${root}/theme/js/transition.js"></script> --%>
+	<script src="${root}/theme/js/popover.js"></script>
+	<script src="${root}/theme/js/tooltip.js"></script>
+	<script src="${root}/theme/js/alert.js"></script>
+	<script src="${root}/theme/js/transition.js"></script>
 	
 	<script src="${root}/theme/js/jquery.validate.js"></script>
 	<script src="${root}/theme/js/jquery.metadata.js"></script>
