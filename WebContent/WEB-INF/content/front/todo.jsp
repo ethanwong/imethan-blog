@@ -24,13 +24,13 @@ $('#tooltip5').tooltip();
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default">
-				<div class="panel-heading">Todo</div>
+<!-- 				<div class="panel-heading">Todo</div> -->
 				<div class="panel-body">
 					<h4><span class="glyphicon glyphicon-credit-card"></span>&nbsp;&nbsp; Add todo</h4>
 					<div class="input-group">
 					      <input type="text" class="form-control">
 					      <span class="input-group-btn">
-					        <button class="btn btn-info" type="button" style="display: inline-block;">Save</button>
+					        <button class="btn btn-info" type="button" style="display: inline-block;"><span class="glyphicon glyphicon-ok"></span></button>
 					      </span>
 				    </div>
 				    <br>
@@ -49,13 +49,18 @@ $('#tooltip5').tooltip();
 									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 								    <input type="text" class="form-control" placeholder="Begin Date" onClick="WdatePicker({dateFmt:'yyyy/MM/dd'})">
 								</div>
-								-
 								<div class="input-group">
 								    <input type="text" class="form-control" placeholder="End Date" onClick="WdatePicker({dateFmt:'yyyy/MM/dd'})">
-									<span class="input-group-btn">
-								        <button class="btn btn-info" type="button">Search</button>
-								    </span>
+								      <div class="input-group-btn">
+								        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">All <span class="caret"></span></button>
+								        <ul class="dropdown-menu" role="menu">
+								          <li><a href="">All</a></li>
+								          <li><a href="">Another action</a></li>
+								          <li><a href="">Something else here</a></li>
+								        </ul>
+								      </div>
 								</div>
+							    <button class="btn btn-info" type="button">Search</button>
 							</form>
 					  </div>
 					</div>
@@ -65,16 +70,18 @@ $('#tooltip5').tooltip();
 							<tr>	
 								<td  width="20px;"><span class="glyphicon glyphicon-star-empty"></span></td>
 								<td>独立开发一个todo模块</td>
-								<td width="100px;">2015/01/14</td>
+								<td width="80px;">2015/01/14</td>
 								<td width="20px;"><span class="glyphicon glyphicon-arrow-up"></span></td>
 								<td width="20px;"><span class="glyphicon glyphicon-arrow-down"></span></td>
+								<td width="20px;"><span class="glyphicon glyphicon-remove"></span></td>
 							</tr>
 							<tr>	
 								<td width="20px;"><span class="glyphicon glyphicon-star"></span></td>
 								<td>完成编辑器中的图片以及附件上传功能</td>
-								<td width="100px;">2015/01/14</td>
+								<td width="80px;">2015/01/14</td>
 								<td width="20px;"><span class="glyphicon glyphicon-arrow-up"></span></td>
 								<td width="20px;"><span class="glyphicon glyphicon-arrow-down"></span></td>
+								<td width="20px;"><span class="glyphicon glyphicon-remove"></span></td>
 							</tr>
 						</tbody>
 					</table>

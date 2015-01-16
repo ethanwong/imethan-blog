@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
+<script type="text/javascript">
+//页面加载时初始化脚本
+$(document).ready(function () {
+$('.glyphicon-log-in').tooltip();
+
+});
+</script>
 <nav class="navbar navbar-default navbar-fixed-top " role="navigation">
      <div class="container">
         <div class="navbar-header">
@@ -22,7 +29,7 @@
         	<div class="navbar-right" >
 				<shiro:guest>  
 					<div class="loginsetting">
-						<a href="${root}/login" ><span class="glyphicon glyphicon-log-in"></span></a>
+						<a href="${root}/login" ><span class="glyphicon glyphicon-log-in" data-placement="bottom" title="Member login"></span></a>
 					</div>
 				</shiro:guest>
 				<shiro:user>  
