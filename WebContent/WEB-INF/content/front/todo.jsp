@@ -21,7 +21,11 @@
 				    </div>
 				    <br>
 					<h4><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Todo list</h4>
-					
+					<p>
+						<span class="label label-primary">今天</span>
+						<span class="label label-info">昨天</span>
+						<span class="label label-success">前天</span>
+					</p>
 					<table class="table table-striped table-bordered todo-list" >
 						<tbody>
 <!-- 							<tr>	 -->
@@ -51,6 +55,12 @@
 							</tr>
 						</tbody>
 					</table>
+					<nav>
+					  <ul class="pager">
+					    <li><a href="#">Previous</a></li>
+					    <li><a href="#">Next</a></li>
+					  </ul>
+					</nav>
 				</div>
 			</div>
 		</div>
