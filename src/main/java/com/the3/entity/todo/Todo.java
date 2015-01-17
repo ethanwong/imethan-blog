@@ -13,7 +13,7 @@ public class Todo extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 	
-	private TodoType type;//类型
+	private TodoType type = TodoType.IMETHAN;//类型
 	private String content;//待办内容
 	
 	public TodoType getType() {

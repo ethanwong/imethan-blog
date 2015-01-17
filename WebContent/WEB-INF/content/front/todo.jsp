@@ -7,15 +7,121 @@
 <title>ImEthan</title>
 <script src="${root}/theme/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
-//页面加载时初始化脚本
-$(document).ready(function () {
-$('#tooltip1').tooltip();
-$('#tooltip2').tooltip();
-$('#tooltip3').tooltip();
-$('#tooltip4').tooltip();
-$('#tooltip5').tooltip();
+	//页面加载时初始化脚本
+	$(document).ready(function () {
+		
+		
+		$('#tooltip1').tooltip();
+		$('#tooltip2').tooltip();
+		$('#tooltip3').tooltip();
+		$('#tooltip4').tooltip();
+		$('#tooltip5').tooltip();
+		
+		loadTodo(1);
+	});
+	
+	//保存todo信息
+	function saveTodo(){
+		if($("#todoForm").valid()){
+			var todo = $("#todo").val();
+			console.log("todo:"+todo);
+			
+			$.ajax({
+				type:"POST",
+				url:"${root}/todo/save",
+				data: "content="+encodeURIComponent(todo),
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					
+					var messageType = "success";
+					if(result.success == false){
+						messageType = "error";
+					};
+					
+					showMsg(messageType,result.message);
+					$("#todo").val("");
+					
+					loadTodo(1);
+					
+				}
+			});
+		}
+s	};
+	
+	function loadTodo(page){
+		$("#todo-list").html("");
+		$.ajax({
+			url:"${root}/todo/json/"+page,
+			type:"POST",
+			dateType:"json",
+			success:function(data){
+				var result = eval("(" + data + ")");
+				
+				$.each(result.rows, function(i, item) {
+					var todo = generateTodo(item.content,item.createTime);
+					$("#todo-list").append(todo);
+				});
+				
+				if(result.records>result.size){
+					// 处理上页和下页按钮
+					var next = result.next;
+					var previous = result.previous;
+					var page = result.page;
+					
+		 			console.log("---next:"+next);
+		 			console.log("---previous:"+previous);
+					
+					$(".pager").html("");
+					var disabled = "class='disabled'";
+					var nextButton = "";
+					var previousButton = "";
+					
+					if(previous ==  true){
+						previousButton ="<li><a href='#' onclick='loadTodo("+(page-1)+")'>Previous</a></li>";
+//		 				 console.log("---previousButton:"+previsousButton);
+					}else{
+						previousButton ="<li class='disabled'><a href='#'>Previous</a></li>";
+//		 				console.log("---previousButton:"+previousButton);
+					}
+					
+					if(next == true){
+					    nextButton = "<li><a href='#' onclick='loadTodo("+(page+1)+")'>Next</a></li>";
+//		 			    console.log("---nextButton:"+nextButton);
+					}else{
+						nextButton ="<li class='disabled'><a href='#'>Next</a></li>";
+//		 				console.log("---nextButton:"+nextButton);
+					}
+					
+					$(".pager").append(previousButton);
+					$(".pager").append("&nbsp;&nbsp;");
+					$(".pager").append(nextButton);
+					
+				}
+				if(result.records==0){
+					$("#todo-list").append("暂无todo信息");
+				}
 
-});
+			}
+		});
+		
+	};
+	
+	function generateTodo(content,createTime){
+		var todo = ""+
+					"<tr>"+
+						"<td width='20px;'><span class='glyphicon glyphicon-star'></span></td>"+
+						"<td>"+content+"</td>"+
+						"<td width='80px;'>"+createTime+"</td>"+
+						"<td width='20px;'><span class='glyphicon glyphicon-arrow-up'></span></td>"+
+						"<td width='20px;'><span class='glyphicon glyphicon-arrow-down'></span></td>"+
+						"<td width='20px;'><span class='glyphicon glyphicon-remove'></span></td>"+
+					"</tr>";
+	
+		return todo;
+	};
+	
+	
 </script>
 
 </head>
@@ -27,12 +133,14 @@ $('#tooltip5').tooltip();
 <!-- 				<div class="panel-heading">Todo</div> -->
 				<div class="panel-body">
 					<h4><span class="glyphicon glyphicon-credit-card"></span>&nbsp;&nbsp; Add todo</h4>
-					<div class="input-group">
-					      <input type="text" class="form-control">
-					      <span class="input-group-btn">
-					        <button class="btn btn-info" type="button" style="display: inline-block;"><span class="glyphicon glyphicon-ok"></span></button>
-					      </span>
-				    </div>
+					<form action="" id="todoForm">
+						<div class="input-group">
+						      <input type="text" class="form-control required" name="todo" value="" id="todo">
+						      <span class="input-group-btn">
+						        <button  onclick="saveTodo()" class="btn btn-info" type="button" style="display: inline-block;"><span class="glyphicon glyphicon-ok"></span></button>
+						      </span>
+					    </div>
+				    </form>
 				    <br>
 					<h4><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Todo list</h4>
 					<div class="row">
@@ -66,7 +174,7 @@ $('#tooltip5').tooltip();
 					</div>
 					<br>
 					<table class="table table-striped table-bordered todo-list" >
-						<tbody>
+						<tbody id="todo-list">
 							<tr>	
 								<td  width="20px;"><span class="glyphicon glyphicon-star-empty"></span></td>
 								<td>独立开发一个todo模块</td>
@@ -87,8 +195,6 @@ $('#tooltip5').tooltip();
 					</table>
 					<nav>
 					  <ul class="pager">
-					    <li><a href="#">Previous</a></li>
-					    <li><a href="#">Next</a></li>
 					  </ul>
 					</nav>
 				</div>
