@@ -16,6 +16,10 @@ public interface TodoRepository extends JpaRepository<Todo, Long>,JpaSpecificati
 	@Query("update Todo a set a.finish = ?2 where a.id = ?1")
 	int updateFinish(long id, boolean finish);
 	
+	@Modifying 
+	@Query("update Todo a set a.content = ?2 where a.id = ?1")
+	int updateContent(Long id, String content);
+	
 	
 
 }

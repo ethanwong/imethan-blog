@@ -9,7 +9,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -38,7 +40,7 @@ import com.the3.utils.DateUtils;
 public class TodoController{
 	
 	private int page = 0;//默认页位置
-	private int size = 20;//默认页大小
+	private int size = 12;//默认页大小
 	
 	@Autowired
 	private TodoService todoService;
@@ -65,7 +67,12 @@ public class TodoController{
 	@RequestMapping(value = "json/{page}",method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public GridPageDto<Todo> json(@PathVariable Integer page,Model model,ServletRequest request){
-		PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "id");
+		
+		List<Order> orders=new ArrayList<Order>();
+		orders.add(new Order(Direction.DESC, "orderNo"));
+		orders.add(new Order(Direction.DESC, "id"));
+		PageRequest pageable = new PageRequest(page-1, size, new Sort(orders));
+		
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();
 		
 		String beginTime = request.getParameter("beginTime");
@@ -116,9 +123,4 @@ public class TodoController{
 		return returnDto;
 		
 	}
-	
-	
-    
 }
-
-

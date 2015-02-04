@@ -35,7 +35,12 @@ public class TodoServiceImpl implements TodoService {
 		boolean isSuccess = true;
 		String message = "保存成功";
 		try {
-			entity = todoRepository.save(entity);
+			if(entity.getId() != null){
+				int result = todoRepository.updateContent(entity.getId(),entity.getContent());
+			}else{
+				entity = todoRepository.save(entity);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			isSuccess = false;
@@ -52,8 +57,32 @@ public class TodoServiceImpl implements TodoService {
 		
 		try {
 			Specification<Todo> spec = DynamicSpecifications.bySearchFilter(filters, Todo.class);
-			
 			result = todoRepository.findAll(spec, pageable);
+			
+			List<Todo> list = result.getContent();
+			int i = 0;
+			int size = list.size();
+			int last = size -1;
+
+			for(;i<size;i++){
+				Integer currentId = 0;
+				Integer nextOrderNo = 0;
+				Integer previousOrderNo = 0;
+				
+				if(i != last){
+					nextOrderNo = list.get(i+1).getOrderNo();
+				}
+				if(i != 0){
+					previousOrderNo = list.get(i-1).getOrderNo();
+				}
+				
+				currentId = list.get(i).getOrderNo();
+				
+				list.get(i).setNextOrderNo(nextOrderNo);
+				list.get(i).setPreviousOrderNo(previousOrderNo);
+				
+				System.out.println("currentId:"+currentId +"-nextId:"+nextOrderNo+"-previousId:"+previousOrderNo);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
