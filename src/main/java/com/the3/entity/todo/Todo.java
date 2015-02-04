@@ -15,7 +15,13 @@ public class Todo extends BaseEntity {
 	
 	private TodoType type = TodoType.IMETHAN;//类型
 	private String content;//待办内容
-	
+	private boolean finish;//是否完成
+	public boolean isFinish() {
+		return finish;
+	}
+	public void setFinish(boolean finish) {
+		this.finish = finish;
+	}
 	public TodoType getType() {
 		return type;
 	}

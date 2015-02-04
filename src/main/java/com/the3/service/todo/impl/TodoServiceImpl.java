@@ -61,6 +61,38 @@ public class TodoServiceImpl implements TodoService {
 		return result;
 	}
 
+
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto finish(long id, boolean finish) {
+		boolean isSuccess = true;
+		String message = "更新成功";
+		try {
+			int result = todoRepository.updateFinish(id,!finish);
+		} catch (Exception e) {
+			isSuccess = false;
+			message = "更新失败";
+			e.printStackTrace();
+		}
+		return new ReturnDto(isSuccess,message);
+	}
+
+
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto delete(long id) {
+		boolean isSuccess = true;
+		String message = "删除成功";
+		try {
+			todoRepository.delete(id);
+		} catch (Exception e) {
+			isSuccess = false;
+			message = "删除失败";
+			e.printStackTrace();
+		}
+		return new ReturnDto(isSuccess,message);
+	}
+
 }
 
 

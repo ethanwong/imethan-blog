@@ -26,6 +26,21 @@ public interface TodoService {
 	 * @return
 	 */
 	public Page<Todo> findPage(List<SearchFilter> filters,PageRequest pageable);
+	
+	/**
+	 * 更新是否完成
+	 * @param id
+	 * @param finish
+	 * @return
+	 */
+	public ReturnDto finish(long id, boolean finish);
+	
+	/**
+	 * 删除
+	 * @param id
+	 * @return
+	 */
+	public ReturnDto delete(long id);
 
 }
 

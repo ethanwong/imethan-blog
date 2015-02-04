@@ -58,10 +58,10 @@
 				<p class="help-block">Some video about me.</p>
 			</div>
 			<div class="col-md-3 icoAlign">
-				<a href="${root}/blog/3">
+				<a href="${root}/todo">
 					<span class="glyphicon glyphicon-tasks" style="color: #f0ad4e"></span>
 				</a>
-				<p class="help-block">Next todo list.</p>
+				<p class="help-block">Personal todo list.</p>
 			</div>
 			<div class="col-md-3 icoAlign">
 				<a href="${root}/about">
