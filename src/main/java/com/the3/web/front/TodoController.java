@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.the3.base.repository.SearchFilter;
@@ -68,9 +69,12 @@ public class TodoController{
 	@ResponseBody
 	public GridPageDto<Todo> json(@PathVariable Integer page,Model model,ServletRequest request){
 		
+		//设置排序信息
 		List<Order> orders=new ArrayList<Order>();
+		orders.add(new Order(Direction.ASC, "finish"));
 		orders.add(new Order(Direction.DESC, "orderNo"));
 		orders.add(new Order(Direction.DESC, "id"));
+		
 		PageRequest pageable = new PageRequest(page-1, size, new Sort(orders));
 		
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();
@@ -106,21 +110,34 @@ public class TodoController{
 	@RequestMapping(value = "finish/{id}/{finish}" , method = {RequestMethod.POST,RequestMethod.GET})
 	public ReturnDto finish(@PathVariable long id,@PathVariable boolean finish){
 		ReturnDto returnDto = new ReturnDto();
-		
 		returnDto = todoService.finish(id,finish);
-		
+		return returnDto;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "delete/{id}" , method = {RequestMethod.POST,RequestMethod.GET})
+	public ReturnDto delete(@PathVariable long id){
+		ReturnDto returnDto = new ReturnDto();
+		returnDto = todoService.delete(id);
 		return returnDto;
 		
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "delete/{id}" , method = {RequestMethod.POST,RequestMethod.GET})
-	public ReturnDto finish(@PathVariable long id){
-		ReturnDto returnDto = new ReturnDto();
+	@RequestMapping(value = "up" , method = {RequestMethod.POST,RequestMethod.GET})
+	public ReturnDto delete(@RequestParam Long id,@RequestParam int nextOrderNo,@RequestParam int previousOrderNo){
 		
-		returnDto = todoService.delete(id);
-		
-		return returnDto;
+		return todoService.upTodo(id,nextOrderNo,previousOrderNo);
 		
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "down" , method = {RequestMethod.POST,RequestMethod.GET})
+	public ReturnDto down(@RequestParam Long id,@RequestParam int nextOrderNo,@RequestParam int previousOrderNo){
+		
+		return todoService.downTodo(id,nextOrderNo,previousOrderNo);
+		
+	}
+	
+	
 }

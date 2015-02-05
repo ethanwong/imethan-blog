@@ -9,7 +9,6 @@
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
-		
 		$('#tooltip1').tooltip();
 		$('#tooltip2').tooltip();
 		$('#tooltip3').tooltip();
@@ -22,15 +21,13 @@
 	
 	//添加todo
 	function inputTodo(object){
-		$('#inputModal').modal(
-		);
+		$('#inputModal').modal();
 	};
 	
 	//新建保存todo信息
 	function saveTodo(){
 		if($("#todoForm").valid()){
 			var todo = $("#todo").val();
-			console.log("todo:"+todo);
 			
 			$.ajax({
 				type:"POST",
@@ -40,16 +37,14 @@
 				success:function(data){
 					var result = eval("(" + data + ")");
 					
-					var messageType = "success";
-					if(result.success == false){
-						messageType = "error";
-					};
-					
-					showMsg(messageType,result.message);
 					$("#todo").val("");
 					$('#inputModal').modal('toggle');
 					
-					loadTodo(1);
+					addWarm(result.success,result.message);
+					setTimeout(function(){
+						loadTodo(1);
+						$(".addWarm").html("");
+					},2000);
 					
 				}
 			});
@@ -88,31 +83,30 @@
 					var previousButton = "";
 					
 					if(previous ==  true){
-						previousButton ="<li><a href='#' onclick='loadTodo("+(page-1)+")'>Previous</a></li>";
+						previousButton ="<li><a href='#todoList' onclick='loadTodo("+(page-1)+")'>Previous</a></li>";
 					}else{
-						previousButton ="<li class='disabled'><a href='#'>Previous</a></li>";
+						previousButton ="<li class='disabled'><a href='#todoList'>Previous</a></li>";
 					}
 					
 					if(next == true){
-					    nextButton = "<li><a href='#' onclick='loadTodo("+(page+1)+")'>Next</a></li>";
+					    nextButton = "<li><a href='#todoList' onclick='loadTodo("+(page+1)+")'>Next</a></li>";
 					}else{
-						nextButton ="<li class='disabled'><a href='#'>Next</a></li>";
+						nextButton ="<li class='disabled'><a href='#todoList'>Next</a></li>";
 					}
 					
 					$(".pager").append(previousButton);
 					$(".pager").append("&nbsp;&nbsp;");
+					$(".pager").append("<li><a>Total:"+result.records+"</a></li>");
+					$(".pager").append("&nbsp;&nbsp;");
+					$(".pager").append("<li><a>Page:"+page+"/"+result.total+"</a></li>");
+					$(".pager").append("&nbsp;&nbsp;");
 					$(".pager").append(nextButton);
-
-// 					$(".pager").append("&nbsp;&nbsp;");
-// 					$(".pager").append("<li><a>Total:"+result.records+"</a></li>");
-// 					$(".pager").append("&nbsp;&nbsp;");
-// 					$(".pager").append("<li><a>Page:"+page+"/"+result.total+"</a></li>");
-					
-					
 				}
 				if(result.records==0){
 					$("#todo-list").append("暂无todo信息");
 				}
+				
+				$("#page").val(result.page);
 			}
 		});
 		
@@ -128,7 +122,7 @@
 		var todo = ""+
 					"<tr onclick='active(this)'>"+
 						"<td width='20px;' id="+id+" finish="+finish+">"+star+"</td>"+
-						"<td id='content' previousOrderNo='"+previousOrderNo+"' nextOrderNo='"+nextOrderNo+"'>"+content+"----"+previousOrderNo+"-"+nextOrderNo+"</td>"+
+						"<td id='content' previousOrderNo='"+previousOrderNo+"' nextOrderNo='"+nextOrderNo+"'>"+content+"</td>"+
 						"<td width='80px;'>"+createTime+"</td>"+
 					"</tr>";
 		return todo;
@@ -169,12 +163,11 @@
 						$(".info").find("td:first").html("<span class='glyphicon glyphicon-star-empty'></span>");
 						$(".info").find("td:first").attr("finish","false");
 					};
-					
-					var messageType = "success";
-					if(result.success == false){
-						messageType = "error";
-					};
-					showMsg(messageType,result.message);
+					addWarm(result.success,result.message);
+					setTimeout(function(){
+						loadTodo($("#page").val());
+						$(".addWarm").html("");
+					},2000);
 				}
 			});
 		}
@@ -201,13 +194,14 @@
 			success:function(data){
 				var result = eval("(" + data + ")");
 				$(".info").remove();
-				var messageType = "success";
-				if(result.success == false){
-					messageType = "error";
-				};
-				showMsg(messageType,result.message);
 				
 				$('#deleteTodoConfirmModal').modal('toggle');
+
+				addWarm(result.success,result.message);
+				setTimeout(function(){
+					loadTodo($("#page").val());
+					$(".addWarm").html("");
+				},2000);
 			}
 		});
 	};
@@ -239,21 +233,21 @@
 				dateType:"json",
 				success:function(data){
 					var result = eval("(" + data + ")");
-					
-					var messageType = "success";
-					if(result.success == false){
-						messageType = "error";
-					};
-					
-					showMsg(messageType,result.message);
+
 					$('#editModal').modal('toggle');
 					
 					$(".info").find("#content").html(todo);
+
+					addWarm(result.success,result.message);
+					setTimeout(function(){
+						$(".addWarm").html("");
+					},2000);
 				}
 			});
 		}
 	};
 	
+	//提升排序
 	function orderUp(){
 		var id = $(".info").find("td:first").attr("id");
 		if($(".info").length > 0){
@@ -262,9 +256,26 @@
 			
 			console.log("nextOrderNo:"+nextOrderNo);
 			console.log("previousOrderNo:"+previousOrderNo);
+			
+			$.ajax({
+				type:"POST",
+				url:"${root}/todo/up",
+				data: "id="+id+"&nextOrderNo="+nextOrderNo+"&previousOrderNo="+previousOrderNo,
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+
+					addWarm(result.success,result.message);
+					setTimeout(function(){
+						loadTodo($("#page").val());
+						$(".addWarm").html("");
+					},2000);
+				}
+			});
 		}
 	};
 	
+	//降低排序
 	function orderDown(){
 		var id = $(".info").find("td:first").attr("id");
 		if($(".info").length > 0){
@@ -274,20 +285,52 @@
 			console.log("nextOrderNo:"+nextOrderNo);
 			console.log("previousOrderNo:"+previousOrderNo);
 			
+			$.ajax({
+				type:"POST",
+				url:"${root}/todo/down",
+				data: "id="+id+"&nextOrderNo="+nextOrderNo+"&previousOrderNo="+previousOrderNo,
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+			
+					addWarm(result.success,result.message);
+					setTimeout(function(){
+						loadTodo($("#page").val());
+						$(".addWarm").html("");
+					},2000);
+				}
+			});
 		}
 	};
+	
+	//添加提醒
+	function addWarm(isSuccess,message){
+		var messageType = "info";
+		if(isSuccess == 'false'){
+			messageType = "danger";
+		};
+// 		$(".addWarm").html("<p class='bg-"+messageType+"' style='padding: 8px;display: inline;float: right;margin:0px;width:100%;'>"+message+"</p>");
+		$(".addWarm").html("<div class='alert alert-"+messageType+"' role='alert'  style='padding: 8px;display: inline;float: right;margin:0px;width:100%;'>"+message+"</div>");
+	}
 	
 	
 </script>
 
 </head>
 <body>
-
-	<div class="row">
+	<div class="row" id="todoList">
 		<div class="col-md-12" >
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<h4 id="todoList"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Todo list</h4>
+					<div class="row" style="padding-top: 0px;">
+						<div class="col-md-2">
+							<h4><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Todo list</h4>
+						</div>
+						<div class="col-md-10 addWarm">
+<!-- 							<p class="addWarm"></p> -->
+						</div>
+					</div>
+					
 					<div class="row">
 					  <div class="col-md-3">
 					  	<shiro:user>
@@ -304,7 +347,8 @@
 					  	</shiro:guest>
 					  </div>
 					  <div class="col-md-9">
-							<form id="searchFrom" class="form-inline" role="form" action="${root}/todo/${result.page}"  style="float: right;display: inline;">
+							<form id="searchFrom" class="form-inline" role="form"  style="float: right;display: inline;">
+								<input type="hidden" id="page" name="page" value="" />
 								<div class="input-from" style="display: inline;">
 								    <input type="text" id="beginTime" name="beginTime" class="form-control" placeholder="Begin Date" onClick="WdatePicker({dateFmt:'yyyy/MM/dd'})">
 								</div>

@@ -41,6 +41,24 @@ public interface TodoService {
 	 * @return
 	 */
 	public ReturnDto delete(long id);
+	
+	/**
+	 * 提升排序
+	 * @param id
+	 * @param nextOrderNo
+	 * @param previousOrderNo
+	 * @return
+	 */
+	public ReturnDto upTodo(Long id, int nextOrderNo, int previousOrderNo);
+	
+	/**
+	 * 降低排序
+	 * @param id
+	 * @param nextOrderNo
+	 * @param previousOrderNo
+	 * @return
+	 */
+	public ReturnDto downTodo(Long id, int nextOrderNo, int previousOrderNo);
 
 }
 

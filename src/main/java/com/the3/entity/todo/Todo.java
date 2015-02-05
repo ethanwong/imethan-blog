@@ -17,7 +17,7 @@ public class Todo extends BaseEntity {
 	private TodoType type = TodoType.IMETHAN;//类型
 	private String content;//待办内容
 	private boolean finish;//是否完成
-	private Integer orderNo;//序号
+	private Integer orderNo = 0;//序号
 	@Transient
 	private Integer nextOrderNo;//下一条记录排序
 	@Transient

@@ -122,6 +122,36 @@ public class TodoServiceImpl implements TodoService {
 		return new ReturnDto(isSuccess,message);
 	}
 
+
+	@Override
+	public ReturnDto upTodo(Long id, int nextOrderNo, int previousOrderNo) {
+		boolean isSuccess = true;
+		String message = "更新成功";
+		try {
+			int result = todoRepository.updateOrderNO(id,previousOrderNo+1);
+		} catch (Exception e) {
+			isSuccess = false;
+			message = "更新失败";
+			e.printStackTrace();
+		}
+		return new ReturnDto(isSuccess,message);
+	}
+
+
+	@Override
+	public ReturnDto downTodo(Long id, int nextOrderNo, int previousOrderNo) {
+		boolean isSuccess = true;
+		String message = "更新成功";
+		try {
+			int result = todoRepository.updateOrderNO(id,nextOrderNo-1);
+		} catch (Exception e) {
+			isSuccess = false;
+			message = "更新失败";
+			e.printStackTrace();
+		}
+		return new ReturnDto(isSuccess,message);
+	}
+
 }
 
 
