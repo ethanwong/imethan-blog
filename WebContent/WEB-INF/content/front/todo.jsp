@@ -18,6 +18,7 @@
 		
 		//加载todo列表
 		loadTodo(1);
+		    
 	});
 	
 	//添加todo
@@ -119,13 +120,40 @@
 			star = "<span class='glyphicon glyphicon-star-empty'></span>";
 		}
 		var todo = ""+
-					"<tr onclick='active(this)'>"+
+					"<tr id='tr"+id+"' onclick='active(this)' onmouseenter='showMenu(this)' onmouseleave='hiddenMenu(this)' >"+
 						"<td width='20px;' id="+id+" finish="+finish+">"+star+"</td>"+
-						"<td id='content' previousOrderNo='"+previousOrderNo+"' nextOrderNo='"+nextOrderNo+"'>"+content+"</td>"+
+						"<td id='content' previousOrderNo='"+previousOrderNo+"' nextOrderNo='"+nextOrderNo+"'><span>"+content+"</span></td>"+
 						"<td width='80px;'>"+createTime+"</td>"+
 					"</tr>";
 		return todo;
 	};
+	
+	//管理菜单
+	var menu = "<shiro:user>"+
+				"<div class='btn-group' style='float:right' >"+
+				  "<button type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>"+
+				   " <span class='caret'></span>"+
+				   " <span class='sr-only'>Toggle Dropdown</span>"+
+				  "</button>"+
+				  "<ul class='dropdown-menu' role='menu'>"+
+				   " <li><a href='#todoList' onclick='changeFinish(this)'><span class='glyphicon glyphicon-ok'></span>&nbsp;Finished</a></li>"+
+				    "<li><a href='#todoList' onclick='orderUp(this)'><span class='glyphicon glyphicon-arrow-up'></span>&nbsp;Up</a></a></li>"+
+				    "<li><a href='#todoList' onclick='orderDown(this)'><span class='glyphicon glyphicon-arrow-down'></span>&nbsp;Down</a></a></li>"+
+				    "<li><a href='#todoList' onclick='updateOne(this)'><span class='glyphicon glyphicon-edit'></span>&nbsp;Edit</a></a></li>"+
+				    "<li><a href='#todoList' onclick='deleteTodo(this)'><span class='glyphicon glyphicon-trash'></span>&nbsp;Delete</a></a></li>"+
+				  "</ul>"+
+				"</div>"+
+				"</shiro:user>";
+	
+	//展现菜单
+	function showMenu(object){
+		var id = $(object).find("#content").append(menu);
+	};
+	
+	//隐藏菜单
+	function hiddenMenu(object){
+		var id = $(object).find("#content").find(".btn-group").remove();
+	}
 	
 	//检索todo
 	//选中todo类型
@@ -212,7 +240,7 @@
 	//更新todo内容
 	function updateOne(){
 		var id = $(".info").find("td:first").attr("id");
-		var content = $(".info").find("#content").html();
+		var content = $(".info").find("#content").find("span").html();
 		if($(".info").length > 0){
 			$('#editModal').modal(
 				$("#todoId").val(id),
@@ -326,6 +354,12 @@
 		location.reload();
 	};
 	
+	function inputItem(){
+		$('#inputItemModal').modal({
+		 	 keyboard: true
+		});
+	}
+	
 </script>
 
 </head>
@@ -340,16 +374,30 @@
 						</div>
 						<div class="col-md-10 addWarm"></div>
 					</div>
-					
 					<div class="row">
 					  <div class="col-md-3">
 					  	<shiro:user>
-					  		<button id="tooltip1" data-placement="bottom" title="Add todo"  class="btn btn-primary btn-xs" onclick="inputTodo(this)"><span class="glyphicon glyphicon-plus"></span></button>
-					  		<button id="tooltip2" data-placement="bottom" title="Finish todo"  class="btn btn-success btn-xs" onclick="changeFinish(this)"><span class="glyphicon glyphicon-ok"></span></button>
-					  		<button id="tooltip3" data-placement="bottom" title="Up todo"  class="btn btn-warning btn-xs" onclick="orderUp()"><span class="glyphicon glyphicon-arrow-up"></span></button>
-					  		<button id="tooltip4" data-placement="bottom" title="Down todo"  class="btn btn-default btn-xs" onclick="orderDown()"><span class="glyphicon glyphicon-arrow-down"></span></button>
-					  		<button id="tooltip5" data-placement="bottom" title="Edit todo"  class="btn btn-info btn-xs" onclick="updateOne(this)"><span class="glyphicon glyphicon-edit"></span></button>
-					  		<button id="tooltip6" data-placement="bottom" title="Trash todo"  class="btn btn-danger btn-xs" onclick="deleteTodo(this)"><span class="glyphicon glyphicon-trash"></span></button>
+								<div class="btn-group">
+								  <button type="button" class="btn btn-info" onclick="inputTodo(this)">New todo</button>
+								  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								    <span class="caret"></span>
+								    <span class="sr-only">Toggle Dropdown</span>
+								  </button>
+								  <ul class="dropdown-menu" role="menu">
+								    <li><a href="#">imethan</a></li>
+								    <li><a href="#">porject</a></li>
+								    <li><a href="#">personal</a></li>
+								    <li class="divider"></li>
+								    <li><a href="#" onclick='inputItem()'><span class="glyphicon glyphicon-plus"></span>&nbsp;New todo item<p>Create a new todo item.</p></a></li>
+								  </ul>
+								</div>
+					  		
+<!-- 					  		<button id="tooltip1" data-placement="bottom" title="Add todo"  class="btn btn-primary btn-xs" onclick="inputTodo(this)"><span class="glyphicon glyphicon-plus"></span></button> -->
+<!-- 					  		<button id="tooltip2" data-placement="bottom" title="Finish todo"  class="btn btn-success btn-xs" onclick="changeFinish(this)"><span class="glyphicon glyphicon-ok"></span></button> -->
+<!-- 					  		<button id="tooltip3" data-placement="bottom" title="Up todo"  class="btn btn-warning btn-xs" onclick="orderUp()"><span class="glyphicon glyphicon-arrow-up"></span></button> -->
+<!-- 					  		<button id="tooltip4" data-placement="bottom" title="Down todo"  class="btn btn-default btn-xs" onclick="orderDown()"><span class="glyphicon glyphicon-arrow-down"></span></button> -->
+<!-- 					  		<button id="tooltip5" data-placement="bottom" title="Edit todo"  class="btn btn-info btn-xs" onclick="updateOne(this)"><span class="glyphicon glyphicon-edit"></span></button> -->
+<!-- 					  		<button id="tooltip6" data-placement="bottom" title="Trash todo"  class="btn btn-danger btn-xs" onclick="deleteTodo(this)"><span class="glyphicon glyphicon-trash"></span></button> -->
 					  	</shiro:user>
 					  	<shiro:guest> 
 					  		 <span class='glyphicon glyphicon-star'>表示完成</span>
@@ -368,9 +416,9 @@
 								      	<input type="hidden" id="finishValue" name="finish" value="all" />
 								        <button id="finish" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" >All&nbsp;<span class="caret"></span></button>
 								        <ul class="dropdown-menu " role="menu" >
-								          <li><a href="#todoList" onclick="changeType(this)">All</a></li>
-								          <li><a href="#todoList" onclick="changeType(this)">Finish</a></li>
-								          <li><a href="#todoList" onclick="changeType(this)">Unfinished</a></li>
+								          <li><a href="#" onclick="changeType(this)">All</a></li>
+								          <li><a href="#" onclick="changeType(this)">Finish</a></li>
+								          <li><a href="#" onclick="changeType(this)">Unfinished</a></li>
 								        </ul>
 								      </div>
 								     
@@ -381,9 +429,11 @@
 					  </div>
 					</div>
 					<br>
-					<table class="table table-bordered todo-list  table-hover" >
+					<table class="table table-bordered todo-list table-hover" >
 						<tbody id="todo-list">
-
+							<tr onm>
+								<td></td>
+							</tr>
 						</tbody>
 					</table>
 					<nav>
@@ -396,6 +446,25 @@
 		</div>
 	</div>
 	
+	<div class="modal fade" id="inputItemModal"  tabindex="-1" role="dialog" aria-labelledby="inputItemModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-credit-card"></span>&nbsp;&nbsp;New todo item</h4>
+				</div>
+				<div class="modal-body">
+					<form action="" id="todoForm">
+						<input type="text" class="form-control required" name="todo" value="" id="todo">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info"  onclick="saveTodoItem()" >Save item</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	<div class="modal fade" id="inputModal"  tabindex="-1" role="dialog" aria-labelledby="inputModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
