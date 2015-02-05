@@ -81,7 +81,7 @@ public class TodoServiceImpl implements TodoService {
 				list.get(i).setNextOrderNo(nextOrderNo);
 				list.get(i).setPreviousOrderNo(previousOrderNo);
 				
-				System.out.println("currentId:"+currentId +"-nextId:"+nextOrderNo+"-previousId:"+previousOrderNo);
+//				System.out.println("currentId:"+currentId +"-nextId:"+nextOrderNo+"-previousId:"+previousOrderNo);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

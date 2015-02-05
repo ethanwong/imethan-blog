@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -46,14 +47,27 @@ public class TodoController{
 	@Autowired
 	private TodoService todoService;
 	
+	/**
+	 * 进到首页
+	 * @param model
+	 * @return
+	 */
     @RequestMapping("")
     public String todo(Model model) {
     	
         return "front/todo";
     }
     
+    /**
+     * 保存
+     * @param todo
+     * @param result
+     * @param request
+     * @return
+     */
+    @RequiresAuthentication
 	@ResponseBody
-	@RequestMapping(value = "save" , method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "save" , method = {RequestMethod.POST})
     public ReturnDto save(@Valid @ModelAttribute("Todo") Todo todo, BindingResult result,ServletRequest request){
 		ReturnDto returnDto = new ReturnDto();
 		if(result.hasFieldErrors()){
@@ -65,7 +79,14 @@ public class TodoController{
 		return returnDto;
 	}
 	
-	@RequestMapping(value = "json/{page}",method = {RequestMethod.POST,RequestMethod.GET})
+    /**
+     * 获取列表
+     * @param page
+     * @param model
+     * @param request
+     * @return
+     */
+	@RequestMapping(value = "json/{page}",method = {RequestMethod.POST})
 	@ResponseBody
 	public GridPageDto<Todo> json(@PathVariable Integer page,Model model,ServletRequest request){
 		
@@ -106,33 +127,58 @@ public class TodoController{
 		return new GridPageDto<Todo>(result);
 	}
 	
+	/**
+	 * 更新完成状态
+	 * @param id
+	 * @param finish
+	 * @return
+	 */
+	@RequiresAuthentication
 	@ResponseBody
-	@RequestMapping(value = "finish/{id}/{finish}" , method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "finish/{id}/{finish}" , method = {RequestMethod.POST})
 	public ReturnDto finish(@PathVariable long id,@PathVariable boolean finish){
-		ReturnDto returnDto = new ReturnDto();
-		returnDto = todoService.finish(id,finish);
-		return returnDto;
+		return todoService.finish(id,finish);
 	}
 	
+	/**
+	 * 删除
+	 * @param id
+	 * @return
+	 */
+	@RequiresAuthentication
 	@ResponseBody
-	@RequestMapping(value = "delete/{id}" , method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "delete/{id}" , method = {RequestMethod.POST})
 	public ReturnDto delete(@PathVariable long id){
-		ReturnDto returnDto = new ReturnDto();
-		returnDto = todoService.delete(id);
-		return returnDto;
+		return todoService.delete(id);
 		
 	}
 	
+	/**
+	 * 置顶
+	 * @param id
+	 * @param nextOrderNo
+	 * @param previousOrderNo
+	 * @return
+	 */
+	@RequiresAuthentication
 	@ResponseBody
-	@RequestMapping(value = "up" , method = {RequestMethod.POST,RequestMethod.GET})
-	public ReturnDto delete(@RequestParam Long id,@RequestParam int nextOrderNo,@RequestParam int previousOrderNo){
+	@RequestMapping(value = "up" , method = {RequestMethod.POST})
+	public ReturnDto up(@RequestParam Long id,@RequestParam int nextOrderNo,@RequestParam int previousOrderNo){
 		
 		return todoService.upTodo(id,nextOrderNo,previousOrderNo);
 		
 	}
 	
+	/**
+	 * 置底
+	 * @param id
+	 * @param nextOrderNo
+	 * @param previousOrderNo
+	 * @return
+	 */
+	@RequiresAuthentication
 	@ResponseBody
-	@RequestMapping(value = "down" , method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "down" , method = {RequestMethod.POST})
 	public ReturnDto down(@RequestParam Long id,@RequestParam int nextOrderNo,@RequestParam int previousOrderNo){
 		
 		return todoService.downTodo(id,nextOrderNo,previousOrderNo);

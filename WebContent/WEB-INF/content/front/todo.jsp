@@ -16,6 +16,7 @@
 		$('#tooltip5').tooltip();
 		$('#tooltip6').tooltip();
 		
+		//加载todo列表
 		loadTodo(1);
 	});
 	
@@ -28,7 +29,6 @@
 	function saveTodo(){
 		if($("#todoForm").valid()){
 			var todo = $("#todo").val();
-			
 			$.ajax({
 				type:"POST",
 				url:"${root}/todo/save",
@@ -103,7 +103,7 @@
 					$(".pager").append(nextButton);
 				}
 				if(result.records==0){
-					$("#todo-list").append("暂无todo信息");
+					$("#todo-list").append("<tr class='warning'><td>暂无todo信息</td></tr>");
 				}
 				
 				$("#page").val(result.page);
@@ -114,7 +114,6 @@
 	
 	//生成todo行
 	function generateTodo(id,content,createTime,finish,nextOrderNo,previousOrderNo){
-		console.log(finish);
 		var star = "<span class='glyphicon glyphicon-star'></span>";
 		if(finish == false){
 			star = "<span class='glyphicon glyphicon-star-empty'></span>";
@@ -132,7 +131,6 @@
 	//选中todo类型
 	function changeType(object){
 		var finish = $(object).html();
-		console.log($(object).html());
 		$("#finish").html(finish+"&nbsp;<span class='caret'></span>");
 		$("#finishValue").val(finish);
 		
@@ -170,6 +168,8 @@
 					},2000);
 				}
 			});
+		}else{
+			$('#uncheckConfirmModal').modal();
 		}
 	};
 
@@ -181,6 +181,8 @@
 			$('#deleteTodoConfirmModal').modal({
 			 	 keyboard: true
 			});
+		}else{
+			$('#uncheckConfirmModal').modal();
 		}
 	};
 
@@ -216,6 +218,8 @@
 				$("#todoId").val(id),
 				$("#todoContent").val(content)
 			);
+		}else{
+			$('#uncheckConfirmModal').modal();
 		}
 	};
 	
@@ -272,6 +276,8 @@
 					},2000);
 				}
 			});
+		}else{
+			$('#uncheckConfirmModal').modal();
 		}
 	};
 	
@@ -300,6 +306,8 @@
 					},2000);
 				}
 			});
+		}else{
+			$('#uncheckConfirmModal').modal();
 		}
 	};
 	
@@ -311,8 +319,12 @@
 		};
 // 		$(".addWarm").html("<p class='bg-"+messageType+"' style='padding: 8px;display: inline;float: right;margin:0px;width:100%;'>"+message+"</p>");
 		$(".addWarm").html("<div class='alert alert-"+messageType+"' role='alert'  style='padding: 8px;display: inline;float: right;margin:0px;width:100%;'>"+message+"</div>");
-	}
+	};
 	
+	
+	function resetPage(){
+		location.reload();
+	};
 	
 </script>
 
@@ -326,9 +338,7 @@
 						<div class="col-md-2">
 							<h4><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Todo list</h4>
 						</div>
-						<div class="col-md-10 addWarm">
-<!-- 							<p class="addWarm"></p> -->
-						</div>
+						<div class="col-md-10 addWarm"></div>
 					</div>
 					
 					<div class="row">
@@ -358,13 +368,16 @@
 								      	<input type="hidden" id="finishValue" name="finish" value="all" />
 								        <button id="finish" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" >All&nbsp;<span class="caret"></span></button>
 								        <ul class="dropdown-menu " role="menu" >
-								          <li><a href="#" onclick="changeType(this)">All</a></li>
-								          <li><a href="#" onclick="changeType(this)">Finish</a></li>
-								          <li><a href="#" onclick="changeType(this)">Unfinished</a></li>
+								          <li><a href="#todoList" onclick="changeType(this)">All</a></li>
+								          <li><a href="#todoList" onclick="changeType(this)">Finish</a></li>
+								          <li><a href="#todoList" onclick="changeType(this)">Unfinished</a></li>
 								        </ul>
 								      </div>
+								     
 								</div>
+								 <button class="btn btn-default" type="reset" onclick="resetPage()">Reset</button>
 							</form>
+							
 					  </div>
 					</div>
 					<br>
@@ -435,6 +448,21 @@
 				<div class="modal-body">Sure you want to delete?</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" onclick="deleteOne()">Delete</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="uncheckConfirmModal" tabindex="-1" role="dialog" aria-labelledby="uncheckConfirmModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Warning</h4>
+				</div>
+				<div class="modal-body">Please choose a todo?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
