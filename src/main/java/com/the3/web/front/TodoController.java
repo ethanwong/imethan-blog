@@ -28,6 +28,7 @@ import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
 import com.the3.dto.page.GridPageDto;
 import com.the3.entity.todo.Todo;
+import com.the3.service.todo.TodoItemService;
 import com.the3.service.todo.TodoService;
 import com.the3.utils.DateUtils;
 
@@ -46,6 +47,9 @@ public class TodoController{
 	
 	@Autowired
 	private TodoService todoService;
+	@Autowired
+	private TodoItemService todoItemService;
+	
 	
 	/**
 	 * 进到首页
@@ -54,7 +58,9 @@ public class TodoController{
 	 */
     @RequestMapping("")
     public String todo(Model model) {
-    	
+		List<SearchFilter> filters = new ArrayList<SearchFilter>();//检索条件列表
+		
+    	model.addAttribute("todoItems", todoItemService.getAll(filters));
         return "front/todo";
     }
     
@@ -86,7 +92,7 @@ public class TodoController{
      * @param request
      * @return
      */
-	@RequestMapping(value = "json/{page}",method = {RequestMethod.POST})
+	@RequestMapping(value = "json/{page}",method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public GridPageDto<Todo> json(@PathVariable Integer page,Model model,ServletRequest request){
 		
@@ -95,15 +101,21 @@ public class TodoController{
 		orders.add(new Order(Direction.ASC, "finish"));
 		orders.add(new Order(Direction.DESC, "orderNo"));
 		orders.add(new Order(Direction.DESC, "id"));
-		
 		PageRequest pageable = new PageRequest(page-1, size, new Sort(orders));
 		
-		List<SearchFilter> filters = new ArrayList<SearchFilter>();
+		List<SearchFilter> filters = new ArrayList<SearchFilter>();//检索条件列表
 		
-		String beginTime = request.getParameter("beginTime");
-		String endTime = request.getParameter("endTime");
-		String finish = request.getParameter("finish");
+		String beginTime = request.getParameter("beginTime");//开始时间
+		String endTime = request.getParameter("endTime");//结束时间
+		String finish = request.getParameter("finish");//是否完成
+		String itemId = request.getParameter("itemId");//todo分类
 		
+		if(!StringUtils.isEmpty(itemId)){
+			SearchFilter itemSearchFilter = new SearchFilter("todoItem.id",SearchFilter.Operator.EQ,itemId);
+			filters.add(itemSearchFilter);
+		}
+		
+		//设置开始时间和结束时间参数
 		if(!StringUtils.isEmpty(beginTime) && !StringUtils.isEmpty(endTime)){
 			SearchFilter beginTimeSearchFilter = new SearchFilter("createTime",SearchFilter.Operator.GTE,DateUtils.StringToDate(beginTime, DateUtils.DATE_PATTERN_09));
 			filters.add(beginTimeSearchFilter);
@@ -111,6 +123,7 @@ public class TodoController{
 			filters.add(endTimeSearchFilter);
 		}
 		
+		//设置是否完成参数
 		if(!StringUtils.isEmpty(finish)){
 			if(finish.trim().equals("Finish")){
 				SearchFilter searchFilter = new SearchFilter("finish",SearchFilter.Operator.EQ,true);
@@ -123,7 +136,7 @@ public class TodoController{
 		}
 
 		Page<Todo> result = todoService.findPage(filters, pageable);
-		
+		System.out.println("result:"+result);
 		return new GridPageDto<Todo>(result);
 	}
 	
