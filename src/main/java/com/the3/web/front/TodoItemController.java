@@ -34,6 +34,26 @@ public class TodoItemController{
 	private TodoItemService todoItemService;
 	
 	/**
+	 * 进到首页
+	 * @param model
+	 * @return
+	 */
+    @RequestMapping("")
+	public String todoitem(Model model){
+		return "/front/todo-item";
+	}
+    
+    /**
+     * 添加
+     * @param model
+     * @return
+     */
+    @RequestMapping("/input")
+    public String input(Model model){
+    	return "/front/todo-item-input";
+    }
+	
+	/**
 	 * 保存
 	 * @param todoItem
 	 * @param result

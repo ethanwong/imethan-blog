@@ -28,6 +28,7 @@ import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
 import com.the3.dto.page.GridPageDto;
 import com.the3.entity.todo.Todo;
+import com.the3.entity.todo.TodoItem;
 import com.the3.service.todo.TodoItemService;
 import com.the3.service.todo.TodoService;
 import com.the3.utils.DateUtils;
@@ -63,6 +64,20 @@ public class TodoController{
     	model.addAttribute("todoItems", todoItemService.getAll(filters));
         return "front/todo";
     }
+    
+    @RequestMapping("/input/{itemId}")
+    public String input(Model model,@PathVariable Long itemId) {
+    	
+		List<SearchFilter> filters = new ArrayList<SearchFilter>();//检索条件列表
+		
+		List<TodoItem> list = todoItemService.getAll(filters);
+		model.addAttribute("todoItems", list);
+		model.addAttribute("itemId", itemId);
+		
+    	return "front/todo-input";
+    }
+    
+    
     
     /**
      * 保存

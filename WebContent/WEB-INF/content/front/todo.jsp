@@ -15,13 +15,16 @@
 	
 	//添加todo
 	function inputTodo(object){
-		$('#inputModal').modal(
-			setItemList($("#itemId").val())		
-		);
+		
+		location.href = "${root}/todo/input/"+$("#itemId").val();
+// 		$('#inputModal').modal(
+// 			setItemList($("#itemId").val())		
+// 		);
 	};
 	
 	//设置item列表
 	function setItemList(checkItemId){
+		$("#todoItemId").html("");
 		$.ajax({
 			url:"${root}/todoitem/json",
 			type:"POST",
@@ -350,164 +353,7 @@
 		$("#itemId").val(itemId);//设置item参数
 		loadTodo($("#page").val());
 	};
-	
-	//添加todo item
-	function inputItem(){
-		$('#inputItemModal').modal({
-		 	 keyboard: true
-		});
-	};
-	
-	//保存item
-	function saveTodoItem(){
-		if($("#todoItemForm").valid()){
-			var todoItem = $("#todoItem").val();
-			$.ajax({
-				type:"POST",
-				url:"${root}/todoitem/save",
-				data: "name="+encodeURIComponent(todoItem),
-				dateType:"json",
-				success:function(data){
-					var result = eval("(" + data + ")");
-					
-					$("#todo").val("");
-					$('#inputItemModal').modal('toggle');
-					
-					addWarm(result.success,result.message);
-					setTimeout(function(){
-						resetPage();
-					},2000);
-					
-				}
-			});
-		}
-	};
-	
-	//加载todo item
-	function loadTodoItem(){
-		$("#todo-item-list").html("");
-		$.ajax({
-			url:"${root}/todoitem/json",
-			type:"POST",
-			dateType:"json",
-			success:function(data){
-				var result = eval("(" + data + ")");
-				$.each(result, function(i, item) {
-					var item = ""+		
-								"<tr>"+
-								"	<td id='"+item.id+"' "+
-								"	onmouseenter='showDeleteMenu(this)' onmouseleave='hiddenDeleteMenu(this)'>"+
-								"	<span id='itemName'>"+item.name+"</span>"+
-								"	</td>"+
-								"	<td width='80px;'>"+item.createTime+"</td>"+
-								"</tr>";
-					
-					$("#todo-item-list").append(item);
-				});
-			}
-		});
-	};
-	
-	//item 管理
-	function manageItem(){
-		$('#manageItemModal').modal(
-			//加载item列表
-			loadTodoItem()
-		);
-	};
-	
-	//编辑todo item
-	function editTodoItem(object){
-		var item = $(object).parent().parent().find("#itemName").html();
-		var input = ""+
-					"<form id='todoItemEditorForm'  role='form'>"+
-					"<div class='input-group'>"+
-					"<input name='' id='todoItemName' class='form-control required'  value='"+$.trim(item)+"'>"+
-				     " <span class='input-group-btn'>"+
-				      "  <button class='btn btn-default' type='button' onclick='saveTodoItemEdit(this)'><span class='glyphicon glyphicon-ok'></span></button>"+
-				      "</span>"+
-				    "</div>"+
-				    "</form>";
-		$(object).parent().parent().html(input);
-	};
-	
-	//保存todo item 编辑
-	function saveTodoItemEdit(object){
-		if($("#todoItemEditorForm").valid()){
-			var todoItem = $(object).parent().parent().find("#todoItemName").val();
-			$.ajax({
-				type:"POST",
-				url:"${root}/todoitem/save",
-				data: "name="+encodeURIComponent(todoItem)+"&id="+$(object).parent().parent().parent().parent().attr("id"),
-				dateType:"json",
-				success:function(data){
-					var result = eval("(" + data + ")");
-					
-					console.log("todoItem:"+todoItem);
-					$(object).parent().parent().parent().parent().html(todoItem);
-					
-					var messageType = "info";
-					if(result.success == false){
-						messageType = "danger";
-					};
-					$("#manageItemWarm").html("<p class='bg-"+messageType+"' style='padding: 8px;display: inline;margin:0px;width:100%;'>"+result.message+"</p>");
-					
-					setTimeout(function(){
-						$("#manageItemWarm").html("");
-						//加载item列表
-					},2000);
-					
-				}
-			});
-		}
-	};
-	
-	//展现item删除按钮
-	function showDeleteMenu(object){
-		if($(object).find("#todoItemName").length == 0){
-			var id = $(object).attr("id");
-			var deleteMenu = "<span id='deleteIco' style='float:right;'><span class='glyphicon glyphicon-edit' onclick='editTodoItem(this)'></span>&nbsp;<span class='glyphicon glyphicon-trash' onclick='deleteItem("+id+")' ></span></span>";
-			$(object).append(deleteMenu);
-		}
-	};
-	
-	//移除item删除按钮
-	function hiddenDeleteMenu(object){
-		$(object).find("#deleteIco").remove();
-	};
-	
-	//删除item
-	function deleteItem(id){
-		$('#deleteTodoItemConfirmModal').modal({
-		 	 keyboard: true
-		}, $("#deleteTodoItemConfirmModal").find("#id").val(id));
-	};
-	
-	//执行删除item
-	function deleteItemOne(){
-		var id = $("#deleteTodoItemConfirmModal").find("#id").val();
-		$.ajax({
-			url:"${root}/todoitem/delete/"+id,
-			type:"POST",
-			dateType:"json",
-			success:function(data){
-				var result = eval("(" + data + ")");
-				
-				$('#deleteTodoItemConfirmModal').modal('toggle');
-				var messageType = "info";
-				if(result.success == false){
-					messageType = "danger";
-				};
-				$("#manageItemWarm").html("<p class='bg-"+messageType+"' style='padding: 8px;display: inline;margin:0px;width:100%;'>"+result.message+"</p>");
-				
-				setTimeout(function(){
-					$("#manageItemWarm").html("");
-					loadTodoItem()
-					//加载item列表
-				},2000);
-			}
-		});
-	};
+
 </script>
 
 </head>
@@ -536,8 +382,8 @@
 								  		<li><a href="#" onclick="checkItem(this,${item.id},'${item.name}')">${item.name}</a></li>
 								  	</c:forEach>
 								    <li class="divider"></li>
-								    <li><a href="#" onclick='inputItem()'><span class="glyphicon glyphicon-plus"></span>&nbsp;New todo item<p>Create a new todo item</p></a></li>
-								    <li><a href="javascript:manageItem()"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Manage item<p>Manage all todo item</p></a></li>
+								    <li><a href="${root}/todoitem/input"><span class="glyphicon glyphicon-plus"></span>&nbsp;New todo item<p>Create a new todo item</p></a></li>
+								    <li><a href="${root}/todoitem"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Manage item<p>Manage all todo item</p></a></li>
 								  </ul>
 								</div>
 					  	</shiro:user>
@@ -588,51 +434,7 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- 添加item -->
-	<div class="modal fade" id="inputItemModal"  tabindex="-1" role="dialog" aria-labelledby="inputItemModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-credit-card"></span>&nbsp;&nbsp;New todo item</h4>
-				</div>
-				<div class="modal-body">
-					<form action="" id="todoItemForm">
-						<input type="text" class="form-control required" name="todoItem" value="" id="todoItem">
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-info"  onclick="saveTodoItem()" >Save item</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- 管理item -->
-	<div class="modal fade" id="manageItemModal"  tabindex="-1" role="dialog" aria-labelledby="manageItemModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-credit-card"></span>&nbsp;&nbsp;Manage todo item</h4>
-				</div>
-				<div class="modal-body">
-					<div id="manageItemWarm"></div>
-					<br>
-					<table class="table table-bordered todo-list  table-hover" >
-						<tbody id="todo-item-list">
-							
-						</tbody>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	
 	<!-- 添加todo -->
 	<div class="modal fade" id="inputModal"  tabindex="-1" role="dialog" aria-labelledby="inputModalLabel" aria-hidden="true">
@@ -697,27 +499,7 @@
 					Sure you want to delete?
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" onclick="deleteOne()">Delete</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- 删除item确定框 -->
-	<div class="modal fade" id="deleteTodoItemConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteTodoItemConfirmModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Warning</h4>
-				</div>
-				<div class="modal-body">
-					Sure you want to delete?
-					<input type="hidden" id="id" name="" value="">
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" onclick="deleteItemOne()">Delete</button>
+					<button type="button" class="btn btn-info" onclick="deleteOne()">Delete</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
