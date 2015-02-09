@@ -28,6 +28,7 @@ public class AboutController extends SuperController{
     	Article aboutMe = articleService.getById(aboutMeId);
     	model.addAttribute("aboutMe", aboutMe);
     	System.out.println("---------aboutMe:"+aboutMe);
+    	
         return "front/about";
     }
     

@@ -180,3 +180,15 @@ background-color: #428bca;
 	vertical-align: middle !important;
 	height: 50px;
 }
+
+
+#loading {
+	z-index: 10000;
+	padding: 5px 0 5px 9px;
+	background: #c44;
+	left: 0;
+	top: 0;
+	width: 90px;
+	color: #fff;
+	position: fixed;
+}

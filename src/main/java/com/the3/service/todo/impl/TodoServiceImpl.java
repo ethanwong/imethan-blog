@@ -15,6 +15,7 @@ import com.the3.base.repository.DynamicSpecifications;
 import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
 import com.the3.entity.todo.Todo;
+import com.the3.repository.todo.TodoItemRepository;
 import com.the3.repository.todo.TodoRepository;
 import com.the3.service.todo.TodoService;
 
@@ -27,6 +28,8 @@ public class TodoServiceImpl implements TodoService {
 	
 	@Autowired
 	private TodoRepository todoRepository;
+	@Autowired
+	private TodoItemRepository todoItemRepository;
 	
 
 	@Override
@@ -36,7 +39,9 @@ public class TodoServiceImpl implements TodoService {
 		String message = "保存成功";
 		try {
 			if(entity.getId() != null){
-				int result = todoRepository.updateContent(entity.getId(),entity.getContent());
+				entity.setTodoItem(todoItemRepository.findOne(entity.getTodoItem().getId()));;
+//				int result = todoRepository.updateContent(entity.getId(),entity.getContent());
+				entity = todoRepository.save(entity);
 			}else{
 				entity = todoRepository.save(entity);
 			}
@@ -150,6 +155,12 @@ public class TodoServiceImpl implements TodoService {
 			e.printStackTrace();
 		}
 		return new ReturnDto(isSuccess,message);
+	}
+
+
+	@Override
+	public Todo getById(Long id) {
+		return todoRepository.findOne(id);
 	}
 
 }

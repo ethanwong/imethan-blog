@@ -59,6 +59,13 @@ public interface TodoService {
 	 * @return
 	 */
 	public ReturnDto downTodo(Long id, int nextOrderNo, int previousOrderNo);
+	
+	/**
+	 * 根据ID获取
+	 * @param id
+	 * @return
+	 */
+	public Todo getById(Long id);
 
 }
 

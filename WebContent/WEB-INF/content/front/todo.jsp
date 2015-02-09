@@ -148,20 +148,29 @@
 	};
 	
 	//管理菜单
+// 	var menu = "<shiro:user>"+
+// 				"<div class='btn-group' style='float:right' >"+
+// 				  "<button type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>"+
+// 				   " <span class='caret'></span>"+
+// 				   " <span class='sr-only'>Toggle Dropdown</span>"+
+// 				  "</button>"+
+// 				  "<ul class='dropdown-menu' role='menu'>"+
+// 				   " <li><a href='#todoList' onclick='changeFinish(this)'><span class='glyphicon glyphicon-ok'></span>&nbsp;Finished</a></li>"+
+// 				    "<li><a href='#todoList' onclick='orderUp(this)'><span class='glyphicon glyphicon-arrow-up'></span>&nbsp;Up</a></a></li>"+
+// 				    "<li><a href='#todoList' onclick='orderDown(this)'><span class='glyphicon glyphicon-arrow-down'></span>&nbsp;Down</a></a></li>"+
+// 				    "<li><a href='#todoList' onclick='updateOne(this)'><span class='glyphicon glyphicon-edit'></span>&nbsp;Edit</a></a></li>"+
+// 				    "<li><a href='#todoList' onclick='deleteTodo(this)'><span class='glyphicon glyphicon-trash'></span>&nbsp;Delete</a></a></li>"+
+// 				  "</ul>"+
+// 				"</div>"+
+// 				"</shiro:user>";
 	var menu = "<shiro:user>"+
-				"<div class='btn-group' style='float:right' >"+
-				  "<button type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>"+
-				   " <span class='caret'></span>"+
-				   " <span class='sr-only'>Toggle Dropdown</span>"+
-				  "</button>"+
-				  "<ul class='dropdown-menu' role='menu'>"+
-				   " <li><a href='#todoList' onclick='changeFinish(this)'><span class='glyphicon glyphicon-ok'></span>&nbsp;Finished</a></li>"+
-				    "<li><a href='#todoList' onclick='orderUp(this)'><span class='glyphicon glyphicon-arrow-up'></span>&nbsp;Up</a></a></li>"+
-				    "<li><a href='#todoList' onclick='orderDown(this)'><span class='glyphicon glyphicon-arrow-down'></span>&nbsp;Down</a></a></li>"+
-				    "<li><a href='#todoList' onclick='updateOne(this)'><span class='glyphicon glyphicon-edit'></span>&nbsp;Edit</a></a></li>"+
-				    "<li><a href='#todoList' onclick='deleteTodo(this)'><span class='glyphicon glyphicon-trash'></span>&nbsp;Delete</a></a></li>"+
-				  "</ul>"+
-				"</div>"+
+				"<span class='btn-group' style='float:right' >"+
+				   	"<a href='#todoList' onclick='changeFinish(this)'><span class='glyphicon glyphicon-ok' style='color:#5cb85c;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='#todoList' onclick='orderUp(this)'><span class='glyphicon glyphicon-arrow-up' style='color:#337ab7;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='#todoList' onclick='orderDown(this)'><span class='glyphicon glyphicon-arrow-down' style='color:#f0ad4e;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='#todoList' onclick='updateOne(this)'><span class='glyphicon glyphicon-edit' style='color:#5bc0de;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='#todoList' onclick='deleteTodo(this)'><span class='glyphicon glyphicon-trash' style='color:#d9534f;'></span></a>"+
+				"</span>"+
 				"</shiro:user>";
 	
 	//展现菜单
@@ -217,20 +226,18 @@
 	};
 
 	//删除todo
-	function deleteTodo(){
-		var id = $(".info").find("td:first").attr("id");
-		if($(".info").length > 0){
-			$('#deleteTodoConfirmModal').modal({
-			 	 keyboard: true
-			});
-		}else{
-			$('#uncheckConfirmModal').modal();
-		}
+	function deleteTodo(object){
+// 		var id = $(".info").find("td:first").attr("id");
+		var id = $(object).parent().parent().parent().find("td:first").attr("id");
+		$('#deleteTodoConfirmModal').modal({
+		 	 keyboard: true
+		},$("#deleteTodoId").val(id));
 	};
 
 	//执行删除todo
 	function deleteOne(){
-		var id = $(".info").find("td:first").attr("id");
+		var id = $("#deleteTodoId").val();
+// 		var id = $(".info").find("td:first").attr("id");
 		$.ajax({
 			url:"${root}/todo/delete/"+id,
 			type:"POST",
@@ -251,40 +258,43 @@
 	};
 	
 	//更新todo内容
-	function updateOne(){
-		var id = $(".info").find("td:first").attr("id");
-		var content = $(".info").find("#content").find("span").html();
-		$('#editModal').modal(
-			$("#todoId").val(id),
-			$("#todoContent").val(content)
-		);
+	function updateOne(object){
+// 		var id = $(".info").find("td:first").attr("id");
+// 		var content = $(".info").find("#content").find("span").html();
+		
+		var id = $(object).parent().parent().parent().find("td:first").attr("id");
+		location.href = "${root}/todo/edit/"+id;
+// 		$('#editModal').modal(
+// 			$("#todoId").val(id),
+// 			$("#todoContent").val(content)
+// 		);
 	};
 	
-	//更新保存todo信息
-	function updateTodo(){
-		if($("#todoForm").valid()){
-			var todo = $("#todoContent").val();
-			var id = $("#todoId").val();
-			$.ajax({
-				type:"POST",
-				url:"${root}/todo/save",
-				data: "content="+encodeURIComponent(todo)+"&id="+id,
-				dateType:"json",
-				success:function(data){
-					var result = eval("(" + data + ")");
+// 	//更新保存todo信息
+// 	function updateTodo(){
+// 		if($("#todoForm").valid()){
+// 			var todo = $("#todoContent").val();
+// 			var id = $("#todoId").val();
+// 			$.ajax({
+// 				type:"POST",
+// 				url:"${root}/todo/save",
+// 				data: "content="+encodeURIComponent(todo)+"&id="+id,
+// 				dateType:"json",
+// 				success:function(data){
+// 					var result = eval("(" + data + ")");
 
-					$('#editModal').modal('toggle');
+// 					$('#editModal').modal('toggle');
 					
-					$(".info").find("#content").html(todo);
+// 					$(".info").find("#content").html(todo);
 
-					addWarm(result.success,result.message);
-					setTimeout(function(){
-						$(".addWarm").html("");
-					},2000);
-				}
-			});
-		}
-	};
+// 					addWarm(result.success,result.message);
+// 					setTimeout(function(){
+// 						$(".addWarm").html("");
+// 					},2000);
+// 				}
+// 			});
+// 		}
+// 	};
 	
 	//提升排序
 	function orderUp(){
@@ -382,8 +392,8 @@
 								  		<li><a href="#" onclick="checkItem(this,${item.id},'${item.name}')">${item.name}</a></li>
 								  	</c:forEach>
 								    <li class="divider"></li>
-								    <li><a href="${root}/todoitem/input"><span class="glyphicon glyphicon-plus"></span>&nbsp;New todo item<p>Create a new todo item</p></a></li>
-								    <li><a href="${root}/todoitem"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Manage item<p>Manage all todo item</p></a></li>
+								    <li><a href="${root}/todoitem/input"><span class="glyphicon glyphicon-plus"></span>&nbsp;New todo item<p>New a todo item</p></a></li>
+								    <li><a href="${root}/todoitem"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Modify item<p>Manage todo item</p></a></li>
 								  </ul>
 								</div>
 					  	</shiro:user>
@@ -497,6 +507,7 @@
 				</div>
 				<div class="modal-body">
 					Sure you want to delete?
+					<input type="hidden" id="deleteTodoId" name="deleteTodoId" value=""/>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-info" onclick="deleteOne()">Delete</button>

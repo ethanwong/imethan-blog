@@ -47,8 +47,8 @@
 </head>
 
 <body>
+	<div id='loading'>Loading...</div>
 	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
-
 	<div class="container">
 		<!-- 提醒信息 -->
 		<div id="topWarn" class="alert alert-success alert-dismissable" style="display: none">
@@ -82,7 +82,14 @@
 	
 	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
 
-
+	<script type="text/javascript">
+		//页面加载时初始化脚本
+		$(document).ready(function () {
+			$('#loading').hide();
+// 			$('.progress').hide();
+		});
+	</script>
 </body>
 </html>
+
 

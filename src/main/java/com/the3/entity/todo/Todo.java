@@ -29,7 +29,7 @@ public class Todo extends BaseEntity {
 	@Transient
 	private Integer previousOrderNo;//上一条记录排序
 	
-	@ManyToOne(cascade = {CascadeType.REFRESH},fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY)
 	@JoinColumn(name="itemId")
 	private TodoItem todoItem;//item类型
 	

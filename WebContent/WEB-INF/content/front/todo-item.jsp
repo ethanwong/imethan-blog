@@ -41,7 +41,12 @@
 	function showDeleteMenu(object){
 		if($(object).find("#todoItemName").length == 0){
 			var id = $(object).attr("id");
-			var deleteMenu = "<span id='deleteIco' style='float:right;'><span class='glyphicon glyphicon-edit' onclick='editTodoItem(this)'></span>&nbsp;<span class='glyphicon glyphicon-trash' onclick='deleteItem("+id+")' ></span></span>";
+			var deleteMenu = ""+
+			"<span id='deleteIco' style='float:right;'>"+
+				"<a href='#' onclick='editTodoItem(this)'><span class='glyphicon glyphicon-edit' style='color:#5bc0de;'></span></a>&nbsp;&nbsp;"+
+				"<a href='#' onclick='deleteItem("+id+")'><span class='glyphicon glyphicon-trash'  style='color:#d9534f;'></span></a>"+
+			"</span>";
+			
 			$(object).append(deleteMenu);
 		}
 	};
@@ -59,7 +64,7 @@
 					"<div class='input-group'>"+
 					"<input name='' id='todoItemName' class='form-control required'  value='"+$.trim(item)+"'>"+
 				     " <span class='input-group-btn'>"+
-				      "  <button class='btn btn-default' type='button' onclick='saveTodoItemEdit(this)'><span class='glyphicon glyphicon-ok'></span></button>"+
+				      "  <button class='btn btn-default' type='button' onclick='saveTodoItemEdit(this)'><span class='glyphicon glyphicon-ok' style='color:#5cb85c;'></span></button>"+
 				      "  <button class='btn btn-default' type='button' onclick='removeTodoItemEdit(this)'><span class='glyphicon glyphicon-remove'></span></button>"+
 				      "</span>"+
 				    "</div>"+

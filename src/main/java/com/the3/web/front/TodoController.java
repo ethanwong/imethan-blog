@@ -62,11 +62,12 @@ public class TodoController{
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();//检索条件列表
 		
     	model.addAttribute("todoItems", todoItemService.getAll(filters));
+    	
         return "front/todo";
     }
     
     @RequestMapping("/input/{itemId}")
-    public String input(Model model,@PathVariable Long itemId) {
+    public String input(Model model,@PathVariable Long itemId,ServletRequest request) {
     	
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();//检索条件列表
 		
@@ -74,9 +75,29 @@ public class TodoController{
 		model.addAttribute("todoItems", list);
 		model.addAttribute("itemId", itemId);
 		
+		String id = request.getParameter("id");
+		if(!StringUtils.isEmpty(id)){
+			Todo todo = todoService.getById(Long.valueOf(id.trim()));
+			model.addAttribute("todo", todo);
+		}
+		
     	return "front/todo-input";
     }
     
+    @RequestMapping("/edit/{id}")
+    public String edit(Model model,@PathVariable Long id,ServletRequest request) {
+    	
+    	List<SearchFilter> filters = new ArrayList<SearchFilter>();//检索条件列表
+    	
+    	List<TodoItem> list = todoItemService.getAll(filters);
+    	model.addAttribute("todoItems", list);
+    	Todo todo = todoService.getById(id);
+    	model.addAttribute("itemId", todo.getTodoItem().getId());
+    	
+		model.addAttribute("todo", todo);
+    	
+    	return "front/todo-edit";
+    }
     
     
     /**

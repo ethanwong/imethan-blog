@@ -4,6 +4,8 @@
 //页面加载时初始化脚本
 $(document).ready(function () {
 $('.glyphicon-log-in').tooltip();
+$('.glyphicon-cog').tooltip();
+$('.glyphicon-log-out').tooltip();
 
 });
 </script>
@@ -36,9 +38,34 @@ $('.glyphicon-log-in').tooltip();
 				<shiro:user>  
 					<div class="loginsetting">
 						<span class="glyphicon glyphicon-user"></span> <shiro:principal/>
-						<a href="${root}/setting/profile" ><span class="glyphicon glyphicon-cog"></span></a>
-						<a href="${root}/login/out" ><span class="glyphicon glyphicon-log-out"></span></a>
+							<a href="${root}/setting/profile"><span class="glyphicon glyphicon-cog" data-placement="bottom" title="Setting"></span></a>
+<!-- 						<div class="btn-group"> -->
+<%-- 							<a href="${root}/setting/profile" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span></a> --%>
+<!-- 							<ul class="dropdown-menu" role="menu"> -->
+<!-- 							    <li><a href="#">Action</a></li> -->
+<!-- 							    <li><a href="#">Another action</a></li> -->
+<!-- 							    <li><a href="#">Something else here</a></li> -->
+<!-- 							    <li class="divider"></li> -->
+<!-- 							    <li><a href="#">Separated link</a></li> -->
+<!-- 						  	</ul> -->
+<!-- 					  	</div> -->
+						<a href="${root}/login/out" ><span class="glyphicon glyphicon-log-out" data-placement="bottom" title="Log out"></span></a>
+						
 					</div>
+					
+					
+<!-- 					<div class="btn-group"> -->
+<!-- 					  <a type="button"  data-toggle="dropdown" aria-expanded="false" style=""> -->
+<!-- 					    <span class="glyphicon glyphicon-cog"></span> -->
+<!-- 					  </a> -->
+<!-- 					  <ul class="dropdown-menu" role="menu"> -->
+<!-- 					    <li><a href="#">Action</a></li> -->
+<!-- 					    <li><a href="#">Another action</a></li> -->
+<!-- 					    <li><a href="#">Something else here</a></li> -->
+<!-- 					    <li class="divider"></li> -->
+<!-- 					    <li><a href="#">Separated link</a></li> -->
+<!-- 					  </ul> -->
+<!-- 					</div> -->
 				</shiro:user>
 			</div>
 		</div>
