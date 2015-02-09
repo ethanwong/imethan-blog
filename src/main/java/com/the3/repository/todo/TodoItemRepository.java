@@ -16,6 +16,10 @@ public interface TodoItemRepository extends JpaRepository<TodoItem, Long>,JpaSpe
 	@Query("update TodoItem a set a.name = ?2 where a.id = ?1")
 	int updateName(Long id, String name);
 	
+	@Modifying 
+	@Query("update TodoItem a set a.publish = ?2 where a.id = ?1")
+	int updatePublish(Long id, boolean publish);
+	
 
 	
 

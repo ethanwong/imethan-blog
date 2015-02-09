@@ -14,11 +14,12 @@
 	//保存item
 	function saveTodoItem(){
 		if($("#todoItemForm").valid()){
+			var publish = $("#publish:checked").val();
 			var todoItem = $("#todoItem").val();
 			$.ajax({
 				type:"POST",
 				url:"${root}/todoitem/save",
-				data: "name="+encodeURIComponent(todoItem),
+				data: "name="+encodeURIComponent(todoItem)+"&publish="+publish,
 				dateType:"json",
 				success:function(data){
 					var result = eval("(" + data + ")");
@@ -68,6 +69,17 @@
 							<label for="exampleInputEmail1">Item</label>
 							<input type="text" class="form-control required" name="todoItem" value="" id="todoItem">
 						</div>
+						<div class="radio">
+							  <label>
+								    <input type="radio" name="publish" id="publish" value="true" />
+								    Publish
+							  </label>
+							  <label>
+								    <input type="radio" name="publish" id="publish" value="false" checked="checked"  />
+								    Hidden
+							  </label>
+						 </div>
+						 <br>
 						<button type="button" class="btn btn-info"  onclick="saveTodoItem()" >Save todo item</button>
 					</form>
 				</div>

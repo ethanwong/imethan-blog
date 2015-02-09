@@ -82,4 +82,25 @@ public class TodoItemServiceImpl implements TodoItemService {
 		Specification<TodoItem> spec = DynamicSpecifications.bySearchFilter(filters, TodoItem.class);
 		return todoItemRepository.findAll(spec);
 	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto updatePublish(Long id) {
+		boolean flag = true;
+		String message = "更新成功";
+		boolean publish = true;
+		if(todoItemRepository.findOne(id).isPublish()){
+			publish = false;
+		};
+		
+		try {
+			todoItemRepository.updatePublish(id,publish);
+		} catch (Exception e) {
+			e.printStackTrace();
+			flag = false;
+			message = "更新失败";
+		}
+		
+		return new ReturnDto(flag,message);
+	}
 }

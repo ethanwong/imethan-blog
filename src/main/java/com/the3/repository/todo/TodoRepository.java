@@ -23,7 +23,5 @@ public interface TodoRepository extends JpaRepository<Todo, Long>,JpaSpecificati
 	@Modifying 
 	@Query("update Todo a set a.orderNo = ?2 where a.id = ?1")
 	int updateOrderNO(Long id, int orderNo);
-	
-	
 
 }

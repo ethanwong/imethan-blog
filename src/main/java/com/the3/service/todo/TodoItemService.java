@@ -29,6 +29,13 @@ public interface TodoItemService {
 	 */
 	public List<TodoItem> getAll(List<SearchFilter> filters);
 	
+	/**
+	 * 更新发布
+	 * @param id
+	 * @return
+	 */
+	public ReturnDto updatePublish(Long id);
+	
 	
 
 }

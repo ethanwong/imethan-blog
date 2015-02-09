@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,9 +48,18 @@ public class TodoItemController{
      * @param model
      * @return
      */
+    @RequiresUser//当前用户需为已认证用户或已记住用户 
     @RequestMapping("/input")
     public String input(Model model){
     	return "/front/todo-item-input";
+    }
+    
+//    todoitem/publish
+    @RequiresUser//当前用户需为已认证用户或已记住用户 
+    @ResponseBody
+    @RequestMapping(value = "publish/{id}" , method = {RequestMethod.POST})
+    public ReturnDto publish(@PathVariable Long id){
+    	return todoItemService.updatePublish(id);
     }
 	
 	/**
@@ -60,20 +69,20 @@ public class TodoItemController{
 	 * @param request
 	 * @return
 	 */
-    @RequiresAuthentication
+    @RequiresUser//当前用户需为已认证用户或已记住用户 
 	@ResponseBody
 	@RequestMapping(value = "save" , method = {RequestMethod.POST})
-    public ReturnDto save(@Valid @ModelAttribute("Todo") TodoItem todoItem, BindingResult result,ServletRequest request){
+    public ReturnDto save(@Valid @ModelAttribute("TodoItem") TodoItem todoItem, BindingResult result,ServletRequest request){
 		ReturnDto returnDto = new ReturnDto();
 		if(result.hasFieldErrors()){
 			returnDto.setMessage("参数验证出现异常:"+result.getFieldError().getDefaultMessage());
 			returnDto.setSuccess(false);
 		}else{
+			System.out.println(request.getParameter("publish"));
 			returnDto = todoItemService.save(todoItem);
 		}
 		return returnDto;
 	}
-    
     
     /**
      * 获取列表
@@ -96,13 +105,11 @@ public class TodoItemController{
 	 * @param id
 	 * @return
 	 */
-	@RequiresAuthentication
+	@RequiresUser//当前用户需为已认证用户或已记住用户 
 	@ResponseBody
 	@RequestMapping(value = "delete/{id}" , method = {RequestMethod.POST})
 	public ReturnDto delete(@PathVariable long id){
 		return todoItemService.delete(id);
 		
 	}
-	
-	
 }

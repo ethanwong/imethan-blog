@@ -20,10 +20,16 @@
 			dateType:"json",
 			success:function(data){
 				var result = eval("(" + data + ")");
+				
 				$.each(result, function(i, item) {
+					var flag = "<span class='glyphicon glyphicon-flag' onclick='changeFlag(this,"+item.id+")'></span>";
+					if(item.publish == true){
+						flag = "<span class='glyphicon glyphicon-flag' style='color:#357ebd' onclick='changeFlag(this,"+item.id+")'></span>";
+					};
+					
 					var item = ""+		
 								"<tr>"+
-								"   <td width='20px;'><span class='glyphicon glyphicon-flag'></span></td>"+
+								"   <td width='20px;'>"+flag+"</td>"+
 								"	<td id='"+item.id+"' "+
 								"	onmouseenter='showDeleteMenu(this)' onmouseleave='hiddenDeleteMenu(this)'>"+
 								"	<span id='itemName'>"+item.name+"</span>"+
@@ -33,6 +39,30 @@
 					
 					$("#todo-item-list").append(item);
 				});
+			}
+		});
+	};
+	
+	//更新是否发布
+	function changeFlag(object,id){
+		$.ajax({
+			url:"${root}/todoitem/publish/"+id,
+			type:"POST",
+			dateType:"json",
+			success:function(data){
+				var result = eval("(" + data + ")");
+				
+				var color = $(object).css("color");
+				if(color =="rgb(53, 126, 189)"){
+					$(object).css("color","");
+				}else{
+					$(object).css("color","rgb(53, 126, 189)");
+				}
+				
+				addWarm(result.success,result.message);
+				setTimeout(function(){
+					$(".addWarm").html("");
+				},2000);
 			}
 		});
 	};
@@ -65,7 +95,7 @@
 					"<input name='' id='todoItemName' class='form-control required'  value='"+$.trim(item)+"'>"+
 				     " <span class='input-group-btn'>"+
 				      "  <button class='btn btn-default' type='button' onclick='saveTodoItemEdit(this)'><span class='glyphicon glyphicon-ok' style='color:#5cb85c;'></span></button>"+
-				      "  <button class='btn btn-default' type='button' onclick='removeTodoItemEdit(this)'><span class='glyphicon glyphicon-remove'></span></button>"+
+				      "  <button class='btn btn-default' type='button' onclick='removeTodoItemEdit(this)'><span class='glyphicon glyphicon-remove' style='color:#d9534f'></span></button>"+
 				      "</span>"+
 				    "</div>"+
 				    "</form>";
@@ -168,30 +198,16 @@
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default contact" >
-<!-- 				<div class="panel-heading"> -->
-<!-- 				    <h3 class="panel-title">Todo item</h3> -->
-<!-- 				 </div> -->
 				<div class="panel-body">
-					
 					<div class="row" style="padding-top: 0px;">
 						<div class="col-md-3">
 							<h4><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Todo item</h4>
 						</div>
 						<div class="col-md-9 addWarm"></div>
 					</div>
-<!-- 					<div class="row" style="padding-top: 0px;"> -->
-<!-- 						<div class="col-md-12 addWarm"></div> -->
-<!-- 					</div> -->
 					<div class="row">
 						<div class="col-md-12" >
-							<form action="" id="todoItemForm">
-								<div class="input-group">
-							      <input type="text" name="todoItem" value="" id="todoItem" class="form-control required" placeholder="Enter todo item">
-							      <span class="input-group-btn">
-							        <button class="btn btn-info" type="button" onclick="saveTodoItem()">Save item</button>
-							      </span>
-							    </div>
-							</form>
+							 <a class="btn btn-info" type="button" href="${root}/todoitem/input"><span class="glyphicon glyphicon-plus"></span>&nbsp;New todo item</a>
 						 </div>
 					</div>
 					<br>
@@ -200,6 +216,9 @@
 							
 						</tbody>
 					</table>
+					<span class='glyphicon glyphicon-flag' style='color:#357ebd'></span> Show
+					&nbsp;
+					<span class='glyphicon glyphicon-flag'></span> Hide
 				</div>
 
 			</div>

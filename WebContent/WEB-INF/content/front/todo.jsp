@@ -15,11 +15,7 @@
 	
 	//添加todo
 	function inputTodo(object){
-		
 		location.href = "${root}/todo/input/"+$("#itemId").val();
-// 		$('#inputModal').modal(
-// 			setItemList($("#itemId").val())		
-// 		);
 	};
 	
 	//设置item列表
@@ -72,6 +68,7 @@
 	
 	//加载todo列表
 	function loadTodo(page){
+		$('#loader').show();
 		var beginTime = $("#beginTime").val();
 		var endTime = $("#endTime").val();
 		var finish = $("#finishValue").val();
@@ -127,9 +124,10 @@
 				}
 				
 				$("#page").val(result.page);
+				
+				$('#loader').hide();
 			}
 		});
-		
 	};
 	
 	//生成todo行
@@ -148,21 +146,6 @@
 	};
 	
 	//管理菜单
-// 	var menu = "<shiro:user>"+
-// 				"<div class='btn-group' style='float:right' >"+
-// 				  "<button type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>"+
-// 				   " <span class='caret'></span>"+
-// 				   " <span class='sr-only'>Toggle Dropdown</span>"+
-// 				  "</button>"+
-// 				  "<ul class='dropdown-menu' role='menu'>"+
-// 				   " <li><a href='#todoList' onclick='changeFinish(this)'><span class='glyphicon glyphicon-ok'></span>&nbsp;Finished</a></li>"+
-// 				    "<li><a href='#todoList' onclick='orderUp(this)'><span class='glyphicon glyphicon-arrow-up'></span>&nbsp;Up</a></a></li>"+
-// 				    "<li><a href='#todoList' onclick='orderDown(this)'><span class='glyphicon glyphicon-arrow-down'></span>&nbsp;Down</a></a></li>"+
-// 				    "<li><a href='#todoList' onclick='updateOne(this)'><span class='glyphicon glyphicon-edit'></span>&nbsp;Edit</a></a></li>"+
-// 				    "<li><a href='#todoList' onclick='deleteTodo(this)'><span class='glyphicon glyphicon-trash'></span>&nbsp;Delete</a></a></li>"+
-// 				  "</ul>"+
-// 				"</div>"+
-// 				"</shiro:user>";
 	var menu = "<shiro:user>"+
 				"<span class='btn-group' style='float:right' >"+
 				   	"<a href='#todoList' onclick='changeFinish(this)'><span class='glyphicon glyphicon-ok' style='color:#5cb85c;'></span></a>&nbsp;&nbsp;"+
@@ -227,7 +210,6 @@
 
 	//删除todo
 	function deleteTodo(object){
-// 		var id = $(".info").find("td:first").attr("id");
 		var id = $(object).parent().parent().parent().find("td:first").attr("id");
 		$('#deleteTodoConfirmModal').modal({
 		 	 keyboard: true
@@ -237,7 +219,6 @@
 	//执行删除todo
 	function deleteOne(){
 		var id = $("#deleteTodoId").val();
-// 		var id = $(".info").find("td:first").attr("id");
 		$.ajax({
 			url:"${root}/todo/delete/"+id,
 			type:"POST",
@@ -259,42 +240,9 @@
 	
 	//更新todo内容
 	function updateOne(object){
-// 		var id = $(".info").find("td:first").attr("id");
-// 		var content = $(".info").find("#content").find("span").html();
-		
 		var id = $(object).parent().parent().parent().find("td:first").attr("id");
 		location.href = "${root}/todo/edit/"+id;
-// 		$('#editModal').modal(
-// 			$("#todoId").val(id),
-// 			$("#todoContent").val(content)
-// 		);
 	};
-	
-// 	//更新保存todo信息
-// 	function updateTodo(){
-// 		if($("#todoForm").valid()){
-// 			var todo = $("#todoContent").val();
-// 			var id = $("#todoId").val();
-// 			$.ajax({
-// 				type:"POST",
-// 				url:"${root}/todo/save",
-// 				data: "content="+encodeURIComponent(todo)+"&id="+id,
-// 				dateType:"json",
-// 				success:function(data){
-// 					var result = eval("(" + data + ")");
-
-// 					$('#editModal').modal('toggle');
-					
-// 					$(".info").find("#content").html(todo);
-
-// 					addWarm(result.success,result.message);
-// 					setTimeout(function(){
-// 						$(".addWarm").html("");
-// 					},2000);
-// 				}
-// 			});
-// 		}
-// 	};
 	
 	//提升排序
 	function orderUp(){

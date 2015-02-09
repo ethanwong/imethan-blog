@@ -38,8 +38,8 @@ public class TodoServiceImpl implements TodoService {
 		boolean isSuccess = true;
 		String message = "保存成功";
 		try {
+			entity.setTodoItem(todoItemRepository.findOne(entity.getTodoItem().getId()));;
 			if(entity.getId() != null){
-				entity.setTodoItem(todoItemRepository.findOne(entity.getTodoItem().getId()));;
 //				int result = todoRepository.updateContent(entity.getId(),entity.getContent());
 				entity = todoRepository.save(entity);
 			}else{

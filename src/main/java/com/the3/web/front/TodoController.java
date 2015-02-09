@@ -5,8 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
-
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -67,6 +66,7 @@ public class TodoController{
     }
     
     @RequestMapping("/input/{itemId}")
+    @RequiresUser//当前用户需为已认证用户或已记住用户 
     public String input(Model model,@PathVariable Long itemId,ServletRequest request) {
     	
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();//检索条件列表
@@ -84,6 +84,7 @@ public class TodoController{
     	return "front/todo-input";
     }
     
+    @RequiresUser//当前用户需为已认证用户或已记住用户 
     @RequestMapping("/edit/{id}")
     public String edit(Model model,@PathVariable Long id,ServletRequest request) {
     	
@@ -107,7 +108,7 @@ public class TodoController{
      * @param request
      * @return
      */
-    @RequiresAuthentication
+    @RequiresUser//当前用户需为已认证用户或已记住用户 
 	@ResponseBody
 	@RequestMapping(value = "save" , method = {RequestMethod.POST})
     public ReturnDto save(@Valid @ModelAttribute("Todo") Todo todo, BindingResult result,ServletRequest request){
@@ -128,7 +129,7 @@ public class TodoController{
      * @param request
      * @return
      */
-	@RequestMapping(value = "json/{page}",method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "json/{page}",method = {RequestMethod.POST})
 	@ResponseBody
 	public GridPageDto<Todo> json(@PathVariable Integer page,Model model,ServletRequest request){
 		
@@ -182,7 +183,7 @@ public class TodoController{
 	 * @param finish
 	 * @return
 	 */
-	@RequiresAuthentication
+	@RequiresUser//当前用户需为已认证用户或已记住用户 
 	@ResponseBody
 	@RequestMapping(value = "finish/{id}/{finish}" , method = {RequestMethod.POST})
 	public ReturnDto finish(@PathVariable long id,@PathVariable boolean finish){
@@ -194,7 +195,7 @@ public class TodoController{
 	 * @param id
 	 * @return
 	 */
-	@RequiresAuthentication
+	@RequiresUser//当前用户需为已认证用户或已记住用户 
 	@ResponseBody
 	@RequestMapping(value = "delete/{id}" , method = {RequestMethod.POST})
 	public ReturnDto delete(@PathVariable long id){
@@ -209,7 +210,7 @@ public class TodoController{
 	 * @param previousOrderNo
 	 * @return
 	 */
-	@RequiresAuthentication
+	@RequiresUser//当前用户需为已认证用户或已记住用户 
 	@ResponseBody
 	@RequestMapping(value = "up" , method = {RequestMethod.POST})
 	public ReturnDto up(@RequestParam Long id,@RequestParam int nextOrderNo,@RequestParam int previousOrderNo){
@@ -225,7 +226,7 @@ public class TodoController{
 	 * @param previousOrderNo
 	 * @return
 	 */
-	@RequiresAuthentication
+	@RequiresUser//当前用户需为已认证用户或已记住用户 
 	@ResponseBody
 	@RequestMapping(value = "down" , method = {RequestMethod.POST})
 	public ReturnDto down(@RequestParam Long id,@RequestParam int nextOrderNo,@RequestParam int previousOrderNo){
@@ -233,6 +234,5 @@ public class TodoController{
 		return todoService.downTodo(id,nextOrderNo,previousOrderNo);
 		
 	}
-	
 	
 }
