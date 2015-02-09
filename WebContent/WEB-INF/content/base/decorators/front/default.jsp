@@ -47,7 +47,15 @@
 </head>
 
 <body>
-	<div id='loading'>Loading...</div>
+	<div id="loader">
+		<div id='loading-mask'></div>
+		<div id="loading">
+		    <div class="loading-indicator">
+		       <img src="${root}/theme/css/ajax-loader.gif" width="41" height="31" style="padding-left: 10px;" /> 
+		       <div class="loading-msg">Loading...</div>
+		    </div>
+		</div>
+	</div>
 	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
 	<div class="container">
 		<!-- 提醒信息 -->
@@ -85,11 +93,8 @@
 	<script type="text/javascript">
 		//页面加载时初始化脚本
 		$(document).ready(function () {
-			$('#loading').hide();
-// 			$('.progress').hide();
+			$('#loader').hide();
 		});
 	</script>
 </body>
 </html>
-
-
