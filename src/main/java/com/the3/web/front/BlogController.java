@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletRequest;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -166,7 +167,7 @@ public class BlogController extends SuperController{
      * @param model
      * @return
      */
-    @RequiresAuthentication
+	@RequiresUser//当前用户需为已认证用户或已记住用户 
     @RequestMapping("/channel/input/{channelId}")
     public String inputChannel(@PathVariable Long channelId,Model model){
     	
@@ -201,10 +202,6 @@ public class BlogController extends SuperController{
     		
     		
     	}
-
-    	
-    	
-    	
     	return "front/article-detail";
     }
 

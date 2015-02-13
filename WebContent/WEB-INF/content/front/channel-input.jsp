@@ -49,10 +49,17 @@
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Input channel</h3>
-				  </div>
+<!-- 				  <div class="panel-heading"> -->
+<!-- 				    <h3 class="panel-title">Input channel</h3> -->
+<!-- 				  </div> -->
 				  <div class="panel-body">
+				  		<div class="row" style="padding-top: 0px;">
+							<div class="col-md-3">
+								<h4><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Input channel</h4>
+							</div>
+							<div class="col-md-9"></div>
+						</div>
+						<br>
 					  	<form role="form" method="post" action="" id="inputForm">
 					  	  <input id="id"  type="hidden" name="id" value="${channel.id}">
 					  	  

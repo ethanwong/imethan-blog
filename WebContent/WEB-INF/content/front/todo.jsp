@@ -87,7 +87,9 @@
 					var todo = generateTodo(item.id,item.content,item.createTime,item.finish,item.nextOrderNo,item.previousOrderNo);
 					$("#todo-list").append(todo);
 				});
-				
+				console.log("result.records:"+result.records);
+				console.log("result.size:"+result.size);
+				$(".pager").html("");
 				if(result.records>result.size){
 					// 处理上页和下页按钮
 					var next = result.next;
@@ -311,6 +313,13 @@
 		$("#itemId").val(itemId);//设置item参数
 		loadTodo($("#page").val());
 	};
+	
+	//选择Guestitem
+	function checkGuestItem(object,itemId,itemName){
+		$("#newTodo").html(""+itemName+" todo");//替换New item信息
+		$("#itemId").val(itemId);//设置item参数
+		loadTodo($("#page").val());
+	};
 
 </script>
 
@@ -345,9 +354,22 @@
 								  </ul>
 								</div>
 					  	</shiro:user>
-					  	<shiro:guest> 
-					  		 <span class='glyphicon glyphicon-star'>表示完成</span>
-					  		 <span class='glyphicon glyphicon-star-empty'>表示未完成</span>
+					  	<shiro:guest>
+					  		
+					  		<div class="btn-group">
+								  <button id="newTodo" type="button" class="btn btn-info" >imethan todo</button>
+								  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								    <span class="caret"></span>
+								    <span class="sr-only">Toggle Dropdown</span>
+								  </button>
+								  <ul class="dropdown-menu" role="menu">
+								  	<c:forEach items="${todoItems}" var="item"  varStatus="status">
+								  		<c:if test="${item.publish eq true}">
+								  			<li><a href="#" onclick="checkGuestItem(this,${item.id},'${item.name}')">${item.name}</a></li>
+								  		</c:if>
+								  	</c:forEach>
+								  </ul>
+							</div>
 					  	</shiro:guest>
 					  </div>
 					  <div class="col-md-9">
@@ -380,12 +402,11 @@
 					<br>
 					<table class="table table-bordered todo-list table-hover" >
 						<tbody id="todo-list">
-							
 						</tbody>
 					</table>
+					<span class='glyphicon glyphicon-star'>表示完成</span>  <span class='glyphicon glyphicon-star-empty'>表示未完成</span>
 					<nav>
 						<ul class="pager">
-							
 						</ul>
 					</nav>
 				</div>

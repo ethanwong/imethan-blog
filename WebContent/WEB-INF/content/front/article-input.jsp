@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>ImEthan</title>
-<%@ include file="/WEB-INF/content/base/ueditor.jsp"%>
+<%@ include file="/WEB-INF/content/base/umeditor.jsp"%>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
 		//实例化编辑器
-		var um = UE.getEditor('editor');
+		var um = UM.getEditor('editor');
 		um.addListener('blur',function(){
 			saveArticleDraft();
 	    });
@@ -23,7 +23,7 @@
 	//保存草稿
 	function saveArticleDraft(){
 		
-		if(!UE.getEditor('editor').hasContents()){
+		if(!UM.getEditor('editor').hasContents()){
 			$("#editorContentError").html("This field is required.");
 		};
 
@@ -32,7 +32,7 @@
 			var title = $("#title").val();
 			var channelId = $("#channelId").val();
 			var isPublish = $("#isPublish:checked").val();
-			var content = UE.getEditor('editor').getContent();
+			var content = UM.getEditor('editor').getContent();
 			$.ajax({
 				type:"POST",
 				url:"${root}/console/cms/article/save",
@@ -53,7 +53,7 @@
 	//提交保存
 	function saveArticle(){
 		
-		if(!UE.getEditor('editor').hasContents()){
+		if(!UM.getEditor('editor').hasContents()){
 			$("#editorContentError").html("This field is required.");
 		};
 
@@ -62,7 +62,7 @@
 			var title = $("#title").val();
 			var channelId = $("#channelId").val();
 			var isPublish = $("#isPublish:checked").val();
-			var content = UE.getEditor('editor').getContent();
+			var content = UM.getEditor('editor').getContent();
 			$.ajax({
 				type:"POST",
 				url:"${root}/console/cms/article/save",
@@ -96,10 +96,14 @@
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Input article</h3>
-				  </div>
 				  <div class="panel-body">
+					  	<div class="row" style="padding-top: 0px;">
+							<div class="col-md-2">
+								<h4><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Input article</h4>
+							</div>
+							<div class="col-md-10"></div>
+						</div>
+						<br>
 					  	<form role="form" method="post" action="" id="inputForm">
 					  	  <input id="id"  type="hidden" name="id" value="${article.id}">
 					  	  
@@ -129,10 +133,8 @@
 						  
 						  <div class="form-group">
 						    <label for="content">Content</label>
-						    <!--  
-						    <script type="text/plain" id="editor"  style="width:924px!important;height: 260px;">${article.content}</script>
- 							-->
- 							<textarea id="editor"  style="width:924px!important;height: 300px;display: block;" >${article.content}</textarea>
+						    <script type="text/plain" id="editor"  style="width:924px!important;height: 300px;">${article.content}</script>
+<%--  							<textarea id="editor"  style="width:924px!important;height: 300px;display: block;" >${article.content}</textarea> --%>
 							<label id="editorContentError" ></label>
 							<p id="editorWarn"></p>
 						  </div>
