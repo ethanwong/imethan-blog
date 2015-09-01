@@ -30,7 +30,7 @@ public class Article extends BaseEntity {
 	private String content;//内容
 	private boolean isPublish;//是否发布
 	
-	@ManyToOne(cascade = {CascadeType.REFRESH},fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.REFRESH},fetch = FetchType.EAGER)
 	@JoinColumn(name="channelId")
 	private Channel channel;//栏目
 	

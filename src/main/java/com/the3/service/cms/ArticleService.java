@@ -19,6 +19,14 @@ import com.the3.entity.cms.Article;
 public interface ArticleService {
 	
 	/**
+	 * 测试方法
+	 *
+	 * @author Ethan
+	 * @datetime 2015年9月1日 下午2:10:15
+	 */
+	public void test();
+	
+	/**
 	 * 保存或者修改
 	 * @param entity
 	 * @return

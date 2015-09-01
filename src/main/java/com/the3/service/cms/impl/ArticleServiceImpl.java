@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.the3.base.jpa.EntityManagerSupport;
 import com.the3.base.repository.DynamicSpecifications;
 import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
@@ -30,7 +31,7 @@ import com.the3.service.cms.ChannelService;
  */
 @Service
 @Transactional(readOnly = true)
-public class ArticleServiceImpl implements ArticleService {
+public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> implements ArticleService {
 	
 	private Logger logger = Logger.getLogger(ArticleServiceImpl.class);  
 	
@@ -40,6 +41,15 @@ public class ArticleServiceImpl implements ArticleService {
 	private ChannelRepository channelRepository;
 	@Autowired
 	private ChannelService channelService;
+	
+	@Override
+	public void test() {
+		// TODO Auto-generated method stub
+		System.out.println("article test:"+this.entityManger.createQuery("from Article").getResultList());
+		System.out.println("article test:"+this.entityManger.find(Article.class, 23l));
+		
+		
+	}
 	
 	@Override
 	@Transactional(readOnly = false)
@@ -168,4 +178,6 @@ public class ArticleServiceImpl implements ArticleService {
 		
 		return new ReturnDto(flag,message);
 	}
+
+
 }
