@@ -124,7 +124,6 @@
 					var result = eval("(" + data + ")");
 					$("#roleId").html("");
 					$.each(result, function(i, item) {
-// 						$("#roleinfo").append("<input type='checkbox' name='roleId' value='"+item.id+"'>"+item.name);
 						$("#roleId").append("<option value='"+item.id+"'>"+item.name+"</option>");
 					});
 				}
@@ -212,7 +211,7 @@
 					<form role="form"  method="post" action="" id="inputForm">
 						<input type="hidden"  name="id" id="id" value="">
 						<div class="modal-body">
-								<div class="form-group">
+							<div class="form-group">
 							    <label for="exampleInputEmail1">Nickname</label>
 							    <input type="text" class="form-control required" id="nickname" name="nickname" placeholder="Enter nickname" value="">
 							  </div>
