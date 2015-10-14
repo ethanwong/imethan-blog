@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan</title>
+<title>ImEthan|Todo| Full Stack Engineer</title>
 <script src="${root}/theme/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 	//页面加载时初始化脚本

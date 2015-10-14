@@ -51,7 +51,6 @@ public class FrontInterceptor implements HandlerInterceptor  {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("-----------FrontInterceptor-------------");
 		//设置导航选中效果
 		String servletPath = request.getServletPath();
 		String[] paths = StringUtils.split(servletPath, "/");
@@ -60,7 +59,7 @@ public class FrontInterceptor implements HandlerInterceptor  {
 			request.setAttribute("module", path);
 			break;
 		}
-		System.out.println("servletPath:"+servletPath);
+		System.out.println("FrontInterceptor servletPath:"+servletPath);
 		
 	}
 	

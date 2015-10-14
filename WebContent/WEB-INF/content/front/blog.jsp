@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan:Blog</title>
+<title>Blog|ImEthan|Full Stack Engineer</title>
 <script type="text/javascript">
 //页面加载时初始化脚本
 $(document).ready(function () {
@@ -144,6 +144,7 @@ function searchArticle(object){
 	  <div class="form-group">
 		    <div class="col-sm-9">
 		    	<font style="font-size:30px;float: left;">All Blog</font>
+		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">我的工作和学习笔记</small>
 		    	<shiro:user>
 		    		<a style="padding-top:12px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span></a>
 		    	</shiro:user>

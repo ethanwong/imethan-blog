@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan:About</title>
+<title>About|ImEthan|Full Stack Engineer</title>
 <script type="text/javascript">
 	
 	//页面加载时初始化脚本
@@ -51,6 +51,7 @@
 </head>
 <body>
 	<font style="font-size:30px;" >About me</font>
+	<small style="padding-top: 20px;padding-left: 10px;">我的个人简历</small>
 	<hr>
 	<div class="row">
 		<div class="col-md-3">

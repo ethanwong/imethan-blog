@@ -3,7 +3,6 @@ package com.the3.web.front;
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 
-import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.the3.base.web.SuperController;
 import com.the3.dto.common.ReturnDto;
-import com.the3.entity.cms.Channel;
 import com.the3.entity.message.Message;
 import com.the3.service.message.MessageService;
-
-
 
 /**
  * ContactController.java

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<title>ImEthan | Full Stack Engineer</title>
+	<title><decorator:title></decorator:title></title>
 	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
     <decorator:head></decorator:head>
 </head>
 

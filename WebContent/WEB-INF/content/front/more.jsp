@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan</title>
+<title>Learn more|ImEthan|Full Stack Engineer</title>
 </head>
 <body>
 	<div class="row">

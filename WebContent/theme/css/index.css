@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
 
+/* @font-face{ */
+/* 	font-family:"汉仪超粗宋简"; */
+/* 	src:url('汉仪超粗宋简.ttf') format('truetype'); */
+/* } */
+
 .banner{
 	background-attachment: scroll,	fixed;
 	background-image: url("../../upload/index/banner.jpg");

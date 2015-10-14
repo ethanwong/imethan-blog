@@ -10,7 +10,6 @@ import javax.validation.Valid;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresUser;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,9 +101,6 @@ public class SettingController {
 	@ResponseBody
 	@RequestMapping("/updateAvatar")
 	public String updateAvatar(@RequestParam MultipartFile file, Model model,HttpServletRequest request,@RequestParam Long userId) throws IOException{
-		System.out.println("--------UploadController----------:"+file.getOriginalFilename());
-		
-		System.out.println("--------request.getParameter.userId-----:"+userId);
 		
         if(file.isEmpty()){  
             System.out.println("文件未上传");  
@@ -116,7 +112,6 @@ public class SettingController {
             String realPath = request.getSession().getServletContext().getRealPath("/upload/avatar"); 
             String currentTimeMillis = String.valueOf(System.currentTimeMillis());
             String saveFileName = currentTimeMillis+"_"+file.getOriginalFilename();
-            System.out.println("------------realPath:"+realPath);
             FileUtils.copyInputStreamToFile(file.getInputStream(), new File(realPath,saveFileName));
             
             userService.updateAvatar(userId,saveFileName);
@@ -144,7 +139,6 @@ public class SettingController {
 				flag = true;
 			}
 		}
-		System.out.println("password:"+password);
 		return flag;
 	}
 	
