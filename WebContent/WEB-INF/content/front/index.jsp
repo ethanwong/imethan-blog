@@ -47,22 +47,22 @@
 	<div class="container linkBox" >
 		<div class="row">
 			<div class="col-md-3 icoAlign">
-				<a href="#">
-					<span class="glyphicon glyphicon-picture" style="color: #5cb85c"></span>
+				<a href="${root}/blog">
+					<span class="glyphicon glyphicon-book" style="color: #5bc0de"></span>
 				</a>
-				<p class="help-block">This is photo album.</p>
-			</div>
-			<div class="col-md-3 icoAlign">
-				<a href="${root}/blog/8">
-					<span class="glyphicon glyphicon-facetime-video" style="color: #5bc0de"></span>
-				</a>
-				<p class="help-block">Some video about me.</p>
+				<p class="help-block">Read all blogs.</p>
 			</div>
 			<div class="col-md-3 icoAlign">
 				<a href="${root}/todo">
 					<span class="glyphicon glyphicon-tasks" style="color: #f0ad4e"></span>
 				</a>
 				<p class="help-block">Personal todo list.</p>
+			</div>
+			<div class="col-md-3 icoAlign">
+				<a href="${root}/blog/8">
+					<span class="glyphicon glyphicon-facetime-video" style="color: #5cb85c"></span>
+				</a>
+				<p class="help-block">Some video about me.</p>
 			</div>
 			<div class="col-md-3 icoAlign">
 				<a href="${root}/about">
