@@ -34,16 +34,17 @@
 <body>
 	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
 	<div class="banner blur">
-		<div class="container" style="width: 980px">
+		<div class="container" >
 			<div class="indexInfo">
 				<div class="title">Hello ImEthan</div>
 				<div class='content'>A blog named imethan,based java.</div>
+				<div class='content' style="font-size: 16px;">我的代码我的国，欢迎访问我的技术部落，这里只生产内容。</div>
 				<a href="${root}/more"><button type="submit" class="btn btn-info">Learn more</button></a>
 			</div>
 		</div>
 	</div>
 
-	<div class="container linkBox">
+	<div class="container linkBox" >
 		<div class="row">
 			<div class="col-md-3 icoAlign">
 				<a href="#">

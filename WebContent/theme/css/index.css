@@ -27,7 +27,7 @@
 
 
 .linkBox{
-	height: 200px;
+/* 	height: 200px; */
 	padding-top: 40px !important;
 }
 .linkBox span{
@@ -41,7 +41,7 @@
 }
 
 .indexInfo{
-	
+/* 	line-height: 40px; */
 }
 
 .indexInfo .title{
@@ -54,9 +54,3 @@
 	color: #fff;
 	padding-bottom: 20px;
 }
-
-
-
-
-
-
