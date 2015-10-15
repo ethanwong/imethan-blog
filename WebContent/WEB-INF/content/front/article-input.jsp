@@ -63,10 +63,11 @@
 			var channelId = $("#channelId").val();
 			var isPublish = $("#isPublish:checked").val();
 			var content = UM.getEditor('editor').getContent();
+			
 			$.ajax({
 				type:"POST",
 				url:"${root}/console/cms/article/save",
-				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content)+"&publish="+isPublish,
+				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content)+"&publish="+isPublish+"&locate=${locate}",
 			    dateType:"json",
 				success:function(data){
 					
@@ -81,8 +82,14 @@
 					
 					$(".addWarm").html("<p class='bg-primary' style='padding: 9px;display: inline;'>"+result.message+"</p>");
 					
+					var locate = '${locate}';
+					var href = "${root}/blog/${channelId}";
+					if(locate == 'about'){
+						href = "${root}/about";
+					}
+					
 					setTimeout(function(){
-						location.href = "${root}/blog/${channelId}";
+						location.href = href;
 					},2000);
 					
 				}
@@ -133,7 +140,7 @@
 						  
 						  <div class="form-group">
 						    <label for="content">Content</label>
-						    <script type="text/plain" id="editor"  style="width:924px!important;height: 300px;">${article.content}</script>
+						    <script type="text/plain" id="editor"  style="width:100%!important;height: 300px;">${article.content}</script>
 <%--  							<textarea id="editor"  style="width:924px!important;height: 300px;display: block;" >${article.content}</textarea> --%>
 							<label id="editorContentError" ></label>
 							<p id="editorWarn"></p>

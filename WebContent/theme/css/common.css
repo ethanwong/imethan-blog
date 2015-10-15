@@ -51,6 +51,8 @@ body>.container {
 .navbar-right .loginsetting{
 	padding-top: 8px;
 	padding-right: 12px;
+	padding-bottom: 8px;
+	
 }
 .navbar-right .loginsetting span{
 	padding-left: 8px;

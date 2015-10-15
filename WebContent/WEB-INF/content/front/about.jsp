@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -51,13 +51,16 @@
 </head>
 <body>
 	<font style="font-size:30px;" >About me</font>
-	<small style="padding-top: 20px;padding-left: 10px;">我的个人简历</small>
+	<small style="padding-top: 20px;padding-left: 10px;padding-right: 10px;">我的个人简历</small>
+	<shiro:user>
+		<a href="${root}/blog/article/input/${aboutMe.channelId}/${aboutMe.id}?locate=about" title="编辑简历" ><span class='glyphicon glyphicon-pencil'></span></a>
+	</shiro:user>
 	<hr>
 	<div class="row">
 		<div class="col-md-3">
 			<div class="userinfo">
 				<p style="line-height: 36px;">
-						<img class="img-thumbnail" src="${root}/upload/avatar/default-avatar-ethan.jpg" alt="${userInfo.nickname}" style="width: 180px;height: 180px;" >
+					<img class="img-thumbnail" src="${root}/upload/avatar/default-avatar-ethan.jpg" alt="${userInfo.nickname}" style="height: 180px;" >
 				</p>
 				<font size="4" class='nickname'>${userInfo.nickname}</font>
 				<hr>
@@ -71,9 +74,9 @@
 		</div>
 		
 		<div class="col-md-9" >
-			<p style="display: block;">
+			<div style="display: block;width: auto;">
 				${aboutMe.content}
-			</p>
+			</div>
 		</div>
 	</div>
 </body>

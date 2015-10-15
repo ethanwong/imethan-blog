@@ -147,7 +147,7 @@ public class BlogController extends SuperController{
      */
     @RequiresAuthentication
 	@RequestMapping("/article/input/{channelId}/{articleId}")
-	public String inputArticle(@PathVariable Long channelId,@PathVariable Long articleId,Model model){
+	public String inputArticle(@PathVariable Long channelId,@PathVariable Long articleId,Model model,ServletRequest request){
     	//获取栏目信息
     	List<Channel> list = channelService.getList(null);
     	model.addAttribute("channelList", list);
@@ -156,7 +156,7 @@ public class BlogController extends SuperController{
     		Article article = articleService.getById(articleId);
     		model.addAttribute("article", article);
     	}
-		
+    	model.addAttribute("locate", request.getParameter("locate"));//发起跳转位置
 		model.addAttribute("channelId", channelId);
 		return "front/article-input";
 	}

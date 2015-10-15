@@ -30,6 +30,8 @@ public class AboutController extends SuperController{
         return "front/about";
     }
     
+    
+    
 }
 
 

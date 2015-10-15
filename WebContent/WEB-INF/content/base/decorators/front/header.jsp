@@ -50,7 +50,7 @@ $('.glyphicon-log-out').tooltip();
 <!-- 							    <li><a href="#">Separated link</a></li> -->
 <!-- 						  	</ul> -->
 <!-- 					  	</div> -->
-						<a href="${root}/login/out" ><span class="glyphicon glyphicon-log-out" data-placement="bottom" title="Log out"></span></a>
+						<a href="${root}/login/out"><span class="glyphicon glyphicon-log-out" data-placement="bottom" title="Log out"></span></a>
 						
 					</div>
 					

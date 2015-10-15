@@ -80,6 +80,8 @@ public class ArticleController extends SuperController{
 		}else{
 			returnDto = articleService.saveOrModify(article);
 		}
+		String locate = request.getParameter("locate");
+
 		return returnDto;
 	}
 	
