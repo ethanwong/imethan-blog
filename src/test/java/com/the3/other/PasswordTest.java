@@ -55,8 +55,8 @@ public class PasswordTest {
 		
 //		String key= "jdbc:mysql://sqld.duapp.com:4050/wTGCiTybcnoRtoXAJbIg?useUnicode=true&characterEncoding=utf-8";
 //		String key= "jdbc:mysql://127.0.0.1:3306/imethan_blog?useUnicode=true&characterEncoding=utf-8";
-//		String key= "741ee2651ed1483f91697c8c35377a6e";
-		String key= "123456";
+		String key= "46e48c467cb44a24bccbb649c6b3c23b";
+//		String key= "123456";
 		String encode = DigestUtils.encode(DigestUtils.encode(key));
 		System.out.println(encode);
 	}
