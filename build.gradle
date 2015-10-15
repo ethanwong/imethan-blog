@@ -19,14 +19,19 @@ jar {
 
 // tag::dependencies[]
 dependencies {
+
 	//Spring begin
-    compile 'org.springframework:spring-context:4.0.2.RELEASE'
-    compile 'org.springframework:spring-test:4.0.2.RELEASE'
+	compile 'org.springframework:spring-context:4.0.2.RELEASE'
+	compile 'org.springframework:spring-context-support:4.0.2.RELEASE'
     compile 'org.springframework:spring-webmvc:4.0.2.RELEASE'
-    
+    compile 'org.springframework:spring-orm:4.0.2.RELEASE'
+    compile 'org.springframework:spring-aop:4.0.2.RELEASE'
+    compile 'org.springframework:spring-aspects:4.0.2.RELEASE'
+	testCompile 'org.springframework:spring-test:4.0.2.RELEASE'
+    //Spring end
     
     //Spring data jpa
-    compile 'org.springframework.data:spring-data-jpa:1.7.0.RELEASE'
+    compile 'org.springframework.data:spring-data-jpa:1.9.0.RELEASE'
     
     //Spring data mongodb
     //compile 'org.springframework.data:spring-data-mongodb:1.4.0.RELEASE'
@@ -62,19 +67,17 @@ dependencies {
 	
 	//Shiro end
 	
-	//JSON begin
-	compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
-	compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
-	
-	compile 'org.json:org.json:chargebee-1.0'
-	
+    //JSON begin
+	compile 'com.fasterxml.jackson.core:jackson-core:2.1.0'
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.1.0'
+	compile 'com.fasterxml.jackson.core:jackson-annotations:2.1.0'
 	//JSON end
 	
 	//servlet begin
+	compile 'javax.servlet.jsp:jsp-api:2.0'
 	compile 'javax.servlet:jstl:1.2'
 	compile 'taglibs:standard:1.1.2'
 	compile 'javax.servlet:servlet-api:2.5'
-	compile 'javax.servlet.jsp:jsp-api:2.0'
 	//servlet end
 	
 	//log begin
@@ -98,6 +101,9 @@ dependencies {
     
     //Apache Commons Codec
     compile 'commons-codec:commons-codec:1.10'
+    
+    //mail
+    compile 'javax.mail:mail:1.4.7'
     
 		  
     testCompile("junit:junit:4.11")

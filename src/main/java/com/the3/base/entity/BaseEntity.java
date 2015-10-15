@@ -4,8 +4,7 @@ import java.util.Date;
 
 import javax.persistence.MappedSuperclass;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.the3.base.json.CustomDateSerializer;
 
 /**

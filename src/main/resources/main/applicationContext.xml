@@ -100,4 +100,18 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
+    
+    
+    <!-- Email -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <property name="host" value="smtp.exmail.qq.com"/>
+	    <property name="username" value="WTTCS@zmyou.com"/>
+	    <property name="password" value="rwy123456"/>
+	</bean>
+	
+	<!-- this is a template message that we can pre-load with default state -->
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+<!-- 	    <property name="from" value="我是发件人<WTTCS@zmyou.com>" /> -->
+	</bean>
+
 </beans>

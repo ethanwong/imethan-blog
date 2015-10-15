@@ -9,8 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.the3.base.entity.BaseEntity;
 
 /**

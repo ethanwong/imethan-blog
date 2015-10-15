@@ -16,8 +16,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.the3.base.entity.BaseEntity;
 
 /**

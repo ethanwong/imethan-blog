@@ -75,7 +75,7 @@
 			<!-- json 响应的 content-type 是 application/json，而 IE 10 以前的浏览器对于这个类型是作为文件下载的 -->
 			<!-- 解决方法是只要将返回响应的 content-type 改为text/plain 即可 -->
 			<bean
-				class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 				<property name="supportedMediaTypes" value="text/plain;charset=UTF-8" />
 			</bean>
 		</mvc:message-converters>
@@ -117,7 +117,7 @@
 		<property name="defaultViews">
 			<list>
 				<bean name="jsonView"
-					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 			</list>
 		</property>
 	</bean>
