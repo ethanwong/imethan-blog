@@ -69,6 +69,7 @@
 </head>
 <body>
 	<font style="font-size:30px;">Contact</font>
+	<small style="padding-top: 20px;padding-left: 10px;">可以发消息给我</small>
 	<hr>
 	<div class="row">
 		<div class="col-md-9" >

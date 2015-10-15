@@ -43,6 +43,18 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <decorator:head></decorator:head>
+    
+    <!-- 新版访问分析代码（异步加载） -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b481918f832e6abc5cb27d566569d940";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+    
 </head>
 
 <body>

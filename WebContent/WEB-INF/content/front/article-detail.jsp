@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan</title>
+<title>${article.title}|ImEthan|Full Stack Engineer</title>
+<meta name="keywords" content="${article.title},EthanWong,ethanwong,黄应锋,ImEthan">
+<meta name="description" content="${article.title},EthanWong,ethanwong,黄应锋,ImEthan">
 <script type="text/javascript">
 	//删除文章
 	function deleteArticle(id,object){

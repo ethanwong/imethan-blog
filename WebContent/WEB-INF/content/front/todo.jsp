@@ -336,7 +336,7 @@
 						<div class="col-md-10 addWarm"></div>
 					</div>
 					<div class="row">
-					  <div class="col-md-3">
+					  <div class="col-md-4">
 					  	<shiro:user>
 								<div class="btn-group">
 								  <button id="newTodo" type="button" class="btn btn-info" onclick="inputTodo(this)">New imethan todo</button>
@@ -372,7 +372,7 @@
 							</div>
 					  	</shiro:guest>
 					  </div>
-					  <div class="col-md-9">
+					  <div class="col-md-8">
 							<form id="searchFrom" class="form-inline" role="form"  style="float: right;display: inline;">
 							
 								<input type="hidden" id="page" name="page" value="1" />
