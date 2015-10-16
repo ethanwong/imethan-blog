@@ -46,29 +46,45 @@
 
 	<div class="container linkBox" >
 		<div class="row">
-			<div class="col-md-3 icoAlign">
-				<a href="${root}/blog">
-					<span class="glyphicon glyphicon-book" style="color: #5bc0de"></span>
-				</a>
-				<p class="help-block">Read all blogs.</p>
+			<div class="col-md-3 linkWrap" >
+				<div class="link">
+					<div class="ico">
+						<a href="${root}/blog">
+							<span class="glyphicon glyphicon-book" style="color: #5bc0de;"></span>
+						</a>
+						<p class="tx">Read all blogs.</p>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-3 icoAlign">
-				<a href="${root}/todo">
-					<span class="glyphicon glyphicon-tasks" style="color: #f0ad4e"></span>
-				</a>
-				<p class="help-block">Personal todo list.</p>
+			<div class="col-md-3 linkWrap">
+				<div class="link">
+					<div class="ico">
+						<a href="${root}/todo">
+							<span class="glyphicon glyphicon-tasks" style="color: #f0ad4e"></span>
+						</a>
+						<p class="tx">Personal todo list.</p>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-3 icoAlign">
-				<a href="${root}/blog/8">
-					<span class="glyphicon glyphicon-facetime-video" style="color: #5cb85c"></span>
-				</a>
-				<p class="help-block">Some video about me.</p>
+			<div class="col-md-3 linkWrap">
+				<div class="link">
+					<div class="ico">
+						<a href="${root}/blog/8">
+							<span class="glyphicon glyphicon-facetime-video" style="color: #5cb85c"></span>
+						</a>
+						<p class="tx">Some video.</p>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-3 icoAlign">
-				<a href="${root}/about">
-					<span class="glyphicon glyphicon-magnet" style="color: #d9534f;"></span>
-				</a>
-				<p class="help-block">More about me.</p>
+			<div class="col-md-3 linkWrap">
+				<div class="link">
+					<div class="ico">
+						<a href="${root}/about">
+							<span class="glyphicon glyphicon-magnet" style="color: #d9534f;"></span>
+						</a>
+						<p class="tx">More about me.</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -336,7 +336,7 @@
 						<div class="col-md-10 addWarm"></div>
 					</div>
 					<div class="row">
-					  <div class="col-md-4">
+					  <div class="col-md-4" style="padding-bottom: 4px;">
 					  	<shiro:user>
 								<div class="btn-group">
 								  <button id="newTodo" type="button" class="btn btn-info" onclick="inputTodo(this)">New imethan todo</button>
@@ -355,7 +355,6 @@
 								</div>
 					  	</shiro:user>
 					  	<shiro:guest>
-					  		
 					  		<div class="btn-group">
 								  <button id="newTodo" type="button" class="btn btn-info" >imethan todo</button>
 								  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -372,12 +371,10 @@
 							</div>
 					  	</shiro:guest>
 					  </div>
-					  <div class="col-md-8">
-							<form id="searchFrom" class="form-inline" role="form"  style="float: right;display: inline;">
-							
-								<input type="hidden" id="page" name="page" value="1" />
-								<input type="hidden" id="itemId" name="itemId" value="1" />
-								
+					  <div class="col-md-8" style="padding-bottom: 4px;">
+						<form id="searchFrom" class="form-inline" role="form"  style="float: right;display: inline;">
+							<input type="hidden" id="page" name="page" value="1" />
+							<input type="hidden" id="itemId" name="itemId" value="1" />
 								<div class="input-from" style="display: inline;">
 								    <input type="text" id="beginTime" name="beginTime" class="form-control" placeholder="Begin Date" onClick="WdatePicker({dateFmt:'yyyy/MM/dd'})">
 								</div>
@@ -394,9 +391,10 @@
 								      </div>
 								     
 								</div>
-								 <button class="btn btn-default" type="reset" onclick="resetPage()">Reset</button>
-							</form>
-							
+								<c:if test="${isNormal}">
+									 <button class="btn btn-default" type="reset" onclick="resetPage()">Reset</button>
+							 	</c:if>
+						</form>
 					  </div>
 					</div>
 					<br>

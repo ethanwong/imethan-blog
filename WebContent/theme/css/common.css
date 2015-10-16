@@ -10,6 +10,7 @@ hr{
 html {
 	position: relative;
 	min-height: 100%;
+	
 }
 
 body {
@@ -44,19 +45,6 @@ body>.container {
 /* 	-moz-opacity:0.9;  */
 /* 	opacity:0.9; */
 /* } */
-
-.navbar-right{
-	padding-top: 8px;
-}
-.navbar-right .loginsetting{
-	padding-top: 8px;
-	padding-right: 12px;
-	padding-bottom: 8px;
-	
-}
-.navbar-right .loginsetting span{
-	padding-left: 8px;
-}
 
 .footer {
 	margin-top:30px;
@@ -110,9 +98,27 @@ table {
 /* 	color:#333 !important; */
 /* 	line-height: 28px; */
 /* 	font-size: 14px; */
-/* 	width:698px; */
 	display: block !important;
+	text-align: left; 
+	word-break: break-all;
+	
 }
+
+.articleList .article .content span{
+	white-space:inherit !important;
+}
+.articleList .article .content p{
+	white-space:inherit !important;
+}
+.articleList .article .content div{
+	white-space:inherit !important;
+}
+
+/* .articleList .article .content p{ */
+/* 	display: block !important; */
+/* 	text-align: left;  */
+/* 	word-break: break-all; */
+/* } */
 
 .readmore-js-toggle{
 	padding-top:4px;

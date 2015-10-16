@@ -73,9 +73,9 @@
 			</div>
 		</div>
 		
-		<div class="col-md-9" >
-			<div style="display: block;width: auto;">
-				${aboutMe.content}
+		<div class="col-md-9 " >
+			<div class="articleList article content">
+					${aboutMe.content}
 			</div>
 		</div>
 	</div>
