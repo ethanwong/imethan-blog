@@ -149,13 +149,21 @@ function searchArticle(object){
 		    		<a style="padding-top:12px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span></a>
 		    	</shiro:user>
 		    </div>
-		    <div class="col-sm-3" style="padding-right: 14px;" >
-		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;width: 215px;" type="search" class="form-control" placeholder="Search blog" >
+		    <div class="col-sm-3" >
+		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" 
+		      	 type="search" class="form-control" placeholder="Search blog" />
 		    </div>
 	  </div>
 	</form>
 	<hr>
 	<div class="row">
+		<!-- 移动版显示 -->
+		<c:if test="${!isNormal}">
+			<div class="col-md-3">
+				<jsp:include page="/WEB-INF/content/front/blog-channel.jsp"></jsp:include>
+			</div>
+		</c:if>
+		
 		<div class="col-md-9" >
 			<div class="articleList">
 				<c:if test="${articleList == null || fn:length(articleList) == 0}">
@@ -187,10 +195,12 @@ function searchArticle(object){
         		<a href="${root}/blog/article/${channelId}/2<c:if test="${search_title !=null}">?search_title=${search_title}</c:if>"></a>  
    			</div>
 		</div>
-		
-		<div class="col-md-3">
-			<jsp:include page="/WEB-INF/content/front/blog-channel.jsp"></jsp:include>
-		</div>
+		<!-- 电脑版显示 -->
+		<c:if test="${isNormal}">
+			<div class="col-md-3">
+				<jsp:include page="/WEB-INF/content/front/blog-channel.jsp"></jsp:include>
+			</div>
+		</c:if>
 	</div>
 </body>
 </html>

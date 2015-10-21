@@ -1,6 +1,8 @@
 package com.the3.web.interceptor;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +32,12 @@ public class FrontInterceptor implements HandlerInterceptor  {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
+		
+		
+		//底部版权年费，获取当前年份
+		Calendar calendar = Calendar.getInstance();
+		int year = calendar.get(Calendar.YEAR);
+		request.setAttribute("year", year);
 		
 		
 		Device currentDevice = DeviceUtils.getCurrentDevice(request);

@@ -3,7 +3,7 @@
 <div class="container" style="padding-top: 30px;">
 	<hr>
 	<div class="footer">
-		<p class="leftbox">© 2014-2015 ImEthan 闽ICP备15016601号 </p>
+		<p class="leftbox">© 2014-${year} ImEthan 闽ICP备15016601号 </p>
 		<p class="rightbox">
 			<jsp:include page="/WEB-INF/content/base/tongji.jsp"></jsp:include>
 		</p>

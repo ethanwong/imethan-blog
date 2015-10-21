@@ -94,14 +94,14 @@
 		<decorator:body></decorator:body>
 		<div style="margin-top: 20px;">
 			<a href="#top" style="float: right;font-weight: bold;">TOP</a>
-			<div style="float: left;">
-				<c:if test="${isNormal}">
-					[电脑版]
-				</c:if>
-				<c:if test="${isNormal eq false}">
-					[移动版]
-				</c:if>
-			</div>
+<!-- 			<div style="float: left;"> -->
+<%-- 				<c:if test="${isNormal}"> --%>
+<!-- 					[电脑版] -->
+<%-- 				</c:if> --%>
+<%-- 				<c:if test="${isNormal eq false}"> --%>
+<!-- 					[移动版] -->
+<%-- 				</c:if> --%>
+<!-- 			</div> -->
 <!-- 			<a href="javascript:history.back(-1);" style="float: left;font-weight: bold;">BACK</a> -->
 		</div>
 
