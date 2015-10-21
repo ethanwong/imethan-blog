@@ -114,10 +114,14 @@
 					}
 					
 					$(".pager").append(previousButton);
-					$(".pager").append("&nbsp;&nbsp;");
-					$(".pager").append("<li><a>Total:"+result.records+"</a></li>");
-					$(".pager").append("&nbsp;&nbsp;");
-					$(".pager").append("<li><a>Page:"+page+"/"+result.total+"</a></li>");
+					
+					<c:if test="${isNormal}">
+						$(".pager").append("&nbsp;&nbsp;");
+						$(".pager").append("<li><a>Total:"+result.records+"</a></li>");
+						$(".pager").append("&nbsp;&nbsp;");
+						$(".pager").append("<li><a>Page:"+page+"/"+result.total+"</a></li>");
+					</c:if>
+					
 					$(".pager").append("&nbsp;&nbsp;");
 					$(".pager").append(nextButton);
 				}
