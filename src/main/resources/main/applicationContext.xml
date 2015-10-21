@@ -104,9 +104,9 @@
     
     <!-- Email -->
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-	    <property name="host" value="smtp.exmail.qq.com"/>
-	    <property name="username" value="WTTCS@zmyou.com"/>
-	    <property name="password" value="rwy123456"/>
+	    <property name="host" value="smtp.163.com"/>
+	    <property name="username" value="sunccojava@163.com"/>
+	    <property name="password" value="java@suncco"/>
 	</bean>
 	
 	<!-- this is a template message that we can pre-load with default state -->

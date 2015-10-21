@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.the3.base.mail.EmailSender;
 import com.the3.base.repository.DynamicSpecifications;
 import com.the3.base.repository.SearchFilter;
 import com.the3.dto.common.ReturnDto;
@@ -33,6 +34,9 @@ public class MessageServiceImpl implements MessageService {
 	@Autowired
 	private MessageRepository messageRepository;
 	
+	@Autowired
+	private EmailSender emailSender;
+	
 
 	@Override
 	@Transactional(readOnly = false)
@@ -41,6 +45,9 @@ public class MessageServiceImpl implements MessageService {
 		String message = "保存成功";
 		try {
 			entity = messageRepository.save(entity);
+			
+			emailSender.send("ethanwong@qq.com", "自来ImEthanBlog的邮件", entity.getContent());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			isSuccess = false;
