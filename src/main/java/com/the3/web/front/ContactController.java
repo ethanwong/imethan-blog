@@ -44,6 +44,7 @@ public class ContactController extends SuperController{
 			returnDto.setSuccess(false);
 		}else{
 			returnDto = messageService.save(message);
+			returnDto.setMessage("谢谢您的留言，稍后联系您。");
 		}
 		return returnDto;
 	}
