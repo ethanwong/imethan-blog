@@ -44,12 +44,13 @@ public class EmailSender {
         // 设置收件人，寄件人 
         try {
 			msg.setFrom(MimeUtility.encodeText("ImEthan Blog") + "<sunccojava@163.com>");
+	        msg.setTo(email);//收件人
+	        msg.setSubject(MimeUtility.encodeText(title));//标题
+	        msg.setText(MimeUtility.encodeText(content));//内容
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-        msg.setTo(email);//收件人
-        msg.setSubject(title);//标题
-        msg.setText(content);//内容
+
         try{
             this.mailSender.send(msg);
         } catch (MailException ex) {

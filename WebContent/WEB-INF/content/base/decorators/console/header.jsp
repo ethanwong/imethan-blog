@@ -9,7 +9,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 	          	</button>
-				<a class="navbar-brand" href="${root}/console/home"><img style="display: inline;" class="img-circle" src="${root}/theme/images/20131110-ethan.jpg" alt="" width="26px" height="26px" />  ImEthan</a>
+	          	<a class="navbar-brand" href="${root}/console/home"><img style="display: inline;" class="img-circle" src="${root}/theme/images/e-rgb(76, 142, 250).png" alt="" width="26px" height="26px" /> ImEthan Console</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -33,19 +33,21 @@
 						<li><a href="${root}/console/setting">Setting</a></li>
 					</shiro:hasRole>
 				</ul>
-				<div class="navbar-right" >
+				<ul class="nav navbar-nav navbar-right" >
 					<shiro:guest>  
-						<div class="loginsetting">
+						<li>
 							<a href="${root}/console/toSignin" ><span class="glyphicon glyphicon-log-in"></span></a>
-						</div>
+						</li>
 					</shiro:guest>
 					<shiro:user>  
-						<div class="loginsetting">
-							<span class="glyphicon glyphicon-user"></span> Hello,<shiro:principal/>
+						<li>
+							<a><span class="glyphicon glyphicon-user"></span> Hello,<shiro:principal/></a>
+						</li>
+						<li>
 							<a href="${root}/console/signout" ><span class="glyphicon glyphicon-log-out"></span></a>
-						</div>
+						</li>
 					</shiro:user>
-				</div>
+				</ul>
 			</div>
 		</div>
 	</nav>

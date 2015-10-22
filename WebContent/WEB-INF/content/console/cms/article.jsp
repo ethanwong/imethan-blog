@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Article|ImEthan|Full Stack Engineer</title>
 </head>
 <body>
 	<script type="text/javascript">
@@ -20,6 +20,7 @@
 				url: '${root}/console/cms/article/json/1',
 				datatype: "json",
 				mtype: 'POST',
+				styleUI : 'Bootstrap',
 				autowidth : true,
 				autoheight : true,
 				height : 230,

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Channel|ImEthan|Full Stack Engineer</title>
 
 </head>
 
@@ -140,7 +140,7 @@
 	</script>
 	<div class="row">
 		<div class="col-md-3">
-			<button type="button" class="btn btn-primary btn-sm" onclick="inputChannel(this)">Add Channel</button>
+			<button type="button" class="btn btn-primary" onclick="inputChannel(this)">Add Channel</button>
 			<div class="list-group" style="padding-top: 10px;">
 				
 			</div>

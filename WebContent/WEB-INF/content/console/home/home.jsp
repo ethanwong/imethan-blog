@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>Console|ImEthan|Full Stack Engineer</title>
 <script type="text/javascript" src="${root}/theme/highcharts/highcharts.js"></script>
 <script type="text/javascript" src="${root}/theme/highcharts/exporting.js"></script>
 <script type="text/javascript">

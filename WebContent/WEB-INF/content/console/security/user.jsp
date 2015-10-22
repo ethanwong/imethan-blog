@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>User|ImEthan|Full Stack Engineer</title>
 </head>
 <body>
 	<script type="text/javascript">
@@ -16,6 +16,7 @@
 			url: '${root}/console/security/user/json',
 			datatype: "json",
 			mtype: 'POST',
+			styleUI : 'Bootstrap',
 			autowidth : true,
 			autoheight : true,
 			height : 230,
@@ -189,7 +190,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<shiro:hasPermission name="user:input">  
-				<button type="button" class="btn btn-primary btn-sm" onclick="inputUser(this)" >Add User</button>
+				<button type="button" class="btn btn-primary" onclick="inputUser(this)" >Add User</button>
 			</shiro:hasPermission>
 			<shiro:hasPermission name="user:list">  
 				<div style="height: 10px;"></div>

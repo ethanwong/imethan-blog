@@ -47,8 +47,8 @@
 		    <div class="col-sm-9">
 		    	<font style="font-size:30px;float: left;"><a href="${root}/blog/article/${article.id}">${article.title}</a></font>
 		    </div>
-		    <div class="col-sm-3" style="padding-right: 14px;" >
-		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;width: 215px;" type="search" class="form-control" placeholder="Search blog" >
+		    <div class="col-sm-3" >
+		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;" type="search" class="form-control" placeholder="Search blog" >
 		    </div>
 	  </div>
 	</form>

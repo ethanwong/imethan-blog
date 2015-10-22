@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Role|ImEthan|Full Stack Engineer</title>
 </head>
 <body>
 	<script type="text/javascript">
@@ -205,7 +205,7 @@
 	
 	<div class="row">
 		<div class="col-md-3">
-			<button type="button" class="btn btn-primary btn-sm" onclick="inputRole(this)">Add Role</button>
+			<button type="button" class="btn btn-primary" onclick="inputRole(this)">Add Role</button>
 			<br>
 			<div class="list-group" style="padding-top: 10px;">
 			

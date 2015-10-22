@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Resource|ImEthan|Full Stack Engineer</title>
 </head>
 <body>
 	<SCRIPT type="text/javascript">
@@ -256,7 +256,7 @@
 	
 	<div class="row">
 		<div class="col-md-3">
-			<button type="button" class="btn btn-primary btn-sm" onclick="inputRootResource(this)">Add Root</button>
+			<button type="button" class="btn btn-primary" onclick="inputRootResource(this)">Add Root</button>
 			<div id="resource-tree" class="ztree"></div>
 		</div>
 		<div class="col-md-5">

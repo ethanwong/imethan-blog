@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<title>ImEthan | Console | Full Stack Engineer</title>
+	<title><decorator:title></decorator:title></title>
 	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<!-- bootstrap begin -->
@@ -26,14 +26,14 @@
 	<link href="${root}/theme/css/common.css" rel="stylesheet">
 	<script src="${root}/theme/js/common.js"></script>
 	<!-- custom defin end -->
-	
+	    
     <!-- jqgrid begin-->
-	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link href="${root}/theme/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" rel="stylesheet" type="text/css" />
-	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/grid.locale-cn.js" type="text/javascript"></script>
-	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js" type="text/javascript"></script>
-	<script src="${root}/theme/jquery.jqGrid-4.6.0/js/jquery.jqGrid.src.js" type="text/javascript"></script>
+    <script type="text/ecmascript" src="${root}/theme/jqGrid/grid.locale-cn.js"></script>
+    <script type="text/ecmascript" src="${root}/theme/jqGrid/jquery.jqGrid.min.js"></script>
+    <link href="${root}/theme/jqGrid/ui.jqgrid-bootstrap.css" rel="stylesheet" type="text/css"  />
 	<!-- jqgrid end-->
+	
+	
 	
 	<!-- ztree begin -->
 	<link rel="stylesheet" href="${root}/theme/jtree/css/zTreeStyle/zTreeStyle.css" type="text/css">
