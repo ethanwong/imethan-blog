@@ -38,7 +38,7 @@
 			<div class="indexInfo">
 				<div class="title">Hello ImEthan</div>
 				<div class='content'>A blog named imethan,based java.</div>
-				<div class='content' style="font-size: 16px;">我的代码我的国，欢迎访问我的技术部落，这里只生产内容。</div>
+				<div class='content' style="font-size: 16px;">我的代码我的国，欢迎访问我的技术部落格。</div>
 				<a href="${root}/more"><button type="submit" class="btn btn-info">Learn more</button></a>
 			</div>
 		</div>

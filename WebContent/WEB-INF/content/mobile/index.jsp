@@ -37,7 +37,7 @@
 	  <div class="container">
 	  	<h1>Hello ImEthan</h1>
 <!-- 	  	<p>A blog named imethan,based java.</p> -->
-	  	<p>我的代码我的国，欢迎访问我的技术部落。</p>
+	  	<p>我的代码我的国，欢迎访问我的技术部落格。</p>
 	  	<p><a href="${root}/more"><button type="submit" class="btn btn-info">Learn more</button></a></p>
 	  </div>
 	</div>
