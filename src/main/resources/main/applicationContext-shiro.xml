@@ -21,7 +21,7 @@
         <property name="sessionManager" ref="sessionManager"/>
     </bean>
     <!-- 項目自定义的Realm -->
-    <bean id="shiroDbRealm" class="com.the3.service.realm.ShiroDbRealm" />
+    <bean id="shiroDbRealm" class="cn.imethan.service.realm.ShiroDbRealm" />
     
      <!-- Let's use some enterprise caching support for better performance.  You can replace this with any enterprise
          caching framework implementation that you like (Terracotta+Ehcache, Coherence, GigaSpaces, etc -->
@@ -67,7 +67,7 @@
 	<!-- 解决Spring监听事件和Shiro初始化以及的问题 -->
 	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
 		<property name="targetClass">
-			<value>com.the3.service.ShiroRealmServiceBridge</value>
+			<value>cn.imethan.service.ShiroRealmServiceBridge</value>
 		</property>
 		<property name="targetMethod">
 			<value>postInject</value>

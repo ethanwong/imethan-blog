@@ -3,7 +3,7 @@ package spring;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.the3.service.cms.ChannelService;
+import cn.imethan.service.cms.ChannelService;
 
 public class TestSpring {
 	
