@@ -69,10 +69,10 @@
 			<div class="col-md-3 linkWrap">
 				<div class="link">
 					<div class="ico">
-						<a href="${root}/blog/8">
-							<span class="glyphicon glyphicon-facetime-video" style="color: #5cb85c"></span>
+						<a href="${root}/blog/23">
+							<span class="glyphicon glyphicon-gift" style="color: #5cb85c"></span>
 						</a>
-						<p class="tx">Some video.</p>
+						<p class="tx">Personal item.</p>
 					</div>
 				</div>
 			</div>
