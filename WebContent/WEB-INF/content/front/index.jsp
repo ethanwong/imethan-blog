@@ -43,7 +43,9 @@
 			</div>
 		</div>
 	</div>
-
+	<span class="glyphicon glyphicon-info-sign bannerInfo" 
+	title="2014年的夏天，在厦门图书馆旁的一家咖啡厅准备开发ImEthan部落格，间隙用手机拍了三张照片，当前您所看到的这张图片，便是这三张照片合成而来，图中的华硕A40J是学生时代就开始陪伴我的电脑,部落格也是凭借它而来~"></span>
+	
 	<div class="container linkBox" >
 		<div class="row">
 			<div class="col-md-3 linkWrap" >
@@ -82,13 +84,24 @@
 						<a href="${root}/about">
 							<span class="glyphicon glyphicon-magnet" style="color: #d9534f;"></span>
 						</a>
-						<p class="tx">More about me.</p>
+						<p class="tx" >More about me.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
+	
+	<script type="text/javascript">
+	//页面加载时初始化脚本
+	$(document).ready(function () {
+		$('.bannerInfo').tooltip({
+			 placement: 'top',
+			 template:'<div class="tooltip" role="tooltip" style="font-size:14px;"><div class="tooltip-arrow"  ></div><div class="tooltip-inner" style="width:400px!important;background-color: #5BC0DE;text-align:left;"></div></div>',
+			 delay: { "show": 200, "hide": 200 }
+		});
+	});
+	</script>
 </body>
 </html>
 

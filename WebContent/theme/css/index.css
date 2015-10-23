@@ -80,3 +80,12 @@
 	padding-top: 20px;
 }
 /*linkbox end*/
+
+
+.bannerInfo{
+	color: white;
+	position: absolute;
+	margin-top: 370px;
+	margin-left: 76%;
+	font-size: 14px;
+}
