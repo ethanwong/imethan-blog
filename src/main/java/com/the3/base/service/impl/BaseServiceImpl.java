@@ -1,6 +1,5 @@
 package com.the3.base.service.impl;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,10 +10,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class BaseServiceImpl<T> {
-	
-	private Logger logger = Logger.getLogger(BaseServiceImpl.class);  
-	
-
 	
 }
 

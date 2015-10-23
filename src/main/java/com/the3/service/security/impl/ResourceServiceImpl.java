@@ -6,7 +6,8 @@ import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,7 @@ import com.the3.service.security.ResourceService;
 @Transactional(readOnly = true)
 public class ResourceServiceImpl implements ResourceService {
 	
-	private Logger logger = Logger.getLogger(ResourceServiceImpl.class);  
+	private Logger logger = LogManager.getLogger(ResourceServiceImpl.class);
 	
 	@Autowired
 	private ResourceRepository resourceRepository;

@@ -7,7 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.the3.dto.common.ReturnDto;
 import com.the3.entity.security.Permission;
 import com.the3.repository.security.PermissionRepository;
+import com.the3.service.message.impl.MessageServiceImpl;
 import com.the3.service.security.PermissionService;
 
 
@@ -28,7 +30,7 @@ import com.the3.service.security.PermissionService;
 @Transactional(readOnly = true)
 public class PermissionServiceImpl  implements PermissionService {
 	
-	private Logger logger = Logger.getLogger(PermissionServiceImpl.class);  
+	private Logger logger = LogManager.getLogger(PermissionServiceImpl.class);
 	
 	@Autowired
 	private PermissionRepository permissionRepository;

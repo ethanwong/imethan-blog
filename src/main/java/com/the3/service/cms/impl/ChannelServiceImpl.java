@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,7 +33,7 @@ import com.the3.service.cms.ChannelService;
 @Transactional(readOnly = true)
 public class ChannelServiceImpl implements ChannelService {
 	
-	private Logger logger = Logger.getLogger(ChannelServiceImpl.class);  
+	private Logger logger = LogManager.getLogger(ChannelServiceImpl.class);
 	
 	@Autowired
 	private ChannelRepository channelRepository;

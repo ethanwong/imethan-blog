@@ -7,7 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,7 +34,7 @@ import com.the3.service.security.RoleService;
 @Transactional(readOnly = true)
 public class RoleServiceImpl implements RoleService {
 	
-	private Logger logger = Logger.getLogger(ResourceServiceImpl.class);  
+	private Logger logger = LogManager.getLogger(RoleServiceImpl.class);
 	
 	@Autowired
 	private RoleRepository roleRepository;

@@ -3,7 +3,8 @@ package com.the3.service.cms.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +24,7 @@ import com.the3.repository.cms.ChannelRepository;
 import com.the3.service.cms.ArticleService;
 import com.the3.service.cms.ChannelService;
 
+
 /**
  * ArticleServiceImpl.java
  *
@@ -33,7 +35,7 @@ import com.the3.service.cms.ChannelService;
 @Transactional(readOnly = true)
 public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> implements ArticleService {
 	
-	private Logger logger = Logger.getLogger(ArticleServiceImpl.class);  
+	private Logger logger = LogManager.getLogger(ArticleServiceImpl.class);
 	
 	@Autowired
 	private ArticleRepository articleRepository;

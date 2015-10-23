@@ -3,7 +3,8 @@ package com.the3.service.todo.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ import com.the3.service.todo.TodoItemService;
 @Transactional(readOnly = true)
 public class TodoItemServiceImpl implements TodoItemService {
 	
-	private Logger logger = Logger.getLogger(TodoItemServiceImpl.class);  
+	private Logger logger = LogManager.getLogger(TodoItemServiceImpl.class);
 	
 	@Autowired
 	private TodoItemRepository todoItemRepository;
