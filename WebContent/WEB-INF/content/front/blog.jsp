@@ -65,8 +65,8 @@ function generateArticle(json){
 		"<shiro:user>&nbsp;&nbsp;"+titleIco+"</shiro:user>"+
 		"<shiro:user>"+
 		"<div class='blog-article-toolbar'>"+
-		"	<a id='article"+item.id+"' href='#' onclick='deleteArticle("+item.id+",this)'><span class='glyphicon glyphicon-minus'></span></a>"+
-		"	<a href='${root}/blog/article/input/"+item.channelId+"/"+item.id+"' ><span class='glyphicon glyphicon-pencil'></span></a>"+
+		"	<a id='article"+item.id+"' href='#' onclick='deleteArticle("+item.id+",this)'><span  class='glyphicon glyphicon-trash'></span></a>"+
+		"	<a href='${root}/blog/article/input/"+item.channelId+"/"+item.id+"' ><span  class='glyphicon glyphicon-edit'></span></a>"+
 		"</div>"+
 		"</shiro:user>"+
 		
@@ -182,8 +182,8 @@ function searchArticle(object){
 						</shiro:user>
 						<shiro:user>
 							<div class='blog-article-toolbar'>
-								<a href="#" onclick="deleteArticle(${article.id},this)"><span class='glyphicon glyphicon-minus'></span></a>
-								<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span class='glyphicon glyphicon-pencil'></span></a>
+								<a href="#" onclick="deleteArticle(${article.id},this)"><span  class='glyphicon glyphicon-trash'></span></a>
+								<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span  class='glyphicon glyphicon-edit'></span></a>
 							</div>
 						</shiro:user>
 						<div class='content'>${article.content}</div>

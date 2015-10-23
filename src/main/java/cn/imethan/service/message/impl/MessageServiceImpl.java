@@ -74,6 +74,39 @@ public class MessageServiceImpl implements MessageService {
 		return result;
 	}
 
+
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto hidden(Long id) {
+		boolean isSuccess = true;
+		String message = "更新成功";
+		int isShow = 0;
+		try {
+			messageRepository.updateIsShowById(id,isShow);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+			message = "更新失败";
+		}
+		return new ReturnDto(isSuccess,message);
+	}
+
+
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto deleteById(Long id) {
+		boolean isSuccess = true;
+		String message = "删除成功";
+		try {
+			messageRepository.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+			message = "删除失败";
+		}
+		return new ReturnDto(isSuccess,message);
+	}
+
 }
 
 

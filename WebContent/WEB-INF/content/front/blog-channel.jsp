@@ -58,8 +58,8 @@ function publishChannel(object,id){
 </div>
 <shiro:user>
 	<div class="blog-channel-toolbar">
-		<a href="${root}/blog/channel/input/${channelId}"><span class="glyphicon glyphicon-pencil"></span></a>
-		<a href="#" onclick="deleteChannel(${channelId})"><span class="glyphicon glyphicon-minus"></span></a>
+		<a href="${root}/blog/channel/input/${channelId}"><span class="glyphicon glyphicon-edit"></span></a>
+		<a href="#" onclick="deleteChannel(${channelId})"><span class="glyphicon glyphicon-trash"></span></a>
 		<a href="${root}/blog/channel/input/0"><span class="glyphicon glyphicon-plus"></span></a>
 	</div>
 </shiro:user>

@@ -43,7 +43,6 @@
 					$("#editorContentError").html("");
 					$('#editorWarn').html('草稿'+result.message);
 					var id = result.entity.id;
-					console.log("id:"+id);
 					$('#id').val(id);
 				}
 			});

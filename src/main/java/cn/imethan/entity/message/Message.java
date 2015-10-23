@@ -20,6 +20,7 @@ public class Message extends BaseEntity {
 	private String name;
 	private String email;
 	private String content;
+	private int isShow = 1;
 	public String getName() {
 		return name;
 	}
@@ -38,7 +39,11 @@ public class Message extends BaseEntity {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public int getIsShow() {
+		return isShow;
+	}
+	public void setIsShow(int isShow) {
+		this.isShow = isShow;
+	}
 
 }
-
-

@@ -6,12 +6,53 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Contact|ImEthan|Full Stack Engineer</title>
 <script type="text/javascript">
-	
 	//页面加载时初始化脚本
 	$(document).ready(function () {
-		//加载用户信息
-		loadUserInfo("imethan");
+		loadUserInfo("imethan");//加载用户信息
+		loadMessage(1);//加载消息
 	});
+	
+	//隐藏
+	function hiddenOne(id){
+		$.ajax({
+			url:"${root}/contact/hidden/"+id,
+			type:"POST",
+			dateType:"json",
+			success:function(data){
+				var result = eval("(" + data + ")");
+				var messageType = "success";
+				if(result.success == false){
+					messageType = "error";
+				};
+				
+				showMsg(messageType,result.message);
+				loadMessage(1);
+			}
+		});
+	};
+	//删除
+	function deleteOne(id){
+		$('#deleteConfirmModal').modal({
+		 	 keyboard: true
+		});
+		$("#deleteConfirmModalClick").click(function(){
+			$.ajax({
+				url:"${root}/contact/delete/"+id,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					var messageType = "success";
+					if(result.success == false){
+						messageType = "error";
+					};
+					
+					showMsg(messageType,result.message);
+					loadMessage(1);
+				}
+			});
+		});
+	};
 	
 	//加载用户信息
 	function loadUserInfo(username){
@@ -42,8 +83,7 @@
 			var content = $("#content").val();
 			$.ajax({
 				type:"POST",
-				url:"${root}/contact/save",
-				data: "name="+name+"&email="+email+"&content="+encodeURIComponent(content),
+				url:"${root}/contact/save?name="+name+"&email="+email+"&content="+encodeURIComponent(content),
 			    dateType:"json",
 				success:function(data){
 					
@@ -51,18 +91,87 @@
 					var messageType = "success";
 					if(result.success == false){
 						messageType = "error";
-					}else{
-						$("#name").val("");
-						$("#email1").val("");
-						$("#content").val("");
-					};
+					}
 					
-					showMsg(messageType,result.message);
+					$(".addWarm").html("<p class='bg-primary' style='padding: 8px;display: inline;'>"+result.message+"</p>");
 					
-	
+					 setTimeout(
+							  function(){
+								  $(".addWarm").html("");
+								  $("#name").val("");
+									$("#email1").val("");
+									$("#content").val("");
+							  }
+					  , 3000);
+					loadMessage(1);
 				}
 			});
 		};
+	};
+	
+	
+	//加载消息
+	function loadMessage(page){
+		$.ajax({
+			url:"${root}/contact/json/"+page,
+			type:"POST",
+			dateType:"json",
+			success:function(data){
+				var result = eval("(" + data + ")");
+				$("#messageList").html("");
+				$.each(result.rows, function(i, item) {
+				var message = ""+
+					"<div class='panel panel-default'>"+
+						"<div class='panel-body'>"+
+							"<span style='float: left;'><span class='glyphicon glyphicon-user'></span> "+item.name+"</span>"+
+							"<span style='float: right;'>"+
+								"<span  class='glyphicon glyphicon-calendar'></span> "+item.createTime+
+								"<shiro:user>"+
+								"&nbsp;&nbsp;<a href='#' onclick='hiddenOne("+item.id+")'><span  class='glyphicon glyphicon-flag' ></span><a>"+
+								"&nbsp;&nbsp;<a href='#' onclick='deleteOne("+item.id+")'><span  class='glyphicon glyphicon-trash' ></span><a>"+
+								"</shiro:user>"+
+								"</span>"+
+							"<br>"+
+							"<div style='display: inline-block;padding-top: 10px;'>"+
+							item.content+
+							"</div>"+
+						"</div>"+
+					"</div>";
+					$("#messageList").append(message);
+				});
+				
+				// 处理上页和下页按钮
+				var next = result.next;
+				var previous = result.previous;
+				var page = result.page;
+				
+				$(".pager").html("");
+				var disabled = "class='disabled'";
+				var nextButton = "";
+				var previousButton = "";
+				
+				if(previous ==  true){
+					previousButton ="<li><a href='#' onclick='loadMessage("+(page-1)+")'>Previous</a></li>";
+				}else{
+					previousButton ="<li class='disabled'><a href='#'>Previous</a></li>";
+				}
+				
+				if(next == true){
+				    nextButton = "<li><a href='#' onclick='loadMessage("+(page+1)+")'>Next</a></li>";
+				}else{
+					nextButton ="<li class='disabled'><a href='#'>Next</a></li>";
+					
+				}
+				if(!previous && !next){
+					previousButton ="";
+					nextButton ="";
+				}
+				
+				$(".pager").append(previousButton);
+				$(".pager").append("&nbsp;&nbsp;");
+				$(".pager").append(nextButton);
+			}
+		});
 	};
 
 </script>
@@ -73,23 +182,27 @@
 	<hr>
 	<div class="row">
 		<div class="col-md-9" >
+			<div id="messageList"></div>
+			<nav><ul class="pager"></ul></nav>
+			
 			<div class="panel panel-default contact" >
+				<div class="panel-heading">Leave a message <font color="red">*</font>为必填项</div>
 				<div class="panel-body">
-					<h2 style="margin-top: 0px;">Can you leave a message</h2>
 					<form role="form" action="#" method="post" id="inputForm">
 					  <div class="form-group">
-					    <label for="name">Name</label>
+					    <label for="name">Name<font color="red">*</font></label>
 					    <input type="text" class="form-control required" id="name"  name='name' placeholder="Enter you name" maxlength="60">
 					  </div>
 					  <div class="form-group">
-					    <label for="email1">Email</label>
+					    <label for="email1">Email<font color="red">*</font></label>
 					    <input type="email" class="form-control required" id="email1" name="email1" placeholder="Enter you email">
 					  </div>
 					  <div class="form-group">
-					    <label for="content">Message</label>
-					    <textarea rows="6" cols="20"  class="form-control required" id="content" name="content" placeholder="Enter you message" ></textarea>
+					    <label for="content">Message<font color="red">*</font></label>
+					    <textarea rows="4" cols="20"  class="form-control required" id="content" name="content" placeholder="Enter you message" ></textarea>
 					  </div>
-					  <button type="button" class="btn btn-info" onclick="saveMessage()">Save message</button>
+					  <button type="button" class="btn btn-info" onclick="saveMessage()">Save Message</button>
+					  <span class="addWarm"></span>
 					</form>
 				</div>
 			</div>

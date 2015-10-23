@@ -53,7 +53,7 @@
 	<font style="font-size:30px;" >About me</font>
 	<small style="padding-top: 20px;padding-left: 10px;padding-right: 10px;">我的个人简历</small>
 	<shiro:user>
-		<a href="${root}/blog/article/input/${aboutMe.channelId}/${aboutMe.id}?locate=about" title="编辑简历" ><span class='glyphicon glyphicon-pencil'></span></a>
+		<a href="${root}/blog/article/input/${aboutMe.channelId}/${aboutMe.id}?locate=about" title="编辑简历" ><span  class='glyphicon glyphicon-edit'></span></a>
 	</shiro:user>
 	<hr>
 	<div class="row">

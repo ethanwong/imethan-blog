@@ -31,6 +31,26 @@ public interface MessageService {
 	 * @return
 	 */
 	public Page<Message> findPage(List<SearchFilter> filters,PageRequest pageable);
+	
+	/**
+	 * 隐藏消息
+	 * @param id
+	 * @return
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2015年10月23日上午11:03:07
+	 */
+	public ReturnDto hidden(Long id);
+	
+	/**
+	 * 根据ID删除
+	 * @param id
+	 * @return
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2015年10月23日上午11:12:15
+	 */
+	public ReturnDto deleteById(Long id);
 
 }
 

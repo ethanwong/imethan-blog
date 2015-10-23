@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 <script type="text/javascript">
-<!--
 //页面加载时初始化脚本
 $(document).ready(function () {
 	loadCommnet(1);
@@ -22,22 +21,16 @@ function saveComment(){
 			success:function(data){
 				var result = eval("(" + data + ")");
 				
-				$("#username").val("");
-				$("#email").val("");
-				$("#comment").val("");
-				
-				$(".addWarm").html("<p class='bg-primary' style='padding: 9px;display: inline;'>"+result.message+"</p>");
-				
-// 				var comment =  generateComment(result.entity.username,result.entity.createTime,result.entity.content);
-// 				var list = $(".commentList").html();
-// 				$(".commentList").html("");
-// 				$(".commentList").append(comment+list);
-
-				loadCommnet(1);
+				$(".addWarm").html("<p class='bg-primary' style='padding: 8px;display: inline;'>"+result.message+"</p>");
 				
 				setTimeout(function(){
 					$(".addWarm").html("");
-				},2000);
+					$("#username").val("");
+					$("#email").val("");
+					$("#comment").val("");
+					
+					loadCommnet(1);
+				},3000);
 			}
 		});
 	}
@@ -81,9 +74,6 @@ function loadCommnet(page){
 				var previous = result.previous;
 				var page = result.page;
 				
-//	 			console.log("---next:"+next);
-//	 			console.log("---previous:"+previous);
-				
 				$(".pager").html("");
 				var disabled = "class='disabled'";
 				var nextButton = "";
@@ -91,18 +81,14 @@ function loadCommnet(page){
 				
 				if(previous ==  true){
 					previousButton ="<li><a href='#comments' onclick='loadCommnet("+(page-1)+")'>Previous</a></li>";
-//	 				 console.log("---previousButton:"+previousButton);
 				}else{
 					previousButton ="<li class='disabled'><a href='#'>Previous</a></li>";
-//	 				console.log("---previousButton:"+previousButton);
 				}
 				
 				if(next == true){
 				    nextButton = "<li><a href='#comments' onclick='loadCommnet("+(page+1)+")'>Next</a></li>";
-//	 			    console.log("---nextButton:"+nextButton);
 				}else{
 					nextButton ="<li class='disabled'><a href='#'>Next</a></li>";
-//	 				console.log("---nextButton:"+nextButton);
 				}
 				
 				$(".pager").append(previousButton);
@@ -118,7 +104,6 @@ function loadCommnet(page){
 	});
 	
 };
-//-->
 </script>
 	<div class="row" id="comments">
 		<div class="col-md-12" >
@@ -142,24 +127,23 @@ function loadCommnet(page){
 			</div>
 			<nav><ul class="pager"></ul></nav>
 			
-			<h4><strong>Add Comment</strong></h4>
-			<hr>
 			<div class="panel panel-default">
+				  <div class="panel-heading">Add Comment <font color="red">*</font>为必填项</div>
 				  <div class="panel-body">
 					  	<form role="form" method="post" action="" id="inputForm">
 					  	  <input id="extendId"  type="hidden" name="extendId" value="${article.id}">
 					  	  
 						  <div class="form-group">
-						    <label for="username">Name</label>
+						    <label for="username">Name<font color="red">*</font></label>
 						    <input id="username" name="username"  type="text" class="form-control required" placeholder="Enter name" value="" maxlength="40">
 						  </div>
 						  <div class="form-group">
-						    <label for="emails">Email</label>
+						    <label for="emails">Email<font color="red">*</font></label>
 						    <input id="email" name="emails"  type="email" class="form-control" placeholder="Enter email" value="" maxlength="40">
 						  </div>
 						  <div class="form-group">
-						    <label for="comment">Comment</label>
-						    <textarea id="comment" rows="5" cols="20" class="form-control required" placeholder="Enter comment" name="comment" maxlength="1000"></textarea>
+						    <label for="comment">Comment<font color="red">*</font></label>
+						    <textarea id="comment" rows="4" cols="20" class="form-control required" placeholder="Enter comment" name="comment" maxlength="1000"></textarea>
 						  </div>
 						  
 						  <button type="button" class="btn btn-info" onclick="saveComment()">Save Comment</button>
