@@ -45,7 +45,7 @@
 	<form class="form-horizontal" role="form">
 	  <div class="form-group">
 		    <div class="col-sm-9">
-		    	<font style="font-size:30px;float: left;"><a href="${root}/blog/article/${article.id}">${article.title}</a></font>
+		    	<a style="font-size:24px;float: left;color: #4183c4;" href="${root}/blog/article/${article.id}">${article.title}</a>
 		    </div>
 		    <div class="col-sm-3" >
 		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;" type="search" class="form-control" placeholder="Search blog" >
@@ -62,8 +62,8 @@
 					
 					<shiro:user>
 						<div class='blog-article-toolbar'>
-							<a href="#" onclick="deleteArticle(${article.id},this)"><span class='glyphicon glyphicon-minus'></span></a>
-							<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span class='glyphicon glyphicon-pencil'></span></a>
+							<a href="#" onclick="deleteArticle(${article.id},this)"><span class='glyphicon glyphicon-trash'></span></a>
+							<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span class='glyphicon glyphicon-edit'></span></a>
 						</div>
 					</shiro:user>
 					<div class='content'>${article.content}</div>
