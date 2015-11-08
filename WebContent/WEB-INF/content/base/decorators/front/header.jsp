@@ -26,7 +26,7 @@ $('.glyphicon-log-out').tooltip();
 				<li <c:if test="${module eq 'blog'}">class="active"</c:if>><a href="${root}/blog">Blog</a></li>
 				<li <c:if test="${module eq 'todo' || module eq 'todoitem'}">class="active"</c:if>><a href="${root}/todo">Todo</a></li>
 				<li <c:if test="${module eq 'contact'}">class="active"</c:if>><a href="${root}/contact">Contact</a></li>
-				<li ><a href="https://github.com/ethanxm" target="_blank">GitHub</a></li>
+				<li ><a href="https://github.com/ethanwong" target="_blank">GitHub</a></li>
 				<li <c:if test="${module eq 'about'}">class="active"</c:if>><a href="${root}/about">About</a></li>
 			</ul>
 	        

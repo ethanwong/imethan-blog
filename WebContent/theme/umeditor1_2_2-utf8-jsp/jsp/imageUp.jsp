@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ page import="com.the3.utils.Uploader" %>
+<%@ page import="cn.imethan.utils.Uploader" %>
 <%
     request.setCharacterEncoding("utf-8");
 	response.setCharacterEncoding("utf-8");
