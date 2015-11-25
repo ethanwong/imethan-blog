@@ -27,7 +27,10 @@ import org.springframework.web.multipart.MultipartFile;
 import cn.imethan.common.encode.EncryptUtils;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.security.User;
+import cn.imethan.entity.system.Setting;
+import cn.imethan.entity.system.SettingCode;
 import cn.imethan.service.security.UserService;
+import cn.imethan.service.system.SettingService;
 
 /**
  * SettingController.java
@@ -41,6 +44,8 @@ public class SettingController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private SettingService settingService;
 	
 	/**
 	 * 系统设置首页
@@ -55,11 +60,21 @@ public class SettingController {
 		model.addAttribute("type", type);
 		
 		if(!StringUtils.isEmpty(type)){
+			
 			Subject subject =SecurityUtils.getSubject();
 			if(subject.getPrincipal() != null){
 				String username = subject.getPrincipal().toString();
 				User user = userService.getByUsername(username);
 				model.addAttribute("user", user);
+			}
+			
+			if(type.equals("about")){
+				Setting setting = settingService.getByCode(SettingCode.RESUME.name());
+				if(setting != null){
+					model.addAttribute("isPublishResume", setting.getContent());
+					model.addAttribute("description", setting.getDescription());
+				}
+
 			}
 		}
 		
@@ -158,6 +173,18 @@ public class SettingController {
 			returnDto = userService.updatePassword(username,EncryptUtils.Encrypt(password, "SHA-1"));
 		}
 		return returnDto;
+	}
+	
+	@RequiresUser//当前用户需为已认证用户或已记住用户 
+	@ResponseBody
+	@RequestMapping(value="/updateAboutSet", method = RequestMethod.POST)
+	public ReturnDto updateAboutSet(@RequestParam ("isPublish") boolean isPublish,@RequestParam("content") String content){
+		
+		System.out.println("isPublish:"+isPublish);
+		System.out.println("content:"+content);
+		
+		
+		return settingService.updateAboutSet(isPublish,content);
 	}
 
 }
