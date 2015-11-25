@@ -54,11 +54,13 @@
 	<small style="padding-top: 20px;padding-left: 10px;padding-right: 10px;">我的个人简历</small>
 	<shiro:user>
 		<a href="${root}/blog/article/input/${aboutMe.channelId}/${aboutMe.id}?locate=about" title="编辑简历" ><span  class='glyphicon glyphicon-edit'></span></a>
+		&nbsp;&nbsp;
+		<a href="${root}/setting/about" title="设置简历" ><span  class='glyphicon glyphicon-cog'></span></a>
 	</shiro:user>
 	<hr>
 	<div class="row">
 		<div class="col-md-3">
-			<div class="userinfo">
+			<div class="userinfo"  >
 				<p style="line-height: 36px;">
 					<img class="img-thumbnail" src="${root}/upload/avatar/default-avatar-ethan.jpg" alt="${userInfo.nickname}" style="height: 180px;" >
 				</p>
