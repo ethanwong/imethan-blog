@@ -34,7 +34,7 @@ public class AboutController extends SuperController{
     	
     	//简历是否隐藏处理
     	Setting resumeSetting = settingService.getByCode(SettingCode.RESUME.name());
-    	if(resumeSetting.getContent().equals("false")){
+    	if(resumeSetting!=null && resumeSetting.getContent().equals("false")){
     		aboutMe.setContent(resumeSetting.getDescription());
     	}
     	
