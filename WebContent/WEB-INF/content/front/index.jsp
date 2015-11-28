@@ -16,6 +16,7 @@
 	
 	<!-- custom defin begin -->
 	<link href="${root}/theme/css/common.css" rel="stylesheet">
+	<link href="${root}/theme/css/footer.css" rel="stylesheet">
 	<link href="${root}/theme/css/index.css" rel="stylesheet">
 	<script src="${root}/theme/js/common.js"></script>
 	<!-- custom defin end -->
@@ -93,8 +94,9 @@
 	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
 	
 	<script type="text/javascript">
-	//页面加载时初始化脚本
 	$(document).ready(function () {
+		
+		// banner图片描述显示
 		$('.bannerInfo').tooltip({
 			 placement: 'top',
 			 template:'<div class="tooltip" role="tooltip" style="font-size:14px;"><div class="tooltip-arrow"  ></div><div class="tooltip-inner" style="width:400px!important;background-color: #5BC0DE;text-align:left;"></div></div>',

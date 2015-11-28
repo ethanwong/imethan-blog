@@ -1,0 +1,14 @@
+.footer {
+	margin-top:20px;
+	margin-bottom:20px;
+	position: relative;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+}
+.footer .leftbox {
+	float: left;
+}
+.footer .rightbox {
+	float: right;
+}

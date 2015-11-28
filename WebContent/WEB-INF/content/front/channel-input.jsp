@@ -45,7 +45,6 @@
 </head>
 <body>
 	
-	<%@ include file="/WEB-INF/content/base/kindeditor.jsp"%>
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default">

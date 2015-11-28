@@ -263,6 +263,7 @@
 					<a href="${root}/setting/profile" class="list-group-item <c:if test="${type eq 'profile'}">selected</c:if>">Profile</a>
 					<a href="${root}/setting/account" class="list-group-item <c:if test="${type eq 'account'}">selected</c:if>">Account</a>
 					<a href="${root}/setting/about" class="list-group-item <c:if test="${type eq 'about'}">selected</c:if>">About</a>
+					<a href="${root}/setting/menu" class="list-group-item <c:if test="${type eq 'menu'}">selected</c:if>">Menu</a>
 				</div>
 			</div>
 		</div>
@@ -350,6 +351,66 @@
 						  	 </div>
 							 <button  type="button" class="btn btn-info" onclick="updateAbout()">Update</button>
 							</form>
+						</c:if>
+						
+						<c:if test="${type eq 'menu' }">
+							<button  type="button" class="btn btn-info" id="newMenu" >New menu</button>
+							<div id="menuListBox" style="padding-top: 10px;"></div>
+							<script type="text/javascript">
+								$(document).ready(function () {
+									$.ajax({
+										url : "${root}/menu/json",
+										type : "POST",
+										dateType : "json",
+										success : function(data) {
+											var result = eval("(" + data + ")");
+											$.each(result, function(i, item) {
+												$("#menuListBox").append(item.name);
+											})
+										}
+									});
+									
+									$("#newMenu").click(function(){
+										var newBox = 
+											"<div class='form-group'>"+
+							   					 "<label for='oldPassword'>Name</label>"+
+							   					 "<input class='form-control' name='name' value='' type='text' placeholder=''/>"+
+											 "</div>"+
+											"<div class='form-group'>"+
+							   					 "<label for='oldPassword'>Url</label>"+
+							   					 "<input class='form-control' name='url' value='' type='text' placeholder=''/>"+
+											 "</div>"+
+											"<div class='form-group'>"+
+							   					 "<label for='oldPassword'>OrderNo</label>"+
+							   					 "<input class='form-control' name='orderNo' value='' type='text' placeholder=''/>"+
+											 "</div>"+
+											"<div class='form-group'>"+
+							   					 "<label for='oldPassword'>IsShow</label>"+
+							   					 "<input class='form-control' name='isShow' value='' type='text' placeholder=''/>"+
+											 "</div>"+
+											 
+// 										 <div class='radio'>
+// 											  <label>
+// 												    <input type='radio' name="isPublishResume" class="isPublishResume" value="true" <c:if test="${isPublishResume == null || isPublishResume eq true }">checked="checked"</c:if>/>
+// 												    Publish Resume
+// 											  </label>
+// 											  <label>
+// 												    <input type="radio" name="isPublishResume" class="isPublishResume" value="false" <c:if test="${isPublishResume eq false }">checked="checked"</c:if> />
+// 												    Hidden Resume
+// 											  </label>
+// 										  </div>
+											 
+											"<div class='form-group'>"+
+							   					 "<label for='oldPassword'>Description</label>"+
+							   					 "<input class='form-control' name='description' value='' type='text' placeholder=''/>"+
+											 "</div>"
+											 
+											 
+											 ;
+										$("#menuListBox").append(newBox);
+									});
+								})
+							</script>
 						</c:if>
 				  </div>
 			</div>

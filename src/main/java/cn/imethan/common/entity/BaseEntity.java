@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.MappedSuperclass;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import cn.imethan.common.json.CustomDateSerializer;
@@ -36,7 +38,10 @@ public class BaseEntity extends IdEntity{
 		this.modifyTime = modifyTime;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
 }
 
 

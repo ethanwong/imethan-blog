@@ -220,8 +220,6 @@
 // 		};
 	</script>
 	
-	<%@ include file="/WEB-INF/content/base/kindeditor.jsp"%>
-	
 	<div class="row">
 		<div class="col-md-3">
 			<div class="list-group">
