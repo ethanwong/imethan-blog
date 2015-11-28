@@ -68,12 +68,12 @@
 					</shiro:user>
 					<div class='content'>${article.content}</div>
 				</div>
-				<jsp:include page="/WEB-INF/content/front/comment-input.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/content/front/blog/comment-input.jsp"></jsp:include>
 			</div>
 		</div>
 		
 		<div class="col-md-3" >
-			<jsp:include page="/WEB-INF/content/front/blog-channel.jsp"></jsp:include>
+			<jsp:include page="/WEB-INF/content/front/blog/blog-channel.jsp"></jsp:include>
 		</div>
 	</div>
 </body>

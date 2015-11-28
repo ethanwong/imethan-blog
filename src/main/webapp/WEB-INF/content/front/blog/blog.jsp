@@ -160,7 +160,7 @@ function searchArticle(object){
 		<!-- 移动版显示 -->
 		<c:if test="${!isNormal}">
 			<div class="col-md-3">
-				<jsp:include page="/WEB-INF/content/front/blog-channel.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/content/front/blog/blog-channel.jsp"></jsp:include>
 			</div>
 		</c:if>
 		
@@ -198,7 +198,7 @@ function searchArticle(object){
 		<!-- 电脑版显示 -->
 		<c:if test="${isNormal}">
 			<div class="col-md-3">
-				<jsp:include page="/WEB-INF/content/front/blog-channel.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/content/front/blog/blog-channel.jsp"></jsp:include>
 			</div>
 		</c:if>
 	</div>

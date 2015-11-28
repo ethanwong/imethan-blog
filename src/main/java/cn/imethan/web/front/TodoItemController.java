@@ -40,7 +40,7 @@ public class TodoItemController{
 	 */
     @RequestMapping("")
 	public String todoitem(Model model){
-		return "/front/todo-item";
+		return "/front/todo/todo-item";
 	}
     
     /**
@@ -51,7 +51,7 @@ public class TodoItemController{
     @RequiresUser//当前用户需为已认证用户或已记住用户 
     @RequestMapping("/input")
     public String input(Model model){
-    	return "/front/todo-item-input";
+    	return "/front/todo/todo-item-input";
     }
     
 //    todoitem/publish

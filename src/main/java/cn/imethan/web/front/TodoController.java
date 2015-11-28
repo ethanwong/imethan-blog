@@ -62,7 +62,7 @@ public class TodoController{
 		
     	model.addAttribute("todoItems", todoItemService.getAll(filters));
     	
-        return "front/todo";
+        return "front/todo/todo";
     }
     
     @RequestMapping("/input/{itemId}")
@@ -81,7 +81,7 @@ public class TodoController{
 			model.addAttribute("todo", todo);
 		}
 		
-    	return "front/todo-input";
+    	return "front/todo/todo-input";
     }
     
     @RequiresUser//当前用户需为已认证用户或已记住用户 
@@ -97,7 +97,7 @@ public class TodoController{
     	
 		model.addAttribute("todo", todo);
     	
-    	return "front/todo-edit";
+    	return "front/todo/todo-edit";
     }
     
     

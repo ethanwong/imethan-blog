@@ -78,7 +78,7 @@ public class SettingController {
 			}
 		}
 		
-		return "front/setting";
+		return "front/setting/setting";
 	}
 	
 	/**

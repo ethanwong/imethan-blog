@@ -24,7 +24,7 @@
 					</shiro:user>
 					<div class='content'>${article.content}</div>
 				</div>
-				<jsp:include page="/WEB-INF/content/front/comment-input.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/content/front/blog/comment-input.jsp"></jsp:include>
 			</div>
 		</div>
 		

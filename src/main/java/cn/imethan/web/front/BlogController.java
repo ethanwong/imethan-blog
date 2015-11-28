@@ -70,7 +70,7 @@ public class BlogController extends SuperController{
     	//设置默认栏目ID
     	model.addAttribute("channelId", 0);
     	
-        return "front/blog";
+        return "front/blog/blog";
     }
     
     /**
@@ -106,7 +106,7 @@ public class BlogController extends SuperController{
     	//设置栏目ID
     	model.addAttribute("channelId", channelId);
     	
-    	return "front/blog";
+    	return "front/blog/blog";
     }
     
     /**
@@ -158,7 +158,7 @@ public class BlogController extends SuperController{
     	}
     	model.addAttribute("locate", request.getParameter("locate"));//发起跳转位置
 		model.addAttribute("channelId", channelId);
-		return "front/article-input";
+		return "front/blog/article-input";
 	}
     
     /**
@@ -176,7 +176,7 @@ public class BlogController extends SuperController{
     		model.addAttribute("channel", channel);
     	}
     	
-    	return "front/channel-input";
+    	return "front/blog/channel-input";
     }
     
     /**
@@ -202,7 +202,7 @@ public class BlogController extends SuperController{
     		
     		
     	}
-    	return "front/article-detail";
+    	return "front/blog/article-detail";
     }
 
 }
