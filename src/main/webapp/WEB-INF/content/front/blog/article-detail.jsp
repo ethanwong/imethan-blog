@@ -25,7 +25,7 @@
 					
 					setTimeout(function(){
 						location.href = "${root}/blog";
-					},2000);
+					},1500);
 				}
 			});
 		});

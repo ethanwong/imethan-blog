@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.cms.Channel;
+import cn.imethan.entity.security.User;
 
 /**
  * ChannelService.java
@@ -39,7 +40,7 @@ public interface ChannelService{
 	 * @param pageable
 	 * @return
 	 */
-	public Page<Channel> getPage(Map<String,Object> parameters,PageRequest pageable);
+	public Page<Channel> findPage(List<SearchFilter> filters, PageRequest pageable);
 	
 	/**
 	 * 删除
@@ -75,5 +76,7 @@ public interface ChannelService{
 	 * @return
 	 */
 	public Map<String,Object> getChannelArticleChartInfo();
+
+	
 	
 }

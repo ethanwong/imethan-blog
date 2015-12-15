@@ -38,6 +38,11 @@ public class MenuController {
 		return menuService.getAll();
 	}
 	
+	@RequestMapping(value = "input" , method = RequestMethod.GET)
+	public String input(){
+		return "front/setting/setting-menu-input";
+	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "save" , method = RequestMethod.POST)

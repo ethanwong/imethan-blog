@@ -12,6 +12,9 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -61,14 +64,15 @@ public class ChannelServiceImpl implements ChannelService {
 	}
 	
 	@Override
-	public Page<Channel> getPage(Map<String,Object> parameters,PageRequest pageable) {
+	public Page<Channel> findPage(List<SearchFilter> filters, PageRequest pageable) {
+		Page<Channel> result = null;
 		try {
-//			return super.getPage(parameters, pageable, Channel.class);
+			Specification<Channel> spec = DynamicSpecifications.bySearchFilter(filters, Channel.class);
+			result = channelRepository.findAll(spec, pageable);
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.getMessage());
 		}
-		return null;
+		return result;
 	}
 	
 	@Override
@@ -110,7 +114,7 @@ public class ChannelServiceImpl implements ChannelService {
 			}
 	    	
 			Specification<Channel> spec = DynamicSpecifications.bySearchFilter(filters, Channel.class);
-			return channelRepository.findAll(spec);
+			return channelRepository.findAll(spec,new Sort(new Order(Direction.DESC, "orderNo")));
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			e.printStackTrace();

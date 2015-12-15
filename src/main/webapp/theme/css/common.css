@@ -210,5 +210,13 @@ background-color: #428bca;
 }
 
 
+.edui-container{
+	box-shadow:none!important;
+}
+.edui-container .edui-toolbar{
+	box-shadow:none!important;
+}
+
+
 /* .glyphicon-edit{color:#5bc0de;} */
 /* .glyphicon-trash{color:#d9534f;} */

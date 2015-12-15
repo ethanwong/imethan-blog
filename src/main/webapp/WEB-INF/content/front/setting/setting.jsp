@@ -255,17 +255,7 @@
 <body>
 	<div class="row">
 		<div class="col-md-3">
-			<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Personal settings</h3>
-				  </div>
-				  <div class="list-group" >
-					<a href="${root}/setting/profile" class="list-group-item <c:if test="${type eq 'profile'}">selected</c:if>">Profile</a>
-					<a href="${root}/setting/account" class="list-group-item <c:if test="${type eq 'account'}">selected</c:if>">Account</a>
-					<a href="${root}/setting/about" class="list-group-item <c:if test="${type eq 'about'}">selected</c:if>">About</a>
-					<a href="${root}/setting/menu" class="list-group-item <c:if test="${type eq 'menu'}">selected</c:if>">Menu</a>
-				</div>
-			</div>
+			<%@ include file="/WEB-INF/content/front/setting/setting-menu.jsp"%>
 		</div>
 		
 		<div class="col-md-9" >
@@ -371,6 +361,9 @@
 									});
 									
 									$("#newMenu").click(function(){
+										
+										
+										$("#menuListBox").load("${root}/menu/input");
 										var newBox = 
 											"<div class='form-group'>"+
 							   					 "<label for='oldPassword'>Name</label>"+
@@ -389,16 +382,7 @@
 							   					 "<input class='form-control' name='isShow' value='' type='text' placeholder=''/>"+
 											 "</div>"+
 											 
-// 										 <div class='radio'>
-// 											  <label>
-// 												    <input type='radio' name="isPublishResume" class="isPublishResume" value="true" <c:if test="${isPublishResume == null || isPublishResume eq true }">checked="checked"</c:if>/>
-// 												    Publish Resume
-// 											  </label>
-// 											  <label>
-// 												    <input type="radio" name="isPublishResume" class="isPublishResume" value="false" <c:if test="${isPublishResume eq false }">checked="checked"</c:if> />
-// 												    Hidden Resume
-// 											  </label>
-// 										  </div>
+
 											 
 											"<div class='form-group'>"+
 							   					 "<label for='oldPassword'>Description</label>"+
@@ -407,7 +391,7 @@
 											 
 											 
 											 ;
-										$("#menuListBox").append(newBox);
+// 										$("#menuListBox").append(newBox);
 									});
 								})
 							</script>

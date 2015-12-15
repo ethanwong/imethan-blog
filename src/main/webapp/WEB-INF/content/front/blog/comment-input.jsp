@@ -30,7 +30,7 @@ function saveComment(){
 					$("#comment").val("");
 					
 					loadCommnet(1);
-				},3000);
+				},1500);
 			}
 		});
 	}

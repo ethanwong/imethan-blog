@@ -18,9 +18,10 @@
 			var id = $("#id").val();
 			var name = $("#name").val();
 			var intro = $("#intro").val();
+			var orderNo = $("#orderNo").val();
 			var isPublish = $("#isPublish:checked").val();
 			$.ajax({
-				url:"${root}/console/cms/channel/save?id="+id+"&name="+name+"&intro="+intro+"&publish="+isPublish,
+				url:"${root}/console/cms/channel/save?id="+id+"&name="+name+"&intro="+intro+"&publish="+isPublish+"&orderNo="+orderNo,
 				type:"POST",
 				dateType:"json",
 				success:function(data){
@@ -33,8 +34,9 @@
 					showMsg(messageType,result.message);
 					
 					setTimeout(function(){
-						location.href = "${root}/blog/${channelId}";
-					},3000);
+// 						location.href = "${root}/blog/${channelId}";
+						location.href = "${root}/blog/channel";
+					},1500);
 					
 				}
 			});
@@ -77,6 +79,10 @@
 							  </label>
 						  </div>
 						  
+						  <div class="form-group">
+						    <label for="intro">OrderNo</label>
+						    <input id="orderNo"  type="text" class="form-control required" placeholder="Enter OrderNo" value="${channel.orderNo}">
+						  </div>
 						  <div class="form-group">
 						    <label for="intro">Intro</label>
 						    <textarea rows="3" cols="20" class="form-control required" id="intro" placeholder="Enter intro" name="intro">${channel.intro}</textarea>

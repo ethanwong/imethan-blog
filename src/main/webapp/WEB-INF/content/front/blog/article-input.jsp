@@ -89,7 +89,7 @@
 					
 					setTimeout(function(){
 						location.href = href;
-					},2000);
+					},1500);
 					
 				}
 			});

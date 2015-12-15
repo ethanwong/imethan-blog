@@ -146,7 +146,8 @@ function searchArticle(object){
 		    	<font style="font-size:30px;float: left;">All Blog</font>
 		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">我的工作和学习笔记</small>
 		    	<shiro:user>
-		    		<a style="padding-top:12px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span></a>
+		    		<a title="发布文章" style="padding-top:12px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span></a>
+		    		<a title="管理栏目" style="padding-top:12px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/channel"><span class="glyphicon glyphicon-list-alt"></span></a>
 		    	</shiro:user>
 		    </div>
 		    <div class="col-sm-3" >

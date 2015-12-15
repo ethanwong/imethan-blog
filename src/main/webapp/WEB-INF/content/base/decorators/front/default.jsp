@@ -29,9 +29,14 @@
 	<script src="${root}/theme/js/jquery.infinitescroll.js"></script>
 <%-- 	<script src="${root}/theme/js/debug.js"></script> --%>
 	<!-- custom defin begin -->
-	
 	<script src="${root}/theme/js/common.js"></script>
 	<!-- custom defin end -->
+	
+	 <!-- jqgrid begin-->
+    <script type="text/ecmascript" src="${root}/theme/jqGrid/grid.locale-cn.js"></script>
+    <script type="text/ecmascript" src="${root}/theme/jqGrid/jquery.jqGrid.min.js"></script>
+    <link href="${root}/theme/jqGrid/ui.jqgrid-bootstrap.css" rel="stylesheet" type="text/css"  />
+	<!-- jqgrid end-->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->

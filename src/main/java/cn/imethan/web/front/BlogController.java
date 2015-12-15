@@ -17,14 +17,17 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.common.web.SuperController;
+import cn.imethan.dto.page.JqGridPageDto;
 import cn.imethan.entity.cms.Article;
 import cn.imethan.entity.cms.Channel;
 import cn.imethan.service.cms.ArticleService;
 import cn.imethan.service.cms.ChannelService;
+import cn.imethan.utils.JsonUtils;
 
 /**
  * BlogController.java
@@ -161,6 +164,25 @@ public class BlogController extends SuperController{
 		return "front/blog/article-input";
 	}
     
+    @RequiresAuthentication
+	@RequestMapping("/channel")
+    public String channel(){
+    	
+    	return "/front/blog/channel";
+    }
+    
+    
+    @RequiresAuthentication
+    @ResponseBody
+	@RequestMapping("/channel/json")
+    public String channelJson(@RequestParam("page") Integer page,@RequestParam("rows") Integer size){
+		PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "orderNo","id");
+		List<SearchFilter> filters = new ArrayList<SearchFilter>();
+		Page<Channel> result = channelService.findPage(filters, pageable);
+		return  JsonUtils.writeValueAsString(new JqGridPageDto<Channel>(result));
+    }
+    
+    
     /**
      * 添加栏目
      * @param channelId
@@ -204,5 +226,7 @@ public class BlogController extends SuperController{
     	}
     	return "front/blog/article-detail";
     }
+    
+    
 
 }

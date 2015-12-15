@@ -33,6 +33,14 @@ public class Channel extends BaseEntity {
 	
 	private int articleAmount = 0;//文章数量
 	
+	private Integer orderNo = 0;//排序
+	
+	public Integer getOrderNo() {
+		return orderNo;
+	}
+	public void setOrderNo(Integer orderNo) {
+		this.orderNo = orderNo;
+	}
 	public int getArticleAmount() {
 		return articleAmount;
 	}
