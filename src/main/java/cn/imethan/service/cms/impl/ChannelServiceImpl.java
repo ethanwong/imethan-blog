@@ -114,7 +114,7 @@ public class ChannelServiceImpl implements ChannelService {
 			}
 	    	
 			Specification<Channel> spec = DynamicSpecifications.bySearchFilter(filters, Channel.class);
-			return channelRepository.findAll(spec,new Sort(new Order(Direction.DESC, "orderNo")));
+			return channelRepository.findAll(spec,new Sort(new Order(Direction.DESC, "orderNo")).and(new Sort(new Order(Direction.DESC, "id"))));
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			e.printStackTrace();
