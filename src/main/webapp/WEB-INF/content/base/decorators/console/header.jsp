@@ -16,13 +16,6 @@
 					<shiro:hasRole name="系统管理员">  
 						<li><a href="${root}/console/home">Home</a></li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cms<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="${root}/console/cms/channel">Channel</a></li>
-								<li><a href="${root}/console/cms/article">Article</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Security<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="${root}/console/security/user">User</a></li>

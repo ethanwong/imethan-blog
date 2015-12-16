@@ -1,4 +1,4 @@
-package cn.imethan.web.console.cms;
+package cn.imethan.web.front.blog;
 
 
 import java.util.ArrayList;
@@ -27,7 +27,6 @@ import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.dto.page.JqGridPageDto;
 import cn.imethan.entity.cms.Article;
 import cn.imethan.service.cms.ArticleService;
-import cn.imethan.service.cms.ChannelService;
 import cn.imethan.utils.JsonUtils;
 
 /**
@@ -37,18 +36,11 @@ import cn.imethan.utils.JsonUtils;
  * @time 2014年3月14日下午10:50:58
  */
 @Controller
-@RequestMapping("/console/cms/article")
+@RequestMapping("/cms/article")
 public class ArticleController extends SuperController{
 	
 	@Autowired
 	private ArticleService articleService;
-	@Autowired
-	private ChannelService channelService;
-	
-	@RequestMapping(value = "" , method = RequestMethod.GET)
-	public String article(){
-		return "/console/cms/article";
-	}
 	
 	@ResponseBody
 	@RequestMapping(value = "json/{channelId}" , method = {RequestMethod.POST , RequestMethod.GET })
@@ -80,7 +72,7 @@ public class ArticleController extends SuperController{
 		}else{
 			returnDto = articleService.saveOrModify(article);
 		}
-		String locate = request.getParameter("locate");
+//		String locate = request.getParameter("locate");
 
 		return returnDto;
 	}

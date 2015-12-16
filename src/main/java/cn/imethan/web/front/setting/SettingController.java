@@ -1,4 +1,4 @@
-package cn.imethan.web.front;
+package cn.imethan.web.front.setting;
 
 import java.io.File;
 import java.io.IOException;

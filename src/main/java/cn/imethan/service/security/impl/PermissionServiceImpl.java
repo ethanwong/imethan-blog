@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.security.Permission;
 import cn.imethan.repository.security.PermissionRepository;
-import cn.imethan.service.message.impl.MessageServiceImpl;
 import cn.imethan.service.security.PermissionService;
 
 

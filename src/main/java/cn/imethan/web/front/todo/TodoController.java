@@ -1,10 +1,11 @@
-package cn.imethan.web.front;
+package cn.imethan.web.front.todo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
+
 import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.imethan.common.repository.SearchFilter;
+import cn.imethan.common.web.SuperController;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.dto.page.GridPageDto;
 import cn.imethan.entity.todo.Todo;
@@ -40,10 +42,7 @@ import cn.imethan.utils.DateUtils;
  */
 @Controller
 @RequestMapping("/todo")
-public class TodoController{
-	
-	private int page = 0;//默认页位置
-	private int size = 12;//默认页大小
+public class TodoController extends SuperController{
 	
 	@Autowired
 	private TodoService todoService;

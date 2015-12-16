@@ -21,6 +21,13 @@ import cn.imethan.repository.todo.TodoRepository;
 import cn.imethan.service.todo.TodoService;
 
 
+/**
+ * TodoServiceImpl.java
+ *
+ * @author Ethan Wong
+ * @since JDK 1.7
+ * @datetime 2015年12月16日下午3:37:22
+ */
 @Service
 @Transactional(readOnly = true)
 public class TodoServiceImpl implements TodoService {

@@ -151,7 +151,7 @@ public class ChannelServiceImpl implements ChannelService {
 		try {
 			int sourceAmount = this.getById(id).getArticleAmount();
 			int targetAmount = sourceAmount+changeAmount;
-			int result = channelRepository.updateArticleAmount(id,targetAmount);
+			channelRepository.updateArticleAmount(id,targetAmount);
 		} catch (Exception e) {
 			e.printStackTrace();
 			flag = false;

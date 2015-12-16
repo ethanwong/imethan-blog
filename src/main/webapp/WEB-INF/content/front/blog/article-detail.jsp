@@ -14,7 +14,7 @@
 		});
 		$("#deleteConfirmModalClick").click(function(){
 			$.ajax({
-				url:"${root}/console/cms/article/delete/"+id,
+				url:"${root}/cms/article/delete/"+id,
 				type:"POST",
 				dateType:"json",
 				success:function(data){

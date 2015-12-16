@@ -19,6 +19,13 @@ import cn.imethan.repository.todo.TodoItemRepository;
 import cn.imethan.repository.todo.TodoRepository;
 import cn.imethan.service.todo.TodoItemService;
 
+/**
+ * TodoItemServiceImpl.java
+ *
+ * @author Ethan Wong
+ * @since JDK 1.7
+ * @datetime 2015年12月16日下午3:37:19
+ */
 @Service
 @Transactional(readOnly = true)
 public class TodoItemServiceImpl implements TodoItemService {

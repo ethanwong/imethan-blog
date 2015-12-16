@@ -1,6 +1,5 @@
 package cn.imethan.service.cms;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +9,6 @@ import org.springframework.data.domain.PageRequest;
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.cms.Channel;
-import cn.imethan.entity.security.User;
 
 /**
  * ChannelService.java

@@ -95,7 +95,7 @@ function deleteArticle(id,object){
 	});
 	$("#deleteConfirmModalClick").click(function(){
 		$.ajax({
-			url:"${root}/console/cms/article/delete/"+id,
+			url:"${root}/cms/article/delete/"+id,
 			type:"POST",
 			dateType:"json",
 			success:function(data){
@@ -112,7 +112,7 @@ function deleteArticle(id,object){
 //更改文章发布状态
 function publishArticle(object,id){
 	$.ajax({
-		url:"${root}/console/cms/article/publish/"+id,
+		url:"${root}/cms/article/publish/"+id,
 		type:"POST",
 		dateType:"json",
 		success:function(data){
@@ -144,6 +144,7 @@ function searchArticle(object){
 		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">我的工作和学习笔记</small>
 		    	<shiro:user>
 		    		<a title="管理栏目" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/channel"><span class="glyphicon glyphicon-list-alt"></span> 栏目管理</a>
+		    		<a title="管理标签" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/label"><span class="glyphicon glyphicon-tags"></span> 标签管理</a>
 		    		<a title="发布文章" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span> 发布文章</a>
 		    	</shiro:user>
 		    </div>

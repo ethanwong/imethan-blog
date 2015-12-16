@@ -26,4 +26,3 @@
 		</c:forEach>
 	</shiro:user>
 </div>
-

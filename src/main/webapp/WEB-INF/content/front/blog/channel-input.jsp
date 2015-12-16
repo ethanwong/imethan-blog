@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan</title>
+<title>Blog|ImEthan|Full Stack Engineer</title>
 <script type="text/javascript">
 	
 	//页面加载时初始化脚本
@@ -21,7 +21,7 @@
 			var orderNo = $("#orderNo").val();
 			var isPublish = $("#isPublish:checked").val();
 			$.ajax({
-				url:"${root}/console/cms/channel/save?id="+id+"&name="+name+"&intro="+intro+"&publish="+isPublish+"&orderNo="+orderNo,
+				url:"${root}/cms/channel/save?id="+id+"&name="+name+"&intro="+intro+"&publish="+isPublish+"&orderNo="+orderNo,
 				type:"POST",
 				dateType:"json",
 				success:function(data){

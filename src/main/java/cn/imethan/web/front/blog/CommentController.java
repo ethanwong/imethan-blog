@@ -1,4 +1,4 @@
-package cn.imethan.web.front;
+package cn.imethan.web.front.blog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +27,6 @@ import cn.imethan.dto.page.GridPageDto;
 import cn.imethan.entity.comment.Comment;
 import cn.imethan.entity.comment.CommentType;
 import cn.imethan.service.comment.CommentService;
-
-
-
 
 /**
  * CommentController.java

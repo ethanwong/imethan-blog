@@ -1,4 +1,4 @@
-package cn.imethan.web.front;
+package cn.imethan.web.front.todo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,17 +18,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.imethan.common.repository.SearchFilter;
+import cn.imethan.common.web.SuperController;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.todo.TodoItem;
 import cn.imethan.service.todo.TodoItemService;
 
 
+/**
+ * TodoItemController.java
+ *
+ * @author Ethan Wong
+ * @since JDK 1.7
+ * @datetime 2015年12月16日下午3:23:39
+ */
 @Controller
 @RequestMapping("/todoitem")
-public class TodoItemController{
-	
-	private int page = 0;//默认页位置
-	private int size = 12;//默认页大小
+public class TodoItemController extends SuperController{
 	
 	@Autowired
 	private TodoItemService todoItemService;

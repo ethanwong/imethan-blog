@@ -1,4 +1,4 @@
-package cn.imethan.web.console.cms;
+package cn.imethan.web.front.blog;
 
 import java.util.List;
 
@@ -27,16 +27,12 @@ import cn.imethan.service.cms.ChannelService;
  * @time 2014年3月8日下午1:15:59
  */
 @Controller
-@RequestMapping("/console/cms/channel")
+@RequestMapping("/cms/channel")
 public class ChannelController extends SuperController{
 	
 	@Autowired
 	private ChannelService channelService;
-	
-	@RequestMapping(value = "" , method = RequestMethod.GET)
-	public String channel(){
-		return "/console/cms/channel";
-	}
+
 	
 	@ResponseBody
 	@RequestMapping(value = "json" , method = RequestMethod.POST)
@@ -49,7 +45,6 @@ public class ChannelController extends SuperController{
 	@ResponseBody
 	@RequestMapping(value = "save" , method = RequestMethod.POST)
 	public ReturnDto save(@Valid @ModelAttribute("channel") Channel channel, BindingResult result,ServletRequest request){
-		System.out.println("------------channel:"+channel);
 		ReturnDto returnDto = new ReturnDto();
 		if(result.hasFieldErrors()){
 			
@@ -75,11 +70,6 @@ public class ChannelController extends SuperController{
 		return channelService.getById(id);
 	}
 	
-	/**
-	 * 更新发布状态
-	 * @param id
-	 * @return
-	 */
 	@RequiresUser
 	@ResponseBody
 	@RequestMapping(value = "publish/{id}" , method = RequestMethod.POST)

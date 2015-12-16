@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan</title>
+<title>Blog|ImEthan|Full Stack Engineer</title>
 <%@ include file="/WEB-INF/content/base/umeditor.jsp"%>
 <script type="text/javascript">
 	//页面加载时初始化脚本
@@ -35,7 +35,7 @@
 			var content = UM.getEditor('editor').getContent();
 			$.ajax({
 				type:"POST",
-				url:"${root}/console/cms/article/save",
+				url:"${root}/cms/article/save",
 				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content)+"&publish="+isPublish,
 			    dateType:"json",
 				success:function(data){
@@ -65,7 +65,7 @@
 			
 			$.ajax({
 				type:"POST",
-				url:"${root}/console/cms/article/save",
+				url:"${root}/cms/article/save",
 				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content)+"&publish="+isPublish+"&locate=${locate}",
 			    dateType:"json",
 				success:function(data){

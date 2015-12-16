@@ -1,4 +1,4 @@
-package cn.imethan.web.front;
+package cn.imethan.web.front.blog;
 
 import java.util.ArrayList;
 import java.util.List;
