@@ -132,10 +132,7 @@ function publishArticle(object,id){
 //查询文章信息
 function searchArticle(object){
 	var search_title = $(object).val();
-	console.log("search_title:"+search_title);
-	
 	location.href = "${root}/blog?search_title="+search_title;
-
 };
 </script>
 </head>
@@ -146,8 +143,8 @@ function searchArticle(object){
 		    	<font style="font-size:30px;float: left;">All Blog</font>
 		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">我的工作和学习笔记</small>
 		    	<shiro:user>
-		    		<a title="发布文章" style="padding-top:12px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span></a>
-		    		<a title="管理栏目" style="padding-top:12px;padding-left: 20px;margin:0px;float: left;" href="${root}/blog/channel"><span class="glyphicon glyphicon-list-alt"></span></a>
+		    		<a title="管理栏目" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/channel"><span class="glyphicon glyphicon-list-alt"></span> 栏目管理</a>
+		    		<a title="发布文章" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span> 发布文章</a>
 		    	</shiro:user>
 		    </div>
 		    <div class="col-sm-3" >
@@ -165,7 +162,9 @@ function searchArticle(object){
 			</div>
 		</c:if>
 		
+		<!-- BLOG内容 -->
 		<div class="col-md-9" >
+			<!-- 默认加载 -->
 			<div class="articleList">
 				<c:if test="${articleList == null || fn:length(articleList) == 0}">
 					暂时没有内容
@@ -191,11 +190,13 @@ function searchArticle(object){
 					</div>
 				</c:forEach>
 			</div>
-			
+			<!-- 加载更多 -->
 			<div id="navigation" align="center">
         		<a href="${root}/blog/article/${channelId}/2<c:if test="${search_title !=null}">?search_title=${search_title}</c:if>"></a>  
    			</div>
 		</div>
+		
+		
 		<!-- 电脑版显示 -->
 		<c:if test="${isNormal}">
 			<div class="col-md-3">
