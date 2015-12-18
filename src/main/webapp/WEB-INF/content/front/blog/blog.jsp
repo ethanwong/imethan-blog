@@ -53,6 +53,11 @@ function generateArticle(json){
 			titleIco = "<a href='#' onclick='publishArticle(this,"+item.id+")'><span class='glyphicon glyphicon-flag'></span></a>";
 		}
 		
+		var labels = " ";
+		$.each(item.labels, function(j, label) {
+			labels += "<a href='${root}/blog/label/"+label.id+"' ><span class='label label-default' style='padding: 0.1em;'>"+label.name+"</span></a>  "
+		})
+		
 		var article = ""+
 		"<div class='article' >"+
 		"<h3 class='title'>"+
@@ -62,9 +67,10 @@ function generateArticle(json){
 		"</h3>"+
 		"<a href='${root}/blog/"+item.channelId+"'><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
 		"&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;"+item.createTime+"</small>"+
-		"<shiro:user>&nbsp;&nbsp;"+titleIco+"</shiro:user>"+
+		"&nbsp;&nbsp;"+labels+
 		"<shiro:user>"+
 		"<div class='blog-article-toolbar'>"+
+		"<shiro:user>&nbsp;&nbsp;"+titleIco+"</shiro:user>"+
 		"	<a id='article"+item.id+"' href='#' onclick='deleteArticle("+item.id+",this)'><span  class='glyphicon glyphicon-trash'></span></a>"+
 		"	<a href='${root}/blog/article/input/"+item.channelId+"/"+item.id+"' ><span  class='glyphicon glyphicon-edit'></span></a>"+
 		"</div>"+
@@ -177,12 +183,17 @@ function searchArticle(object){
 						</h3>
 						<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
 						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
+						&nbsp;&nbsp;
+						<c:forEach items="${article.labels}" var="label">
+							<a href='${root}/blog/label/${label.id}' ><span class="label label-default" style="padding: 0.1em;">${label.name}</span></a>
+						</c:forEach>
+						
 						<shiro:user>
-								&nbsp;<a href="#" onclick="publishArticle(this,${article.id})"><c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag" ></span></c:if>
-								<c:if test="${article.publish eq false}"><span class="glyphicon glyphicon-flag" ></span></c:if></a>
-						</shiro:user>
-						<shiro:user>
-							<div class='blog-article-toolbar'>
+						<div class='blog-article-toolbar'>
+							  <a href="#" onclick="publishArticle(this,${article.id})">
+								 <c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag" ></span></c:if>
+								 <c:if test="${article.publish eq false}"><span class="glyphicon glyphicon-flag" ></span></c:if>
+							   </a>
 								<a href="#" onclick="deleteArticle(${article.id},this)"><span  class='glyphicon glyphicon-trash'></span></a>
 								<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span  class='glyphicon glyphicon-edit'></span></a>
 							</div>
@@ -193,7 +204,8 @@ function searchArticle(object){
 			</div>
 			<!-- 加载更多 -->
 			<div id="navigation" align="center">
-        		<a href="${root}/blog/article/${channelId}/2<c:if test="${search_title !=null}">?search_title=${search_title}</c:if>"></a>  
+        		<a href="${root}/blog/article/${channelId}/${labelId}/2<c:if test="${search_title !=null}">?search_title=${search_title}</c:if>">
+        		</a>  
    			</div>
 		</div>
 		

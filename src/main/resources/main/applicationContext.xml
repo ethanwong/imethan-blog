@@ -75,7 +75,7 @@
                 <property name="generateDdl" value="true"/>
                 <property name="database" value="MYSQL"/>
                 <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-                <property name="showSql" value="false"/>
+                <property name="showSql" value="true"/>
             </bean>
         </property>
         <property name="jpaDialect">

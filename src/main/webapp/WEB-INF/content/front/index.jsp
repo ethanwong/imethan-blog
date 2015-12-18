@@ -47,6 +47,7 @@
 	<span class="glyphicon glyphicon-info-sign bannerInfo" 
 	title="2014年的夏天，在厦门图书馆旁的一家咖啡厅准备开发ImEthan部落格，间隙用手机拍了三张照片，当前您所看到的这张图片，便是这三张照片合成而来，图中的华硕A40J是学生时代就开始陪伴我的电脑,部落格也是凭借它而来~"></span>
 	
+	
 	<div class="container linkBox" >
 		<div class="row">
 			<div class="col-md-3 linkWrap" >
@@ -91,6 +92,27 @@
 			</div>
 		</div>
 	</div>
+	
+	<hr>
+	<div class="container labelBox" >
+		<div class="row">
+			<div class="col-md-12">
+				<label><span class="glyphicon glyphicon-tags"></span>  Blog Labels</label>
+				<br>
+				<c:forEach items="${allLabel}" var="label" varStatus="status">
+					<a href="${root}/blog/label/${label.id}" >
+						<span class='label label-info' style='line-height:3 !important;padding: .4em'>
+							${label.name}
+						</span>
+					</a>
+					&nbsp;
+				</c:forEach>
+			</div>
+		</div>
+	</div>
+	
+
+		
 	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
 	
 	<script type="text/javascript">

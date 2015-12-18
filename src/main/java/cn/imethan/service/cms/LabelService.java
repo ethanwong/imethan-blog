@@ -55,6 +55,7 @@ public interface LabelService{
 	 * @return
 	 */
 	public Label getById(Long id);
+
 	
 	
 }

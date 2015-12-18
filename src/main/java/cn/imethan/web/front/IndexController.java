@@ -1,12 +1,19 @@
 package cn.imethan.web.front;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mobile.device.Device;
 import org.springframework.mobile.device.site.SitePreference;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.common.web.SuperController;
+import cn.imethan.entity.cms.Label;
+import cn.imethan.service.cms.LabelService;
 
 /**
  * IndexController.java
@@ -18,8 +25,16 @@ import cn.imethan.common.web.SuperController;
 @RequestMapping("/index")
 public class IndexController extends SuperController{
 	
+	@Autowired
+	private LabelService labelService;
+	
     @RequestMapping("")
     public String indexOne(Model model,SitePreference sitePreference,Device device) {
+    	
+    	//获取标签信息
+    	List<Label> allLabel = labelService.getList(new ArrayList<SearchFilter>());
+    	model.addAttribute("allLabel", allLabel);
+    	
     	String message = "";
         if (device.isMobile()) {
         	System.out.println(message = "Hello mobile user!");

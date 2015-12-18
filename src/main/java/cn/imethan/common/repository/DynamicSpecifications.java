@@ -5,10 +5,12 @@
  *******************************************************************************/
 package cn.imethan.common.repository;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
@@ -16,6 +18,7 @@ import javax.persistence.criteria.Root;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
+
 import com.google.common.collect.Lists;
 
 public class DynamicSpecifications {
@@ -31,8 +34,12 @@ public class DynamicSpecifications {
 						// nested path translate, 如Task的名为"user.name"的filedName, 转换为Task.user.name属性
 						String[] names = StringUtils.split(filter.fieldName, ".");
 						Path expression = root.get(names[0]);
-						for (int i = 1; i < names.length; i++) {
-							expression = expression.get(names[i]);
+						try {
+							for (int i = 1; i < names.length; i++) {
+								expression = expression.get(names[i]);
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
 						}
 
 						// logic operator
@@ -54,6 +61,29 @@ public class DynamicSpecifications {
 							break;
 						case LTE:
 							predicates.add(builder.lessThanOrEqualTo(expression, (Comparable) filter.value));
+							break;
+						case IN:
+							In in = builder.in(expression);
+							String[] valueStrings = StringUtils.split(filter.value.toString(), ",");
+							List<Long> list = new ArrayList<Long>();
+							for(String value : valueStrings){
+								list.add(Long.valueOf(value.trim()));
+							}
+							in.value(list);
+							
+							predicates.add(in);
+							
+							break;
+						case NOTIN:
+							In in1 = builder.in(expression);
+							String[] valueStrings1 = StringUtils.split(filter.value.toString(), ",");
+							List<Long> list1 = new ArrayList<Long>();
+							for(String value : valueStrings1){
+								list1.add(Long.valueOf(value.trim()));
+							}
+							in1.value(list1);
+							
+							predicates.add(builder.not(in1));
 							break;
 						}
 					}

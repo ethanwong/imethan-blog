@@ -1,10 +1,16 @@
 package cn.imethan.entity.cms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -41,6 +47,17 @@ public class Article extends BaseEntity {
 	private Long channelId;//栏目ID
 	
 	
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="imethan_cms_article_label",joinColumns = { @JoinColumn(name ="articleId" )} ,inverseJoinColumns = { @JoinColumn(name = "labelId")})
+	@OrderBy("orderNo")
+	private List<Label> labels = new ArrayList<Label>();//标签集合
+	public List<Label> getLabels() {
+		return labels;
+	}
+	public void setLabels(List<Label> labels) {
+		this.labels = labels;
+	}
 	public Long getChannelId() {
 		if(channel != null){
 			return channel.getId();

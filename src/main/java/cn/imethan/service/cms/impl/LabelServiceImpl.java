@@ -103,11 +103,6 @@ public class LabelServiceImpl implements LabelService {
 	@Override
 	public List<Label> getList(List<SearchFilter> filters) {
 		try {
-			//如果没有登录不展现未发布栏目
-			if(!SecurityUtils.getSubject().isAuthenticated()){
-		    	SearchFilter channelFilter = new SearchFilter("isPublish",SearchFilter.Operator.EQ,true);
-		    	filters.add(channelFilter);
-			}
 	    	
 			Specification<Label> spec = DynamicSpecifications.bySearchFilter(filters, Label.class);
 			return labelRepository.findAll(spec,new Sort(new Order(Direction.DESC, "orderNo")).and(new Sort(new Order(Direction.DESC, "id"))));

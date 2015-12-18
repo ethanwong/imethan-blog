@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +27,9 @@ import cn.imethan.common.web.SuperController;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.dto.page.JqGridPageDto;
 import cn.imethan.entity.cms.Article;
+import cn.imethan.entity.cms.Label;
 import cn.imethan.service.cms.ArticleService;
+import cn.imethan.service.cms.LabelService;
 import cn.imethan.utils.JsonUtils;
 
 /**
@@ -41,6 +44,8 @@ public class ArticleController extends SuperController{
 	
 	@Autowired
 	private ArticleService articleService;
+	@Autowired
+	private LabelService labelService;
 	
 	@ResponseBody
 	@RequestMapping(value = "json/{channelId}" , method = {RequestMethod.POST , RequestMethod.GET })
@@ -64,12 +69,24 @@ public class ArticleController extends SuperController{
 	@RequiresUser
 	@ResponseBody
 	@RequestMapping(value = "save" , method = {RequestMethod.POST,RequestMethod.GET })
-	public ReturnDto save(@Valid @ModelAttribute("article") Article article, BindingResult result,ServletRequest request){
+	public ReturnDto save(@Valid @ModelAttribute("article") Article article,
+			BindingResult result,ServletRequest request){
+		 
+		String labelsString = request.getParameter("labelIds");
+		
+		String[] labelsStrings = labelsString.split(",");
+		
 		ReturnDto returnDto = new ReturnDto();
 		if(result.hasFieldErrors()){
 			returnDto.setMessage("参数验证出现异常:"+result.getFieldError().getDefaultMessage());
 			returnDto.setSuccess(false);
 		}else{
+			List<Label> labels = new ArrayList<Label>();
+			for(String labelId : labelsStrings){
+				if(StringUtils.isEmpty(labelId)){continue;}
+				labels.add(new Label(Long.valueOf(labelId)));
+			}
+			article.setLabels(labels);
 			returnDto = articleService.saveOrModify(article);
 		}
 //		String locate = request.getParameter("locate");

@@ -17,6 +17,17 @@
 	    um.addListener('focus',function(){
 	        $('#editorWarn').html('')
 	    });
+	    
+	    //checkbox选中设置
+	    $(".articlelabel").click(function(){
+	    	var checked = $(this).attr("checked")
+	    	console.log("checked:"+checked);
+	    	if(checked == undefined){
+	    		$(this).attr("checked",true);
+	    	}else{
+	    		$(this).attr("checked",false);
+	    	}
+	    });
 		
 	});
 	
@@ -33,10 +44,17 @@
 			var channelId = $("#channelId").val();
 			var isPublish = $("#isPublish:checked").val();
 			var content = UM.getEditor('editor').getContent();
+	        var labels="";
+	        $("input[name='articlelabel']:checkbox").each(function(){ 
+	            if($(this).attr("checked")){
+	            	labels += $(this).val()+","
+	            }
+	        })
+	        
 			$.ajax({
 				type:"POST",
 				url:"${root}/cms/article/save",
-				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content)+"&publish="+isPublish,
+				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content)+"&publish="+isPublish+"&labelIds="+labels,
 			    dateType:"json",
 				success:function(data){
 					var result = eval("(" + data + ")");
@@ -48,6 +66,8 @@
 			});
 		};
 	};
+	
+
 	
 	//提交保存
 	function saveArticle(){
@@ -63,10 +83,17 @@
 			var isPublish = $("#isPublish:checked").val();
 			var content = UM.getEditor('editor').getContent();
 			
+	        var labels="";
+	        $("input[name='articlelabel']:checkbox").each(function(){ 
+	            if($(this).attr("checked")){
+	            	labels += $(this).val()+","
+	            }
+	        })
+			
 			$.ajax({
 				type:"POST",
 				url:"${root}/cms/article/save",
-				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content)+"&publish="+isPublish+"&locate=${locate}",
+				data: "id="+id+"&title="+title+"&channel.id="+channelId+"&content="+encodeURIComponent(content)+"&publish="+isPublish+"&locate=${locate}"+"&labelIds="+labels,
 			    dateType:"json",
 				success:function(data){
 					
@@ -87,9 +114,12 @@
 						href = "${root}/about";
 					}
 					
-					setTimeout(function(){
-						location.href = href;
-					},1500);
+					if(result.success == true){
+						setTimeout(function(){
+							location.href = href;
+						},1500);
+					};
+	
 					
 				}
 			});
@@ -138,9 +168,17 @@
 						  </div>
 						  
 						  <div class="form-group">
+						  	 <label class="control-label">Label</label>
+					          <div class="controls">
+					          	<c:forEach var="label" items="${allLabel}">
+					          		<input  class="articlelabel" name="articlelabel" type="checkbox" value="${label.id}"  <c:if test="${label.check eq true}">checked="checked"</c:if>> ${label.name}
+					          	</c:forEach>
+					          </div>
+						  </div>
+						  
+						  <div class="form-group">
 						    <label for="content">Content</label>
 						    <script type="text/plain" id="editor"  style="width:100%!important;height: 300px;">${article.content}</script>
-<%--  							<textarea id="editor"  style="width:924px!important;height: 300px;display: block;" >${article.content}</textarea> --%>
 							<label id="editorContentError" ></label>
 							<p id="editorWarn"></p>
 						  </div>

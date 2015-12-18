@@ -20,6 +20,8 @@ public interface ArticleRepository extends BaseJpaRepository<Article, Long>{
 	@Modifying 
 	@Query("update Article a set a.isPublish = ?2 where a.id = ?1")
 	public int updatePublish(Long id, boolean publish);
+
+//	public Page<Article> findByIdIn(List<Long> list, PageRequest pageable);
 	
 
 }

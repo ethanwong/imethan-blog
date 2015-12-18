@@ -1,7 +1,14 @@
 package cn.imethan.service.cms.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaBuilder.In;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,12 +20,15 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.google.common.collect.Lists;
+
 import cn.imethan.common.jpa.EntityManagerSupport;
 import cn.imethan.common.repository.DynamicSpecifications;
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.cms.Article;
 import cn.imethan.entity.cms.Channel;
+import cn.imethan.entity.cms.Label;
 import cn.imethan.repository.cms.ArticleRepository;
 import cn.imethan.repository.cms.ChannelRepository;
 import cn.imethan.service.cms.ArticleService;
@@ -137,7 +147,33 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 		}
 		return new ReturnDto(isSuccess , message);
 	}
-
+	
+	/**
+	 * 测试Specification查询
+	 * @return
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2015年12月18日下午2:14:27
+	 */
+	public static Specification<Article> customer() {
+		return new Specification<Article>() {
+			public Predicate toPredicate(Root<Article> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
+				List<Predicate> predicates = Lists.newArrayList();
+				
+//				List<Long> list = new ArrayList<Long>();
+//				list.add(101l);
+//				In in = builder.in(root.get("id"));
+//				in.value(list);
+				
+				List<Label> list = new ArrayList<Label>();
+				list.add(new Label(1l));
+				In in = builder.in(root.get("labels"));
+				in.value(list);
+				
+				return builder.and(in);
+			}
+		};
+	}
 
 	@Override
 	public Page<Article> findPage(List<SearchFilter> filters, PageRequest pageable) {
@@ -154,6 +190,7 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 	    	
 			Specification<Article> spec = DynamicSpecifications.bySearchFilter(filters, Article.class);
 			result = articleRepository.findAll(spec, pageable);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
+<script type="text/javascript">
+<!--
+	$(document).ready(function () {	
+	
+		
+	});
+//-->
+</script>
 <div class="list-group">
 	<shiro:user>
 		<span class="label label-info" >publish channel</span>
@@ -25,4 +33,14 @@
 			</c:if>
 		</c:forEach>
 	</shiro:user>
+	
+	<br>
+	<c:forEach items="${allLabel}" var="label" varStatus="status">
+		<a href="${root}/blog/label/${label.id}" >
+			<span class='label label-info' style='line-height:2 !important;padding: .2em'>
+				${label.name}
+			</span>
+		</a>
+		&nbsp;
+	</c:forEach>
 </div>

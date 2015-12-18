@@ -59,7 +59,10 @@
 				<div class='article'>
 					<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
 					&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
-					
+					&nbsp;&nbsp;
+					<c:forEach items="${article.labels}" var="label">
+						<span class="label label-default" style="padding: 0.1em;">${label.name}</span>
+					</c:forEach>
 					<shiro:user>
 						<div class='blog-article-toolbar'>
 							<a href="#" onclick="deleteArticle(${article.id},this)"><span class='glyphicon glyphicon-trash'></span></a>

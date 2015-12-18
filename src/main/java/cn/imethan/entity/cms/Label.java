@@ -1,7 +1,16 @@
 package cn.imethan.entity.cms;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import cn.imethan.common.entity.BaseEntity;
 
@@ -20,6 +29,32 @@ public class Label extends BaseEntity {
 	
 	private String name;//标签名称
 	private Integer orderNo;//排序
+	
+	@JsonIgnore
+	@ManyToMany(cascade = {CascadeType.PERSIST}, mappedBy = "labels", fetch = FetchType.EAGER)
+	private List<Article> articles = new ArrayList<Article>();
+	
+	@Transient
+	private boolean isCheck;//是否选中参数
+	
+	public boolean isCheck() {
+		return isCheck;
+	}
+	public void setCheck(boolean isCheck) {
+		this.isCheck = isCheck;
+	}
+	public Label(){
+	}
+	public Label(Long id){
+		this.setId(id);
+	}
+	public List<Article> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
 
 	public Integer getOrderNo() {
 		return orderNo;

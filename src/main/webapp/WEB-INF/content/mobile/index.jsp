@@ -86,6 +86,23 @@
 			</div>
 		</div>
 	</div>
+	<hr>
+	<div class="container labelBox" >
+		<div class="row">
+			<div class="col-md-12">
+				<label><span class="glyphicon glyphicon-tags"></span>  Blog Labels</label>
+				<br>
+				<c:forEach items="${allLabel}" var="label" varStatus="status">
+					<a href="${root}/blog/label/${label.id}" >
+						<span class='label label-info' style='line-height:3 !important;padding: .4em'>
+							${label.name}
+						</span>
+					</a>
+					&nbsp;
+				</c:forEach>
+			</div>
+		</div>
+	</div>
 	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
 </body>
 </html>
