@@ -134,16 +134,21 @@
 			<div class="panel panel-default">
 				  <div class="panel-body">
 					  	<div class="row" style="padding-top: 0px;">
-							<div class="col-md-2">
-								<h4><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Input article</h4>
+					  		<div class="col-md-12">
+					  			<h4><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Publish article</h4>
+					  		</div>
+					  	</div>
+					  	<hr>
+					  	<div class="row" style="padding-top: 0px;">
+							<div class="col-md-12">
+								 <button type="button" class="btn btn-default" onclick="saveArticle()">Save</button>
+								 <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Return</button>
 							</div>
-							<div class="col-md-10"></div>
 						</div>
 						<br>
 					  	<form role="form" method="post" action="" id="inputForm">
 					  	  <input id="id"  type="hidden" name="id" value="${article.id}">
-					  	  
-						  <div class="form-group">
+					  	  <div class="form-group">
 						    <label for="title">Title</label>
 						    <input id="title"  type="text" class="form-control required" placeholder="Enter title" value="${article.title}">
 						  </div>
@@ -175,7 +180,7 @@
 					          	</c:forEach>
 					          </div>
 						  </div>
-						  
+						  <hr>
 						  <div class="form-group">
 						    <label for="content">Content</label>
 						    <script type="text/plain" id="editor"  style="width:100%!important;height: 300px;">${article.content}</script>
