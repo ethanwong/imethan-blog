@@ -10,7 +10,7 @@
 	$(document).ready(function () {
 		//初始化jqGrid
 		jQuery("#list").jqGrid({
-			url: '${root}/blog/label/json',
+			url: '${root}/blog/tag/json',
 			datatype: "json",
 			mtype: 'POST',
 			styleUI : 'Bootstrap',
@@ -34,7 +34,7 @@
 		});
 		
 		function operation(cellvalue, options, rowObject) {
-			var modifyOperation = "<shiro:hasPermission name='user:modify'><a id='operation1' href='${root}/blog/label/input?id="+cellvalue+"' ><span class='glyphicon glyphicon-edit'></a></shiro:hasPermission>";
+			var modifyOperation = "<shiro:hasPermission name='user:modify'><a id='operation1' href='${root}/blog/tag/input?id="+cellvalue+"' ><span class='glyphicon glyphicon-edit'></a></shiro:hasPermission>";
 			var deleteOPeration = "<shiro:hasPermission name='user:delete'><a id='operation2' href='javascript:;' onclick='deleteOne("+cellvalue+")' ><span class='glyphicon glyphicon-trash'></span></a></shiro:hasPermission>";
 			return modifyOperation + " " + deleteOPeration;
 		};
@@ -59,7 +59,7 @@
 		});
 		$("#deleteConfirmModalClick").click(function(){
 			$.ajax({
-				url:"${root}/blog/label/delete/"+id,
+				url:"${root}/blog/tag/delete/"+id,
 				type:"POST",
 				dateType:"json",
 				success:function(data){
@@ -68,7 +68,7 @@
 					showMsg("success",result.message);
 					
 					setTimeout(function(){
-						location.href = "${root}/blog/label";
+						location.href = "${root}/blog/tag";
 					},1500);
 				}
 			});
@@ -84,7 +84,7 @@
 		    	<font style="font-size:30px;float: left;">Label Manage</font>
 		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">标签管理</small>
 		    	<shiro:user>
-					<a title="添加标签"  style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/label/input">
+					<a title="添加标签"  style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/tag/input">
 						<span class="glyphicon glyphicon-plus"></span> 添加标签
 					</a>
 		    	</shiro:user>

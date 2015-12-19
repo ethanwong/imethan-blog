@@ -3,9 +3,9 @@
 <script type="text/javascript">
 //页面加载时初始化脚本
 $(document).ready(function () {
-$('.glyphicon-log-in').tooltip();
-$('.glyphicon-cog').tooltip();
-$('.glyphicon-log-out').tooltip();
+// $('.glyphicon-log-in').tooltip();
+// $('.glyphicon-cog').tooltip();
+// $('.glyphicon-log-out').tooltip();
 
 });
 </script>
@@ -34,10 +34,10 @@ $('.glyphicon-log-out').tooltip();
 				<shiro:guest>  
 					<li>
 						<c:if test="${isNormal}">
-							<a href="${root}/login" ><span class="glyphicon glyphicon-log-in" data-placement="bottom" title="Member login"></span></a>
+							<a href="${root}/login" ><span class="glyphicon glyphicon-log-in" data-placement="bottom" title="Member login"></span> Login</a>
 						</c:if>
 						<c:if test="${!isNormal}">
-							<a href="${root}/login" >Sign in</a>
+							<a href="${root}/login" > Login</a>
 						</c:if>
 					</li>
 				</shiro:guest>
@@ -47,10 +47,10 @@ $('.glyphicon-log-out').tooltip();
 						<a><span class="glyphicon glyphicon-user"></span> <shiro:principal/></a>
 					</li>
 					<li>
-						<a href="${root}/setting/profile"><span class="glyphicon glyphicon-cog" data-placement="bottom" title="Setting"></span></a>
+						<a href="${root}/setting/profile"><span class="glyphicon glyphicon-cog" data-placement="bottom" title="Setting"></span> Setting</a>
 					</li>
 					<li>
-						<a href="${root}/login/out"><span class="glyphicon glyphicon-log-out" data-placement="bottom" title="Log out"></span></a>
+						<a href="${root}/login/out"><span class="glyphicon glyphicon-log-out" data-placement="bottom" title="Logout"></span> Logout</a>
 					</li>
 				</shiro:user>
 			</ul>

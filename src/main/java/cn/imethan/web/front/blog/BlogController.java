@@ -149,7 +149,7 @@ public class BlogController extends SuperController{
      * @author Ethan Wong
      * @datetime 2015年12月18日下午3:18:07
      */
-    @RequestMapping(value = "label/{labelId}" ,method = {RequestMethod.GET})
+    @RequestMapping(value = "tag/{labelId}" ,method = {RequestMethod.GET})
     public String labelBlog(Model model,@PathVariable Long labelId,ServletRequest request){
     	
     	//获取栏目信息和标签信息
@@ -291,23 +291,29 @@ public class BlogController extends SuperController{
     @RequestMapping(value="/article/{articleId}",method = {RequestMethod.GET})
     public String article(@PathVariable Long articleId,Model model){
     	//获取文章信息
-    	if(articleId != null && articleId != 0l){
-    		Article article = articleService.getById(articleId);
-    		model.addAttribute("article", article);
-    		
-        	
-        	//获取栏目信息
-        	List<SearchFilter> channelFilters = new ArrayList<SearchFilter>();
-        	List<Channel> list = channelService.getList(channelFilters);//获取栏目信息
-        	model.addAttribute("channelList", list);
-        	
-        	//设置默认栏目ID
-        	model.addAttribute("channelId", article.getChannelId());
-    		
-        	List<Label> allLabel = labelService.getList(new ArrayList<SearchFilter>());
-        	model.addAttribute("allLabel", allLabel);
-    		
-    	}
+    	try {
+			if(articleId != null && articleId != 0l){
+				Article article = articleService.getById(articleId);
+				model.addAttribute("article", article);
+				
+				
+				//获取栏目信息
+				List<SearchFilter> channelFilters = new ArrayList<SearchFilter>();
+				List<Channel> list = channelService.getList(channelFilters);//获取栏目信息
+				model.addAttribute("channelList", list);
+				
+				//设置默认栏目ID
+				if(article != null){
+					model.addAttribute("channelId", article.getChannelId());
+				}
+				
+				List<Label> allLabel = labelService.getList(new ArrayList<SearchFilter>());
+				model.addAttribute("allLabel", allLabel);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     	return "front/blog/article-detail";
     }
     

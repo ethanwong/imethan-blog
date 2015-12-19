@@ -55,7 +55,7 @@ function generateArticle(json){
 		
 		var labels = " ";
 		$.each(item.labels, function(j, label) {
-			labels += "<a href='${root}/blog/label/"+label.id+"' ><span class='label label-default' style='padding: 0.1em;'>"+label.name+"</span></a>  "
+			labels += "<a href='${root}/blog/tag/"+label.id+"' ><span class='label label-default' style='padding: 0.1em;'>"+label.name+"</span></a>  "
 		})
 		
 		var article = ""+
@@ -150,7 +150,7 @@ function searchArticle(object){
 		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">我的工作和学习笔记</small>
 		    	<shiro:user>
 		    		<a title="管理栏目" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/channel"><span class="glyphicon glyphicon-list-alt"></span> 栏目管理</a>
-		    		<a title="管理标签" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/label"><span class="glyphicon glyphicon-tags"></span> 标签管理</a>
+		    		<a title="管理标签" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/tag"><span class="glyphicon glyphicon-tags"></span> 标签管理</a>
 		    		<a title="发布文章" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span> 发布文章</a>
 		    	</shiro:user>
 		    </div>
@@ -185,7 +185,7 @@ function searchArticle(object){
 						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 						&nbsp;&nbsp;
 						<c:forEach items="${article.labels}" var="label">
-							<a href='${root}/blog/label/${label.id}' ><span class="label label-default" style="padding: 0.1em;">${label.name}</span></a>
+							<a href='${root}/blog/tag/${label.id}' ><span class="label label-default" style="padding: 0.1em;">${label.name}</span></a>
 						</c:forEach>
 						
 						<shiro:user>

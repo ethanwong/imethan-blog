@@ -35,12 +35,18 @@
 	</shiro:user>
 	
 	<br>
-	<c:forEach items="${allLabel}" var="label" varStatus="status">
-		<a href="${root}/blog/label/${label.id}" >
-			<span class='label label-info' style='line-height:2 !important;padding: .2em'>
-				${label.name}
-			</span>
-		</a>
-		&nbsp;
-	</c:forEach>
+	<div class="panel panel-info">
+	  	<div class="panel-body" style="padding: 10px;">
+	  		<label><span class="glyphicon glyphicon-tags"></span>  Tag Cloud</label><br>
+  			<c:forEach items="${allLabel}" var="label" varStatus="status">
+				<a href="${root}/blog/tag/${label.id}" >
+					<span class='label label-info' style='line-height:2 !important;padding: .2em'>
+						${label.name}
+					</span>
+				</a>
+				&nbsp;
+			</c:forEach>
+	  	</div>
+	</div>
+
 </div>

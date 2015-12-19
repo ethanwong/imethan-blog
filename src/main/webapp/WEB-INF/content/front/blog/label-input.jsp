@@ -19,7 +19,7 @@
 			var name = $("#name").val();
 			var orderNo = $("#orderNo").val();
 			$.ajax({
-				url:"${root}/blog/label/save?id="+id+"&name="+name+"&orderNo="+orderNo,
+				url:"${root}/blog/tag/save?id="+id+"&name="+name+"&orderNo="+orderNo,
 				type:"POST",
 				dateType:"json",
 				success:function(data){
@@ -32,7 +32,7 @@
 					showMsg(messageType,result.message);
 					
 					setTimeout(function(){
-						location.href = "${root}/blog/label";
+						location.href = "${root}/blog/tag";
 					},1500);
 					
 				}

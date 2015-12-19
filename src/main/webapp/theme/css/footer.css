@@ -1,4 +1,12 @@
-.footer {
+.footer{
+	padding: 20px 0px 20px 0px;
+}
+
+.primaryColor{
+	color: #4183c4;
+}
+
+.copyright {
 	margin-top:20px;
 	margin-bottom:20px;
 	position: relative;
@@ -6,9 +14,24 @@
 	height: 30px;
 	text-align: center;
 }
-.footer .leftbox {
-	float: left;
+
+#back-to-top {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background: #5bc0de;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 2px;
+    z-index: 1;
+    display: none;
 }
-.footer .rightbox {
-	float: right;
+
+#back-to-top i {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
 }
+
+
+

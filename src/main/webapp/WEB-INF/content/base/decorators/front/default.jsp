@@ -10,11 +10,13 @@
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${root}/theme/css/common.css" rel="stylesheet">
+	<link href="${root}/theme/css/footer.css" rel="stylesheet">
 	
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
 	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
 	<!-- bootstrap end -->
+	<script src="http://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
 	
 	<script src="${root}/theme/js/popover.js"></script>
 	<script src="${root}/theme/js/tooltip.js"></script>
@@ -97,19 +99,6 @@
 			</div>
 		</div>
 		<decorator:body></decorator:body>
-		<div style="margin-top: 20px;">
-			<a href="#top" style="float: right;font-weight: bold;">TOP</a>
-<!-- 			<div style="float: left;"> -->
-<%-- 				<c:if test="${isNormal}"> --%>
-<!-- 					[电脑版] -->
-<%-- 				</c:if> --%>
-<%-- 				<c:if test="${isNormal eq false}"> --%>
-<!-- 					[移动版] -->
-<%-- 				</c:if> --%>
-<!-- 			</div> -->
-<!-- 			<a href="javascript:history.back(-1);" style="float: left;font-weight: bold;">BACK</a> -->
-		</div>
-
 	</div>
 	
 	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>

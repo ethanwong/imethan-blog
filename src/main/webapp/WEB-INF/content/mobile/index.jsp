@@ -13,9 +13,11 @@
 	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
 	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
 	<!-- bootstrap end -->
+	<script src="http://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
 	
 	<!-- custom defin begin -->
 	<link href="${root}/theme/css/common.css" rel="stylesheet">
+	<link href="${root}/theme/css/footer.css" rel="stylesheet">
 	<link href="${root}/theme/css/index.css" rel="stylesheet">
 	<script src="${root}/theme/js/common.js"></script>
 	<!-- custom defin end -->
@@ -38,59 +40,64 @@
 	  	<h1>Hello ImEthan</h1>
 <!-- 	  	<p>A blog named imethan,based java.</p> -->
 	  	<p>我的代码我的国，欢迎访问我的技术部落格。</p>
-	  	<p><a href="${root}/more"><button type="submit" class="btn btn-info">Learn more</button></a></p>
+	  	<p><a href="${root}/blog/article/104"><button style="width: 160px;" type="submit" class="btn btn-primary">Learn more</button></a></p>
 	  </div>
 	</div>
 
-	<div class="container linkBox" >
-		<div class="row">
-			<div class="col-md-3 linkWrap" >
-				<div class="link">
-					<div class="ico">
-						<a href="${root}/blog">
-							<span class="glyphicon glyphicon-book" style="color: #5bc0de;"></span>
-						</a>
-						<p class="tx">Read all blogs.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 linkWrap">
-				<div class="link">
-					<div class="ico">
-						<a href="${root}/todo">
-							<span class="glyphicon glyphicon-tasks" style="color: #f0ad4e"></span>
-						</a>
-						<p class="tx">Personal todo list.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 linkWrap">
-				<div class="link">
-					<div class="ico">
-						<a href="${root}/blog/23">
-							<span class="glyphicon glyphicon-gift" style="color: #5cb85c"></span>
-						</a>
-						<p class="tx">Personal item.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 linkWrap">
-				<div class="link">
-					<div class="ico">
-						<a href="${root}/about">
-							<span class="glyphicon glyphicon-magnet" style="color: #d9534f;"></span>
-						</a>
-						<p class="tx">More about me.</p>
-					</div>
-				</div>
-			</div>
+		<div class="container linkBox" >
+		<div class="media">
+		  <div class="media-left">
+				<a href="${root}/blog">
+					<span class="glyphicon glyphicon-book" style="color: #5bc0de;font-size: 60px;"></span>
+				</a>
+		  </div>
+		  <div class="media-body">
+		    <h4 class="media-heading">Blog</h4>
+		  	  博客文章模块，ImEthan的所有干货都在这里
+		  </div>
+		</div>
+		
+		<div class="media">
+		  <div class="media-left">
+				<a href="${root}/todo">
+					<span class="glyphicon glyphicon-tasks" style="color: #f0ad4e;font-size: 60px;"></span>
+				</a>
+		  </div>
+		  <div class="media-body">
+		    <h4 class="media-heading">Todo</h4>
+		  	 我的todo列表，记录我的待办事项，包括技能学习等等事项都记录在上面
+		  </div>
+		</div>
+		
+		<div class="media">
+		  <div class="media-left">
+				<a href="${root}/blog/23">
+					<span class="glyphicon glyphicon-gift" style="color: #5cb85c;font-size: 60px;"></span>
+				</a>
+		  </div>
+		  <div class="media-body">
+		    <h4 class="media-heading">Item</h4>
+		  	 闲暇时间开发和整理的开放源代码项目
+		  </div>
+		</div>
+		
+		<div class="media linkWrap">
+		  <div class="media-left">
+				<a href="${root}/about">
+					<span class="glyphicon glyphicon-magnet" style="color: #d9534f;font-size: 60px;"></span>
+				</a>
+		  </div>
+		  <div class="media-body">
+		    <h4 class="media-heading">About</h4>
+		  	 个人简历展示模块，正常情况下，我会将简历详情隐藏，待到派上用场的时候再设置公开
+		  </div>
 		</div>
 	</div>
-	<hr>
+	
 	<div class="container labelBox" >
 		<div class="row">
 			<div class="col-md-12">
-				<label><span class="glyphicon glyphicon-tags"></span>  Blog Labels</label>
+				<label><span class="glyphicon glyphicon-tags"></span>  Tag Cloud</label>
 				<br>
 				<c:forEach items="${allLabel}" var="label" varStatus="status">
 					<a href="${root}/blog/label/${label.id}" >

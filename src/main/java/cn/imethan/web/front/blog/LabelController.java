@@ -37,7 +37,7 @@ import cn.imethan.utils.JsonUtils;
  * @datetime 2015年12月16日下午2:39:17
  */
 @Controller
-@RequestMapping("/blog/label")
+@RequestMapping("/blog/tag")
 public class LabelController extends SuperController{
 	
 	@Autowired

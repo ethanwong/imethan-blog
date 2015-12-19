@@ -1,5 +1,8 @@
 package cn.imethan.repository.cms;
 
+import java.util.List;
+
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -20,6 +23,8 @@ public interface ArticleRepository extends BaseJpaRepository<Article, Long>{
 	@Modifying 
 	@Query("update Article a set a.isPublish = ?2 where a.id = ?1")
 	public int updatePublish(Long id, boolean publish);
+
+	public List<Article> findTop3ByIsPublish(boolean isPublish,Sort sort);
 
 //	public Page<Article> findByIdIn(List<Long> list, PageRequest pageable);
 	

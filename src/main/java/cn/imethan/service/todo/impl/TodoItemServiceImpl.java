@@ -1,6 +1,7 @@
 package cn.imethan.service.todo.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -46,6 +47,7 @@ public class TodoItemServiceImpl implements TodoItemService {
 			if(entity.getId() != null){
 				int result = todoItemRepository.updateName(entity.getId(),entity.getName());
 			}else{
+				entity.setCreateTime(new Date());
 				entity = todoItemRepository.save(entity);
 			}
 			

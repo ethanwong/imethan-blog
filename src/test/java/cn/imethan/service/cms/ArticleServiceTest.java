@@ -87,6 +87,12 @@ public class ArticleServiceTest {
 		Page<Article> result = articleService.findPage(filters, pageable);//获取文章第一页内容
 		System.out.println("testFindPage:"+result.getContent().size());
 	}	
+	
+	@Test
+	public void testGetTop(){
+		List<Article> list = articleService.getTopCountArticleList(0);
+		System.out.println(list);
+	}
 
 }
 

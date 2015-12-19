@@ -62,5 +62,15 @@ public interface ArticleService {
 	 */
 	public ReturnDto updatePublish(Long id);
 	
+	/**
+	 * 获取最新发布的文章
+	 * @param count
+	 * @return
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2015年12月19日下午4:19:03
+	 */
+	public List<Article> getTopCountArticleList(Integer count);
+	
 
 }

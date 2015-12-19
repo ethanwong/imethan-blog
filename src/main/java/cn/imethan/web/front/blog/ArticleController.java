@@ -128,4 +128,11 @@ public class ArticleController extends SuperController{
 	public ReturnDto publish(@PathVariable Long id){
 		return articleService.updatePublish(id);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/top" , method = RequestMethod.POST)
+	public List<Article> topArticle(){
+		
+		return articleService.getTopCountArticleList(0);
+	} 
 }

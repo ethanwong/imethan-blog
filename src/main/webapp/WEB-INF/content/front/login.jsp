@@ -20,9 +20,13 @@
 </script>
 </head>
 <body>
-	<div class="container" style="width: 300px;">
+	<div class="container" style="width: 400px;">
 		<form class="form-signin" role="form" action="${root}/login/in" id="inputForm" method="post" onsubmit="return login();" >
-		    <h2 class="form-signin-heading"><span class="glyphicon glyphicon-user"></span>&nbsp;Member login</h2>
+		    <h2 class="form-signin-heading" style="text-align: center;"><span style="font-size: 24px;" class="glyphicon glyphicon-user"></span> Member login</h2>
+		    <br>
+		    <div class="panel panel-default">
+	  		<div class="panel-body" >
+	  	
 		    <div class="row">
 		    	<div class="col-sm-12" >
 				    <input type="text" class="form-control required" id="username" name="username" value="" placeholder="Enter username"/>
@@ -52,6 +56,10 @@
 			 <script type="text/javascript">showMsg("error",'${error}');</script>
 <%-- 		     	<p class='bg-danger' style='padding: 15px;width: 270px !important;'>${error}</p> --%>
 		     </c:if>
+		     
+		     </div>
+		     </div>
+		     
 		</form>
 	 </div>
     
