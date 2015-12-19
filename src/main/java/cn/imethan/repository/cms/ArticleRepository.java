@@ -24,7 +24,7 @@ public interface ArticleRepository extends BaseJpaRepository<Article, Long>{
 	@Query("update Article a set a.isPublish = ?2 where a.id = ?1")
 	public int updatePublish(Long id, boolean publish);
 
-	public List<Article> findTop3ByIsPublish(boolean isPublish,Sort sort);
+	public List<Article> findTop4ByIsPublish(boolean isPublish,Sort sort);
 
 //	public Page<Article> findByIdIn(List<Long> list, PageRequest pageable);
 	

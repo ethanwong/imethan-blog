@@ -37,14 +37,12 @@
 	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
 	<div class="jumbotron" style="padding-top: 60px;">
 	  <div class="container">
-	  	<h1>Hello ImEthan</h1>
-<!-- 	  	<p>A blog named imethan,based java.</p> -->
+	  	<h1>Hello I'm Ethan</h1>
 	  	<p>我的代码我的国，欢迎访问我的技术部落格。</p>
 	  	<p><a href="${root}/blog/article/104"><button style="width: 160px;" type="submit" class="btn btn-primary">Learn more</button></a></p>
 	  </div>
 	</div>
-
-		<div class="container linkBox" >
+	<div class="container linkBox" >
 		<div class="media">
 		  <div class="media-left">
 				<a href="${root}/blog">
@@ -52,7 +50,7 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <h4 class="media-heading">Blog</h4>
+		    <a href="${root}/blog"><h4 class="media-heading">Blog</h4></a>
 		  	  博客文章模块，ImEthan的所有干货都在这里
 		  </div>
 		</div>
@@ -64,8 +62,8 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <h4 class="media-heading">Todo</h4>
-		  	 我的todo列表，记录我的待办事项，包括技能学习等等事项都记录在上面
+		    <a href="${root}/todo"><h4 class="media-heading">Todo</h4></a>
+		  	 我的todo列表，记录待办事项，包括技能学习等事项的记录
 		  </div>
 		</div>
 		
@@ -76,8 +74,8 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <h4 class="media-heading">Item</h4>
-		  	 闲暇时间开发和整理的开放源代码项目
+		    <a href="${root}/blog/23"><h4 class="media-heading">Item</h4></a>
+		  	 闲暇时间开发和整理的开放源代码项目介绍
 		  </div>
 		</div>
 		
@@ -88,8 +86,8 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <h4 class="media-heading">About</h4>
-		  	 个人简历展示模块，正常情况下，我会将简历详情隐藏，待到派上用场的时候再设置公开
+		    <a href="${root}/about"><h4 class="media-heading">About</h4></a>
+		  	 个人信息展示页面，正常情况下，将简历详情隐藏，待到派上用场的时候再设置公开
 		  </div>
 		</div>
 	</div>
@@ -101,7 +99,7 @@
 				<br>
 				<c:forEach items="${allLabel}" var="label" varStatus="status">
 					<a href="${root}/blog/label/${label.id}" >
-						<span class='label label-info' style='line-height:3 !important;padding: .4em'>
+						<span class='label label-info indexLabel'>
 							${label.name}
 						</span>
 					</a>

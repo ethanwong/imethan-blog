@@ -13,7 +13,6 @@ import javax.persistence.criteria.Root;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -89,7 +88,7 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 				}else{
 					channel = channelDb;
 				}
-				
+				entity.setCreateTime(articleDb.getCreateTime());
 				entity.setModifyTime(new Date());
 				entity.setChannel(channel);
 				articleRepository.save(entity);
@@ -224,7 +223,7 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 
 	@Override
 	public List<Article> getTopCountArticleList(Integer count) {
-		return articleRepository.findTop3ByIsPublish(true, new Sort(Direction.DESC,"id"));
+		return articleRepository.findTop4ByIsPublish(true, new Sort(Direction.DESC,"id"));
 	}
 
 

@@ -38,10 +38,10 @@
 	<div class="banner blur">
 		<div class="container" >
 			<div class="indexInfo">
-				<div class="title">Hello ImEthan</div>
-				<div class='content'>A blog named imethan,based java.</div>
+				<div class="title">Hello I'm Ethan</div>
+				<div class='content'>A blog named ImEthan,based java.</div>
 				<div class='content' style="font-size: 16px;">我的代码我的国，欢迎访问我的技术部落格。</div>
-				<a href="${root}/blog/article/104"><button style="width: 160px;" type="submit" class="btn btn-primary"> Learn more </button></a>
+				<a href="${root}/blog/article/104"><button style="width: 160px;margin-top: 10px;" type="button" class="btn btn-primary"> Learn more </button></a>
 			</div>
 		</div>
 	</div>
@@ -56,7 +56,7 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <h4 class="media-heading">Blog</h4>
+		    <a href="${root}/blog"><h4 class="media-heading">Blog</h4></a>
 		  	  博客文章模块，ImEthan的所有干货都在这里
 		  </div>
 		</div>
@@ -68,8 +68,8 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <h4 class="media-heading">Todo</h4>
-		  	 我的todo列表，记录我的待办事项，包括技能学习等等事项都记录在上面
+		    <a href="${root}/todo"><h4 class="media-heading">Todo</h4></a>
+		  	 我的todo列表，记录待办事项，包括技能学习等事项的记录
 		  </div>
 		</div>
 		
@@ -80,8 +80,8 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <h4 class="media-heading">Item</h4>
-		  	 闲暇时间开发和整理的开放源代码项目
+		    <a href="${root}/blog/23"><h4 class="media-heading">Item</h4></a>
+		  	 闲暇时间开发和整理的开放源代码项目介绍
 		  </div>
 		</div>
 		
@@ -92,8 +92,8 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <h4 class="media-heading">About</h4>
-		  	 个人简历展示模块，正常情况下，我会将简历详情隐藏，待到派上用场的时候再设置公开
+		    <a href="${root}/about"><h4 class="media-heading">About</h4></a>
+		  	 个人信息展示页面，正常情况下，将简历详情隐藏，待到派上用场的时候再设置公开
 		  </div>
 		</div>
 	</div>
@@ -105,23 +105,19 @@
 				<br>
 				<c:forEach items="${allLabel}" var="label" varStatus="status">
 					<a href="${root}/blog/tag/${label.id}" >
-						<span class='label label-info' style='line-height:3 !important;padding: .4em'>
+						<span class='label label-info indexLabel'>
 							${label.name}
 						</span>
 					</a>
-					&nbsp;
 				</c:forEach>
 			</div>
 		</div>
 	</div>
-	
-
 		
 	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
-		
 		// banner图片描述显示
 		$('.bannerInfo').tooltip({
 			 placement: 'top',

@@ -13,6 +13,8 @@ html {
 	
 }
 
+
+
 body {
 	/* Margin bottom by footer height */
 	font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
@@ -96,6 +98,8 @@ table {
 .articleList .article .content span{
 	white-space:inherit !important;
 }
+
+.articleList .article .content img{width:100%;height:100%;}
 .articleList .article .content p{
 	white-space:inherit !important;
 }

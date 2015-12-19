@@ -8,7 +8,7 @@
 				<h3 class="primaryColor" style="margin-top: 0px;">
 					ImEthan独立博客
 				</h3>
-				<p>基于JAVA企业级开源框架开发的独立博客，开放源代码，功能不断迭代开发，博客内容持续更新。</p>
+				<p>基于JAVA企业级开源框架开发的独立博客，设计风格简约但功能不简陋，开放源代码，功能不断迭代开发，博客内容持续更新。</p>
 			</div>
 			<div class="col-sm-6  col-lg-5 col-lg-offset-1" >
 				<p class="primaryColor" style="margin-top: 0px;">最新文章</p>
@@ -27,6 +27,8 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
+		
+		//加载最新文章
 		$.ajax({
 			url:"${root}/cms/article/top",
 			type:"POST",
@@ -40,6 +42,7 @@
 			}		
 		});
 		
+		//返回顶部超链接
 		$.scrollUp({
 		    scrollName:'back-to-top',// 元素ID
 		    topDistance:'300',// 顶部距离显示元素之前 (px)

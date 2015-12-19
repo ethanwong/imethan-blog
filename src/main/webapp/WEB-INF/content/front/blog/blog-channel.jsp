@@ -36,11 +36,11 @@
 	
 	<br>
 	<div class="panel panel-info">
-	  	<div class="panel-body" style="padding: 10px;">
+	  	<div class="panel-body" style="padding: 14px;">
 	  		<label><span class="glyphicon glyphicon-tags"></span>  Tag Cloud</label><br>
   			<c:forEach items="${allLabel}" var="label" varStatus="status">
 				<a href="${root}/blog/tag/${label.id}" >
-					<span class='label label-info' style='line-height:2 !important;padding: .2em'>
+					<span class='label label-info' style='line-height:3 !important;padding: .4em;margin-right: 10px;'>
 						${label.name}
 					</span>
 				</a>

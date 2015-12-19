@@ -49,6 +49,8 @@ public class TodoServiceImpl implements TodoService {
 		try {
 			entity.setTodoItem(todoItemRepository.findOne(entity.getTodoItem().getId()));;
 			if(entity.getId() != null){
+				Todo todoDb = todoRepository.findOne(entity.getId());
+				entity.setCreateTime(todoDb.getCreateTime());
 				entity.setModifyTime(new Date());
 				entity = todoRepository.save(entity);
 			}else{

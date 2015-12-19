@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -135,4 +136,12 @@ public class ArticleController extends SuperController{
 		
 		return articleService.getTopCountArticleList(0);
 	} 
+	
+	
+	@ModelAttribute
+	public void getModel(@RequestParam(value = "id", required = false) Long id, Model model) {
+		if (id != null) {
+			model.addAttribute("entity", articleService.getById(id));
+		}
+	}
 }

@@ -48,7 +48,9 @@ public class ChannelServiceImpl implements ChannelService {
 		String message = "保存成功";
 		try {
 			if(entity.getId() != null){
-				entity.setArticleAmount(this.getById(entity.getId()).getArticleAmount());
+				Channel channelDb = this.getById(entity.getId());
+				entity.setCreateTime(channelDb.getCreateTime());
+				entity.setArticleAmount(channelDb.getArticleAmount());
 				entity.setModifyTime(new Date());
 			}else{
 				entity.setCreateTime(new Date());

@@ -6,7 +6,6 @@ $(document).ready(function () {
 // $('.glyphicon-log-in').tooltip();
 // $('.glyphicon-cog').tooltip();
 // $('.glyphicon-log-out').tooltip();
-
 });
 </script>
 <nav class="navbar navbar-default navbar-fixed-top " role="navigation">
@@ -54,21 +53,6 @@ $(document).ready(function () {
 					</li>
 				</shiro:user>
 			</ul>
-			
-				<!-- 
-				<div class="btn-group">
-				  <a type="button"  data-toggle="dropdown" aria-expanded="false" style="">
-				    <span class="glyphicon glyphicon-cog"></span>
-				  </a>
-				  <ul class="dropdown-menu" role="menu">
-				    <li><a href="#">Action</a></li>
-				    <li><a href="#">Another action</a></li>
-				    <li><a href="#">Something else here</a></li>
-				    <li class="divider"></li>
-				    <li><a href="#">Separated link</a></li>
-				  </ul>
-				</div>
-				 -->
 		</div>
 	</div>
 </nav>
