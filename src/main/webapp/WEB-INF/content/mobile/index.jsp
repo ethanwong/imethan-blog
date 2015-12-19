@@ -98,7 +98,7 @@
 				<label><span class="glyphicon glyphicon-tags"></span>  Tag Cloud</label>
 				<br>
 				<c:forEach items="${allLabel}" var="label" varStatus="status">
-					<a href="${root}/blog/label/${label.id}" >
+					<a href="${root}/blog/tag/${label.id}" >
 						<span class='label label-info indexLabel'>
 							${label.name}
 						</span>
