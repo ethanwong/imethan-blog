@@ -34,12 +34,12 @@
 		</c:forEach>
 	</shiro:user>
 	
-	<div class="panel panel-info" style="margin-top: 20px;">
+	<div class="panel panel-default" style="margin-top: 20px;">
 	  	<div class="panel-body" style="padding: 14px;">
 	  		<label><span class="glyphicon glyphicon-tags"></span>  Tag Cloud</label><br>
   			<c:forEach items="${allLabel}" var="label" varStatus="status">
 				<a href="${root}/blog/tag/${label.id}" >
-					<span class='label label-info' style='line-height:3 !important;padding: .4em;margin-right: 10px;'>
+					<span class='label label-default' style='line-height:2 !important;padding: 0.2em;margin-right: 10px;'>
 						${label.name}
 					</span>
 				</a>

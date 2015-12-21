@@ -335,7 +335,9 @@
 				<div class="panel-body">
 					<div class="row" style="padding-top: 0px;">
 						<div class="col-md-2">
-							<h4><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Todo list</h4>
+							<h4>
+								<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Todo list
+							</h4>
 						</div>
 						<div class="col-md-10 addWarm"></div>
 					</div>

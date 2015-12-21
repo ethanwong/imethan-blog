@@ -187,7 +187,7 @@ function searchArticle(object){
 						&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 						&nbsp;&nbsp;
 						<c:forEach items="${article.labels}" var="label">
-							<a href='${root}/blog/tag/${label.id}' ><span class="label label-default" style="padding: 0.1em;">${label.name}</span></a>
+							<a href='${root}/blog/tag/${label.id}' ><span class="label label-default" style="padding: 0.2em;">${label.name}</span></a>
 						</c:forEach>
 						
 						<shiro:user>

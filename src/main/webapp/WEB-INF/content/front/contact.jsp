@@ -201,7 +201,7 @@
 					    <label for="content">Message<font color="red">*</font></label>
 					    <textarea rows="4" cols="20"  class="form-control required" id="content" name="content" placeholder="Enter you message" ></textarea>
 					  </div>
-					  <button type="button" class="btn btn-info" onclick="saveMessage()">Save Message</button>
+					  <button type="button" class="btn btn-primary" onclick="saveMessage()">Send Message</button>
 					  <span class="addWarm"></span>
 					</form>
 				</div>

@@ -146,7 +146,7 @@ function loadCommnet(page){
 						    <textarea id="comment" rows="4" cols="20" class="form-control required" placeholder="Enter comment" name="comment" maxlength="1000"></textarea>
 						  </div>
 						  
-						  <button type="button" class="btn btn-info" onclick="saveComment()">Save Comment</button>
+						  <button type="button" class="btn btn-primary" onclick="saveComment()">Save Comment</button>
 						  <span class="addWarm"></span>
 						</form>
 				  </div>
