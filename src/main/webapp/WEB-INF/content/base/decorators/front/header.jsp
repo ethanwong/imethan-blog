@@ -8,7 +8,8 @@ $(document).ready(function () {
 // $('.glyphicon-log-out').tooltip();
 });
 </script>
-<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+
+<nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

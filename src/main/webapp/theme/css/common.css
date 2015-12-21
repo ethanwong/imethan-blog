@@ -60,12 +60,13 @@ table {
 .userinfo{
 	
 }
+<!-- article css begin -->
 .articleList{
-/* 	padding-top: 10px; */
+	padding-top: 10px 0px 10px 0px;
 }
 
 .articleList .article{
-	margin-bottom:20px;
+	margin-bottom:30px;
 	display: block;
 }
 .articleList .article .channel{
@@ -77,7 +78,7 @@ table {
 /* 	color:#777; */
 	margin-top:0px;
 	margin-bottom:5px;		
-	line-height: 32px;
+	line-height: 36px;
 	text-align: left; 
 	word-break: break-all;
 }
@@ -85,12 +86,12 @@ table {
 	color:#4183c4 !important;
 }
 .articleList .article .content{
-	margin-top:20px;
+	margin-top:10px;
 /* 	color:#333 !important; */
-/* 	line-height: 28px; */
+	line-height: 24px;
 /* 	font-size: 14px; */
 	display: block !important;
-	text-align: left; 
+/* 	text-align: left;  */
 	word-break: break-all;
 	
 }
@@ -114,12 +115,16 @@ table {
 /* 	word-break: break-all; */
 /* } */
 
+
+
 .readmore-js-toggle{
 	padding-top:4px;
 	display: block;
 	text-align: right;
 	padding-right: 10px;
 }
+
+<!-- article css end -->
 
 /*Error Page*/
 .error_ex{ text-align:center;}

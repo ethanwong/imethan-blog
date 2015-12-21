@@ -155,8 +155,10 @@ function searchArticle(object){
 		    	</shiro:user>
 		    </div>
 		    <div class="col-sm-3" >
-		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" 
-		      	 type="search" class="form-control" placeholder="Search blog" />
+		    	<c:if test="${isNormal}">
+		    		<input onchange="searchArticle(this)" name="search_title" value="${search_title}" 
+		      	 	type="search" class="form-control" placeholder="Search blog" />
+		    	</c:if>
 		    </div>
 	  </div>
 	</form>

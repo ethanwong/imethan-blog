@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
-<hr style="margin-top: 60px;">
+<hr style="margin-top: 40px;">
 <div class="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-lg-6" style="vertical-align: text-top;">
+			<div class="col-sm-6 col-lg-6" style="padding-bottom: 10px;">
 				<h3 class="primaryColor" style="margin-top: 0px;">
 					ImEthan独立博客
 				</h3>
@@ -12,7 +12,7 @@
 			</div>
 			<div class="col-sm-6  col-lg-5 col-lg-offset-1" >
 				<p class="primaryColor" style="margin-top: 0px;">最新文章</p>
-				<div id="newBlogBox"></div>
+				<div id="newBlogBox" style="line-height: 16px;"></div>
 			</div>
 		</div>
 	</div>

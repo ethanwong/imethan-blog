@@ -43,7 +43,7 @@
 
 /*linkbox begin*/
 .linkBox {
-	padding-top: 40px !important;
+	padding-top: 20px !important;
 }
 
 .media{
@@ -55,7 +55,6 @@
 .desktop{
 	width: 400px;
 }
-
 
 /*linkbox end*/
 
@@ -70,10 +69,7 @@
 
 /*labelBox end*/
 .labelBox{
-	padding-top:40px !important;
-	padding-left:20px !important;
-	padding-right:20px !important;
-	padding-bottom:0px !important;
+	padding: 0px 20px 20px 20px !important;
 }
 
 .indexLabel{

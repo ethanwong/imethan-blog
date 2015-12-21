@@ -48,7 +48,9 @@
 		    	<a style="font-size:24px;float: left;color: #4183c4;" href="${root}/blog/article/${article.id}">${article.title}</a>
 		    </div>
 		    <div class="col-sm-3" >
-		      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;" type="search" class="form-control" placeholder="Search blog" >
+			    <c:if test="${isNormal}">
+			      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;" type="search" class="form-control" placeholder="Search blog" >
+			    </c:if>
 		    </div>
 	  </div>
 	</form>
