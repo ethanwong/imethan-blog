@@ -88,8 +88,7 @@
 </script>
 </head>
 <body>
-	<form class="form-horizontal" role="form">
-	  <div class="form-group">
+	  <div class="row">
 		    <div class="col-sm-9">
 		    	<font style="font-size:30px;float: left;">Channel Manage</font>
 		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">栏目管理</small>
@@ -100,10 +99,12 @@
 		    	</shiro:user>
 		    </div>
 		    <div class="col-sm-3" >
-		    	<input  name="search_title" value="" type="search" class="form-control" placeholder="Search channel" />
+		    	<form class="form-horizontal" role="form">
+		    		<input  name="search_title" value="" type="search" class="form-control" placeholder="Search channel" />
+		    	</form>
 		    </div>
 	  </div>
-	</form>
+	
 	<hr>
 	<div class="row">
 		<div class="col-md-12" >

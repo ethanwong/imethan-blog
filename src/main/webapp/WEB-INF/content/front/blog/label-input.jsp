@@ -47,17 +47,10 @@
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default">
-<!-- 				  <div class="panel-heading"> -->
-<!-- 				    <h3 class="panel-title">Input label</h3> -->
-<!-- 				  </div> -->
+				  <div class="panel-heading">
+				    <h4 class="panel-title">Input label</h4>
+				  </div>
 				  <div class="panel-body">
-				  		<div class="row" style="padding-top: 0px;">
-							<div class="col-md-3">
-								<h4><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Input label</h4>
-							</div>
-							<div class="col-md-9"></div>
-						</div>
-						<br>
 					  	<form role="form" method="post" action="" id="inputForm">
 					  	  <input id="id"  type="hidden" name="id" value="${entity.id}">
 					  	  
@@ -73,7 +66,7 @@
 						  </div>
 
 						  
-						  <button type="button" class="btn btn-info" onclick="save()">Submit</button>
+						  <button type="button" class="btn btn-primary" onclick="save()">Submit</button>
 						  <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Return</button>
 						</form>
 				  </div>

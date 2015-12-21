@@ -42,18 +42,20 @@
 </script>
 </head>
 <body>
-	<form class="form-horizontal" role="form">
-	  <div class="form-group">
-		    <div class="col-sm-9">
-		    	<a style="font-size:24px;float: left;color: #4183c4;" href="${root}/blog/article/${article.id}">${article.title}</a>
-		    </div>
-		    <div class="col-sm-3" >
-			    <c:if test="${isNormal}">
-			      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;" type="search" class="form-control" placeholder="Search blog" >
-			    </c:if>
-		    </div>
-	  </div>
-	</form>
+  <div class="row" >
+    <div class="col-sm-9">
+    	<a style="font-size:24px;float: left;color: #4183c4;" href="${root}/blog/article/${article.id}">${article.title}</a>
+    </div>
+    <div class="col-sm-3" >
+	    <c:if test="${isNormal}">
+	    	<form class="form-horizontal" role="form">
+	      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;" type="search" class="form-control" placeholder="Search blog" >
+	   		 </form>
+	    </c:if>
+	   
+    </div>
+  </div>
+	
 	<hr>
 	<div class="row">
 		<div class="col-md-9" >

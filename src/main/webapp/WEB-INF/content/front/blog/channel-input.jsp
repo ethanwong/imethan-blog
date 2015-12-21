@@ -50,17 +50,10 @@
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default">
-<!-- 				  <div class="panel-heading"> -->
-<!-- 				    <h3 class="panel-title">Input channel</h3> -->
-<!-- 				  </div> -->
+				  <div class="panel-heading">
+				    <h4 class="panel-title">Input channel</h4>
+				  </div>
 				  <div class="panel-body">
-				  		<div class="row" style="padding-top: 0px;">
-							<div class="col-md-3">
-								<h4><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Input channel</h4>
-							</div>
-							<div class="col-md-9"></div>
-						</div>
-						<br>
 					  	<form role="form" method="post" action="" id="inputForm">
 					  	  <input id="id"  type="hidden" name="id" value="${channel.id}">
 					  	  
@@ -88,7 +81,7 @@
 						    <textarea rows="3" cols="20" class="form-control required" id="intro" placeholder="Enter intro" name="intro">${channel.intro}</textarea>
 						  </div>
 						  
-						  <button type="button" class="btn btn-info" onclick="saveChannel()">Submit</button>
+						  <button type="button" class="btn btn-primary" onclick="saveChannel()">Submit</button>
 						  <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Return</button>
 						</form>
 				  </div>

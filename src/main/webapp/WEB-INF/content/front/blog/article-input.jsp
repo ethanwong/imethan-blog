@@ -132,13 +132,10 @@
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h4 class="panel-title">Publish article</h4>
+				  </div>
 				  <div class="panel-body">
-					  	<div class="row" style="padding-top: 0px;">
-					  		<div class="col-md-12">
-					  			<h4><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Publish article</h4>
-					  		</div>
-					  	</div>
-					  	<hr>
 					  	<div class="row" style="padding-top: 0px;">
 							<div class="col-md-12">
 								 <button type="button" class="btn btn-default" onclick="saveArticle()">Save</button>
@@ -188,7 +185,7 @@
 							<p id="editorWarn"></p>
 						  </div>
 						  
-						  <button type="button" class="btn btn-info" onclick="saveArticle()">Submit</button>
+						  <button type="button" class="btn btn-primary" onclick="saveArticle()">Submit</button>
 						  <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Return</button>
 						  <span class="addWarm"></span>
 						</form>

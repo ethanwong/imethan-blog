@@ -177,8 +177,13 @@
 </script>
 </head>
 <body>
-	<font style="font-size:30px;">Contact</font>
-	<small style="padding-top: 20px;padding-left: 10px;">发消息联系我</small>
+	<div class="row">
+		<div class="col-sm-9">
+			<font style="font-size: 30px;">Contact</font> <small
+				style="padding-top: 20px; padding-left: 10px;">发消息联系我</small>
+		</div>
+		<div class="col-sm-3"></div>
+	</div>
 	<hr>
 	<div class="row">
 		<div class="col-md-9" >

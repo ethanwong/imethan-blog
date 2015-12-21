@@ -13,7 +13,9 @@ html {
 	
 }
 
-
+.panel-default .panel-heading{
+	padding: 12px;background-color: white;
+}
 
 body {
 	/* Margin bottom by footer height */
@@ -25,9 +27,7 @@ body {
 
 body>.container {
   max-width: none !important;
-/*   width:980px; */
-  padding-top: 70px;
-  padding-bottom: 10px;
+  padding-top: 60px;
 }
 
 .container .text-muted {

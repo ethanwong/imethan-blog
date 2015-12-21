@@ -19,7 +19,7 @@
     position: fixed;
     right: 10px;
     bottom: 10px;
-    background: #5bc0de;
+    background: #428bca;
     color: #ffffff;
     text-align: center;
     border-radius: 2px;
@@ -28,9 +28,9 @@
 }
 
 #back-to-top i {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
 }
 
 

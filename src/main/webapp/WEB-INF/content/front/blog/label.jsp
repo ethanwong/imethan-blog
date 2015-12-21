@@ -78,22 +78,23 @@
 </script>
 </head>
 <body>
-	<form class="form-horizontal" role="form">
-	  <div class="form-group">
-		    <div class="col-sm-9">
-		    	<font style="font-size:30px;float: left;">Label Manage</font>
-		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">标签管理</small>
-		    	<shiro:user>
-					<a title="添加标签"  style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/tag/input">
-						<span class="glyphicon glyphicon-plus"></span> 添加标签
-					</a>
-		    	</shiro:user>
-		    </div>
-		    <div class="col-sm-3" >
-		    	<input  name="search_title" value="" type="search" class="form-control" placeholder="Search label" />
-		    </div>
-	  </div>
-	</form>
+  <div class="row">
+	    <div class="col-sm-9">
+	    	<font style="font-size:30px;float: left;">Label Manage</font>
+	    	<small style="float: left;padding-top: 20px;padding-left: 10px;">标签管理</small>
+	    	<shiro:user>
+				<a title="添加标签"  style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/tag/input">
+					<span class="glyphicon glyphicon-plus"></span> 添加标签
+				</a>
+	    	</shiro:user>
+	    </div>
+	    <div class="col-sm-3" >
+	    	<form class="form-horizontal" role="form">
+	    	<input  name="search_title" value="" type="search" class="form-control" placeholder="Search label" />
+	   		</form>
+	    </div>
+  </div>
+	
 	<hr>
 	<div class="row">
 		<div class="col-md-12" >
