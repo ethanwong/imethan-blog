@@ -9,7 +9,13 @@ $(document).ready(function () {
 });
 </script>
 
-<nav class="navbar navbar-default  navbar-fixed-top " role="navigation">
+	<!-- 移动版的不固定头部处理 -->
+	<c:if test="${!isNormal}">
+		<nav class="navbar navbar-default  navbar-static-top " role="navigation">
+	</c:if>
+	<c:if test="${isNormal}">
+		<nav class="navbar navbar-default  navbar-fixed-top " role="navigation">
+	</c:if>
      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

@@ -61,6 +61,15 @@
 	  s.parentNode.insertBefore(hm, s);
 	})();
 	</script>
+	
+	<!-- 移动版的不固定头部样式处理 -->
+	<style type="text/css">
+		<c:if test="${!isNormal}">
+			body>.container {
+			  padding-top: 10px !important;
+			}
+		</c:if>
+	</style>
     
 </head>
 

@@ -35,7 +35,7 @@
 
 <body>
 	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
-	<div class="jumbotron" style="padding-top: 60px;">
+	<div class="jumbotron" style="padding-top: 20px;">
 	  <div class="container">
 	  	<h1>Hello I'm Ethan</h1>
 	  	<p>我的代码我的国，欢迎访问我的技术部落格。</p>
