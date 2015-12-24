@@ -24,9 +24,9 @@ html {
 body {
 	/* Margin bottom by footer height */
 	font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
-	font-size: 15px;
+	font-size: 14px;
 	color:#555;
-	line-height: 1.8;
+	line-height: 1.5;
 }
 
 body>.container {
@@ -67,6 +67,15 @@ body>.container {
 .userinfo{
 	
 }
+
+.searchform{
+/* 	padding-top: 10px; */
+}
+
+.manageButton{
+	margin:10px 0px 0px 20px;float: right;
+}
+
 <!-- article css begin -->
 .articleList{
 	padding-top: 10px 0px 10px 0px;

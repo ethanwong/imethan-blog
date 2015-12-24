@@ -148,14 +148,14 @@ function searchArticle(object){
 	    	<font style="font-size:30px;float: left;">All Blog</font>
 	    	<small style="float: left;padding-top: 20px;padding-left: 10px;">我的工作和学习笔记</small>
 	    	<shiro:user>
-	    		<a title="管理栏目" style="margin:12px 0px 0px 20px;float: right;" href="${root}/blog/channel"><span class="glyphicon glyphicon-list-alt"></span> 栏目管理</a>
-	    		<a title="管理标签" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/tag"><span class="glyphicon glyphicon-tags"></span> 标签管理</a>
-	    		<a title="发布文章" style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span> 发布文章</a>
+	    		<a title="管理栏目" class="manageButton" href="${root}/blog/channel"><span class="glyphicon glyphicon-list-alt"></span> 栏目管理</a>
+	    		<a title="管理标签" class="manageButton" href="${root}/blog/tag"><span class="glyphicon glyphicon-tags"></span> 标签管理</a>
+	    		<a title="发布文章" class="manageButton" href="${root}/blog/article/input/${channelId}/0"><span class="glyphicon glyphicon-plus"></span> 发布文章</a>
 	    	</shiro:user>
 	    </div>
 	    <div class="col-sm-3" >
 	    	<c:if test="${isNormal}">
-	    		<form class="form-horizontal" role="form" style="padding-top: 10px;">
+	    		<form class="form-horizontal searchform" role="form" >
 	    			<input onchange="searchArticle(this)" name="search_title" value="${search_title}" 
 	      	 		type="search" class="form-control" placeholder="Search blog" />
 	      	 	</form>

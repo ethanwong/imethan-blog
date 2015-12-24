@@ -93,13 +93,13 @@
 		    	<font style="font-size:30px;float: left;">Channel Manage</font>
 		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">栏目管理</small>
 		    	<shiro:user>
-					<a title="添加栏目"  style="padding:12px 0px 0px 20px;float: right;" href="${root}/blog/channel/input/0">
+					<a title="添加栏目" class="manageButton" href="${root}/blog/channel/input/0">
 						<span class="glyphicon glyphicon-plus"></span> 添加栏目
 					</a>
 		    	</shiro:user>
 		    </div>
 		    <div class="col-sm-3" >
-		    	<form class="form-horizontal" role="form">
+		    	<form class="form-horizontal searchform" role="form">
 		    		<input  name="search_title" value="" type="search" class="form-control" placeholder="Search channel" />
 		    	</form>
 		    </div>

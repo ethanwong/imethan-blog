@@ -48,7 +48,7 @@
     </div>
     <div class="col-sm-3" >
 	    <c:if test="${isNormal}">
-	    	<form class="form-horizontal" role="form">
+	    	<form class="form-horizontal " role="form" >
 	      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;" type="search" class="form-control" placeholder="Search blog" >
 	   		 </form>
 	    </c:if>
@@ -56,7 +56,7 @@
     </div>
   </div>
 	
-	<hr class="modelhr">
+	<hr >
 	<div class="row">
 		<div class="col-md-9" >
 			<div class='articleList'>
