@@ -77,7 +77,7 @@ body>.container {
 	display: block;
 }
 .articleList .article .channel{
-/* 	color: #428bca; */
+	
 }
 
 /*article css*/
@@ -86,7 +86,8 @@ body>.container {
 	margin-top:0px;
 	margin-bottom:5px;		
 	text-align: left; 
-	word-break: break-all;
+	word-break: break-all!important;
+/* 	white-space:pre-wrap !important; */
 }
 .articleList .article .title a{
 	color:#4183c4 !important;
@@ -95,21 +96,24 @@ body>.container {
 	margin-top:10px;
 	display: block !important;
 /* 	text-align: left;  */
-	word-break: break-all;
-	
+	word-break: break-all!important;
+	white-space:pre-wrap !important;
 }
 
 .articleList .article .content span{
-	white-space:pre-wrap;
+	white-space:pre-wrap !important;
+	word-break: break-all!important;
 }
 
 
 
 .articleList .article .content p{
-	white-space:pre-wrap;
+	white-space:pre-wrap!important;
+	word-break: break-all!important;
 }
 .articleList .article .content div{
-	white-space:pre-wrap;
+	white-space:pre-wrap!important;
+	word-break: break-all!important;
 }
 
 .articleList .article .content .imgwh{width:100%;height:100%;}
