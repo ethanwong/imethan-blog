@@ -42,7 +42,7 @@
 </script>
 </head>
 <body>
-  <div class="row" >
+  <div class="row" <c:if test="${isNormal}">style="padding-top: 16px;"</c:if>>
     <div class="col-sm-9">
     	<a style="font-size:24px;float: left;color: #4183c4;" href="${root}/blog/article/${article.id}">${article.title}</a>
     </div>
@@ -56,7 +56,7 @@
     </div>
   </div>
 	
-	<hr>
+	<hr class="modelhr">
 	<div class="row">
 		<div class="col-md-9" >
 			<div class='articleList'>

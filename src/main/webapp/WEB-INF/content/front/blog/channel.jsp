@@ -105,7 +105,7 @@
 		    </div>
 	  </div>
 	
-	<hr>
+	<hr class="modelhr">
 	<div class="row">
 		<div class="col-md-12" >
 			<table id="list"></table>

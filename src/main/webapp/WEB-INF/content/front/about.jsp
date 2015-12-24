@@ -66,7 +66,7 @@
 	</div>
 	
 
-	<hr>
+	<hr class="modelhr">
 	<div class="row">
 		<div class="col-md-3">
 			<div class="userinfo"  >

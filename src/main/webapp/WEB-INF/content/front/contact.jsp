@@ -184,7 +184,7 @@
 		</div>
 		<div class="col-sm-3"></div>
 	</div>
-	<hr>
+	<hr class="modelhr">
 	<div class="row">
 		<div class="col-md-9" >
 			<div id="messageList"></div>

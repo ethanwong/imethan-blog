@@ -39,7 +39,7 @@
 	  		<label><span class="glyphicon glyphicon-tags"></span>  Tag Cloud</label><br>
   			<c:forEach items="${allLabel}" var="label" varStatus="status">
 				<a href="${root}/blog/tag/${label.id}" >
-					<span class='label label-default' style='line-height:28px !important;padding: 0.2em;margin-right: 4px;'>
+					<span class='label label-default' style='padding: 0.2em;margin-right: 4px;'>
 						${label.name}
 					</span>
 				</a>
