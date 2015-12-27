@@ -9,13 +9,6 @@
 					ImEthan独立博客
 				</h3>
 				<p>基于JAVA企业级开源框架开发的独立博客，设计风格简约但功能不简陋，开放源代码，功能不断迭代开发，博客内容持续更新。</p>
-<!-- 				<div class="row"> -->
-<!-- 					<div class="col-xs-2">BLog</div> -->
-<!-- 					<div class="col-xs-2">Todo</div> -->
-<!-- 					<div class="col-xs-2">Contact</div> -->
-<!-- 					<div class="col-xs-2">GitHub</div> -->
-<!-- 					<div class="col-xs-2">About</div> -->
-<!-- 				</div> -->
 			</div>
 			<div class="col-sm-6  col-lg-5 col-lg-offset-1" >
 				<p class="primaryColor" style="margin-top: 0px;">最新文章</p>

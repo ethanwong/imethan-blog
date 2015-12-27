@@ -96,20 +96,19 @@ function generateArticle(json){
 
 //删除文章
 function deleteArticle(id,object){
-	$('#deleteConfirmModal').modal({
-	 	 keyboard: true
-	});
-	$("#deleteConfirmModalClick").click(function(){
+	
+	setDeleteModal().bind('click',function(){
 		$.ajax({
 			url:"${root}/cms/article/delete/"+id,
 			type:"POST",
 			dateType:"json",
 			success:function(data){
 				var result = eval("(" + data + ")");
-				
 				showMsg("success",result.message);
-				
 				$(object).parent().parent().remove();
+			},
+			error:function(){
+				showError("删除失败");	
 			}
 		});
 	});
@@ -193,11 +192,11 @@ function searchArticle(object){
 						
 						<shiro:user>
 						<div class='blog-article-toolbar'>
-							  <a href="#" onclick="publishArticle(this,${article.id})">
+							  <a href="javascript:;" onclick="publishArticle(this,${article.id})">
 								 <c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag" ></span></c:if>
 								 <c:if test="${article.publish eq false}"><span class="glyphicon glyphicon-flag" ></span></c:if>
 							   </a>
-								<a href="#" onclick="deleteArticle(${article.id},this)"><span  class='glyphicon glyphicon-trash'></span></a>
+								<a href="javascript:;" onclick="deleteArticle(${article.id},this)"><span  class='glyphicon glyphicon-trash'></span></a>
 								<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span  class='glyphicon glyphicon-edit'></span></a>
 							</div>
 						</shiro:user>

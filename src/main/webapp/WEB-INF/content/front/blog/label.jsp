@@ -54,10 +54,8 @@
 	
 	//删除栏目
 	function deleteOne(id){
-		$('#deleteConfirmModal').modal({
-		 	 keyboard: true
-		});
-		$("#deleteConfirmModalClick").click(function(){
+		
+		setDeleteModal().bind('click',function(){
 			$.ajax({
 				url:"${root}/blog/tag/delete/"+id,
 				type:"POST",
@@ -70,9 +68,33 @@
 					setTimeout(function(){
 						location.href = "${root}/blog/tag";
 					},1500);
+				},
+				error:function(){
+					showError("删除失败");	
 				}
 			});
 		});
+		
+		
+// 		$('#deleteConfirmModal').modal({
+// 		 	 keyboard: true
+// 		});
+// 		$("#deleteConfirmModalClick").click(function(){
+// 			$.ajax({
+// 				url:"${root}/blog/tag/delete/"+id,
+// 				type:"POST",
+// 				dateType:"json",
+// 				success:function(data){
+// 					var result = eval("(" + data + ")");
+// 					//加载角色列表
+// 					showMsg("success",result.message);
+					
+// 					setTimeout(function(){
+// 						location.href = "${root}/blog/tag";
+// 					},1500);
+// 				}
+// 			});
+// 		});
 	};
 
 </script>

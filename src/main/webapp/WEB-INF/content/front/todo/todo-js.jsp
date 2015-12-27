@@ -211,31 +211,27 @@
 	//删除todo
 	function deleteTodo(object){
 		var id = $(object).parent().parent().parent().find("td:first").attr("id");
-		$('#deleteTodoConfirmModal').modal({
-		 	 keyboard: true
-		},$("#deleteTodoId").val(id));
-	};
+		setDeleteModal().bind('click',function(){
+			$.ajax({
+				url:"${root}/todo/delete/"+id,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					$(".info").remove();
 
-	//执行删除todo
-	function deleteOne(){
-		var id = $("#deleteTodoId").val();
-		$.ajax({
-			url:"${root}/todo/delete/"+id,
-			type:"POST",
-			dateType:"json",
-			success:function(data){
-				var result = eval("(" + data + ")");
-				$(".info").remove();
-				
-				$('#deleteTodoConfirmModal').modal('toggle');
-
-				addWarm(result.success,result.message);
-				setTimeout(function(){
-					loadTodo($("#page").val());
-					$(".addWarm").html("");
-				},2000);
-			}
+					addWarm(result.success,result.message);
+					setTimeout(function(){
+						loadTodo($("#page").val());
+						$(".addWarm").html("");
+					},1500);
+				},
+				error:function(){
+					showError("删除失败");	
+				}
+			});
 		});
+		
 	};
 	
 	//更新todo内容

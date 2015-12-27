@@ -132,31 +132,28 @@
 	
 	//删除item
 	function deleteItem(id){
-		$('#deleteTodoItemConfirmModal').modal({
-		 	 keyboard: true
-		}, $("#deleteTodoItemConfirmModal").find("#id").val(id));
-	};
-	
-	//执行删除item
-	function deleteItemOne(){
-		var id = $("#deleteTodoItemConfirmModal").find("#id").val();
-		$.ajax({
-			url:"${root}/todoitem/delete/"+id,
-			type:"POST",
-			dateType:"json",
-			success:function(data){
-				var result = eval("(" + data + ")");
-				
-				$('#deleteTodoItemConfirmModal').modal('toggle');
-				
-				addWarm(result.success,result.message);
-				setTimeout(function(){
-					$(".addWarm").html("");
-					loadTodoItem()
-				},2000);
-			}
+		
+		setDeleteModal().bind('click',function(){
+			$.ajax({
+				url:"${root}/todoitem/delete/"+id,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					
+					addWarm(result.success,result.message);
+					setTimeout(function(){
+						$(".addWarm").html("");
+						loadTodoItem()
+					},1500);
+				},
+				error:function(){
+					showError("删除失败");	
+				}
+			});
 		});
 	};
+	
 	
 	//添加提醒
 	function addWarm(isSuccess,message){
@@ -165,7 +162,6 @@
 			messageType = "danger";
 		};
 		$(".addWarm").html("<p class='bg-"+messageType+"' style='padding: 8px;display: inline;float: right;margin:0px;width:100%;'>"+message+"</p>");
-// 		$(".addWarm").html("<div class='alert alert-"+messageType+"' role='alert'  style='padding: 8px;display: inline;float: right;margin:0px;width:100%;'>"+message+"</div>");
 	};
 	
 	//保存item
@@ -224,27 +220,6 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	<!-- 删除item确定框 -->
-	<div class="modal fade" id="deleteTodoItemConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteTodoItemConfirmModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Warning</h4>
-				</div>
-				<div class="modal-body">
-					Sure you want to delete?
-					<input type="hidden" id="id" name="" value="">
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" onclick="deleteItemOne()">Delete</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
+
 </body>
 </html>

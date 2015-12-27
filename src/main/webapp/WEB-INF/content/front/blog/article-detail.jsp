@@ -9,25 +9,47 @@
 <script type="text/javascript">
 	//删除文章
 	function deleteArticle(id,object){
-		$('#deleteConfirmModal').modal({
-		 	 keyboard: true
-		});
-		$("#deleteConfirmModalClick").click(function(){
+		setDeleteModal().bind('click',function(){
 			$.ajax({
 				url:"${root}/cms/article/delete/"+id,
 				type:"POST",
 				dateType:"json",
 				success:function(data){
 					var result = eval("(" + data + ")");
-					
 					showMsg("success",result.message);
-					$(object).parent().parent().remove();
 					
+					var url = "${root}/blog";
+					<c:if test="${channelId ne null}">
+						url = "${root}/blog/${channelId}";
+					</c:if>
 					setTimeout(function(){
-						location.href = "${root}/blog";
+						location.href = url;
 					},1500);
+				},
+				error:function(){
+					showError("删除失败");	
 				}
 			});
+		});
+	};
+	
+	//更改文章发布状态
+	function publishArticle(object,id){
+		$.ajax({
+			url:"${root}/cms/article/publish/"+id,
+			type:"POST",
+			dateType:"json",
+			success:function(data){
+				var result = eval("(" + data + ")");
+				showMsg("success",result.message);
+				
+				var color = $(object).children("span").css("color");
+				if(color =="rgb(53, 126, 189)"){
+					$(object).children("span").css("color","");
+				}else{
+					$(object).children("span").css("color","rgb(53, 126, 189)");
+				}
+			}
 		});
 	};
 	
@@ -42,6 +64,7 @@
 </script>
 </head>
 <body>
+
   <div class="row" <c:if test="${isNormal}">style="padding-top: 16px;"</c:if>>
     <div class="col-sm-9">
     	<a style="font-size:24px;float: left;color: #4183c4;" href="${root}/blog/article/${article.id}">${article.title}</a>
@@ -69,6 +92,10 @@
 					</c:forEach>
 					<shiro:user>
 						<div class='blog-article-toolbar'>
+							<a href="javascript:;" onclick="publishArticle(this,${article.id})">
+								 <c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag" ></span></c:if>
+								 <c:if test="${article.publish eq false}"><span class="glyphicon glyphicon-flag" ></span></c:if>
+							   </a>
 							<a href="#" onclick="deleteArticle(${article.id},this)"><span class='glyphicon glyphicon-trash'></span></a>
 							<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span class='glyphicon glyphicon-edit'></span></a>
 						</div>

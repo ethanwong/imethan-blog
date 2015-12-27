@@ -66,8 +66,8 @@
 						  </div>
 
 						  
-						  <button type="button" class="btn btn-primary" onclick="save()">Submit</button>
-						  <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Return</button>
+						  <button type="button" class="btn btn-primary" onclick="save()">Save</button>
+						  <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Back</button>
 						</form>
 				  </div>
 			</div>

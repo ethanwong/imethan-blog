@@ -7,7 +7,7 @@
  */
 function setDeleteModal(){
 	var  deleteModalAppendDiv = ""+
-		"<div class='modal fade' id='deleteModalAppendDivId' tabindex='-1' role='dialog' aria-labelledby='deleteConfirmModalLabel' aria-hidden='true'>"+
+		"<div class='modal fade' id='deleteModalAppendDivId' tabindex='-1' role='dialog' aria-labelledby='deleteConfirmModalLabelDefault' aria-hidden='true'>"+
 		"<div class='modal-dialog'>"+
 			"<div class='modal-content'>"+
 				"<div class='modal-header'>"+
@@ -20,8 +20,8 @@ function setDeleteModal(){
 					"确定要删除吗？"+
 				"</div>"+
 				"<div class='modal-footer'>"+
-				"	<button  type='button' class='btn btn-defaul' data-dismiss='modal'>关闭</button>"+
-				"	<button id='deleteConfirmModalClick' type='button' class='btn btn-info' data-dismiss='modal'>删除</button>"+
+				"	<button id='deleteConfirmModalClickDefault' type='button' class='btn btn-danger' data-dismiss='modal'>删除</button>"+
+				"	<button  type='button' class='btn btn-default' data-dismiss='modal'>关闭</button>"+
 				"</div>"+
 			"</div>"+
 		"</div>"+
@@ -37,7 +37,7 @@ function setDeleteModal(){
 		$("#deleteModalAppendDivId").remove();
 	});
 	
-	return $("#deleteConfirmModalClick");
+	return $("#deleteConfirmModalClickDefault");
 };
 
 /**

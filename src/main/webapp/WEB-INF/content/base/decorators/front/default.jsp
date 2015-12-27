@@ -86,26 +86,10 @@
 	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
 	<div class="container">
 		<!-- 提醒信息 -->
-		<div id="topWarn" class="alert alert-success alert-dismissable" style="display: none">
+		<div id="topWarn" class="alert alert-success alert-dismissable" style="display: none;margin-top:10px; ">
 			<button type="button" class="close" onclick="closeTopWarn(this)">&times;</button>
 			<strong></strong>
 			<p style="display: inline;"></p>
-		</div>
-		
-		<div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">Warning</h4>
-					</div>
-					<div class="modal-body">Sure you want to delete?</div>
-					<div class="modal-footer">
-						<button id="deleteConfirmModalClick" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
 		</div>
 		<decorator:body></decorator:body>
 	</div>

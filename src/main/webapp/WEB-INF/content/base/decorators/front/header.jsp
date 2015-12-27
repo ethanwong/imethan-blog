@@ -39,12 +39,8 @@ $(document).ready(function () {
         	<ul class="nav navbar-nav navbar-right" >
 				<shiro:guest>  
 					<li>
-						<c:if test="${isNormal}">
-							<a href="${root}/login" ><span class="glyphicon glyphicon-log-in" data-placement="bottom" title="Member login"></span> Login</a>
-						</c:if>
-						<c:if test="${!isNormal}">
-							<a href="${root}/login" > Login</a>
-						</c:if>
+						<!-- <span class="glyphicon glyphicon-log-in" data-placement="bottom" title="Member login"></span> -->
+						<a href="${root}/login" title="Member login" > Login</a>
 					</li>
 				</shiro:guest>
 				
@@ -53,10 +49,10 @@ $(document).ready(function () {
 						<a><span class="glyphicon glyphicon-user"></span> <shiro:principal/></a>
 					</li>
 					<li>
-						<a href="${root}/setting/profile"><span class="glyphicon glyphicon-cog" data-placement="bottom" title="Setting"></span> Setting</a>
+						<a href="${root}/setting/profile"><span class="glyphicon glyphicon-cog" data-placement="bottom" title="Setting"></span></a>
 					</li>
 					<li>
-						<a href="${root}/login/out"><span class="glyphicon glyphicon-log-out" data-placement="bottom" title="Logout"></span> Logout</a>
+						<a href="${root}/login/out"><span class="glyphicon glyphicon-log-out" data-placement="bottom" title="Logout"></span></a>
 					</li>
 				</shiro:user>
 			</ul>

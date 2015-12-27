@@ -39,6 +39,10 @@
 		};
 
 		if($("#inputForm").valid()){
+			//保存草稿开始时禁用save按钮
+			$("#saveButtonOne").attr("class","btn btn-primary disabled")
+			$("#saveButtonTwo").attr("class","btn btn-primary disabled")
+			
 			var id = $("#id").val();
 			var title = $("#title").val();
 			var channelId = $("#channelId").val();
@@ -64,6 +68,12 @@
 					$('#id').val(id);
 				}
 			});
+	        
+	        
+	        
+		      //保存草稿结束时开启save按钮
+		      $("#saveButtonOne").attr("class","btn btn-primary")
+		      $("#saveButtonTwo").attr("class","btn btn-primary")
 		};
 	};
 	
@@ -138,8 +148,8 @@
 				  <div class="panel-body">
 					  	<div class="row" style="padding-top: 0px;">
 							<div class="col-md-12">
-								 <button type="button" class="btn btn-default" onclick="saveArticle()">Save</button>
-								 <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Return</button>
+								 <button id="saveButtonOne" type="button" class="btn btn-primary" onclick="saveArticle()">Save</button>
+								 <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Back</button>
 							</div>
 						</div>
 						<br>
@@ -185,8 +195,8 @@
 							<p id="editorWarn"></p>
 						  </div>
 						  
-						  <button type="button" class="btn btn-primary" onclick="saveArticle()">Submit</button>
-						  <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Return</button>
+						  <button id="saveButtonTwo" type="button" class="btn btn-primary" onclick="saveArticle()">Save</button>
+						  <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Back</button>
 						  <span class="addWarm"></span>
 						</form>
 				  </div>

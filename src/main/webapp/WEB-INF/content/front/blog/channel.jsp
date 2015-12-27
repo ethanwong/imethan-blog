@@ -64,10 +64,7 @@
 	
 	//删除栏目
 	function deleteChannel(id){
-		$('#deleteConfirmModal').modal({
-		 	 keyboard: true
-		});
-		$("#deleteConfirmModalClick").click(function(){
+		setDeleteModal().bind('click',function(){
 			$.ajax({
 				url:"${root}/cms/channel/delete/"+id,
 				type:"POST",
@@ -80,6 +77,9 @@
 					setTimeout(function(){
 						location.href = "${root}/blog/channel";
 					},1500);
+				},
+				error:function(){
+					showError("删除失败");	
 				}
 			});
 		});
