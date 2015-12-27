@@ -127,24 +127,29 @@
 	<!--  one of the properties available; the maximum file size in bytes -->
 	<property name="maxUploadSize" value="1000000" />
 	</bean>
-	
-	<!-- Enable Shiro Annotations for Spring-configured beans.  Only run after -->
+
+	<!-- 全局错误拦截配置 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+            	<!-- 登录错误 -->
+            	<prop key="org.apache.shiro.authz.UnauthenticatedException">redirect:/unauthenticated</prop>
+            	<!-- 授权错误 -->
+                <prop key="org.apache.shiro.authz.UnauthorizedException">redirect:/unauthorized</prop>
+            </props>
+        </property>
+        <!-- 默认错误 -->
+        <property name="defaultErrorView" value="/base/error/500"/>
+    </bean>
+    
+    
+    <!-- Enable Shiro Annotations for Spring-configured beans.  Only run after -->
 	<!-- the lifecycleBeanProcessor has run: -->
 	<!-- 开启Shiro注解的Spring配置方式的beans。在lifecycleBeanPostProcessor之后运行 -->
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor" />
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager" />
     </bean>
-    
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
-
-	<!-- 验证不通过跳转 -->
-    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <prop key="org.apache.shiro.authz.UnauthorizedException">/base/error/403</prop>
-            </props>
-        </property>
-    </bean>
 
 </beans> 

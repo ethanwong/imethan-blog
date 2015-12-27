@@ -253,6 +253,7 @@ public class BlogController extends SuperController{
      * @return
      */
     @RequiresAuthentication
+//    @RequiresUser//当前用户需为已认证用户或已记住用户 
 	@RequestMapping("/article/input/{channelId}/{articleId}")
 	public String inputArticle(@PathVariable Long channelId,@PathVariable Long articleId,Model model,ServletRequest request){
     	//获取栏目信息
@@ -324,7 +325,7 @@ public class BlogController extends SuperController{
      * @author Ethan Wong
      * @datetime 2015年12月18日下午3:20:27
      */
-    @RequiresAuthentication
+    @RequiresUser//当前用户需为已认证用户或已记住用户 
 	@RequestMapping("/channel")
     public String channel(){
     	return "/front/blog/channel";
@@ -339,7 +340,7 @@ public class BlogController extends SuperController{
      * @author Ethan Wong
      * @datetime 2015年12月18日下午3:20:40
      */
-    @RequiresAuthentication
+    @RequiresUser//当前用户需为已认证用户或已记住用户 
     @ResponseBody
 	@RequestMapping("/channel/json")
     public String channelJson(@RequestParam("page") Integer page,@RequestParam("rows") Integer size){

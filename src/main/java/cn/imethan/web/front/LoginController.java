@@ -34,12 +34,12 @@ import cn.imethan.utils.ValidateCode;
  * @time 2014年12月18日下午10:31:35
  */
 @Controller
-@RequestMapping("/login")
+@RequestMapping("")
 public class LoginController {
 	
 	
 	
-	@RequestMapping("")
+	@RequestMapping("/login")
 	public String login(Model model){
 		 Subject user = SecurityUtils.getSubject();
 		 if(user.isAuthenticated()){
@@ -49,7 +49,7 @@ public class LoginController {
 		 }
 	}
     
-    @RequestMapping(value="/in",method = {RequestMethod.POST},produces={"application/json;charset=UTF-8"})
+    @RequestMapping(value="/login/in",method = {RequestMethod.POST},produces={"application/json;charset=UTF-8"})
     public String in(Model model,@ModelAttribute("currUser")User currUser,HttpSession session, HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		String code = (String) session.getAttribute("validateCode");
 		String submitCode = WebUtils.getCleanParam(request, "validateCode");
@@ -77,7 +77,7 @@ public class LoginController {
         }
     }
     
-    @RequestMapping(value = "/out",method=RequestMethod.GET)
+    @RequestMapping(value = "/login/out",method=RequestMethod.GET)
     public String out(){
     	Subject user = SecurityUtils.getSubject();
     	user.logout();
@@ -91,7 +91,7 @@ public class LoginController {
      * @param response
      * @throws IOException
      */
-    @RequestMapping(value = "/validateCode")
+    @RequestMapping(value = "/login/validateCode")
     public void validateCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setHeader("Cache-Control", "no-cache");
         String verifyCode = ValidateCode.generateTextCode(ValidateCode.TYPE_NUM_ONLY, 4, null);
@@ -100,6 +100,48 @@ public class LoginController {
         BufferedImage bim = ValidateCode.generateImageCode(verifyCode, 90, 30, 3, true, Color.WHITE, Color.BLACK, null);
         ImageIO.write(bim, "JPEG", response.getOutputStream());
     }
+    
+    /***
+     * 未登录跳转
+     * @return
+     *
+     * @author Ethan Wong
+     * @datetime 2015年12月27日下午11:04:29
+     */
+    @RequestMapping(value = "/unauthenticated")
+    public String Unauthenticated(Model model){
+    	return "redirect:/login";
+    }
+    
+    /***
+     * 未授权跳转
+     * @return
+     *
+     * @author Ethan Wong
+     * @datetime 2015年12月27日下午11:04:29
+     */
+    @RequestMapping(value = "/unauthorized")
+    public String unauthorized(Model model){
+    	
+    	return "/base/error/403";
+    	
+    }
+    
+    /***
+     * session超时
+     * @return
+     *
+     * @author Ethan Wong
+     * @datetime 2015年12月27日下午11:04:29
+     */
+    @RequestMapping(value = "/unknownSession")
+    public String unknownSession(Model model){
+    	
+    	return "";
+    	
+    }
+    
+    
     
 }
 

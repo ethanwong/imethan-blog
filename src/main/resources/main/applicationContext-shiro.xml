@@ -11,6 +11,33 @@
 	default-lazy-init="true" >
 	<description>applicationContext-shiro</description>
 	
+	
+	<!-- Shiro Filter -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+        <property name="loginUrl" value="/login" />
+        <property name="successUrl" value="/system/main" />
+        <property name="unauthorizedUrl" value="/login" />
+        <property name="filterChainDefinitions">
+            <value>
+            /console/toSignin = anon
+            /console/signin = anon
+            /console/validateCode = anon
+            
+            /console/** = authc
+            
+<!--             /blog/article/input** = authc -->
+<!--             /blog/tag** = authc -->
+<!--             /blog/channel** = authc -->
+<!--             /todo/input** = authc -->
+<!--             /todo/edit** = authc -->
+<!--             /todoitem/input** = authc -->
+            
+            </value>
+        </property>
+    </bean>
+    
+	
 	<!-- Shiro's main business-tier object for web-enabled applications
          (use DefaultSecurityManager instead when there is no web environment)-->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
@@ -45,24 +72,7 @@
         <property name="activeSessionsCacheName" value="shiro-activeSessionCache"/>
     </bean>
     <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler"/>
-   
-   
-    <!-- Shiro Filter -->
-    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-        <property name="securityManager" ref="securityManager" />
-        <property name="loginUrl" value="/console/toSignin" />
-        <property name="successUrl" value="/system/main" />
-        <property name="unauthorizedUrl" value="/login" />
-        <property name="filterChainDefinitions">
-            <value>
-            /console/toSignin = anon
-            /console/signin = anon
-            /console/validateCode = anon
-            /console/** = authc
-<!--             /console/** = anon -->
-            </value>
-        </property>
-    </bean>
+
     
 	<!-- 解决Spring监听事件和Shiro初始化以及的问题 -->
 	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">

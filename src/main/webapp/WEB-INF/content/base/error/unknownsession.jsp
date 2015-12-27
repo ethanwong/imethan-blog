@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>500</title>
+<title>403</title>
 <link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
 <link href="${root}/theme/css/common.css" rel="stylesheet">
 </head>
@@ -13,9 +13,9 @@
 	<div class="container">
 		<div class="col-md-12">
 			<div class="error_ex" style="text-align: center;">
-				<h2>500</h2>
-				<h3>Something is wrong here. Method not allowed!</h3>
-				<p>Access to this page is error</p>
+				<h1>会话超时</h1>
+				<h3>Opps, You're lost.</h3>
+				<p>Session timeout.</p>
 				<a class="btn btn-warning btn-big" href="${root}/index.jsp">Back
 					to Home</a>
 			</div>
