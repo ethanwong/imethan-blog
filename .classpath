@@ -9,5 +9,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="src/main/webapp/theme/ueditor1_4_3_1-utf8-jsp/jsp/lib/json.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/theme/ueditor1_4_3_1-utf8-jsp/jsp/lib/ueditor-1.1.2.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

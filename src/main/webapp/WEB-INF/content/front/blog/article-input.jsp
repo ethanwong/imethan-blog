@@ -149,6 +149,7 @@
 					  	<div class="row" style="padding-top: 0px;">
 							<div class="col-md-12">
 								 <button id="saveButtonOne" type="button" class="btn btn-primary" onclick="saveArticle()">Save</button>
+<%-- 								 <a type="button" class="btn btn-default" href="${root}/blog/article/input/${channelId}/${articleId}">Switch UE</a> --%>
 								 <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Back</button>
 							</div>
 						</div>
@@ -190,6 +191,7 @@
 						  <hr>
 						  <div class="form-group">
 						    <label for="content">Content</label>
+						    <p style="float: right;"><a href="${root}/blog/article/input/${channelId}/${articleId}">Switch UEditor</a></p>
 						    <script type="text/plain" id="editor"  style="width:100%!important;height: 300px;">${article.content}</script>
 							<label id="editorContentError" ></label>
 							<p id="editorWarn"></p>

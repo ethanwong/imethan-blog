@@ -5,9 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Blog|ImEthan|Full Stack Engineer</title>
+<script type="text/javascript"  src="${root}/theme/ueditor1_4_3_1-utf8-jsp/ueditor.parse.js"> </script>
 <script type="text/javascript">
 //页面加载时初始化脚本
 $(document).ready(function () {
+	
+    uParse('.content',{
+        rootPath : '${root}/theme/ueditor1_4_3_1-utf8-jsp/',
+        chartContainerHeight:500
+    });
+	
+	
 	//更多内容
 	$('.content').readmore({
 		  speed: 1000,

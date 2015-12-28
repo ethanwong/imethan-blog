@@ -281,7 +281,13 @@ public class BlogController extends SuperController{
 		model.addAttribute("channelId", channelId);
 		model.addAttribute("allLabel", allLabel);
 		
-		return "front/blog/article-input";
+		
+		String editor = request.getParameter("editor");
+		if(editor!=null && editor.equals("um")){
+			return "front/blog/article-input";
+		}
+		
+		return "front/blog/article-input-ue";
 	}
     
     /**

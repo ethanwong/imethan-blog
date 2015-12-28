@@ -34,6 +34,8 @@
 	<script src="${root}/theme/js/common.js"></script>
 	<!-- custom defin end -->
 	
+<%-- 	<script type="text/javascript" charset="utf-8" src="${root}/theme/ueditor1_4_3_1-utf8-jsp/ueditor.parse.js"></script> --%>
+	
 	 <!-- jqgrid begin-->
     <script type="text/ecmascript" src="${root}/theme/jqGrid/grid.locale-cn.js"></script>
     <script type="text/ecmascript" src="${root}/theme/jqGrid/jquery.jqGrid.min.js"></script>

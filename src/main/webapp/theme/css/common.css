@@ -8,6 +8,11 @@ hr{
 	margin-top: 10px;
 }
 
+pre{
+	border-radius: 0px !important;
+	background-color: white;
+}
+
 .modelhr{
 	margin-top: 0px!important;padding-top: 0px!important;
 }
@@ -41,6 +46,12 @@ body>.container {
 
 .navbar{
 	margin-bottom: 0px;
+	height: 50px!important;
+
+}
+
+ li{
+	clear: none !important;
 }
 
 .navbar-default .navbar-nav > li > a{
@@ -133,7 +144,6 @@ body>.container {
 /* 	text-align: left;  */
 /* 	word-break: break-all; */
 /* } */
-
 
 
 .readmore-js-toggle{

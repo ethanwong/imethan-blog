@@ -6,7 +6,19 @@
 <title>${article.title}|ImEthan|Full Stack Engineer</title>
 <meta name="keywords" content="${article.title},EthanWong,ethanwong,黄应锋,ImEthan">
 <meta name="description" content="${article.title},EthanWong,ethanwong,黄应锋,ImEthan">
+
+<script type="text/javascript"  src="${root}/theme/ueditor1_4_3_1-utf8-jsp/ueditor.parse.js"> </script>
+
 <script type="text/javascript">
+
+	$(document).ready(function () {
+        uParse('.content',{
+            rootPath : '${root}/theme/ueditor1_4_3_1-utf8-jsp/',
+            chartContainerHeight:500
+        })
+	});
+	
+
 	//删除文章
 	function deleteArticle(id,object){
 		setDeleteModal().bind('click',function(){
