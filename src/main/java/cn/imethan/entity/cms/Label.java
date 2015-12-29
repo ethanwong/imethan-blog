@@ -31,7 +31,7 @@ public class Label extends BaseEntity {
 	private Integer orderNo;//排序
 	
 	@JsonIgnore
-	@ManyToMany(cascade = {CascadeType.PERSIST}, mappedBy = "labels", fetch = FetchType.EAGER)
+	@ManyToMany(cascade = {CascadeType.MERGE}, mappedBy = "labels", fetch = FetchType.LAZY)
 	private List<Article> articles = new ArrayList<Article>();
 	
 	@Transient

@@ -46,9 +46,13 @@ public class Article extends BaseEntity {
 	@Transient
 	private Long channelId;//栏目ID
 	
+	//ManyToMany双向级联问题描述
+	//CascadeType.MERGE  级联删除、更新、保存关系，
+	//新增加article,并且添加一条article和lable的关系级联，不能配置CascadeType.PERSIST，否则hibernate会插入一条新记录中，但是因为ID相同导致插入失败
+	//CascadeType.PERSIST 级联添加，例如保存article时同时添加一条label记录
+	//CascadeType.REMOVE 级联删除记录和关系
 	
-	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.MERGE})
     @JoinTable(name="imethan_cms_article_label",joinColumns = { @JoinColumn(name ="articleId" )} ,inverseJoinColumns = { @JoinColumn(name = "labelId")})
 	@OrderBy("orderNo")
 	private List<Label> labels = new ArrayList<Label>();//标签集合
