@@ -85,7 +85,8 @@ public class ArticleController extends SuperController{
 			List<Label> labels = new ArrayList<Label>();
 			for(String labelId : labelsStrings){
 				if(StringUtils.isEmpty(labelId)){continue;}
-				labels.add(new Label(Long.valueOf(labelId)));
+				Label label = labelService.getById(Long.valueOf(labelId));
+				labels.add(label);
 			}
 			article.setLabels(labels);
 			returnDto = articleService.saveOrModify(article);

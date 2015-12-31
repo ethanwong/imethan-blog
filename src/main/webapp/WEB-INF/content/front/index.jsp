@@ -101,7 +101,7 @@
 	<div class="container labelBox" >
 		<div class="row">
 			<div class="col-md-12">
-				<label><span class="glyphicon glyphicon-tags"></span>  Tag Cloud</label>
+				<label style="padding-bottom: 10px;font-size: 16px;"><span class="glyphicon glyphicon-tags"></span>  Tag Cloud</label>
 				<br>
 				<c:forEach items="${allLabel}" var="label" varStatus="status">
 					<a href="${root}/blog/tag/${label.id}" >
