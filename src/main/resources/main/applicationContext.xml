@@ -29,8 +29,8 @@
 		<property name="ignoreResourceNotFound" value="false" />
 		<property name="locations">
 			<list>
-<!-- 				<value>classpath*:/main/jdbc-bae.properties</value> -->
-				<value>classpath*:/main/jdbc-local.properties</value>
+				<value>classpath*:/main/jdbc-bae.properties</value>
+<!-- 				<value>classpath*:/main/jdbc-local.properties</value> -->
 			</list>
 		</property>
 		<property name="decodePropertyNames">

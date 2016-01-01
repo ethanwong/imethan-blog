@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Label|ImEthan|Full Stack Engineer</title>
+<title>Label:ImEthan独立博客:Full Stack Engineer</title>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
@@ -73,28 +73,8 @@
 					showError("删除失败");	
 				}
 			});
-		});
-		
-		
-// 		$('#deleteConfirmModal').modal({
-// 		 	 keyboard: true
-// 		});
-// 		$("#deleteConfirmModalClick").click(function(){
-// 			$.ajax({
-// 				url:"${root}/blog/tag/delete/"+id,
-// 				type:"POST",
-// 				dateType:"json",
-// 				success:function(data){
-// 					var result = eval("(" + data + ")");
-// 					//加载角色列表
-// 					showMsg("success",result.message);
-					
-// 					setTimeout(function(){
-// 						location.href = "${root}/blog/tag";
-// 					},1500);
-// 				}
-// 			});
-// 		});
+		});		
+
 	};
 
 </script>
@@ -106,7 +86,7 @@
 	    	<small style="float: left;padding-top: 20px;padding-left: 10px;">标签管理</small>
 	    	<shiro:user>
 				<a title="添加标签"  class="manageButton" href="${root}/blog/tag/input">
-					<span class="glyphicon glyphicon-plus"></span> 添加标签
+					<span class="icon-plus"></span> 添加标签
 				</a>
 	    	</shiro:user>
 	    </div>

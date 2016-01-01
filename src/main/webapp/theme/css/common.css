@@ -46,8 +46,7 @@ body>.container {
 
 .navbar{
 	margin-bottom: 0px;
-/* 	height: 50px!important; */
-
+/* 	padding: 10px; */
 }
 
  li{
@@ -67,10 +66,10 @@ body>.container {
 }
 
 .navbar-fixed-top{
-	filter:alpha(opacity=97); 
-	-moz-opacity:0.97; 
-	opacity:0.97;
-	color: #333;
+/* 	filter:alpha(opacity=97);  */
+/* 	-moz-opacity:0.97;  */
+/* 	opacity:0.97; */
+/* 	color: #333; */
 }
 
 .row{
@@ -248,6 +247,7 @@ background-color: #428bca;
 
 #loading .loading-msg {
 	padding-top: 10px;
+	font-size: 16px;
 }
 
 
@@ -261,3 +261,15 @@ background-color: #428bca;
 
 /* .glyphicon-edit{color:#5bc0de;} */
 /* .glyphicon-trash{color:#d9534f;} */
+
+     .headroom {
+         transition: transform 200ms linear;
+     }
+     .headroom--pinned {
+         transform: translateY(0%);
+     }
+     .headroom--unpinned {
+         transform: translateY(-100%);
+     }
+
+

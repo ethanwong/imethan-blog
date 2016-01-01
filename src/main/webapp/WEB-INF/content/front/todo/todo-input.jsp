@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan</title>
+<title>ImEthan独立博客:Full Stack Engineer</title>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
@@ -59,7 +59,7 @@
 				<div class="panel-body">
 					<div class="row" style="padding-top: 0px;">
 						<div class="col-md-2">
-							<h4><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New todo</h4>
+							<h4><span class="icon-plus"></span>&nbsp;&nbsp;New todo</h4>
 						</div>
 						<div class="col-md-10 addWarm"></div>
 					</div>

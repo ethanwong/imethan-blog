@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-<title>${article.title}|ImEthan|Full Stack Engineer</title>
+<title>${article.title}:ImEthan独立博客:Full Stack Engineer</title>
 <meta name="keywords" content="${article.title},EthanWong,ethanwong,黄应锋,ImEthan">
 <meta name="description" content="${article.title},EthanWong,ethanwong,黄应锋,ImEthan">
 
@@ -95,8 +95,8 @@
 		<div class="col-md-9" >
 			<div class='articleList'>
 				<div class='article'>
-					<a href="${root}/blog/${article.channelId}"><span class='glyphicon glyphicon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
-					&nbsp;&nbsp;<span class='glyphicon glyphicon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
+					<a href="${root}/blog/${article.channelId}"><span class='icon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
+					&nbsp;&nbsp;<span class='icon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 					&nbsp;&nbsp;
 					<c:forEach items="${article.labels}" var="label">
 						<a href='${root}/blog/tag/${label.id}' ><span class="label label-default" style="padding: 0.1em;">${label.name}</span></a>
@@ -104,11 +104,11 @@
 					<shiro:user>
 						<div class='blog-article-toolbar'>
 							<a href="javascript:;" onclick="publishArticle(this,${article.id})">
-								 <c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag" ></span></c:if>
-								 <c:if test="${article.publish eq false}"><span class="glyphicon glyphicon-flag" ></span></c:if>
+								 <c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="icon-flag" ></span></c:if>
+								 <c:if test="${article.publish eq false}"><span class="icon-flag" ></span></c:if>
 							 </a>
-							<a href="#" onclick="deleteArticle(${article.id},this)"><span class='glyphicon glyphicon-trash'></span></a>
-							<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span class='glyphicon glyphicon-edit'></span></a>
+							<a href="#" onclick="deleteArticle(${article.id},this)"><span class='icon-trash'></span></a>
+							<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span class='icon-edit'></span></a>
 						</div>
 					</shiro:user>
 					<div class='content' >${article.content}</div>

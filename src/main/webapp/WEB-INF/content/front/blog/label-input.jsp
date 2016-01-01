@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Label|ImEthan|Full Stack Engineer</title>
+<title>Label:ImEthan独立博客:Full Stack Engineer</title>
 <script type="text/javascript">
 	
 	//页面加载时初始化脚本

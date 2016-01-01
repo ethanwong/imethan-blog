@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Login|ImEthan|Full Stack Engineer</title>
+<title>Login:ImEthan独立博客:Full Stack Engineer</title>
 <script type="text/javascript" src="${root}/theme/js/cryptojs/crypto-js-md5.js"></script>
 <script type="text/javascript">
 	function login(){
@@ -35,7 +35,7 @@
 	    <div class="row" >
 	    	<div class="col-sm-4" ></div>
 	    	<div class="col-sm-4" >
-   				<h2 class="form-signin-heading" style="text-align: center;margin-top: 20px;"><span style="font-size: 24px;" class="glyphicon glyphicon-user"></span> Member login</h2>
+   				<h2 class="form-signin-heading" style="text-align: center;margin-top: 20px;"><span style="font-size: 24px;" class="icon-user"></span> Member login</h2>
 	    		<br>
 	    		<div class="panel panel-default">
 					<div class="panel-body" >

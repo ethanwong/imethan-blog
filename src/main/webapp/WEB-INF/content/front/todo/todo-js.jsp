@@ -132,9 +132,9 @@
 	
 	//生成todo行
 	function generateTodo(id,content,createTime,finish,nextOrderNo,previousOrderNo){
-		var star = "<span class='glyphicon glyphicon-star'></span>";
+		var star = "<span class='icon-star'></span>";
 		if(finish == false){
-			star = "<span class='glyphicon glyphicon-star-empty'></span>";
+			star = "<span class='icon-star-empty'></span>";
 		}
 		var todo = ""+
 					"<tr id='tr"+id+"' onclick='active(this)' onmouseenter='showMenu(this)' onmouseleave='hiddenMenu(this)' >"+
@@ -148,11 +148,11 @@
 	//管理菜单
 	var menu = "<shiro:user>"+
 				"<span class='btn-group' style='float:right' >"+
-				   	"<a href='#todoList' onclick='changeFinish(this)'><span class='glyphicon glyphicon-ok' style='color:#5cb85c;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='#todoList' onclick='orderUp(this)'><span class='glyphicon glyphicon-arrow-up' style='color:#337ab7;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='#todoList' onclick='orderDown(this)'><span class='glyphicon glyphicon-arrow-down' style='color:#f0ad4e;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='#todoList' onclick='updateOne(this)'><span class='glyphicon glyphicon-edit' style='color:#5bc0de;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='#todoList' onclick='deleteTodo(this)'><span class='glyphicon glyphicon-trash' style='color:#d9534f;'></span></a>"+
+				   	"<a href='#todoList' onclick='changeFinish(this)'><span class='icon-ok' style='color:#5cb85c;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='#todoList' onclick='orderUp(this)'><span class='icon-arrow-up' style='color:#337ab7;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='#todoList' onclick='orderDown(this)'><span class='icon-arrow-down' style='color:#f0ad4e;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='#todoList' onclick='updateOne(this)'><span class='icon-edit' style='color:#5bc0de;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='#todoList' onclick='deleteTodo(this)'><span class='icon-trash' style='color:#d9534f;'></span></a>"+
 				"</span>"+
 				"</shiro:user>";
 	

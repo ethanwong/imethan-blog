@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ImEthan</title>
+<title>ImEthan独立博客:Full Stack Engineer</title>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
@@ -22,9 +22,9 @@
 				var result = eval("(" + data + ")");
 				
 				$.each(result, function(i, item) {
-					var flag = "<span class='glyphicon glyphicon-flag' onclick='changeFlag(this,"+item.id+")'></span>";
+					var flag = "<span class='icon-flag' onclick='changeFlag(this,"+item.id+")'></span>";
 					if(item.publish == true){
-						flag = "<span class='glyphicon glyphicon-flag' style='color:#357ebd' onclick='changeFlag(this,"+item.id+")'></span>";
+						flag = "<span class='icon-flag' style='color:#357ebd' onclick='changeFlag(this,"+item.id+")'></span>";
 					};
 					
 					var item = ""+		
@@ -73,8 +73,8 @@
 			var id = $(object).attr("id");
 			var deleteMenu = ""+
 			"<span id='deleteIco' style='float:right;'>"+
-				"<a href='#' onclick='editTodoItem(this)'><span class='glyphicon glyphicon-edit' style='color:#5bc0de;'></span></a>&nbsp;&nbsp;"+
-				"<a href='#' onclick='deleteItem("+id+")'><span class='glyphicon glyphicon-trash'  style='color:#d9534f;'></span></a>"+
+				"<a href='#' onclick='editTodoItem(this)'><span class='icon-edit' style='color:#5bc0de;'></span></a>&nbsp;&nbsp;"+
+				"<a href='#' onclick='deleteItem("+id+")'><span class='icon-trash'  style='color:#d9534f;'></span></a>"+
 			"</span>";
 			
 			$(object).append(deleteMenu);
@@ -197,7 +197,7 @@
 				<div class="panel-body">
 					<div class="row" style="padding-top: 0px;">
 						<div class="col-md-3">
-							<h4><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Todo item</h4>
+							<h4><span class="icon-list"></span>&nbsp;&nbsp;Todo item</h4>
 						</div>
 						<div class="col-md-9 addWarm"></div>
 					</div>
@@ -212,9 +212,9 @@
 							
 						</tbody>
 					</table>
-					<span class='glyphicon glyphicon-flag' style='color:#357ebd'></span> Show
+					<span class='icon-flag' style='color:#357ebd'></span> Show
 					&nbsp;
-					<span class='glyphicon glyphicon-flag'></span> Hide
+					<span class='icon-flag'></span> Hide
 				</div>
 
 			</div>

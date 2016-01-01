@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Channel|ImEthan|Full Stack Engineer</title>
+<title>Channel:ImEthan独立博客:Full Stack Engineer</title>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
@@ -94,7 +94,7 @@
 		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">栏目管理</small>
 		    	<shiro:user>
 					<a title="添加栏目" class="manageButton" href="${root}/blog/channel/input/0">
-						<span class="glyphicon glyphicon-plus"></span> 添加栏目
+						<span class="icon-plus"></span> 添加栏目
 					</a>
 		    	</shiro:user>
 		    </div>

@@ -5,10 +5,14 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<title><decorator:title></decorator:title></title>
+<%-- 	<title><decorator:title></decorator:title></title> --%>
+	
+	<title>ImEthan独立博客 | Full Stack Engineer</title>
 	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${root}/theme/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	
 	<link href="${root}/theme/css/common.css" rel="stylesheet">
 	<link href="${root}/theme/css/footer.css" rel="stylesheet">
 	
@@ -17,6 +21,7 @@
 	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
 	<!-- bootstrap end -->
 	<script src="http://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
+	
 	
 	<script src="${root}/theme/js/popover.js"></script>
 	<script src="${root}/theme/js/tooltip.js"></script>
@@ -62,6 +67,8 @@
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();
+	
+
 	</script>
 	
 	<!-- 移动版的不固定头部样式处理 -->
@@ -72,7 +79,6 @@
 			}
 		</c:if>
 	</style>
-    
 </head>
 
 <body>

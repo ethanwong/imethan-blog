@@ -11,6 +11,7 @@
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
 	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
+	<link href="${root}/theme/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
 	<!-- bootstrap end -->
 	<script src="http://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
@@ -46,7 +47,7 @@
 		<div class="media">
 		  <div class="media-left">
 				<a href="${root}/blog">
-					<span class="glyphicon glyphicon-book" style="color: #5bc0de;font-size: 60px;"></span>
+					<span class="icon-book" style="color: #5bc0de;font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -58,7 +59,7 @@
 		<div class="media">
 		  <div class="media-left">
 				<a href="${root}/todo">
-					<span class="glyphicon glyphicon-tasks" style="color: #f0ad4e;font-size: 60px;"></span>
+					<span class="icon-tasks" style="color: #f0ad4e;font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -70,7 +71,7 @@
 		<div class="media">
 		  <div class="media-left">
 				<a href="${root}/blog/23">
-					<span class="glyphicon glyphicon-gift" style="color: #5cb85c;font-size: 60px;"></span>
+					<span class="icon-briefcase" style="color: #5cb85c;font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -82,7 +83,7 @@
 		<div class="media linkWrap">
 		  <div class="media-left">
 				<a href="${root}/about">
-					<span class="glyphicon glyphicon-magnet" style="color: #d9534f;font-size: 60px;"></span>
+					<span class="icon-user" style="color: #d9534f;font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">

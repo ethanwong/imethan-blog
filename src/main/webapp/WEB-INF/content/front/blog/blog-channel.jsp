@@ -36,7 +36,7 @@
 	
 	<div class="panel panel-default" style="margin-top: 20px;">
 	  	<div class="panel-body" style="padding: 14px;">
-	  		<label><span class="glyphicon glyphicon-tags"></span>  Tag Cloud</label><br>
+	  		<label><span class="icon-tags"></span>  Tag Cloud</label><br>
   			<c:forEach items="${allLabel}" var="label" varStatus="status">
 				<a href="${root}/blog/tag/${label.id}" >
 					<span class='label label-default channeltaglabel'>

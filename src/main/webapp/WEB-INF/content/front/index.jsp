@@ -5,12 +5,13 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<title>ImEthan|Full Stack Engineer</title>
+	<title>ImEthan独立博客:Full Stack Engineer</title>
 	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
 	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
+	<link href="${root}/theme/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
 	<!-- bootstrap end -->
 	<script src="http://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
@@ -41,7 +42,7 @@
 				<div class="title">Hello I'm Ethan</div>
 				<div class='content'>A blog named ImEthan,based java.</div>
 				<div class='content' style="font-size: 16px;">我的代码我的国，欢迎访问我的技术部落格。</div>
-				<a href="${root}/blog/article/104"><button style="width: 160px;margin-top: 10px;" type="button" class="btn btn-primary"> Learn more </button></a>
+				<a href="${root}/blog/article/104"><button style="width: 160px;margin-top: 10px;" type="button" class="btn btn-primary">Learn more </button></a>
 			</div>
 		</div>
 	</div>
@@ -52,7 +53,7 @@
 		<div class="media desktop">
 		  <div class="media-left">
 				<a href="${root}/blog">
-					<span class="glyphicon glyphicon-book" style="color: #5bc0de;font-size: 60px;"></span>
+					<span class="icon-book" style="color: #5bc0de;font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -64,7 +65,7 @@
 		<div class="media desktop">
 		  <div class="media-left">
 				<a href="${root}/todo">
-					<span class="glyphicon glyphicon-tasks" style="color: #f0ad4e;font-size: 60px;"></span>
+					<span class="icon-tasks" style="color: #5cb85c;font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -76,7 +77,7 @@
 		<div class="media desktop">
 		  <div class="media-left">
 				<a href="${root}/blog/23">
-					<span class="glyphicon glyphicon-gift" style="color: #5cb85c;font-size: 60px;"></span>
+					<span class="icon-briefcase" style="color: #f0ad4e;font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -88,7 +89,7 @@
 		<div class="media desktop">
 		  <div class="media-left">
 				<a href="${root}/about">
-					<span class="glyphicon glyphicon-magnet" style="color: #d9534f;font-size: 60px;"></span>
+					<span class="icon-user" style="color: #d9534f;font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -97,11 +98,15 @@
 		  </div>
 		</div>
 	</div>
+	
+<!-- 	<div class="row"> -->
+<!-- 		<div class="col-md-12"><i class="icon-spinner icon-spin icon-2x pull-left"></i></div> -->
+<!-- 	</div> -->
 
 	<div class="container labelBox" >
 		<div class="row">
 			<div class="col-md-12">
-				<label style="padding-bottom: 10px;font-size: 16px;"><span class="glyphicon glyphicon-tags"></span>  Tag Cloud</label>
+				<label style="padding-bottom: 10px;font-size: 16px;"><span class="icon-tags"></span>  Tag Cloud</label>
 				<br>
 				<c:forEach items="${allLabel}" var="label" varStatus="status">
 					<a href="${root}/blog/tag/${label.id}" >

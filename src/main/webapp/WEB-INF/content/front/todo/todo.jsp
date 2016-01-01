@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Todo|ImEthan|Full Stack Engineer</title>
+<title>Todo:ImEthan独立博客:Full Stack Engineer</title>
 <jsp:include page="/WEB-INF/content/front/todo/todo-js.jsp"></jsp:include>
 </head>
 <body>
@@ -15,7 +15,7 @@
 					<div class="row" style="padding-top: 0px;">
 						<div class="col-md-2">
 							<h4>
-								<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Todo list
+								<i class="icon-tasks"></i>&nbsp;&nbsp;My Todo
 							</h4>
 						</div>
 						<div class="col-md-10 addWarm"></div>
@@ -34,8 +34,8 @@
 								  		<li><a href="#" onclick="checkItem(this,${item.id},'${item.name}')">${item.name}</a></li>
 								  	</c:forEach>
 								    <li class="divider"></li>
-								    <li><a href="${root}/todoitem/input"><span class="glyphicon glyphicon-plus"></span>&nbsp;New todo item<p>New a todo item</p></a></li>
-								    <li><a href="${root}/todoitem"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Modify item<p>Manage todo item</p></a></li>
+								    <li><a href="${root}/todoitem/input"><span class="icon-plus"></span>&nbsp;New todo item<p>New a todo item</p></a></li>
+								    <li><a href="${root}/todoitem"><span class="icon-list-alt"></span>&nbsp;Modify item<p>Manage todo item</p></a></li>
 								  </ul>
 								</div>
 					  	</shiro:user>
@@ -87,7 +87,7 @@
 						<tbody id="todo-list">
 						</tbody>
 					</table>
-					<span class='glyphicon glyphicon-star'>表示完成</span>  <span class='glyphicon glyphicon-star-empty'>表示未完成</span>
+					<span class='icon-star'>表示完成</span>  <span class='icon-star-empty'>表示未完成</span>
 					<nav>
 						<ul class="pager">
 						</ul>
@@ -148,25 +148,5 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- 删除todo确定框 -->
-<!-- 	<div class="modal fade" id="deleteTodoConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteTodoConfirmModalLabel" aria-hidden="true"> -->
-<!-- 		<div class="modal-dialog"> -->
-<!-- 			<div class="modal-content"> -->
-<!-- 				<div class="modal-header"> -->
-<!-- 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
-<!-- 					<h4 class="modal-title" id="myModalLabel">Warning</h4> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-body"> -->
-<!-- 					Sure you want to delete? -->
-<!-- 					<input type="hidden" id="deleteTodoId" name="deleteTodoId" value=""/> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-footer"> -->
-<!-- 					<button type="button" class="btn btn-info" onclick="deleteOne()">Delete</button> -->
-<!-- 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
 </body>
 </html>

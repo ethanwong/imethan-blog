@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Setting|ImEthan|Full Stack Engineer</title>
+<title>Setting:ImEthan独立博客:Full Stack Engineer</title>
 <%@ include file="/WEB-INF/content/base/umeditor.jsp"%>
 <link rel="stylesheet" type="text/css" href="${root}/theme/webuploader-0.1.5/webuploader.css">
 <script type="text/javascript" src="${root}/theme/webuploader-0.1.5/webuploader.js"></script>

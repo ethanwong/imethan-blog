@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>About|ImEthan|Full Stack Engineer</title>
+<title>About:ImEthan独立博客:Full Stack Engineer</title>
 <script type="text/javascript">
 	
 	//页面加载时初始化脚本
@@ -55,11 +55,11 @@
 			<font style="font-size:30px;" >About me</font>
 			<small style="padding-top: 20px;padding-left: 10px;padding-right: 10px;">我的个人简历</small>
 			<shiro:user>
-				<a href="${root}/blog/article/24" title="查看简历" ><span  class='glyphicon glyphicon-eye-open'></span></a>
+				<a href="${root}/blog/article/24" title="查看简历" ><span  class='icon-eye-open'></span></a>
 				&nbsp;
-				<a href="${root}/blog/article/input/${aboutMe.channelId}/${aboutMe.id}?locate=about" title="编辑简历" ><span  class='glyphicon glyphicon-edit'></span></a>
+				<a href="${root}/blog/article/input/${aboutMe.channelId}/${aboutMe.id}?locate=about" title="编辑简历" ><span  class='icon-edit'></span></a>
 				&nbsp;
-				<a href="${root}/setting/about" title="设置简历" ><span  class='glyphicon glyphicon-cog'></span></a>
+				<a href="${root}/setting/about" title="设置简历" ><span  class='icon-cog'></span></a>
 			</shiro:user>
 		</div>
 		<div class="col-sm-3"></div>
@@ -76,10 +76,10 @@
 				<font size="4" class='nickname'>${userInfo.nickname}</font>
 				<hr>
 				<address style="line-height: 36px;">
-					<span class="glyphicon glyphicon-map-marker"></span>&nbsp;<span class="locate">${userInfo.locate}</span><br>
-					<span class='glyphicon glyphicon-phone'></span>&nbsp;<span class="phone">${userInfo.phone}</span><br>
-				  	<img src="${root}/theme/images/QQ-ICO.jpg" width="12px;" height="13px;" /> &nbsp;<span class="qq"></span>
-					<br><span class="glyphicon glyphicon-envelope"></span>&nbsp;<span class="email"><a href="mailto:${userInfo.email}">${userInfo.email}</a></span>
+					<span class="icon-map-marker"></span>&nbsp;<span class="locate">${userInfo.locate}</span><br>
+					<span class='icon-phone'></span>&nbsp;<span class="phone">${userInfo.phone}</span><br>
+				  	<strong style="font-weight: 600;">qq</strong>&nbsp;<span class="qq"></span><br>
+					<span class="icon-envelope"></span>&nbsp;<span class="email"><a href="mailto:${userInfo.email}">${userInfo.email}</a></span>
 				</address>
 			</div>
 		</div>

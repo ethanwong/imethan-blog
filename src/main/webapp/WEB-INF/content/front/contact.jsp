@@ -4,7 +4,7 @@
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Contact|ImEthan|Full Stack Engineer</title>
+<title>Contact:ImEthan独立博客:Full Stack Engineer</title>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
@@ -123,12 +123,12 @@
 				var message = ""+
 					"<div class='panel panel-default'>"+
 						"<div class='panel-body'>"+
-							"<span style='float: left;'><span class='glyphicon glyphicon-user'></span> "+item.name+"</span>"+
+							"<span style='float: left;'><span class='icon-user'></span> "+item.name+"</span>"+
 							"<span style='float: right;'>"+
-								"<span  class='glyphicon glyphicon-calendar'></span> "+item.createTime+
+								"<span  class='icon-calendar'></span> "+item.createTime+
 								"<shiro:user>"+
-								"&nbsp;&nbsp;<a href='#' onclick='hiddenOne("+item.id+")'><span  class='glyphicon glyphicon-flag' ></span><a>"+
-								"&nbsp;&nbsp;<a href='#' onclick='deleteOne("+item.id+")'><span  class='glyphicon glyphicon-trash' ></span><a>"+
+								"&nbsp;&nbsp;<a href='#' onclick='hiddenOne("+item.id+")'><span  class='icon-flag' ></span><a>"+
+								"&nbsp;&nbsp;<a href='#' onclick='deleteOne("+item.id+")'><span  class='icon-trash' ></span><a>"+
 								"</shiro:user>"+
 								"</span>"+
 							"<br>"+
@@ -217,16 +217,16 @@
 			  <div class="panel-heading">Contact</div>
 			  <div class="panel-body">
 			  	<address>
-				  <span class='glyphicon glyphicon-map-marker'></span>&nbsp;<span class='locate'></span><br>
+				  <span class='icon-map-marker'></span>&nbsp;<span class='locate'></span><br>
 				</address>
 				<address>
-				  <span class='glyphicon glyphicon-phone'></span>&nbsp;<span class='phone'></span><br>
+				  <span class='icon-phone'></span>&nbsp;<span class='phone'></span><br>
 				</address>
 				<address>
-				  <img src="${root}/theme/images/QQ-ICO.jpg" width="12px;" height="13px;" /> &nbsp;<span class="qq"></span>
+					<strong style="font-weight: 600;">qq</strong>&nbsp;<span class="qq"></span><br>
 				</address>
 				<address>
-					<span class="glyphicon glyphicon-envelope"></span>&nbsp;<span class="email"></span>
+					<span class="icon-envelope"></span>&nbsp;<span class="email"></span>
 				</address>
 			  </div>
 			</div>

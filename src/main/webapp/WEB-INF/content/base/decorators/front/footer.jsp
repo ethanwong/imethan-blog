@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-sm-6 col-lg-6" style="padding-bottom: 10px;">
 				<h3 class="primaryColor" style="margin-top: 0px;">
-					ImEthan独立博客
+					<img class="img-rounded" style="vertical-align: middle;" src="${root}/theme/images/e-rgb(76, 142, 250).png" width="22px" height="22px" /> ImEthan独立博客
 				</h3>
 				<p>基于JAVA企业级开源框架开发的独立博客，设计风格简约但功能不简陋，开放源代码，功能不断迭代开发，博客内容持续更新。</p>
 			</div>
@@ -20,7 +20,8 @@
 <div class="container" style="padding-top: 0px;">
 	<hr>
 	<div class="copyright">
-		© 2014-${year} ImEthan 闽ICP备15016601号
+		<c:if test="${!isNormal}">Copyright © 2014-${year} ImEthan 黄应锋 </c:if>
+		<c:if test="${isNormal}">Copyright © 2014-${year} ImEthan 黄应锋  闽ICP备15016601号-1</c:if>
 	</div>
 </div>
 <a href="#" id="back-to-top" ></a>
