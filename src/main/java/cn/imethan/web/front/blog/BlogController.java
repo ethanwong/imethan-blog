@@ -297,25 +297,30 @@ public class BlogController extends SuperController{
      */
     @RequestMapping(value="/article/{articleId}",method = {RequestMethod.GET})
     public String article(@PathVariable Long articleId,Model model){
+    	
+    	//设置栏目和标签列表信息
+    	this.setBaseInfo(model);
+    	
     	//获取文章信息
     	try {
 			if(articleId != null && articleId != 0l){
-				Article article = articleService.getById(articleId);
+				
+				//获取文章信息
+				Article article = articleService.getArticleWithPrevAndNext(articleId);
+				
+				
+				
+				
 				model.addAttribute("article", article);
-				
-				
-				//获取栏目信息
-				List<SearchFilter> channelFilters = new ArrayList<SearchFilter>();
-				List<Channel> list = channelService.getList(channelFilters);//获取栏目信息
-				model.addAttribute("channelList", list);
 				
 				//设置默认栏目ID
 				if(article != null){
 					model.addAttribute("channelId", article.getChannelId());
 				}
 				
-				List<Label> allLabel = labelService.getList(new ArrayList<SearchFilter>());
-				model.addAttribute("allLabel", allLabel);
+				
+				
+				
 				
 			}
 		} catch (Exception e) {

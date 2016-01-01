@@ -79,7 +79,7 @@
 
   <div class="row" <c:if test="${isNormal}">style="padding-top: 16px;"</c:if>>
     <div class="col-sm-9">
-    	<a style="font-size:24px;float: left;color: #4183c4;" href="${root}/blog/article/${article.id}">${article.title}</a>
+    	<span style="font-size:24px;color: #4183c4;margin-bottom: 0px;" >${article.title}</span>
     </div>
     <div class="col-sm-3" >
 	    <c:if test="${isNormal}">
@@ -87,7 +87,6 @@
 	      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;" type="search" class="form-control" placeholder="Search blog" >
 	   		 </form>
 	    </c:if>
-	   
     </div>
   </div>
 	
@@ -107,17 +106,27 @@
 							<a href="javascript:;" onclick="publishArticle(this,${article.id})">
 								 <c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="glyphicon glyphicon-flag" ></span></c:if>
 								 <c:if test="${article.publish eq false}"><span class="glyphicon glyphicon-flag" ></span></c:if>
-							   </a>
+							 </a>
 							<a href="#" onclick="deleteArticle(${article.id},this)"><span class='glyphicon glyphicon-trash'></span></a>
 							<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span class='glyphicon glyphicon-edit'></span></a>
 						</div>
 					</shiro:user>
-					<div class='content'>${article.content}</div>
+					<div class='content' >${article.content}</div>
 				</div>
+				<hr>
+				<nav style="margin: 10px 0px 10px 0px;">
+				  <ul class="pager">
+					  <c:if test="${article.prev != null}">
+					    <li class="previous"> <a href="${root}/blog/article/${article.prev.id}"><span aria-hidden="true">&larr;</span> ${article.prev.title}</a></li>
+					  </c:if>
+					   <c:if test="${article.next != null}">
+				    	<li class="next"><a href="${root}/blog/article/${article.next.id}">${article.next.title} <span aria-hidden="true">&rarr;</span></a></li>
+				  	</c:if>
+				  </ul>
+				</nav>
 				<jsp:include page="/WEB-INF/content/front/blog/comment-input.jsp"></jsp:include>
 			</div>
 		</div>
-		
 		<div class="col-md-3" >
 			<jsp:include page="/WEB-INF/content/front/blog/blog-channel.jsp"></jsp:include>
 		</div>

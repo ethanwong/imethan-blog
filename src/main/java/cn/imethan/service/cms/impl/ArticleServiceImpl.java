@@ -21,6 +21,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import com.google.common.collect.Lists;
 
@@ -224,6 +225,76 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 	@Override
 	public List<Article> getTopCountArticleList(Integer count) {
 		return articleRepository.findTop4ByIsPublish(true, new Sort(Direction.DESC,"id"));
+	}
+	
+	private Article getNext(Long nextArticleId,Long channelId,Long nextCount,Long searchCount){
+		Article next = articleRepository.findOne(nextArticleId);
+		
+		if(next != null &&  next.getChannelId().equals(channelId)){
+			return next;
+		}else{
+			
+			searchCount ++ ;
+			
+			if(searchCount > nextCount){
+				return null;
+			}
+			return getNext(nextArticleId + 1l,channelId,nextCount,searchCount);
+		}
+	}
+	
+	private Article getPrev(Long prevArticleId,Long channelId,Long prevCount,Long searchCount){
+		Article prev = articleRepository.findOne(prevArticleId);
+		
+		if(prev != null && prev.getChannelId().equals(channelId)){
+			return prev;
+		}else{
+			
+			searchCount ++ ;
+			
+			if(searchCount > prevCount){
+				return null;
+			}
+			return getPrev(prevArticleId - 1l,channelId,prevCount,searchCount);
+		}
+	}
+
+	@Override
+	public Article getArticleWithPrevAndNext(Long articleId) {
+		
+		if(StringUtils.isEmpty(articleId)){
+			return null;
+		}
+		
+		Article article = this.getById(articleId);
+		if(article == null){
+			return null;
+		}
+		
+		Long channelId = article.getChannelId();
+		
+		
+		List<Article> lastArticles = articleRepository.findFirst1ByChannel(article.getChannel(), new Sort(Direction.DESC,"id"));
+		Long lastArticleId = lastArticles.get(0).getId();
+		
+		//获取全部下一篇记录数
+		Long nextCount = lastArticleId - article.getId();
+		
+		if(nextCount > 0){
+			Long searchCount = 0l;
+			article.setNext(this.getNext(articleId + 1l, channelId,nextCount,searchCount));
+			
+		}
+		
+		//获取全部上一篇记录数
+		Long prevCount = lastArticleId - nextCount - 1;
+		if(prevCount > 0){
+			Long searchCount = 0l;
+			article.setPrev(this.getPrev(articleId - 1l, channelId,prevCount,searchCount));
+			
+		}
+		
+		return article;
 	}
 
 

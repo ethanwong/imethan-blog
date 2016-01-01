@@ -72,5 +72,16 @@ public interface ArticleService {
 	 */
 	public List<Article> getTopCountArticleList(Integer count);
 	
+	
+	/**
+	 * 获取包括文章的上一篇和下一篇的文章详情
+	 * @param article
+	 * @return
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2016年1月1日上午8:41:12
+	 */
+	public Article getArticleWithPrevAndNext(Long articleId);
+	
 
 }

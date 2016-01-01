@@ -1,6 +1,7 @@
 package cn.imethan.service.comment.impl;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -36,6 +37,7 @@ public class CommentServiceImpl implements CommentService {
 		boolean isSuccess = true;
 		String message = "保存成功";
 		try {
+			entity.setCreateTime(new Date());
 			entity = commentRepository.save(entity);
 		} catch (Exception e) {
 			e.printStackTrace();

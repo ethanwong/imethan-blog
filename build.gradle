@@ -106,7 +106,7 @@ dependencies {
     //sitemesh end
  	
  	
-    compile 'com.google.guava:guava:16.0.1'
+    compile 'com.google.guava:guava:19.0'
     compile 'org.apache.commons:commons-lang3:3.3'
     
     //file and io

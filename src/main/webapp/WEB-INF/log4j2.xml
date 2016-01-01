@@ -49,6 +49,9 @@
       <AppenderRef ref="RollingFileError"/>
     </Root>
     
+    <Logger name="net.sf.ehcache" level="error" additivity="false">
+    	<AppenderRef ref="Console"/>
+    </Logger>
     <Logger name="org.hibernate" level="error" additivity="false">
     	<AppenderRef ref="Console"/>
     </Logger>
@@ -68,6 +71,9 @@
     	<AppenderRef ref="Console"/>
     </Logger>
     <Logger name="org.springframework.web" level="warn" additivity="false">
+    	<AppenderRef ref="Console"/>
+    </Logger>
+    <Logger name="org.springframework.data" level="error" additivity="false">
     	<AppenderRef ref="Console"/>
     </Logger>
     <Logger name="org.springframework.aop" level="error" additivity="false">

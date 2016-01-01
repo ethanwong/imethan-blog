@@ -4,6 +4,10 @@
 //页面加载时初始化脚本
 $(document).ready(function () {
 	loadCommnet(1);
+	
+	$("#showCommentInputBox").click(function(){
+		$("#commentInputBox").css("display","block");
+	});
 });
 //保存评论
 function saveComment(){
@@ -107,27 +111,16 @@ function loadCommnet(page){
 </script>
 	<div class="row" id="comments">
 		<div class="col-md-12" >
-			<h4><strong>Comments</strong></h4>
-			<hr>
-			<div class="commentList" >
-<!-- 				<div class="comment"> -->
-<!-- 					<div class="panel panel-default"> -->
-<!-- 						<div class="panel-body"> -->
-<!-- 							<span style="float: left;"><span class="glyphicon glyphicon-user"></span> Ethan Wong</span> -->
-<!-- 							<span style="float: right;"><span  class='glyphicon glyphicon-calendar'></span> 2015/01/14</span> -->
-<!-- 							<br> -->
-<!-- 							<div style="display: inline-block;padding-top: 10px;"> -->
-<!-- 								这个是评论的内容，这个是评论的内容，这个是评论的内容，这个是评论的内容，这个是评论的内容。这个是评论的内容，这个是评论的内容， -->
-<!-- 								这个是评论的内容，这个是评论的内容，这个是评论的内容。这个是评论的内容，这个是评论的内容，这个是评论的内容，这个是评论的内容， -->
-<!-- 								这个是评论的内容。这个是评论的内容，这个是评论的内容，这个是评论的内容，这个是评论的内容，这个是评论的内容。 -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
+			<div class="row">
+				<div class="col-md-6"><h4><strong>Comments</strong></h4></div>
+				<div class="col-md-6"><p style="float: right;"><a href="#commentInputBox" id="showCommentInputBox" class="btn btn-default btn-sm">我要评论</a></p></div>
 			</div>
-			<nav><ul class="pager"></ul></nav>
 			
-			<div class="panel panel-default">
+			<hr style="margin-top: 0px;padding-top: 0px;">
+			<div class="commentList" ></div>
+			<nav><ul class="pager"></ul></nav>
+					
+			<div class="panel panel-default" id="commentInputBox" style="display: none;">
 				  <div class="panel-heading">Add Comment <font color="red">*</font>为必填项</div>
 				  <div class="panel-body">
 					  	<form role="form" method="post" action="" id="inputForm">
@@ -153,3 +146,4 @@ function loadCommnet(page){
 			</div>
 		</div>
 	</div>
+

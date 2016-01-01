@@ -18,8 +18,8 @@ $(document).ready(function () {
 	
 	//更多内容
 	$('.content').readmore({
-		  speed: 1000,
-		  maxHeight: 200,
+		  speed: 2000,
+		  maxHeight: 110,
 		  moreLink:"<a href='#'>Read More</a>",
 		  lessLink:"<a href='#'>Close More</a>"
 	});

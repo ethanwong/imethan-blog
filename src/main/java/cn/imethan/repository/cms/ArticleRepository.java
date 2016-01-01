@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import cn.imethan.common.jpa.BaseJpaRepository;
 import cn.imethan.entity.cms.Article;
+import cn.imethan.entity.cms.Channel;
 
 
 /**
@@ -27,6 +28,9 @@ public interface ArticleRepository extends BaseJpaRepository<Article, Long>{
 	public List<Article> findTop4ByIsPublish(boolean isPublish,Sort sort);
 
 //	public Page<Article> findByIdIn(List<Long> list, PageRequest pageable);
+	
+	
+	public List<Article> findFirst1ByChannel(Channel channel, Sort sort);
 	
 
 }
