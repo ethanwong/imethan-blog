@@ -88,6 +88,7 @@
 </script>
 </head>
 <body>
+<div class="container main">
 	  <div class="row">
 		    <div class="col-sm-9">
 		    	<font style="font-size:30px;float: left;">Channel Manage</font>
@@ -112,5 +113,6 @@
 			<div id="pager"></div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

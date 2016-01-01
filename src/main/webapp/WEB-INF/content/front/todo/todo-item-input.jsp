@@ -49,6 +49,7 @@
 </script>
 </head>
 <body>
+<div class="container main">
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default contact" >
@@ -88,5 +89,6 @@
 		</div>
 <!-- 		<div class="col-md-3"> </div> -->
 	</div>
+</div>
 </body>
 </html>

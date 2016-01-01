@@ -76,7 +76,7 @@
 </script>
 </head>
 <body>
-
+<div class="container main">
   <div class="row" <c:if test="${isNormal}">style="padding-top: 16px;"</c:if>>
     <div class="col-sm-9">
     	<span style="font-size:24px;color: #4183c4;margin-bottom: 0px;" >${article.title}</span>
@@ -99,7 +99,7 @@
 					&nbsp;&nbsp;<span class='icon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 					&nbsp;&nbsp;
 					<c:forEach items="${article.labels}" var="label">
-						<a href='${root}/blog/tag/${label.id}' ><span class="label label-default" style="padding: 0.1em;">${label.name}</span></a>
+						<a href='${root}/blog/tag/${label.id}' ><span class="label label-default articlelabel">${label.name}</span></a>
 					</c:forEach>
 					<shiro:user>
 						<div class='blog-article-toolbar'>
@@ -131,5 +131,6 @@
 			<jsp:include page="/WEB-INF/content/front/blog/blog-channel.jsp"></jsp:include>
 		</div>
 	</div>
+</div>
 </body>
 </html>

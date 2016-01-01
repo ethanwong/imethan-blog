@@ -31,7 +31,7 @@
 </script>
 </head>
 <body>
-	<div class="container">
+	<div class="container main">
 	    <div class="row" >
 	    	<div class="col-sm-4" ></div>
 	    	<div class="col-sm-4" >
@@ -49,7 +49,7 @@
 							   <input style="margin-bottom: 10px;" type="checkbox" value="1" name="remember" > Remember me
 							</div>
 							<br>
-							 <button style="margin-bottom: 10px;" class="btn  btn-primary  col-md-12" type="submit">Login</button> 
+							 <button style="margin-bottom: 10px;" class="button  button-primary  button-small col-md-12" type="submit">Login</button> 
 							 <br>
 							 <div id="errorBox" class="label label-danger" style="font-size: 14px;"></div>
 							 <c:if test="${error != null && error !=''}">

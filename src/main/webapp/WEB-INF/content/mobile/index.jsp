@@ -6,41 +6,14 @@
 <html lang="zh-cn">
 <head>
 	<title>ImEthan|Full Stack Engineer</title>
-	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
-	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
-	<!-- bootstrap begin -->
-	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
-	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
-	<link href="${root}/theme/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet">
-	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
-	<!-- bootstrap end -->
-	<script src="http://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
-	
-	<!-- custom defin begin -->
-	<link href="${root}/theme/css/common.css" rel="stylesheet">
-	<link href="${root}/theme/css/footer.css" rel="stylesheet">
 	<link href="${root}/theme/css/index.css" rel="stylesheet">
-	<script src="${root}/theme/js/common.js"></script>
-	<!-- custom defin end -->
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="${root}/theme/bootstrap-3.3.0/other/ie10-viewport-bug-workaround.js"></script>
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
-
 <body>
-	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
-	<div class="jumbotron" style="padding-top: 20px;">
+	<div class="jumbotron">
 	  <div class="container">
-	  	<h1>Hello I'm Ethan</h1>
-	  	<p>我的代码我的国，欢迎访问我的技术部落格。</p>
-	  	<p><a href="${root}/blog/article/104"><button style="width: 160px;" type="submit" class="btn btn-primary">Learn more</button></a></p>
+	  	<h2>Hello I'm Ethan</h2>
+	  	<p>欢迎访问我的技术部落格</p>
+	  	<p><a href="${root}/blog/article/104" type="button" style="width: 200px;" class="button button-3d button-primary button-small">Learn more</a></p>
 	  </div>
 	</div>
 	<div class="container linkBox" >
@@ -109,7 +82,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
 </body>
 </html>
 

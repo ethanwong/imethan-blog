@@ -1,34 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 <script src="${root}/theme/js/headroom.js"></script>
-
 <script type="text/javascript">
 //页面加载时初始化脚本
 $(document).ready(function () {
-// $('.glyphicon-log-in').tooltip();
-// $('.glyphicon-cog').tooltip();
-// $('.glyphicon-log-out').tooltip();
-
+	<c:if test="${isNormal}">
 	//向下滚动时将导航隐藏，想上滚动式展示
 	// 获取页面元素
-	var myElement = document.querySelector(".navbar");
+	var myElement = document.querySelector(".navbar-fixed-top");
 	// 创建 Headroom 对象，将页面元素传递进去
-	var headroom  = new Headroom(
-			myElement
-// 			,{
-// 		  "tolerance": 5,
-// 		  "offset": 100
-// 		     }
-	);	
+	var headroom  = new Headroom(myElement);	
 	headroom.init(); // 初始化
-	
-	
-// 	$("#home").mouseover(function(){
-// 		var fontsize = $(this).css("font-size");
-// 		console.log("fontsize:"+fontsize);
-// 		$(this).css("font-size","20px");
-// 		console.log("fontsize:"+ $(this).css("font-size"));
-// 	});
+	</c:if>
 });
 </script>
 <!-- 移动版的不固定头部处理 -->
@@ -36,7 +19,7 @@ $(document).ready(function () {
 	<nav class="navbar navbar-default navbar-static-top " role="navigation">
 </c:if>
 <c:if test="${isNormal}">
-	<nav  class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 </c:if>
      <div class="container">
         <div class="navbar-header">
@@ -54,7 +37,6 @@ $(document).ready(function () {
 				<li <c:if test="${module eq 'blog'}">class="active"</c:if>><a href="${root}/blog">Blog</a></li>
 				<li <c:if test="${module eq 'todo' || module eq 'todoitem'}">class="active"</c:if>><a href="${root}/todo">Todo</a></li>
 				<li <c:if test="${module eq 'contact'}">class="active"</c:if>><a href="${root}/contact">Contact</a></li>
-<!-- 				<li ><a href="https://github.com/ethanwong" target="_blank">GitHub</a></li> -->
 				<li <c:if test="${module eq 'about'}">class="active"</c:if>><a href="${root}/about">About</a></li>
 			</ul>
 	        
@@ -62,11 +44,9 @@ $(document).ready(function () {
 				<li ><a href="https://github.com/ethanwong" target="_blank"><i class="icon-github"></i> GitHub</a></li>
 				<shiro:guest>  
 					<li>
-						<!-- <span class="glyphicon glyphicon-log-in" data-placement="bottom" title="Member login"></span> -->
 						<a href="${root}/login" title="Member login" ><i class="icon-signin"></i> Login</a>
 					</li>
 				</shiro:guest>
-				
 				<shiro:user>
 					<li>
 						<a><i class="icon-user"></i> <shiro:principal/></a>

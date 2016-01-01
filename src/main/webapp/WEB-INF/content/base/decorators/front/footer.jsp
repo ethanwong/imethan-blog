@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
-<hr style="margin-top: 40px;">
+<hr style="margin-top: 20px;">
 <div class="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-lg-6" style="padding-bottom: 10px;">
 				<h3 class="primaryColor" style="margin-top: 0px;">
-					<img class="img-rounded" style="vertical-align: middle;" src="${root}/theme/images/e-rgb(76, 142, 250).png" width="22px" height="22px" /> ImEthan独立博客
+					ImEthan独立博客
 				</h3>
 				<p>基于JAVA企业级开源框架开发的独立博客，设计风格简约但功能不简陋，开放源代码，功能不断迭代开发，博客内容持续更新。</p>
 			</div>

@@ -63,7 +63,7 @@ function generateArticle(json){
 		
 		var labels = " ";
 		$.each(item.labels, function(j, label) {
-			labels += "<a href='${root}/blog/tag/"+label.id+"' ><span class='label label-default' style='padding: 0.1em;'>"+label.name+"</span></a>  "
+			labels += "<a href='${root}/blog/tag/"+label.id+"' ><span class='label label-default articlelabel' >"+label.name+"</span></a>  "
 		})
 		
 		var article = ""+
@@ -150,25 +150,26 @@ function searchArticle(object){
 </script>
 </head>
 <body>
-  <div class="row">
-	    <div class="col-sm-9">
-	    	<font style="font-size:30px;float: left;">All Blog</font>
-	    	<small style="float: left;padding-top: 20px;padding-left: 10px;">我的工作和学习笔记</small>
-	    	<shiro:user>
-	    		<a title="管理栏目" class="manageButton" href="${root}/blog/channel"><span class="icon-list-alt"></span> 栏目管理</a>
-	    		<a title="管理标签" class="manageButton" href="${root}/blog/tag"><span class="icon-tags"></span> 标签管理</a>
-	    		<a title="发布文章" class="manageButton" href="${root}/blog/article/input/${channelId}/0"><span class="icon-plus"></span> 发布文章</a>
-	    	</shiro:user>
-	    </div>
-	    <div class="col-sm-3" >
-	    	<c:if test="${isNormal}">
-	    		<form class="form-horizontal searchform" role="form" >
-	    			<input onchange="searchArticle(this)" name="search_title" value="${search_title}" 
-	      	 		type="search" class="form-control" placeholder="Search blog" />
-	      	 	</form>
-	    	</c:if>
-	    </div>
-  </div>
+	<div class="container main">
+	  <div class="row">
+		    <div class="col-sm-9">
+		    	<font style="font-size:30px;float: left;">All Blog</font>
+		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">我的工作和学习笔记</small>
+		    	<shiro:user>
+		    		<a title="管理栏目" class="manageButton" href="${root}/blog/channel"><span class="icon-list-alt"></span> 栏目管理</a>
+		    		<a title="管理标签" class="manageButton" href="${root}/blog/tag"><span class="icon-tags"></span> 标签管理</a>
+		    		<a title="发布文章" class="manageButton" href="${root}/blog/article/input/${channelId}/0"><span class="icon-plus"></span> 发布文章</a>
+		    	</shiro:user>
+		    </div>
+		    <div class="col-sm-3" >
+		    	<c:if test="${isNormal}">
+		    		<form class="form-horizontal searchform" role="form" >
+		    			<input onchange="searchArticle(this)" name="search_title" value="${search_title}" 
+		      	 		type="search" class="form-control" placeholder="Search blog" />
+		      	 	</form>
+		    	</c:if>
+		    </div>
+	  </div>
 	
 	<hr class="modelhr">
 	<div class="row">
@@ -195,16 +196,16 @@ function searchArticle(object){
 						&nbsp;&nbsp;<span class='icon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
 						&nbsp;&nbsp;
 						<c:forEach items="${article.labels}" var="label">
-							<a href='${root}/blog/tag/${label.id}' ><span class="label label-default" style="padding: 0.2em;">${label.name}</span></a>
+							<a href='${root}/blog/tag/${label.id}' ><span class="label label-default articlelabel">${label.name}</span></a>
 						</c:forEach>
 						
 						<shiro:user>
 						<div class='blog-article-toolbar'>
-							  <a href="javascript:;" onclick="publishArticle(this,${article.id})">
+							  <a href="#" onclick="publishArticle(this,${article.id})">
 								 <c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="icon-flag" ></span></c:if>
 								 <c:if test="${article.publish eq false}"><span class="icon-flag" ></span></c:if>
 							   </a>
-								<a href="javascript:;" onclick="deleteArticle(${article.id},this)"><span  class='icon-trash'></span></a>
+								<a href="#" onclick="deleteArticle(${article.id},this)"><span  class='icon-trash'></span></a>
 								<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span  class='icon-edit'></span></a>
 							</div>
 						</shiro:user>
@@ -227,5 +228,6 @@ function searchArticle(object){
 			</div>
 		</c:if>
 	</div>
+</div>
 </body>
 </html>

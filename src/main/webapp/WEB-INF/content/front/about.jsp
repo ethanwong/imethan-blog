@@ -50,6 +50,7 @@
 </script>
 </head>
 <body>
+<div class="container main">
 	<div class="row">
 		<div class="col-sm-9">
 			<font style="font-size:30px;" >About me</font>
@@ -90,5 +91,6 @@
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

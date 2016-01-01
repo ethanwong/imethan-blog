@@ -253,6 +253,7 @@
 </script>
 </head>
 <body>
+<div class="container main">
 	<div class="row">
 		<div class="col-md-3">
 			<%@ include file="/WEB-INF/content/front/setting/setting-menu.jsp"%>
@@ -400,5 +401,6 @@
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

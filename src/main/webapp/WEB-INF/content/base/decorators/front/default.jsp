@@ -5,21 +5,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-<%-- 	<title><decorator:title></decorator:title></title> --%>
-	
 	<title>ImEthan独立博客 | Full Stack Engineer</title>
 	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
+	
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${root}/theme/css/buttons.css" rel="stylesheet">
 	<link href="${root}/theme/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	
 	<link href="${root}/theme/css/common.css" rel="stylesheet">
 	<link href="${root}/theme/css/footer.css" rel="stylesheet">
 	
-	<!-- bootstrap begin -->
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
 	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>
-	<!-- bootstrap end -->
 	<script src="http://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
 	
 	
@@ -34,12 +32,8 @@
 	
 	<script src="${root}/theme/js/readmore.js"></script>
 	<script src="${root}/theme/js/jquery.infinitescroll.js"></script>
-<%-- 	<script src="${root}/theme/js/debug.js"></script> --%>
-	<!-- custom defin begin -->
 	<script src="${root}/theme/js/common.js"></script>
-	<!-- custom defin end -->
-	
-<%-- 	<script type="text/javascript" charset="utf-8" src="${root}/theme/ueditor1_4_3_1-utf8-jsp/ueditor.parse.js"></script> --%>
+	<script src="${root}/theme/js/buttons.js"></script>
 	
 	 <!-- jqgrid begin-->
     <script type="text/ecmascript" src="${root}/theme/jqGrid/grid.locale-cn.js"></script>
@@ -74,7 +68,7 @@
 	<!-- 移动版的不固定头部样式处理 -->
 	<style type="text/css">
 		<c:if test="${!isNormal}">
-			body>.container {
+			body>.main {
 			  padding-top: 10px !important;
 			}
 		</c:if>
@@ -82,6 +76,7 @@
 </head>
 
 <body>
+	<!-- loading -->
 	<div id="loader">
 		<div id='loading-mask'></div>
 		<div id="loading">
@@ -91,7 +86,9 @@
 		    </div>
 		</div>
 	</div>
+	<!-- header -->
 	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
+	
 	<div class="container">
 		<!-- 提醒信息 -->
 		<div id="topWarn" class="alert alert-success alert-dismissable" style="display: none;margin-top:10px; ">
@@ -99,9 +96,12 @@
 			<strong></strong>
 			<p style="display: inline;"></p>
 		</div>
-		<decorator:body></decorator:body>
 	</div>
 	
+	<!-- main -->
+	<decorator:body></decorator:body>
+	
+	<!-- footer -->
 	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
 
 	<script type="text/javascript">

@@ -6,7 +6,6 @@
 	<excludes>
 		<pattern>/birthday</pattern>
 		<pattern>/theme/**</pattern>
-		<pattern>/index</pattern>
 	</excludes>
 
 	<!-- 后台菜单装饰页 -->
@@ -16,6 +15,8 @@
 	
 	<!-- 前台菜单装饰页 -->
 	<decorator name="front" page="front/default.jsp">
+		<pattern>/**</pattern>
+		<pattern>/index**</pattern>
 		<pattern>/blog**</pattern>
 		<pattern>/contact**</pattern>
 		<pattern>/about**</pattern>

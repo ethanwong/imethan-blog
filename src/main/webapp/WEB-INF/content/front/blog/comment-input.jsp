@@ -113,7 +113,7 @@ function loadCommnet(page){
 		<div class="col-md-12" >
 			<div class="row">
 				<div class="col-md-6"><h4><strong>Comments</strong></h4></div>
-				<div class="col-md-6"><p style="float: right;"><a href="#commentInputBox" id="showCommentInputBox" class="btn btn-default btn-sm">我要评论</a></p></div>
+				<div class="col-md-6"><p style="float: right;"><a href="#commentInputBox" id="showCommentInputBox" class="button button-default button-small">我要评论</a></p></div>
 			</div>
 			
 			<hr style="margin-top: 0px;padding-top: 0px;">
@@ -139,7 +139,7 @@ function loadCommnet(page){
 						    <textarea id="comment" rows="4" cols="20" class="form-control required" placeholder="Enter comment" name="comment" maxlength="1000"></textarea>
 						  </div>
 						  
-						  <button type="button" class="btn btn-primary" onclick="saveComment()">Save Comment</button>
+						  <button type="button" class="button button-primary button-small" onclick="saveComment()">Save Comment</button>
 						  <span class="addWarm"></span>
 						</form>
 				  </div>

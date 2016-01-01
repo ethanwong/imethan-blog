@@ -177,6 +177,7 @@
 </script>
 </head>
 <body>
+<div class="container main">
 	<div class="row">
 		<div class="col-sm-9">
 			<font style="font-size: 30px;">Contact</font> <small
@@ -206,7 +207,7 @@
 					    <label for="content">Message<font color="red">*</font></label>
 					    <textarea rows="4" cols="20"  class="form-control required" id="content" name="content" placeholder="Enter you message" ></textarea>
 					  </div>
-					  <button type="button" class="btn btn-primary" onclick="saveMessage()">Send Message</button>
+					  <button type="button" class="button button-primary button-small" onclick="saveMessage()">Send Message</button>
 					  <span class="addWarm"></span>
 					</form>
 				</div>
@@ -232,5 +233,6 @@
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

@@ -10,13 +10,13 @@
 </script>
 <div class="list-group">
 	<shiro:user>
-		<span class="label label-info" >publish channel</span>
+		<span class="label label-primary" >publish channel</span>
 	</shiro:user>
 	<c:forEach var="channel" items="${channelList}" varStatus="status">
 		<c:if test="${channel.publish eq true}">
 			<a href="${root}/blog/${channel.id}" class="list-group-item <c:if test="${channelId eq channel.id }">selected</c:if>">
 				${channel.name}
-				<span class='badge'>${channel.articleAmount}</span>
+				<span class='badge' style="border-radius:10px !important;">${channel.articleAmount}</span>
 			</a>
 		</c:if>
 	</c:forEach>

@@ -6,43 +6,17 @@
 <html lang="zh-cn">
 <head>
 	<title>ImEthan独立博客:Full Stack Engineer</title>
-	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
-	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
-	<!-- bootstrap begin -->
-	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
-	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.css" rel="stylesheet">
-	<link href="${root}/theme/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet">
-	<script src="${root}/theme/bootstrap-3.3.0/dist/js/bootstrap.js"></script>
-	<!-- bootstrap end -->
-	<script src="http://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
-	
-	<!-- custom defin begin -->
-	<link href="${root}/theme/css/common.css" rel="stylesheet">
-	<link href="${root}/theme/css/footer.css" rel="stylesheet">
 	<link href="${root}/theme/css/index.css" rel="stylesheet">
-	<script src="${root}/theme/js/common.js"></script>
-	<!-- custom defin end -->
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="${root}/theme/bootstrap-3.3.0/other/ie10-viewport-bug-workaround.js"></script>
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
-
 <body>
-	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
-	<div class="banner blur">
+	<div class="banner">
 		<div class="container" >
 			<div class="indexInfo">
 				<div class="title">Hello I'm Ethan</div>
 				<div class='content'>A blog named ImEthan,based java.</div>
 				<div class='content' style="font-size: 16px;">我的代码我的国，欢迎访问我的技术部落格。</div>
-				<a href="${root}/blog/article/104"><button style="width: 160px;margin-top: 10px;" type="button" class="btn btn-primary">Learn more </button></a>
+				<p></p>
+				<a style="width: 200px;" class="button button-3d button-primary button-small" href="${root}/blog/article/104"> Learn more</a>
 			</div>
 		</div>
 	</div>
@@ -98,10 +72,6 @@
 		  </div>
 		</div>
 	</div>
-	
-<!-- 	<div class="row"> -->
-<!-- 		<div class="col-md-12"><i class="icon-spinner icon-spin icon-2x pull-left"></i></div> -->
-<!-- 	</div> -->
 
 	<div class="container labelBox" >
 		<div class="row">
@@ -118,9 +88,7 @@
 			</div>
 		</div>
 	</div>
-		
-	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
-	
+
 	<script type="text/javascript">
 	$(document).ready(function () {
 		// banner图片描述显示
@@ -133,4 +101,3 @@
 	</script>
 </body>
 </html>
-
