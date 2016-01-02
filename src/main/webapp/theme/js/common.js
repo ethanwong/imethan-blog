@@ -46,17 +46,21 @@ function setDeleteModal(){
  * @param msg 提示信息
  */
 function showMsg(type,msg){
+	
 	if(type == 'success'){
-		$('#topWarn').attr("class","alert alert-success alert-dismissable");
-		$('#topWarn').css('display','block');
-		$("#topWarn p").text(msg);
+		layer.msg(msg, {
+	        time: 1500, //20s后自动关闭
+	        icon:1
+	    });
+
 	}
 	if(type == 'error'){
-		$('#topWarn').attr("class","alert alert-danger alert-dismissable");
-		$('#topWarn').css('display','block');
-		$("#topWarn p").text(msg);
+		layer.msg(msg, {
+	        time: 1500, //20s后自动关闭
+	        icon:2
+	    });
 	}
-	setTimeout("closeTopWarn(this)", 2000);
+
 };
 
 

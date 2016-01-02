@@ -20,29 +20,31 @@
 	
 
 	//删除文章
-	function deleteArticle(id,object){
-		setDeleteModal().bind('click',function(){
-			$.ajax({
-				url:"${root}/cms/article/delete/"+id,
-				type:"POST",
-				dateType:"json",
-				success:function(data){
-					var result = eval("(" + data + ")");
-					showMsg("success",result.message);
-					
-					var url = "${root}/blog";
-					<c:if test="${channelId ne null}">
-						url = "${root}/blog/${channelId}";
-					</c:if>
-					setTimeout(function(){
-						location.href = url;
-					},1500);
-				},
-				error:function(){
-					showError("删除失败");	
-				}
-			});
-		});
+	function deleteArticle(id,object){		
+		layer.confirm('确定要删除吗？', {title: false, closeBtn: 0,icon:0,btn: ['确定','关闭']},
+			function(){
+				$.ajax({
+					url:"${root}/cms/article/delete/"+id,
+					type:"POST",
+					dateType:"json",
+					success:function(data){
+						var result = eval("(" + data + ")");
+						showMsg("success",result.message);
+						
+						var url = "${root}/blog";
+						<c:if test="${channelId ne null}">
+							url = "${root}/blog/${channelId}";
+						</c:if>
+						setTimeout(function(){
+							location.href = url;
+						},1500);
+					},
+					error:function(){
+						showMsg("error","删除失败");
+					}
+				});
+			}, function(){layer.close();}
+		);
 	};
 	
 	//更改文章发布状态
@@ -65,68 +67,57 @@
 		});
 	};
 	
-	//查询文章信息
-	function searchArticle(object){
-		var search_title = $(object).val();
-		console.log("search_title:"+search_title);
-		
-		location.href = "${root}/blog?search_title="+search_title;
-
-	};
 </script>
 </head>
 <body>
 <div class="container main">
-  <div class="row" <c:if test="${isNormal}">style="padding-top: 16px;"</c:if>>
-    <div class="col-sm-9">
-    	<span style="font-size:24px;color: #4183c4;margin-bottom: 0px;" >${article.title}</span>
-    </div>
-    <div class="col-sm-3" >
-	    <c:if test="${isNormal}">
-	    	<form class="form-horizontal " role="form" >
-	      	<input onchange="searchArticle(this)" name="search_title" value="${search_title}" style="float: right;" type="search" class="form-control" placeholder="Search blog" >
-	   		 </form>
-	    </c:if>
-    </div>
-  </div>
-	
-	<hr >
 	<div class="row">
 		<div class="col-md-9" >
 			<div class='articleList'>
-				<div class='article'>
-					<a href="${root}/blog/${article.channelId}"><span class='icon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
-					&nbsp;&nbsp;<span class='icon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
-					&nbsp;&nbsp;
-					<c:forEach items="${article.labels}" var="label">
-						<a href='${root}/blog/tag/${label.id}' ><span class="label label-default articlelabel">${label.name}</span></a>
-					</c:forEach>
-					<shiro:user>
-						<div class='blog-article-toolbar'>
-							<a href="javascript:;" onclick="publishArticle(this,${article.id})">
-								 <c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="icon-flag" ></span></c:if>
-								 <c:if test="${article.publish eq false}"><span class="icon-flag" ></span></c:if>
-							 </a>
-							<a href="#" onclick="deleteArticle(${article.id},this)"><span class='icon-trash'></span></a>
-							<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span class='icon-edit'></span></a>
-						</div>
-					</shiro:user>
-					<div class='content' >${article.content}</div>
+				<div class=' article'>
+					<span class="detail-title">${article.title}</span>
+					<hr>
+					<p class="info" >
+						<a href="${root}/blog/${article.channelId}"><i class='icon-link'> ${article.channelName}</i></a>
+						<i class='icon-calendar'> <fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></i>
+						<c:if test="${article.labels != null && fn:length(article.labels) > 0}">
+						<i class="icon-tags">
+							<c:forEach items="${article.labels}" var="label" varStatus="stauts">
+								<a href='${root}/blog/tag/${label.id}' >${label.name}</a>
+								<c:if test="${stauts.last ne true}">,</c:if>
+							</c:forEach>
+						</i>
+						</c:if>
+
+					
+						<shiro:user>
+							<span class='blog-article-toolbar'>
+							  <a href="#" onclick="publishArticle(this,${article.id})">
+								 <c:if test="${article.publish eq true}"><i class="icon-star" ></i></c:if>
+								 <c:if test="${article.publish eq false}"><i class="icon-star-empty"></i></c:if>
+							   </a>
+							   <a href="#" onclick="deleteArticle(${article.id},this)"><i class='icon-trash'></i></a>
+							   <a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><i class='icon-edit'></i></a>
+							</span>
+						</shiro:user>
+					</p>
+					<div class='content'>${article.content}</div>
 				</div>
 				<hr>
 				<nav style="margin: 10px 0px 10px 0px;">
 				  <ul class="pager">
 					  <c:if test="${article.prev != null}">
-					    <li class="previous"> <a href="${root}/blog/article/${article.prev.id}"><span aria-hidden="true">&larr;</span> ${article.prev.title}</a></li>
+					  		<li class="previous"> <a href="${root}/blog/article/${article.prev.id}"><span aria-hidden="true">&larr;</span> ${article.prev.title}</a></li>
 					  </c:if>
-					   <c:if test="${article.next != null}">
-				    	<li class="next"><a href="${root}/blog/article/${article.next.id}">${article.next.title} <span aria-hidden="true">&rarr;</span></a></li>
-				  	</c:if>
+					  <c:if test="${article.next != null}">
+				      		<li class="next"><a href="${root}/blog/article/${article.next.id}">${article.next.title} <span aria-hidden="true">&rarr;</span></a></li>
+				  	  </c:if>
 				  </ul>
 				</nav>
 				<jsp:include page="/WEB-INF/content/front/blog/comment-input.jsp"></jsp:include>
 			</div>
 		</div>
+		
 		<div class="col-md-3" >
 			<jsp:include page="/WEB-INF/content/front/blog/blog-channel.jsp"></jsp:include>
 		</div>

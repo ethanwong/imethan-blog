@@ -14,6 +14,7 @@
 	<link href="${root}/theme/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	
 	<link href="${root}/theme/css/common.css" rel="stylesheet">
+	<link href="${root}/theme/css/article.css" rel="stylesheet">
 	<link href="${root}/theme/css/footer.css" rel="stylesheet">
 	
 	<script src="${root}/theme/js/jquery-1.11.0.min.js"></script>
@@ -34,6 +35,8 @@
 	<script src="${root}/theme/js/jquery.infinitescroll.js"></script>
 	<script src="${root}/theme/js/common.js"></script>
 	<script src="${root}/theme/js/buttons.js"></script>
+	<script src="${root}/theme/layer/layer.js"></script>
+	
 	
 	 <!-- jqgrid begin-->
     <script type="text/ecmascript" src="${root}/theme/jqGrid/grid.locale-cn.js"></script>
@@ -91,7 +94,7 @@
 	
 	<div class="container">
 		<!-- 提醒信息 -->
-		<div id="topWarn" class="alert alert-success alert-dismissable" style="display: none;margin-top:10px; ">
+		<div id="topWarn" class="alert alert-success alert-dismissable" style="display: none;margin-top:60px; ">
 			<button type="button" class="close" onclick="closeTopWarn(this)">&times;</button>
 			<strong></strong>
 			<p style="display: inline;"></p>

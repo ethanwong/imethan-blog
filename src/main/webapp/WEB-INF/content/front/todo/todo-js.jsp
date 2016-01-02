@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
+<script src="${root}/theme/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
@@ -50,11 +51,10 @@
 					$("#todo").val("");
 					$('#inputModal').modal('toggle');
 					
-					addWarm(result.success,result.message);
+					showMsg("success",result.message);
 					setTimeout(function(){
 						loadTodo(1);
-						$(".addWarm").html("");
-					},2000);
+					},1500);
 				}
 			});
 		}
@@ -148,11 +148,11 @@
 	//管理菜单
 	var menu = "<shiro:user>"+
 				"<span class='btn-group' style='float:right' >"+
-				   	"<a href='#todoList' onclick='changeFinish(this)'><span class='icon-ok' style='color:#5cb85c;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='#todoList' onclick='orderUp(this)'><span class='icon-arrow-up' style='color:#337ab7;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='#todoList' onclick='orderDown(this)'><span class='icon-arrow-down' style='color:#f0ad4e;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='#todoList' onclick='updateOne(this)'><span class='icon-edit' style='color:#5bc0de;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='#todoList' onclick='deleteTodo(this)'><span class='icon-trash' style='color:#d9534f;'></span></a>"+
+				   	"<a href='javascript:;' onclick='changeFinish(this)'><span class='icon-ok' style='color:#5cb85c;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='javascript:;' onclick='orderUp(this)'><span class='icon-arrow-up' style='color:#337ab7;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='javascript:;' onclick='orderDown(this)'><span class='icon-arrow-down' style='color:#f0ad4e;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='javascript:;' onclick='updateOne(this)'><span class='icon-edit' style='color:#5bc0de;'></span></a>&nbsp;&nbsp;"+
+				    "<a href='javascript:;' onclick='deleteTodo(this)'><span class='icon-trash' style='color:#d9534f;'></span></a>"+
 				"</span>"+
 				"</shiro:user>";
 	
@@ -199,11 +199,11 @@
 					$(".info").find("td:first").html("<span class='glyphicon glyphicon-star-empty'></span>");
 					$(".info").find("td:first").attr("finish","false");
 				};
-				addWarm(result.success,result.message);
+				showMsg("success",result.message);
+				
 				setTimeout(function(){
 					loadTodo($("#page").val());
-					$(".addWarm").html("");
-				},2000);
+				},1500);
 			}
 		});
 	};
@@ -211,7 +211,9 @@
 	//删除todo
 	function deleteTodo(object){
 		var id = $(object).parent().parent().parent().find("td:first").attr("id");
-		setDeleteModal().bind('click',function(){
+		
+		layer.confirm('确定要删除吗？', {title: false, closeBtn: 0,icon:0,btn: ['确定','关闭']},
+		function(){
 			$.ajax({
 				url:"${root}/todo/delete/"+id,
 				type:"POST",
@@ -219,18 +221,20 @@
 				success:function(data){
 					var result = eval("(" + data + ")");
 					$(".info").remove();
-
-					addWarm(result.success,result.message);
+					
+					showMsg("success",result.message);
+					
 					setTimeout(function(){
 						loadTodo($("#page").val());
-						$(".addWarm").html("");
 					},1500);
 				},
 				error:function(){
 					showError("删除失败");	
 				}
 			});
-		});
+			}, function(){layer.close();}
+		);
+
 		
 	};
 	
@@ -253,12 +257,12 @@
 			dateType:"json",
 			success:function(data){
 				var result = eval("(" + data + ")");
-
-				addWarm(result.success,result.message);
+				
+				showMsg("success",result.message);
+				
 				setTimeout(function(){
 					loadTodo($("#page").val());
-					$(".addWarm").html("");
-				},2000);
+				},1500);
 			}
 		});
 	};
@@ -276,23 +280,12 @@
 			dateType:"json",
 			success:function(data){
 				var result = eval("(" + data + ")");
-		
-				addWarm(result.success,result.message);
+				showMsg("success",result.message);
 				setTimeout(function(){
 					loadTodo($("#page").val());
-					$(".addWarm").html("");
 				},2000);
 			}
 		});
-	};
-	
-	//添加提醒
-	function addWarm(isSuccess,message){
-		var messageType = "info";
-		if(isSuccess == 'false'){
-			messageType = "danger";
-		};
-		$(".addWarm").html("<p class='bg-"+messageType+"' style='padding: 8px;display: inline;float: right;margin:0px;width:100%;'>"+message+"</p>");
 	};
 	
 	//重置检索

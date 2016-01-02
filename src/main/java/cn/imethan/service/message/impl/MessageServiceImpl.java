@@ -1,6 +1,7 @@
 package cn.imethan.service.message.impl;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -45,6 +46,7 @@ public class MessageServiceImpl implements MessageService {
 		boolean isSuccess = true;
 		String message = "保存成功";
 		try {
+			entity.setCreateTime(new Date());
 			entity = messageRepository.save(entity);
 			
 			emailSender.send("ethanwong@qq.com", "自来ImEthanBlog的邮件", entity.getContent());

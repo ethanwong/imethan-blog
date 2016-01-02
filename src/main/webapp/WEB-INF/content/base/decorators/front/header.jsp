@@ -39,6 +39,13 @@ $(document).ready(function () {
 				<li <c:if test="${module eq 'contact'}">class="active"</c:if>><a href="${root}/contact">Contact</a></li>
 				<li <c:if test="${module eq 'about'}">class="active"</c:if>><a href="${root}/about">About</a></li>
 			</ul>
+			<!-- 
+			<form class="navbar-form navbar-left" role="search" action="${root}/blog">
+			  <div class="form-group">
+			    <input type="text" class="form-control" name="search_title" placeholder="Search" style="height: 30px;vertical-align: text-top;width: 200px;">
+			  </div>
+			</form>
+			 -->
 	        
         	<ul class="nav navbar-nav navbar-right" >
 				<li ><a href="https://github.com/ethanwong" target="_blank"><i class="icon-github"></i> GitHub</a></li>

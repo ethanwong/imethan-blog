@@ -9,12 +9,11 @@
 <script type="text/javascript">
 //页面加载时初始化脚本
 $(document).ready(function () {
-	
+	//代码展现
     uParse('.content',{
         rootPath : '${root}/theme/ueditor1_4_3_1-utf8-jsp/',
         chartContainerHeight:500
     });
-	
 	
 	//更多内容
 	$('.content').readmore({
@@ -29,7 +28,6 @@ $(document).ready(function () {
         navSelector: "#navigation",
         nextSelector: "#navigation a",  
         itemSelector: ".articleList" , 
-//         debug        : true,  
         loading:{
             finishedMsg: '没有更多内容了...',//结束显示信息
             msgText: "正在加载内容...",
@@ -56,41 +54,43 @@ function generateArticle(json){
 		var publish = item.publish;
 		var titleIco = "";
 		if(publish == "true"){
-			titleIco = "<a href='#' onclick='publishArticle(this,"+item.id+")'><span style='color:#357ebd;' class='icon-flag'></span></a>";
+			titleIco = "<a href='#' onclick='publishArticle(this,"+item.id+")'><i class='icon-star' ></i></a>";
 		}else{
-			titleIco = "<a href='#' onclick='publishArticle(this,"+item.id+")'><span class='icon-flag'></span></a>";
+			titleIco = "<a href='#' onclick='publishArticle(this,"+item.id+")'><i class='icon-star-empty'></i></a>";
 		}
 		
-		var labels = " ";
-		$.each(item.labels, function(j, label) {
-			labels += "<a href='${root}/blog/tag/"+label.id+"' ><span class='label label-default articlelabel' >"+label.name+"</span></a>  "
-		})
+		var labels = "";
+		
+		var length = item.labels.length;
+		if(length >0 ){
+			labels = "<i class='icon-tags'> ";
+			$.each(item.labels, function(j, label) {
+				labels += "<a href='${root}/blog/tag/"+label.id+"' >"+label.name+"</a>";
+				if(length != (j+1)){
+					labels += ",";
+				}
+			})
+			labels += "</i>";
+		}
 		
 		var article = ""+
-		"<div class='article' >"+
-		"<h3 class='title'>"+
-		"<a href='${root}/blog/article/"+item.id+"'>"+
-			item.title+
-		"</a>"+
-		"</h3>"+
-		"<a href='${root}/blog/"+item.channelId+"'><span class='icon-link'></span> <small class='channel'><strong>"+item.channelName+"</strong></small></a>"+
-		"&nbsp;&nbsp;<span class='icon-calendar'></span><small>&nbsp;"+item.createTime+"</small>"+
-		"&nbsp;&nbsp;"+labels+
-		"<shiro:user>"+
-		"<div class='blog-article-toolbar'>"+
-		"<shiro:user>&nbsp;&nbsp;"+titleIco+"</shiro:user>"+
-		"	<a id='article"+item.id+"' href='#' onclick='deleteArticle("+item.id+",this)'><span  class='icon-trash'></span></a>"+
-		"	<a href='${root}/blog/article/input/"+item.channelId+"/"+item.id+"' ><span  class='icon-edit'></span></a>"+
-		"</div>"+
-		"</shiro:user>"+
-		
-		"<div class='content'>"+
-		item.content+
-		"</div>"+
+		"<div class='article'>"+
+			"<p class='title'>"+"<a href='${root}/blog/article/"+item.id+"'>"+item.title+"</a>"+"</p>"+
+			"<p class='info'>"+
+				"<a href='${root}/blog/"+item.channelId+"'><i class='icon-link'> "+item.channelName+"</i></a>"+
+				"<i class='icon-calendar'> "+item.createTime+"</i>"+labels+
+				"<shiro:user>"+
+					"<span class='blog-article-toolbar'>"+
+						titleIco+
+						"<a id='article"+item.id+"' href='#' onclick='deleteArticle("+item.id+",this)'><i class='icon-trash'></i></a>"+
+						"<a href='${root}/blog/article/input/"+item.channelId+"/"+item.id+"' ><i  class='icon-edit'></i></a>"+
+					"</span>"+
+				"</shiro:user>"+
+			"</p>"+
+			"<div class='content'>"+item.content+"</div>"+
 		"</div>";
 		
 		$(".articleList").append(article);
-		
 		
 		$('.content').readmore({
 			  speed: 1000,
@@ -105,21 +105,41 @@ function generateArticle(json){
 //删除文章
 function deleteArticle(id,object){
 	
-	setDeleteModal().bind('click',function(){
-		$.ajax({
-			url:"${root}/cms/article/delete/"+id,
-			type:"POST",
-			dateType:"json",
-			success:function(data){
-				var result = eval("(" + data + ")");
-				showMsg("success",result.message);
-				$(object).parent().parent().remove();
-			},
-			error:function(){
-				showError("删除失败");	
-			}
-		});
+	layer.confirm('确定要删除吗？', {title: false, closeBtn: 0,icon:0,btn: ['确定','关闭']},
+		function(){
+			$.ajax({
+				url:"${root}/cms/article/delete/"+id,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					$(object).parent().parent().parent().remove();
+					showMsg("success",result.message);
+				},
+				error:function(){
+					showMsg("error","删除失败");
+				}
+			});
+		}, function(){
+		layer.close();
 	});
+	
+// 	setDeleteModal().bind('click',function(){
+// 		$.ajax({
+// 			url:"${root}/cms/article/delete/"+id,
+// 			type:"POST",
+// 			dateType:"json",
+// 			success:function(data){
+// 				var result = eval("(" + data + ")");
+// 				showMsg("success",result.message);
+				
+// 				$(object).parent().parent().parent().remove();
+// 			},
+// 			error:function(){
+// 				showError("删除失败");	
+// 			}
+// 		});
+// 	});
 };
 
 //更改文章发布状态
@@ -142,36 +162,11 @@ function publishArticle(object,id){
 	});
 };
 
-//查询文章信息
-function searchArticle(object){
-	var search_title = $(object).val();
-	location.href = "${root}/blog?search_title="+search_title;
-};
+
 </script>
 </head>
 <body>
-	<div class="container main">
-	  <div class="row">
-		    <div class="col-sm-9">
-		    	<font style="font-size:30px;float: left;">All Blog</font>
-		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">我的工作和学习笔记</small>
-		    	<shiro:user>
-		    		<a title="管理栏目" class="manageButton" href="${root}/blog/channel"><span class="icon-list-alt"></span> 栏目管理</a>
-		    		<a title="管理标签" class="manageButton" href="${root}/blog/tag"><span class="icon-tags"></span> 标签管理</a>
-		    		<a title="发布文章" class="manageButton" href="${root}/blog/article/input/${channelId}/0"><span class="icon-plus"></span> 发布文章</a>
-		    	</shiro:user>
-		    </div>
-		    <div class="col-sm-3" >
-		    	<c:if test="${isNormal}">
-		    		<form class="form-horizontal searchform" role="form" >
-		    			<input onchange="searchArticle(this)" name="search_title" value="${search_title}" 
-		      	 		type="search" class="form-control" placeholder="Search blog" />
-		      	 	</form>
-		    	</c:if>
-		    </div>
-	  </div>
-	
-	<hr class="modelhr">
+<div class="container main">
 	<div class="row">
 		<!-- 移动版显示 -->
 		<c:if test="${!isNormal}">
@@ -182,6 +177,15 @@ function searchArticle(object){
 		
 		<!-- BLOG内容 -->
 		<div class="col-md-9" >
+			<span class="main-title">My Blog</span>
+	    	<small class="main-second-title">我的工作和学习笔记</small>
+	    	<shiro:user>
+	    		<a title="管理栏目" class="blog-manage-button" href="${root}/blog/channel"><span class="icon-list-alt"></span> 栏目管理</a>
+	    		<a title="管理标签" class="blog-manage-button" href="${root}/blog/tag"><span class="icon-tags"></span> 标签管理</a>
+	    		<a title="发布文章" class="blog-manage-button" href="${root}/blog/article/input/${channelId}/0"><span class="icon-plus"></span> 发布文章</a>
+	    	</shiro:user>
+	    	<hr>
+		    	
 			<!-- 默认加载 -->
 			<div class="articleList">
 				<c:if test="${articleList == null || fn:length(articleList) == 0}">
@@ -189,26 +193,32 @@ function searchArticle(object){
 				</c:if>
 				<c:forEach var="article" items="${articleList}" varStatus="status">
 					<div class='article'>
-						<h3 class='title'>
+						<p class='title'>
 							<a href='${root}/blog/article/${article.id}'>${article.title}</a>
-						</h3>
-						<a href="${root}/blog/${article.channelId}"><span class='icon-link'></span> <small class='channel'><strong>${article.channelName}</strong></small></a>
-						&nbsp;&nbsp;<span class='icon-calendar'></span><small>&nbsp;<fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></small>
-						&nbsp;&nbsp;
-						<c:forEach items="${article.labels}" var="label">
-							<a href='${root}/blog/tag/${label.id}' ><span class="label label-default articlelabel">${label.name}</span></a>
-						</c:forEach>
+						</p>
+						<p class="info">
+							<a href="${root}/blog/${article.channelId}"><i class='icon-link'> ${article.channelName}</i></a>
+							<i class='icon-calendar'> <fmt:formatDate value="${article.createTime}" pattern="yyyy/MM/dd"/></i>
+							<c:if test="${article.labels != null && fn:length(article.labels) > 0}">
+							<i class="icon-tags">
+								<c:forEach items="${article.labels}" var="label" varStatus="stauts">
+									<a href='${root}/blog/tag/${label.id}' >${label.name}</a>
+									<c:if test="${stauts.last ne true}">,</c:if>
+								</c:forEach>
+							</i>
+							</c:if>
 						
-						<shiro:user>
-						<div class='blog-article-toolbar'>
-							  <a href="#" onclick="publishArticle(this,${article.id})">
-								 <c:if test="${article.publish eq true}"><span style="color:#357ebd;" class="icon-flag" ></span></c:if>
-								 <c:if test="${article.publish eq false}"><span class="icon-flag" ></span></c:if>
-							   </a>
-								<a href="#" onclick="deleteArticle(${article.id},this)"><span  class='icon-trash'></span></a>
-								<a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><span  class='icon-edit'></span></a>
-							</div>
-						</shiro:user>
+							<shiro:user>
+								<span class='blog-article-toolbar'>
+								  <a href="javescript:;" onclick="publishArticle(this,${article.id})">
+									 <c:if test="${article.publish eq true}"><i class="icon-star" ></i></c:if>
+									 <c:if test="${article.publish eq false}"><i class="icon-star-empty"></i></c:if>
+								   </a>
+								   <a href="javescript:;" onclick="deleteArticle(${article.id},this)"><i class='icon-trash'></i></a>
+								   <a href="${root}/blog/article/input/${article.channelId}/${article.id}" ><i class='icon-edit'></i></a>
+								</span>
+							</shiro:user>
+						</p>
 						<div class='content'>${article.content}</div>
 					</div>
 				</c:forEach>
@@ -219,7 +229,6 @@ function searchArticle(object){
         		</a>  
    			</div>
 		</div>
-		
 		
 		<!-- 电脑版显示 -->
 		<c:if test="${isNormal}">

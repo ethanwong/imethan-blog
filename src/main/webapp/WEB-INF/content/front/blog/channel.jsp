@@ -44,8 +44,8 @@
 		}
 		
 		function operation(cellvalue, options, rowObject) {
-			var modifyOperation = "<shiro:hasPermission name='user:modify'><a id='operation1' href='${root}/blog/channel/input/"+cellvalue+"' ><span class='glyphicon glyphicon-edit'></a></shiro:hasPermission>";
-			var deleteOPeration = "<shiro:hasPermission name='user:delete'><a id='operation2' href='javascript:;' onclick='deleteChannel("+cellvalue+")' ><span class='glyphicon glyphicon-trash'></span></a></shiro:hasPermission>";
+			var modifyOperation = "<shiro:hasPermission name='user:modify'><a id='operation1' href='${root}/blog/channel/input/"+cellvalue+"' ><i class='icon-edit'></i></a></shiro:hasPermission>";
+			var deleteOPeration = "<shiro:hasPermission name='user:delete'><a id='operation2' href='javascript:;' onclick='deleteChannel("+cellvalue+")' ><i class='icon-trash'></i></a></shiro:hasPermission>";
 			return modifyOperation + " " + deleteOPeration;
 		};
 		
@@ -64,25 +64,28 @@
 	
 	//删除栏目
 	function deleteChannel(id){
-		setDeleteModal().bind('click',function(){
-			$.ajax({
-				url:"${root}/cms/channel/delete/"+id,
-				type:"POST",
-				dateType:"json",
-				success:function(data){
-					var result = eval("(" + data + ")");
-					//加载角色列表
-					showMsg("success",result.message);
-					
-					setTimeout(function(){
-						location.href = "${root}/blog/channel";
-					},1500);
-				},
-				error:function(){
-					showError("删除失败");	
-				}
-			});
-		});
+		layer.confirm('确定要删除吗？', {title: false, closeBtn: 0,icon:0,btn: ['确定','关闭']},
+		function(){
+				$.ajax({
+					url:"${root}/cms/channel/delete/"+id,
+					type:"POST",
+					dateType:"json",
+					success:function(data){
+						var result = eval("(" + data + ")");
+						//加载角色列表
+						showMsg("success",result.message);
+						
+						setTimeout(function(){
+							location.href = "${root}/blog/channel";
+						},1500);
+					},
+					error:function(){
+						showMsg("error","删除失败");	
+					}
+				});
+			}, function(){layer.close();}
+		);
+
 	};
 
 </script>
@@ -91,11 +94,11 @@
 <div class="container main">
 	  <div class="row">
 		    <div class="col-sm-9">
-		    	<font style="font-size:30px;float: left;">Channel Manage</font>
-		    	<small style="float: left;padding-top: 20px;padding-left: 10px;">栏目管理</small>
+		    	<span class="main-title">Channel Manage</span>
+	    		<small class="main-second-title">栏目管理</small>
 		    	<shiro:user>
-					<a title="添加栏目" class="manageButton" href="${root}/blog/channel/input/0">
-						<span class="icon-plus"></span> 添加栏目
+					<a title="添加栏目" class="blog-manage-button" href="${root}/blog/channel/input/0">
+						<i class="icon-plus"></i> 添加栏目
 					</a>
 		    	</shiro:user>
 		    </div>
@@ -106,7 +109,7 @@
 		    </div>
 	  </div>
 	
-	<hr class="modelhr">
+	<hr>
 	<div class="row">
 		<div class="col-md-12" >
 			<table id="list"></table>

@@ -34,8 +34,8 @@
 		});
 		
 		function operation(cellvalue, options, rowObject) {
-			var modifyOperation = "<shiro:hasPermission name='user:modify'><a id='operation1' href='${root}/blog/tag/input?id="+cellvalue+"' ><span class='glyphicon glyphicon-edit'></a></shiro:hasPermission>";
-			var deleteOPeration = "<shiro:hasPermission name='user:delete'><a id='operation2' href='javascript:;' onclick='deleteOne("+cellvalue+")' ><span class='glyphicon glyphicon-trash'></span></a></shiro:hasPermission>";
+			var modifyOperation = "<shiro:hasPermission name='user:modify'><a id='operation1' href='${root}/blog/tag/input?id="+cellvalue+"' ><i class='icon-edit'></i></a></shiro:hasPermission>";
+			var deleteOPeration = "<shiro:hasPermission name='user:delete'><a id='operation2' href='javascript:;' onclick='deleteOne("+cellvalue+")' ><i class='icon-trash'></i></a></shiro:hasPermission>";
 			return modifyOperation + " " + deleteOPeration;
 		};
 		
@@ -54,8 +54,8 @@
 	
 	//删除栏目
 	function deleteOne(id){
-		
-		setDeleteModal().bind('click',function(){
+		layer.confirm('确定要删除吗？', {title: false, closeBtn: 0,icon:0,btn: ['确定','关闭']},
+		function(){
 			$.ajax({
 				url:"${root}/blog/tag/delete/"+id,
 				type:"POST",
@@ -71,10 +71,11 @@
 				},
 				error:function(){
 					showError("删除失败");	
+					showMsg("error","删除失败");	
 				}
 			});
-		});		
-
+			}, function(){layer.close();}
+		);
 	};
 
 </script>
@@ -83,11 +84,11 @@
 <div class="container main">
   <div class="row">
 	    <div class="col-sm-9">
-	    	<font style="font-size:30px;float: left;">Label Manage</font>
-	    	<small style="float: left;padding-top: 20px;padding-left: 10px;">标签管理</small>
+	    	<span class="main-title">Label Manage</span>
+	    	<small class="main-second-title">标签管理</small>
 	    	<shiro:user>
-				<a title="添加标签"  class="manageButton" href="${root}/blog/tag/input">
-					<span class="icon-plus"></span> 添加标签
+				<a title="添加标签"  class="blog-manage-button" href="${root}/blog/tag/input">
+					<i class="icon-plus"></i> 添加标签
 				</a>
 	    	</shiro:user>
 	    </div>
@@ -98,7 +99,7 @@
 	    </div>
   </div>
 	
-	<hr class="modelhr">
+	<hr>
 	<div class="row">
 		<div class="col-md-12" >
 			<table id="list"></table>

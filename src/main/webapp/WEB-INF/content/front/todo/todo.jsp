@@ -13,31 +13,16 @@
 		<div class="col-md-12" >
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<div class="row" style="padding-top: 0px;">
-						<div class="col-md-2">
+					<div class="row" style="padding-top: 0px;padding-bottom: 10px;">
+						<div class="col-md-6">
 							<h4>
 								<i class="icon-tasks"></i>&nbsp;&nbsp;My Todo
 							</h4>
 						</div>
-						<div class="col-md-10 addWarm"></div>
+						<div class="col-md-6"></div>
 					</div>
 					<div class="row">
 					  <div class="col-md-4" style="padding-bottom: 4px;">
-					  
-<!-- 					    <span class="button-dropdown" data-buttons="dropdown"> -->
-<!-- 						    <button class="button button-rounded"> -->
-<!-- 						      Select Me <i class="icon-angle-down"></i> -->
-<!-- 						    </button> -->
-						 
-<!-- 						    <ul class="button-dropdown-list is-below"> -->
-<!-- 						      <li><a href="#">Option Link 1</a></li> -->
-<!-- 						      <li><a href="#">Option Link 2</a></li> -->
-<!-- 						      <li class="button-dropdown-divider"> -->
-<!-- 						        <a href="#">Option Link 3</a> -->
-<!-- 						      </li> -->
-<!-- 						    </ul> -->
-<!-- 						  </span> -->
-						  
 					  	<shiro:user>
 								<div class="btn-group">
 								  <button id="newTodo" type="button" class="btn btn-info" onclick="inputTodo(this)">New imethan todo</button>
@@ -92,9 +77,6 @@
 								      </div>
 								     
 								</div>
-								<c:if test="${isNormal}">
-									 <button class="btn btn-default" type="reset" onclick="resetPage()">Reset</button>
-							 	</c:if>
 						</form>
 					  </div>
 					</div>

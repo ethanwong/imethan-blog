@@ -27,7 +27,7 @@
 		<div class="media desktop">
 		  <div class="media-left">
 				<a href="${root}/blog">
-					<span class="icon-book" style="color: #5bc0de;font-size: 60px;"></span>
+					<i class="icon-book color-primary" ></i>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -39,7 +39,7 @@
 		<div class="media desktop">
 		  <div class="media-left">
 				<a href="${root}/todo">
-					<span class="icon-tasks" style="color: #5cb85c;font-size: 60px;"></span>
+					<i class="icon-tasks color-success" ></i>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -51,7 +51,7 @@
 		<div class="media desktop">
 		  <div class="media-left">
 				<a href="${root}/blog/23">
-					<span class="icon-briefcase" style="color: #f0ad4e;font-size: 60px;"></span>
+					<i class="icon-briefcase color-warning"></i>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -63,7 +63,7 @@
 		<div class="media desktop">
 		  <div class="media-left">
 				<a href="${root}/about">
-					<span class="icon-user" style="color: #d9534f;font-size: 60px;"></span>
+					<i class="icon-user color-danger"></i>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -72,11 +72,15 @@
 		  </div>
 		</div>
 	</div>
+	
+<!-- 	<div class="row"> -->
+<!-- 		<button id="buttonTest" class="button button-primary"></button> -->
+<!-- 	</div> -->
 
 	<div class="container labelBox" >
 		<div class="row">
 			<div class="col-md-12">
-				<label style="padding-bottom: 10px;font-size: 16px;"><span class="icon-tags"></span>  Tag Cloud</label>
+				<label style="padding-bottom: 10px;font-size: 16px;"><span class="icon-cloud"></span>  Tag Cloud</label>
 				<br>
 				<c:forEach items="${allLabel}" var="label" varStatus="status">
 					<a href="${root}/blog/tag/${label.id}" >
@@ -96,6 +100,13 @@
 			 placement: 'top',
 			 template:'<div class="tooltip" role="tooltip" style="font-size:14px;"><div class="tooltip-arrow"  ></div><div class="tooltip-inner" style="width:400px!important;background-color: #5BC0DE;text-align:left;"></div></div>',
 			 delay: { "show": 200, "hide": 200 }
+		});
+		
+		$("#buttonTest").click(function(){
+			layer.msg('删除成功！', {
+		        time: 1500, //20s后自动关闭
+		        icon:1
+		    });
 		});
 	});
 	</script>

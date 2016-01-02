@@ -150,7 +150,6 @@
 					  	<div class="row" style="padding-top: 0px;">
 							<div class="col-md-12">
 								 <button id="saveButtonOne" type="button" class="btn btn-primary" onclick="saveArticle()">Save</button>
-<%-- 								 <a type="button" class="btn btn-default" href="${root}/blog/article/input/${channelId}/${articleId}?editor=um">Switch UM</a> --%>
 								<button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">Back</button>
 							</div>
 						</div>

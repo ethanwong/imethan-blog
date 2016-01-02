@@ -48,6 +48,9 @@
 .desktop{
 	width: 400px;
 }
+.desktop .media-left i{
+	font-size: 60px;
+}
 
 /*linkbox end*/
 

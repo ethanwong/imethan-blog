@@ -53,19 +53,18 @@
 <div class="container main">
 	<div class="row">
 		<div class="col-sm-9">
-			<font style="font-size:30px;" >About me</font>
-			<small style="padding-top: 20px;padding-left: 10px;padding-right: 10px;">我的个人简历</small>
+			<span class="main-title">About me</span>
+	    	<small class="main-second-title">我的个人简历</small>
 			<shiro:user>
-				<a href="${root}/blog/article/24" title="查看简历" ><span  class='icon-eye-open'></span></a>
+				<a href="${root}/blog/article/24" title="查看简历" ><i  class='icon-eye-open'></i></a>
 				&nbsp;
-				<a href="${root}/blog/article/input/${aboutMe.channelId}/${aboutMe.id}?locate=about" title="编辑简历" ><span  class='icon-edit'></span></a>
+				<a href="${root}/blog/article/input/${aboutMe.channelId}/${aboutMe.id}?locate=about" title="编辑简历" ><i  class='icon-edit'></i></a>
 				&nbsp;
-				<a href="${root}/setting/about" title="设置简历" ><span  class='icon-cog'></span></a>
+				<a href="${root}/setting/about" title="设置简历" ><i  class='icon-cog'></i></a>
 			</shiro:user>
 		</div>
 		<div class="col-sm-3"></div>
-	</div>
-	
+	</div>	
 
 	<hr class="modelhr">
 	<div class="row">

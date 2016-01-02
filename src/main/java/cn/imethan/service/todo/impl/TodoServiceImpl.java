@@ -141,6 +141,7 @@ public class TodoServiceImpl implements TodoService {
 
 
 	@Override
+	@Transactional(readOnly = false)
 	public ReturnDto upTodo(Long id, int nextOrderNo, int previousOrderNo) {
 		boolean isSuccess = true;
 		String message = "更新成功";
@@ -156,6 +157,7 @@ public class TodoServiceImpl implements TodoService {
 
 
 	@Override
+	@Transactional(readOnly = false)
 	public ReturnDto downTodo(Long id, int nextOrderNo, int previousOrderNo) {
 		boolean isSuccess = true;
 		String message = "更新成功";

@@ -25,26 +25,16 @@
 					var result = eval("(" + data + ")");
 					
 					$("#todoItem").val("");
-					
-					addWarm(result.success,result.message);
+					showMsg("success",result.message);
 					setTimeout(function(){
 						location.href = "${root}/todoitem";
-					},2000);
+					},1500);
 					
 				}
 			});
 		}
 	};
 	
-	//添加提醒
-	function addWarm(isSuccess,message){
-		var messageType = "info";
-		if(isSuccess == 'false'){
-			messageType = "danger";
-		};
-		$(".addWarm").html("<p class='bg-"+messageType+"' style='padding: 8px;display: inline;float: right;margin:0px;width:100%;'>"+message+"</p>");
-// 		$(".addWarm").html("<div class='alert alert-"+messageType+"' role='alert'  style='padding: 8px;display: inline;float: right;margin:0px;width:100%;'>"+message+"</div>");
-	};
 
 </script>
 </head>
@@ -53,18 +43,14 @@
 	<div class="row">
 		<div class="col-md-12" >
 			<div class="panel panel-default contact" >
-<!-- 				<div class="panel-heading"> -->
-<!-- 					 <h3 class="panel-title"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New todo item</h3> -->
-<!-- 				</div> -->
 				<div class="panel-body">
 					<div class="row" style="padding-top: 0px;">
 						<div class="col-md-3">
 							<h4><span class="icon-plus"></span>&nbsp;&nbsp;New todo item</h4>
 						</div>
-						<div class="col-md-9 addWarm"></div>
+						<div class="col-md-9"></div>
 					</div>
 					<br>
-<!-- 					<div class="addWarm"></div> -->
 					<form action="" id="todoItemForm">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Item</label>
@@ -87,7 +73,6 @@
 				<br>
 			</div>
 		</div>
-<!-- 		<div class="col-md-3"> </div> -->
 	</div>
 </div>
 </body>

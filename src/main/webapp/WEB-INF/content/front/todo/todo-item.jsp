@@ -58,11 +58,8 @@
 				}else{
 					$(object).css("color","rgb(53, 126, 189)");
 				}
-				
-				addWarm(result.success,result.message);
-				setTimeout(function(){
-					$(".addWarm").html("");
-				},2000);
+				showMsg("success",result.message);
+
 			}
 		});
 	};
@@ -119,12 +116,7 @@
 				success:function(data){
 					var result = eval("(" + data + ")");
 					$(object).parent().parent().parent().parent().html("<span id='itemName'>"+todoItem+"</span>");
-					
-					addWarm(result.success,result.message);
-					setTimeout(function(){
-						$(".addWarm").html("");
-					},2000);
-					
+					showMsg("success",result.message);
 				}
 			});
 		}
@@ -133,17 +125,16 @@
 	//删除item
 	function deleteItem(id){
 		
-		setDeleteModal().bind('click',function(){
+		layer.confirm('确定要删除吗？', {title: false, closeBtn: 0,icon:0,btn: ['确定','关闭']},
+		function(){
 			$.ajax({
 				url:"${root}/todoitem/delete/"+id,
 				type:"POST",
 				dateType:"json",
 				success:function(data){
 					var result = eval("(" + data + ")");
-					
-					addWarm(result.success,result.message);
+					showMsg("success",result.message);
 					setTimeout(function(){
-						$(".addWarm").html("");
 						loadTodoItem()
 					},1500);
 				},
@@ -151,17 +142,9 @@
 					showError("删除失败");	
 				}
 			});
-		});
-	};
-	
-	
-	//添加提醒
-	function addWarm(isSuccess,message){
-		var messageType = "info";
-		if(isSuccess == 'false'){
-			messageType = "danger";
-		};
-		$(".addWarm").html("<p class='bg-"+messageType+"' style='padding: 8px;display: inline;float: right;margin:0px;width:100%;'>"+message+"</p>");
+			}, function(){layer.close();}
+		);
+
 	};
 	
 	//保存item
@@ -175,14 +158,10 @@
 				dateType:"json",
 				success:function(data){
 					var result = eval("(" + data + ")");
-					
-					$("#todoItem").val("");
-					
-					addWarm(result.success,result.message);
+					showMsg("success",result.message);
 					setTimeout(function(){
 						location.href = "${root}/todoitem";
-					},2000);
-					
+					},1500);
 				}
 			});
 		}
@@ -196,11 +175,11 @@
 		<div class="col-md-12" >
 			<div class="panel panel-default contact" >
 				<div class="panel-body">
-					<div class="row" style="padding-top: 0px;">
+					<div class="row" style="padding-top: 0px;padding-bottom: 10px;">
 						<div class="col-md-3">
 							<h4><span class="icon-list"></span>&nbsp;&nbsp;Todo item</h4>
 						</div>
-						<div class="col-md-9 addWarm"></div>
+						<div class="col-md-9"></div>
 					</div>
 					<div class="row">
 						<div class="col-md-12" >

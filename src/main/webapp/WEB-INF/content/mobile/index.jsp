@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="jumbotron">
-	  <div class="container">
+	  <div class="container" style="text-align: center;">
 	  	<h2>Hello I'm Ethan</h2>
 	  	<p>欢迎访问我的技术部落格</p>
 	  	<p><a href="${root}/blog/article/104" type="button" style="width: 200px;" class="button button-3d button-primary button-small">Learn more</a></p>

@@ -5,13 +5,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-lg-6" style="padding-bottom: 10px;">
-				<h3 class="primaryColor" style="margin-top: 0px;">
+				<h3 class="color-primary" style="margin-top: 0px;">
 					ImEthan独立博客
 				</h3>
 				<p>基于JAVA企业级开源框架开发的独立博客，设计风格简约但功能不简陋，开放源代码，功能不断迭代开发，博客内容持续更新。</p>
 			</div>
 			<div class="col-sm-6  col-lg-5 col-lg-offset-1" >
-				<p class="primaryColor" style="margin-top: 0px;">最新文章</p>
+				<p class="color-primary" style="margin-top: 0px;">最新文章</p>
 				<div id="newBlogBox" style="line-height: 18px;"></div>
 			</div>
 		</div>
