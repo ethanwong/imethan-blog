@@ -16,7 +16,7 @@
 				<div class='content'>A blog named ImEthan,based java.</div>
 				<div class='content' style="font-size: 16px;">我的知识我的国，欢迎访问我的知识部落格。</div>
 				<p></p>
-				<a style="width: 200px;" class="button button-3d button-default" href="${root}/blog/article/104"> Learn more </a>
+				<p><a style="width: 200px;" class="button  button-default" href="${root}/blog/article/104"> Learn more </a></p>
 			</div>
 		</div>
 	</div>

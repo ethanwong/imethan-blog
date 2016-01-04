@@ -36,10 +36,11 @@ body>.container {
 	padding-bottom:20px;
 }
 .main-banner{
-	background-color: #99CC99;margin: 50px 0px 20px 0px;color: white;padding: 30px 0px 30px 0px;
+	background-color: #339966;margin: 50px 0px 20px 0px;color: white;padding: 30px 0px 30px 0px;
 }
 .main-title{
 	font-size:24px;
+/* 	font-variant: small-caps; */
 }
 .main-second-title{
 	padding-top: 20px;padding-left: 10px;padding-right: 10px;

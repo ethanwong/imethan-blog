@@ -14,14 +14,14 @@
 	  	<h1>Hello I'm Ethan</h2>
 	  	<p>欢迎访问我的知识部落格</p>
 	  	<p></p>
-	  	<p><a href="${root}/blog/article/104" type="button" style="width: 200px;" class="button button-3d button-default button-small">Learn more</a></p>
+	  	<p><a style="width: 200px;" class="button  button-default" href="${root}/blog/article/104"> Learn more </a></p>
 	  </div>
 	</div>
 	<div class="container linkBox" >
 		<div class="media">
 		  <div class="media-left">
 				<a href="${root}/blog">
-					<span class="icon-book" style="color: #5bc0de;font-size: 60px;"></span>
+					<span class="icon-book color-primary" style="font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -33,7 +33,7 @@
 		<div class="media">
 		  <div class="media-left">
 				<a href="${root}/todo">
-					<span class="icon-tasks" style="color: #f0ad4e;font-size: 60px;"></span>
+					<span class="icon-tasks color-success" style="font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -45,7 +45,7 @@
 		<div class="media">
 		  <div class="media-left">
 				<a href="${root}/blog/23">
-					<span class="icon-briefcase" style="color: #5cb85c;font-size: 60px;"></span>
+					<span class="icon-briefcase color-warning" style="font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -57,7 +57,7 @@
 		<div class="media linkWrap">
 		  <div class="media-left">
 				<a href="${root}/about">
-					<span class="icon-user" style="color: #d9534f;font-size: 60px;"></span>
+					<span class="icon-user color-danger" style="font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -84,15 +84,15 @@
 		</div>
 	</div>
 	<div class="container searchBox">
-		<h3 class="title" >Search for blog</h3>
-		<div class="row">
+		<div class="row" style="margin: 0px;">
 			<div class="col-md-3" ></div>
 			<div class="col-md-6" >
-				<form role="form"  action="${root}/blog" style="padding:0px 20px 0px 20px;">
+				<h3 class="title" >Search for blog</h3>
+				<form role="form"  action="${root}/blog" style="padding: 0px 20px 0px 20px;">
 					<div class="input-group">
-				      <input type="text" name="search_title" class="form-control" placeholder="Enter the title or content">
+				      <input style="height: 40px;" type="text" name="search_title" class="form-control" placeholder="Enter the title or content">
 				      <span class="input-group-btn">
-				        <button class="btn btn-primary" type="button">Search</button>
+				        <button style="height: 40px;" class="btn btn-primary" type="button">Search</button>
 				      </span>
 				    </div>
 				</form>

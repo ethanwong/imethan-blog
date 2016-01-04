@@ -1,5 +1,4 @@
 @CHARSET "UTF-8";
-
 .banner {
 /* 	background-attachment: scroll, fixed; */
 /* 	background-image: url("../../upload/index/banner.jpg"); */
@@ -15,6 +14,7 @@
 	background-size: auto;
 	width: 100%;
 	margin-bottom: 20px;
+	font-variant: small-caps;
 }
 .bannerInfo{
 	color: white;
@@ -23,32 +23,25 @@
 	margin-left: 76%;
 	font-size: 14px;
 }
-.indexInfo {
-}
-
+.indexInfo {}
 .indexInfo .title {
 	font-size: 60px;
 	padding-top: 100px;
 	color: white;
-	font-variant: small-caps;
 }
-
 .indexInfo .content {
 	color: white;
 	font-size: 20px;
 	padding-bottom: 20px;
 	line-height: 1.2;
-	font-variant: small-caps;
 }
-
 .jumbotron{
 	background-color: #006666;
 	color: white;
 	font-variant: small-caps;
 }
-
 .linkBox {
-	padding: 20px 20px 20px 20px !important;
+	padding: 20px 20px 20px 20px !important;font-variant: small-caps;
 }
 
 .linkBox a{ text-decoration:none;}
