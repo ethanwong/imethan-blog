@@ -73,8 +73,18 @@
 <div class="container main">
 	<div class="row">
 		<div class="col-md-9" >
+			<c:if test="${article eq null}">
+				<div class='articleList'>
+					<div class='article'>
+						<span class="detail-title">Sorry !</span>
+						<hr>
+						<span class="content">(⊙o⊙)，文章没找着</span>
+					</div>
+				</div>
+			</c:if>
+			<c:if test="${article != null}">
 			<div class='articleList'>
-				<div class=' article'>
+				<div class='article'>
 					<span class="detail-title">${article.title}</span>
 					<hr>
 					<p class="info" >
@@ -88,7 +98,6 @@
 							</c:forEach>
 						</i>
 						</c:if>
-
 					
 						<shiro:user>
 							<span class='blog-article-toolbar'>
@@ -116,6 +125,7 @@
 				</nav>
 				<jsp:include page="/WEB-INF/content/front/blog/comment-input.jsp"></jsp:include>
 			</div>
+			</c:if>
 		</div>
 		
 		<div class="col-md-3" >

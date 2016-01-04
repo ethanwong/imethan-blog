@@ -308,20 +308,12 @@ public class BlogController extends SuperController{
 				//获取文章信息
 				Article article = articleService.getArticleWithPrevAndNext(articleId);
 				
-				
-				
-				
 				model.addAttribute("article", article);
 				
 				//设置默认栏目ID
 				if(article != null){
 					model.addAttribute("channelId", article.getChannelId());
 				}
-				
-				
-				
-				
-				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

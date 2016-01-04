@@ -229,13 +229,10 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 	
 	private Article getNext(Long nextArticleId,Long channelId,Long nextCount,Long searchCount){
 		Article next = articleRepository.findOne(nextArticleId);
-		
-		if(next != null &&  next.getChannelId().equals(channelId)){
+		if(next != null && next.getChannelId().equals(channelId) && next.isPublish()){
 			return next;
 		}else{
-			
 			searchCount ++ ;
-			
 			if(searchCount > nextCount){
 				return null;
 			}
@@ -246,12 +243,11 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 	private Article getPrev(Long prevArticleId,Long channelId,Long prevCount,Long searchCount){
 		Article prev = articleRepository.findOne(prevArticleId);
 		
-		if(prev != null && prev.getChannelId().equals(channelId)){
+//		&& (SecurityUtils.getSubject().isAuthenticated() && !prev.isPublish())
+		if(prev != null && prev.getChannelId().equals(channelId) && prev.isPublish()){
 			return prev;
 		}else{
-			
 			searchCount ++ ;
-			
 			if(searchCount > prevCount){
 				return null;
 			}
@@ -271,6 +267,11 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 			return null;
 		}
 		
+		//如果没有登录不展现未发布文章
+		if(!SecurityUtils.getSubject().isAuthenticated() && !article.isPublish()){
+			return null;
+		}
+		
 		Long channelId = article.getChannelId();
 		
 		
@@ -282,7 +283,8 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 		
 		if(nextCount > 0){
 			Long searchCount = 0l;
-			article.setNext(this.getNext(articleId + 1l, channelId,nextCount,searchCount));
+			Article next = this.getNext(articleId + 1l, channelId,nextCount,searchCount);
+			article.setNext(next);
 			
 		}
 		
@@ -290,7 +292,8 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 		Long prevCount = lastArticleId - nextCount - 1;
 		if(prevCount > 0){
 			Long searchCount = 0l;
-			article.setPrev(this.getPrev(articleId - 1l, channelId,prevCount,searchCount));
+			Article prev = this.getPrev(articleId - 1l, channelId,prevCount,searchCount);
+			article.setPrev(prev);
 			
 		}
 		
