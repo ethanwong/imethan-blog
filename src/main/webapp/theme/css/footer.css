@@ -1,9 +1,6 @@
 .footer{
 	padding: 20px 0px 20px 0px;
 }
-
-
-
 .copyright {
 	margin-top:20px;
 	margin-bottom:20px;
@@ -12,7 +9,6 @@
 	height: 30px;
 	text-align: center;
 }
-
 #back-to-top {
     position: fixed;
     right: 10px;
@@ -30,6 +26,3 @@
     height: 30px;
     line-height: 30px;
 }
-
-
-

@@ -1,60 +1,37 @@
 @CHARSET "UTF-8";
 
 .indexInfo {
-	
+/* 	text-align: center; */
 }
 
 .indexInfo .title {
 	font-size: 50px;
-	color: #fff;
 	padding-top: 110px;
+	color: white;
+/* 	font-variant: small-caps; */
+/* 	font-size: 80px; */
+/* 	color: #337ab7; */
 }
 
 .indexInfo .content {
+	color: white;
 	font-size: 20px;
-	color: #fff;
 	padding-bottom: 20px;
 	line-height: 1.2;
+/* 	font-variant: small-caps; */
 }
 
 .banner {
 	background-attachment: scroll, fixed;
 	background-image: url("../../upload/index/banner.jpg");
+	height: 400px;
+	background-color: #f8f8f8;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: auto;
 	width: 100%;
-	height: 400px;
 	margin-bottom: 20px;
 }
-
-
-
-/*linkbox begin*/
-.linkBox {
-	
-}
-
-.linkBox a{ text-decoration:none;}
-.linkBox a:hover{ text-decoration:none;}
-	
-
-.media{
-	display: inline-block;
-	padding: 20px 10px 20px 10px;
-	
-}
-
-.desktop{
-	width: 400px;
-}
-.desktop .media-left i{
-	font-size: 60px;
-}
-
-/*linkbox end*/
-
-
 .bannerInfo{
 	color: white;
 	position: absolute;
@@ -63,13 +40,38 @@
 	font-size: 14px;
 }
 
-/*labelBox end*/
+.linkBox {
+	padding: 20px 20px 20px 20px !important;
+}
+
+.linkBox a{ text-decoration:none;}
+.linkBox a:hover{ text-decoration:none;}
+.linkBox .media{
+	display: inline-block;
+	padding: 20px 10px 40px 10px;
+	
+}
+
+.linkBox .desktop{
+	width: 400px;
+}
+.desktop .media-left i{
+	font-size: 60px;
+}
+
 .labelBox{
-	padding: 20px 30px 20px 30px !important;
+	padding: 60px 30px 60px 30px !important;
+	background-color: #f8f8f8;
+	margin:20px 0px 0px 0px;
 }
 
 .indexLabel{
 	line-height:4 !important;padding: .6em .9em .6em .9em;margin-right: 10px;
 }
 
-/*labelBox end*/
+.searchBox{
+	padding: 40px 0px 80px 0px; 
+}
+.searchBox .title{
+	text-align: center;padding: 20px 0px 40px 0px;font-variant: small-caps;
+}

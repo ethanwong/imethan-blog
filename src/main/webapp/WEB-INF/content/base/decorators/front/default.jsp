@@ -92,15 +92,6 @@
 	<!-- header -->
 	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
 	
-	<div class="container">
-		<!-- 提醒信息 -->
-		<div id="topWarn" class="alert alert-success alert-dismissable" style="display: none;margin-top:60px; ">
-			<button type="button" class="close" onclick="closeTopWarn(this)">&times;</button>
-			<strong></strong>
-			<p style="display: inline;"></p>
-		</div>
-	</div>
-	
 	<!-- main -->
 	<decorator:body></decorator:body>
 	

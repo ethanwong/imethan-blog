@@ -13,7 +13,7 @@
 	  <div class="container" style="text-align: center;">
 	  	<h2>Hello I'm Ethan</h2>
 	  	<p>欢迎访问我的技术部落格</p>
-	  	<p><a href="${root}/blog/article/104" type="button" style="width: 200px;" class="button button-3d button-primary button-small">Learn more</a></p>
+	  	<p><a href="${root}/blog/article/104" type="button" style="width: 200px;" class="button button-primary button-small">Learn more</a></p>
 	  </div>
 	</div>
 	<div class="container linkBox" >
@@ -80,6 +80,23 @@
 					&nbsp;
 				</c:forEach>
 			</div>
+		</div>
+	</div>
+	<div class="container searchBox">
+		<h3 class="title" >Search for blog</h3>
+		<div class="row">
+			<div class="col-md-3" ></div>
+			<div class="col-md-6" >
+				<form role="form"  action="${root}/blog" style="padding:0px 20px 0px 20px;">
+					<div class="input-group">
+				      <input type="text" name="search_title" class="form-control" placeholder="Enter the title or content">
+				      <span class="input-group-btn">
+				        <button class="btn btn-primary" type="button">Search</button>
+				      </span>
+				    </div>
+				</form>
+			</div>
+			<div class="col-md-3" ></div>
 		</div>
 	</div>
 </body>

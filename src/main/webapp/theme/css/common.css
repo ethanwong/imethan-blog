@@ -25,7 +25,6 @@ body {
 	font-size: 14px;
 	color:#555;
 	line-height: 1.5;
-/* 	background-color: #ebebeb; */
 }
 
 body>.container {
@@ -52,8 +51,9 @@ body>.container {
 
 /* .navbar-default .navbar-nav > li > a{color: #000;} */
 
-/* .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{ */
-/* } */
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
+background-color: #f8f8f8;
+}
 
 
 /* .navbar-fixed-top{ */
