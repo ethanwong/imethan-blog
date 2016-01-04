@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-sm-6 col-lg-6" style="padding-bottom: 10px;">
 				<h3 class="color-primary" style="margin-top: 0px;">
-					ImEthan独立博客
+					<img style="display: inline;vertical-align: top;" class="img-rounded" src="${root}/theme/images/e-rgb(76, 142, 250).png" width="24px" height="24px" /> ImEthan独立博客
 				</h3>
 				<p>基于JAVA企业级开源框架开发的独立博客，设计风格简约但功能不简陋，开放源代码，功能不断迭代开发，博客内容持续更新。</p>
 			</div>

@@ -29,7 +29,8 @@ $(document).ready(function () {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-		  <a class="navbar-brand" href="${root}/index" title="Hello I'm Ethan."><img style="display: inline;vertical-align: top;" class="img-rounded" src="${root}/theme/images/e-rgb(76, 142, 250).png" width="22px" height="22px" /> ImEthan</a>
+<%--           <img style="display: inline;vertical-align: top;" class="img-rounded" src="${root}/theme/images/e-rgb(76, 142, 250).png" width="22px" height="22px" /> --%>
+		  <a style="font-weight: 600;" class="navbar-brand" href="${root}/index" title="Hello I'm Ethan."> ImEthan</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">

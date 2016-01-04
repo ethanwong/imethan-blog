@@ -35,6 +35,9 @@ body>.container {
 	padding-top:70px;
 	padding-bottom:20px;
 }
+.main-banner{
+	background-color: #99CC99;margin: 50px 0px 20px 0px;color: white;padding: 30px 0px 30px 0px;
+}
 .main-title{
 	font-size:24px;
 }

@@ -11,9 +11,10 @@
 <body>
 	<div class="jumbotron">
 	  <div class="container" style="text-align: center;">
-	  	<h2>Hello I'm Ethan</h2>
-	  	<p>欢迎访问我的技术部落格</p>
-	  	<p><a href="${root}/blog/article/104" type="button" style="width: 200px;" class="button button-primary button-small">Learn more</a></p>
+	  	<h1>Hello I'm Ethan</h2>
+	  	<p>欢迎访问我的知识部落格</p>
+	  	<p></p>
+	  	<p><a href="${root}/blog/article/104" type="button" style="width: 200px;" class="button button-3d button-default button-small">Learn more</a></p>
 	  </div>
 	</div>
 	<div class="container linkBox" >

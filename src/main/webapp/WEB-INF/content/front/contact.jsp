@@ -177,15 +177,17 @@
 </script>
 </head>
 <body>
-<div class="container main">
-	<div class="row">
-		<div class="col-sm-9">
-			<span class="main-title">Contact</span>
-	    	<small class="main-second-title">发消息联系我</small>
+<div class="main-banner">
+	<div class="container">
+		<div class="row ">
+			<div class="col-sm-12">
+				<span class="main-title">Contact</span>
+		    	<small class="main-second-title">发消息联系我</small>
+			</div>
 		</div>
-		<div class="col-sm-3"></div>
 	</div>
-	<hr class="modelhr">
+</div>
+<div class="container ">
 	<div class="row">
 		<div class="col-md-9" >
 			<div id="messageList"></div>

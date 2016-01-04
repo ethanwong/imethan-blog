@@ -72,7 +72,10 @@
 	<style type="text/css">
 		<c:if test="${!isNormal}">
 			body>.main {
-			  padding-top: 10px !important;
+ 			  padding-top: 10px !important;
+			}
+			.main-banner{
+				 margin-top: 0px !important;
 			}
 		</c:if>
 	</style>

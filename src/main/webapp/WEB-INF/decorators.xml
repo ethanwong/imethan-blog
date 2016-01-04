@@ -22,7 +22,6 @@
 		<pattern>/about**</pattern>
 		<pattern>/setting**</pattern>
 		<pattern>/login**</pattern>
-		<pattern>/more**</pattern>
 		<pattern>/todo**</pattern>
 	</decorator>
 

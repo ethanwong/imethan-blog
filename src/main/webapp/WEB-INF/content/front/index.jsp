@@ -14,14 +14,14 @@
 			<div class="indexInfo">
 				<div class="title">Hello I'm Ethan</div>
 				<div class='content'>A blog named ImEthan,based java.</div>
-				<div class='content' style="font-size: 16px;">我的代码我的国，欢迎访问我的技术部落格。</div>
+				<div class='content' style="font-size: 16px;">我的知识我的国，欢迎访问我的知识部落格。</div>
 				<p></p>
-				<a style="width: 200px;" class="button button-primary button-small" href="${root}/blog/article/104"> Learn more </a>
+				<a style="width: 200px;" class="button button-3d button-default" href="${root}/blog/article/104"> Learn more </a>
 			</div>
 		</div>
 	</div>
-	<span class="glyphicon glyphicon-info-sign bannerInfo" 
-	title="2014年的夏天，在厦门图书馆旁的一家咖啡厅准备开发ImEthan部落格，间隙用手机拍了三张照片，当前您所看到的这张图片，便是这三张照片合成而来，图中的华硕A40J是学生时代就开始陪伴我的电脑,部落格也是凭借它而来~"></span>
+<!-- 	<span class="glyphicon glyphicon-info-sign bannerInfo"  -->
+<!-- 	title="2014年的夏天，在厦门图书馆旁的一家咖啡厅准备开发ImEthan部落格，间隙用手机拍了三张照片，当前您所看到的这张图片，便是这三张照片合成而来，图中的华硕A40J是学生时代就开始陪伴我的电脑,部落格也是凭借它而来~"></span> -->
 	
 	<div class="container linkBox" >
 		<div class="media desktop">
@@ -81,7 +81,7 @@
 					<br>
 					<c:forEach items="${allLabel}" var="label" varStatus="status">
 						<a href="${root}/blog/tag/${label.id}" >
-							<span class='label label-info indexLabel'>
+							<span class='label label-primary indexLabel'>
 								${label.name}
 							</span>
 						</a>
@@ -91,51 +91,16 @@
 		</div>
 	</div>
 	
-<!-- 	<div class="" style="padding: 20px;"> -->
-<!-- 		<div class="container" > -->
-<!-- 			<p style="font-size: 16px;text-align: center;" >内容统计</p> -->
-<!-- 			<div class="row"> -->
-<!-- 				<div class="col-md-4"> -->
-<!-- 				    <div class="thumbnail"> -->
-<!-- 				      <i class="icon-leaf"> Article</i> -->
-<!-- 				      <div class="caption"> -->
-<!-- 				        <h3>124</h3> -->
-<!-- 				        <p>大小文章总共编写数量</p> -->
-<!-- 				      </div> -->
-<!-- 				    </div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-md-4"> -->
-<!-- 					<div class="thumbnail"> -->
-<!-- 				      	<i class="icon-tags"> Tags</i> -->
-<!-- 				      <div class="caption"> -->
-<!-- 				        <h3>124</h3> -->
-<!-- 				        <p>大小文章总共编写数量</p> -->
-<!-- 				      </div> -->
-<!-- 				    </div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-md-4"> -->
-<!-- 					<div class="thumbnail"> -->
-<!-- 				      	<i class="icon-lemon"> Channel</i> -->
-<!-- 				      <div class="caption"> -->
-<!-- 				        <h3>124</h3> -->
-<!-- 				        <p>大小文章总共编写数量</p> -->
-<!-- 				      </div> -->
-<!-- 				    </div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- 	<hr> -->
 	<div class="container searchBox">
 		<h3 class="title" >Search for blog</h3>
 		<div class="row">
 			<div class="col-md-3" ></div>
 			<div class="col-md-6" >
 				<form role="form"  action="${root}/blog">
-					<div class="input-group">
-				      <input type="text" name="search_title" class="form-control" placeholder="Enter the title or content">
+					<div class="input-group" >
+				      <input style="height: 40px;" type="text" name="search_title" class="form-control" placeholder="Enter the title or content">
 				      <span class="input-group-btn">
-				        <button class="btn btn-primary" type="button">Search</button>
+				        <button style="height: 40px;" class="btn btn-primary" type="button">Search</button>
 				      </span>
 				    </div>
 				</form>
@@ -143,24 +108,6 @@
 			<div class="col-md-3" ></div>
 		</div>
 	</div>
-	
-<!-- 	<hr> -->
-<!-- 	<div style="padding: 20px;"> -->
-<!-- 		<div class="container" > -->
-<!-- 			<div class="row"> -->
-<!-- 				<div class="col-md-12" > -->
-<!-- 					<p class="color-primary">功能更新日志</p> -->
-<!-- 					<p>2016/01/03 文章上一篇和下一篇过滤隐藏文章</p> -->
-<!-- 					<p>2016/01/03 操作消息提醒确认框UI改造</p> -->
-<!-- 					<p>2016/01/03 UI适配调整为扁平化风格</p> -->
-<!-- 					<p>2016/01/03 文章上一篇和下一篇过滤隐藏文章</p> -->
-<!-- 					<p>2016/01/03 操作消息提醒确认框UI改造</p> -->
-<!-- 					<p>2016/01/03 UI适配调整为扁平化风格</p> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-
 
 	<script type="text/javascript">
 	$(document).ready(function () {

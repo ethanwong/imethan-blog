@@ -1,31 +1,15 @@
 @CHARSET "UTF-8";
 
-.indexInfo {
-/* 	text-align: center; */
-}
-
-.indexInfo .title {
-	font-size: 50px;
-	padding-top: 110px;
-	color: white;
-/* 	font-variant: small-caps; */
-/* 	font-size: 80px; */
-/* 	color: #337ab7; */
-}
-
-.indexInfo .content {
-	color: white;
-	font-size: 20px;
-	padding-bottom: 20px;
-	line-height: 1.2;
-/* 	font-variant: small-caps; */
-}
-
 .banner {
-	background-attachment: scroll, fixed;
-	background-image: url("../../upload/index/banner.jpg");
+/* 	background-attachment: scroll, fixed; */
+/* 	background-image: url("../../upload/index/banner.jpg"); */
 	height: 400px;
-	background-color: #f8f8f8;
+/* 	background-color: #339966; */
+	background-color: #006666;
+/* 	background-color: #009966; */
+/* 	background-color: #336633; */
+/* 	background-color: #999966; */
+/* 	background-color: #CC9966; */
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: auto;
@@ -38,6 +22,29 @@
 	margin-top: 370px;
 	margin-left: 76%;
 	font-size: 14px;
+}
+.indexInfo {
+}
+
+.indexInfo .title {
+	font-size: 60px;
+	padding-top: 100px;
+	color: white;
+	font-variant: small-caps;
+}
+
+.indexInfo .content {
+	color: white;
+	font-size: 20px;
+	padding-bottom: 20px;
+	line-height: 1.2;
+	font-variant: small-caps;
+}
+
+.jumbotron{
+	background-color: #006666;
+	color: white;
+	font-variant: small-caps;
 }
 
 .linkBox {
