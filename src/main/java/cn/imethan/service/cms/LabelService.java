@@ -55,6 +55,15 @@ public interface LabelService{
 	 * @return
 	 */
 	public Label getById(Long id);
+	
+	/**
+	 * 获取首页标签数
+	 * @return
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2016年1月5日下午3:50:47
+	 */
+	public Long getIndexTagCount();
 
 	
 	

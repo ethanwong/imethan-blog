@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 默认目录 -->
-<decorators defaultdir="/WEB-INF/content/base/decorators">
+<decorators defaultdir="/WEB-INF/content">
 
 	<!-- 排除装饰页面 -->
 	<excludes>
@@ -9,12 +9,12 @@
 	</excludes>
 
 	<!-- 后台菜单装饰页 -->
-	<decorator name="console" page="console/default.jsp">
+	<decorator name="console" page="base/decorators/console/default.jsp">
 		<pattern>/console**</pattern>
 	</decorator>
 	
 	<!-- 前台菜单装饰页 -->
-	<decorator name="front" page="front/default.jsp">
+	<decorator name="front" page="front/layout/default.jsp">
 		<pattern>/**</pattern>
 		<pattern>/index**</pattern>
 		<pattern>/blog**</pattern>

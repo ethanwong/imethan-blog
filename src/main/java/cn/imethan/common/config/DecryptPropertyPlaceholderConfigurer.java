@@ -4,12 +4,19 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.util.ObjectUtils;
 
 import cn.imethan.common.encode.DigestUtils;
-import cn.imethan.utils.Debug;
 
+/**
+ * DecryptPropertyPlaceholderConfigurer.java
+ *
+ * @author Ethan Wong
+ * @since JDK 1.7
+ * @datetime 2016年1月5日上午9:13:03
+ */
 public class DecryptPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
 
 	private List<String> decodePropertyNames;
@@ -31,11 +38,15 @@ public class DecryptPropertyPlaceholderConfigurer extends PropertyPlaceholderCon
 			String convertedValue = null;
 			if (this.decodePropertyNames != null && decodePropertyNames.size() > 0) {
 				if (this.decodePropertyNames.contains(propertyName)) {
+					//本机开发测试为windows，使用本机配置文件
+					if(!SystemUtils.IS_OS_WINDOWS){
+						propertyValue =  props.getProperty("bae."+propertyName);
+					}
 					convertedValue = DigestUtils.decode(DigestUtils.decode(propertyValue));
+					
 				} else {
 					convertedValue = convertPropertyValue(propertyValue);
 				}
-//				Debug.println("convertedValue:"+convertedValue);
 			} else {
 				convertedValue = convertPropertyValue(propertyValue);
 			}
@@ -44,5 +55,4 @@ public class DecryptPropertyPlaceholderConfigurer extends PropertyPlaceholderCon
 			}
 		}
 	}
-	
 }

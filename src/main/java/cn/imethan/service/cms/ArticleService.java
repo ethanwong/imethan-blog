@@ -83,5 +83,14 @@ public interface ArticleService {
 	 */
 	public Article getArticleWithPrevAndNext(Long articleId);
 	
+	/**
+	 * 获取首页文章统计数
+	 * @return
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2016年1月5日下午3:46:08
+	 */
+	public Long getIndexArticleCount();
+	
 
 }

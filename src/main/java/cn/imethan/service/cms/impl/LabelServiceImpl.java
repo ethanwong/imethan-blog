@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -115,6 +114,11 @@ public class LabelServiceImpl implements LabelService {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public Long getIndexTagCount() {
+		return labelRepository.count();
 	}
 
 }

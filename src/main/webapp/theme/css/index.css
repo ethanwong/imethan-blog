@@ -66,7 +66,7 @@
 }
 
 .indexLabel{
-	line-height:4 !important;padding: .6em .9em .6em .9em;margin-right: 10px;
+	line-height:4 !important;padding: .6em .9em .6em .9em;margin-right: 10px;background-color: #337ab7;
 }
 
 .searchBox{
@@ -75,3 +75,10 @@
 .searchBox .title{
 	text-align: center;padding: 20px 0px 40px 0px;font-variant: small-caps;
 }
+
+.countBox{padding: 40px 0px 40px 0px;}
+.countBox .countTitle{padding-bottom: 40px;text-align: center;}
+.countBox .countTitle .title{font-size: 40px;font-variant: small-caps;}
+.countBox .countTitle .icon{padding-top: 40px;}
+.countBox .countInfo{text-align: center;padding: 0px 20px 0px 20px;}
+.countBox .countInfo .count{font-size: 40px;}

@@ -74,6 +74,15 @@ public interface ChannelService{
 	 * @return
 	 */
 	public Map<String,Object> getChannelArticleChartInfo();
+	
+	/**
+	 * 获取首页栏目统计数
+	 * @return
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2016年1月5日下午3:46:08
+	 */
+	public Long getIndexChannelCount();
 
 	
 	

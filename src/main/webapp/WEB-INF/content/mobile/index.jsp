@@ -100,6 +100,36 @@
 			<div class="col-md-3" ></div>
 		</div>
 	</div>
+	<hr>
+	<div class="container countBox" >
+		<div class="row countTitle" style="margin: 0px;">
+			<div class="col-md-12" >
+				<span class="title">All Content In Site</span>
+				<span>站内发布的所有内容信息量统计</span>
+				<div class="icon" ><i class="icon-bar-chart icon-4x"></i></div>
+			</div>
+		</div>
+		<div class="row" style="margin: 0px;">
+			<div class="col-md-4" >
+				<div class="countInfo">
+					<p class="count color-primary">${articles}</p>
+					<p>发表的文章数</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="countInfo">
+					<p class="count color-primary" style="">${tags}</p>
+					<p>云标签数</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="countInfo">
+					<p class="count color-primary">${channels}</p>
+					<p>归类栏目数</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
 

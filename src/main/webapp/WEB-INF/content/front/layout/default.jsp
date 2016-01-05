@@ -93,13 +93,13 @@
 		</div>
 	</div>
 	<!-- header -->
-	<jsp:include page="/WEB-INF/content/base/decorators/front/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/content/front/layout/header.jsp"></jsp:include>
 	
 	<!-- main -->
 	<decorator:body></decorator:body>
 	
 	<!-- footer -->
-	<jsp:include page="/WEB-INF/content/base/decorators/front/footer.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/content/front/layout/footer.jsp"></jsp:include>
 
 	<script type="text/javascript">
 		//页面加载时初始化脚本

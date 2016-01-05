@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.common.web.SuperController;
 import cn.imethan.entity.cms.Label;
+import cn.imethan.service.cms.ArticleService;
+import cn.imethan.service.cms.ChannelService;
 import cn.imethan.service.cms.LabelService;
 
 /**
@@ -27,6 +29,10 @@ public class IndexController extends SuperController{
 	
 	@Autowired
 	private LabelService labelService;
+	@Autowired
+	private ArticleService articleService;
+	@Autowired
+	private ChannelService channelService;
 	
     @RequestMapping("")
     public String indexOne(Model model,SitePreference sitePreference,Device device) {
@@ -34,6 +40,11 @@ public class IndexController extends SuperController{
     	//获取标签信息
     	List<Label> allLabel = labelService.getList(new ArrayList<SearchFilter>());
     	model.addAttribute("allLabel", allLabel);
+    	
+    	model.addAttribute("articles", articleService.getIndexArticleCount());
+    	model.addAttribute("tags", labelService.getIndexTagCount());
+    	model.addAttribute("channels", channelService.getIndexChannelCount());
+    	
     	
     	String message = "";
         if (device.isMobile()) {

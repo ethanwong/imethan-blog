@@ -300,5 +300,16 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 		return article;
 	}
 
+	@Override
+	public Long getIndexArticleCount() {
+		
+		List<SearchFilter> filters = Lists.newArrayList();
+	    SearchFilter articleFilter3 = new SearchFilter("isPublish",SearchFilter.Operator.EQ,true);
+	    filters.add(articleFilter3);    	
+		Specification<Article> spec = DynamicSpecifications.bySearchFilter(filters, Article.class);
+		
+		return articleRepository.count(spec);
+	}
+
 
 }

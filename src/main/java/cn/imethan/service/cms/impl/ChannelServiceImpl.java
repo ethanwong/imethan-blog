@@ -19,6 +19,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.google.common.collect.Lists;
+
 import cn.imethan.common.repository.DynamicSpecifications;
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
@@ -190,6 +192,15 @@ public class ChannelServiceImpl implements ChannelService {
 		map.put("articleAmount", articleAmount);
 		
 		return map;
+	}
+
+	@Override
+	public Long getIndexChannelCount() {
+		List<SearchFilter> filters = Lists.newArrayList();
+	    SearchFilter articleFilter3 = new SearchFilter("isPublish",SearchFilter.Operator.EQ,true);
+	    filters.add(articleFilter3);    	
+		Specification<Channel> spec = DynamicSpecifications.bySearchFilter(filters, Channel.class);
+		return channelRepository.count(spec);
 	}
 
 }
