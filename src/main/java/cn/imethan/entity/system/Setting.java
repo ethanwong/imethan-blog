@@ -3,6 +3,9 @@ package cn.imethan.entity.system;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import cn.imethan.common.entity.BaseEntity;
 
 
@@ -15,6 +18,7 @@ import cn.imethan.common.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_sys_setting")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache") 
 public class Setting extends BaseEntity {
 	
 	private static final long serialVersionUID = 4060744972143466144L;

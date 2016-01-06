@@ -10,6 +10,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import cn.imethan.common.entity.BaseEntity;
@@ -23,6 +26,7 @@ import cn.imethan.common.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_cms_label")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache") 
 public class Label extends BaseEntity {
 
 	private static final long serialVersionUID = -2463983764239869080L;
@@ -30,6 +34,7 @@ public class Label extends BaseEntity {
 	private String name;//标签名称
 	private Integer orderNo;//排序
 	
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache") 
 	@JsonIgnore
 	@ManyToMany(cascade = {CascadeType.REMOVE}, mappedBy = "labels", fetch = FetchType.LAZY)
 	private List<Article> articles = new ArrayList<Article>();

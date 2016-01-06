@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -17,6 +19,7 @@ import cn.imethan.common.entity.BaseEntity;
 @Entity
 @Table(name="imethan_sys_todo")
 @JsonIgnoreProperties(value={"todoItem"})
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache") 
 public class Todo extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -30,6 +33,7 @@ public class Todo extends BaseEntity {
 	@Transient
 	private Integer previousOrderNo;//上一条记录排序
 	
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache")
 	@ManyToOne(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY)
 	@JoinColumn(name="itemId")
 	private TodoItem todoItem;//item类型

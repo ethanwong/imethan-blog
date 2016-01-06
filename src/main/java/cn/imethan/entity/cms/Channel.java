@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import cn.imethan.common.entity.BaseEntity;
 
@@ -17,6 +19,7 @@ import cn.imethan.common.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_cms_channel")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache") 
 public class Channel extends BaseEntity {
 	
 	private static final long serialVersionUID = 567346114281964527L;

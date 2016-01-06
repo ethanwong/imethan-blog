@@ -93,7 +93,17 @@ public class DynamicSpecifications {
 						return builder.and(predicates.toArray(new Predicate[predicates.size()]));
 					}
 				}
-
+				
+				
+				//手动设置hibernate二级缓存
+				//org.hibernate.ejb.criteria.CriteriaQueryImpl
+				if(query instanceof org.hibernate.ejb.QueryImpl) {  
+					@SuppressWarnings("rawtypes")
+					org.hibernate.ejb.QueryImpl hibernateQuery = (org.hibernate.ejb.QueryImpl)query;  
+					org.hibernate.Query hQuery = hibernateQuery.getHibernateQuery();
+					hQuery.setCacheable(true);
+				}
+				
 				return builder.conjunction();
 			}
 		};

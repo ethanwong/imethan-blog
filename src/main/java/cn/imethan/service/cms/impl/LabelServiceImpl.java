@@ -44,7 +44,6 @@ public class LabelServiceImpl implements LabelService {
 		String message = "保存成功";
 		try {
 			if(entity.getId() != null){
-//				Label label = labelRepository.getOne(entity.getId());
 				Label label = labelRepository.findOne(entity.getId());
 				
 				entity.setModifyTime(new Date());

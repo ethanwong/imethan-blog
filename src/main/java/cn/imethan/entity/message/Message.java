@@ -3,6 +3,9 @@ package cn.imethan.entity.message;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import cn.imethan.common.entity.BaseEntity;
 
 /**
@@ -13,6 +16,7 @@ import cn.imethan.common.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_contact_message")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE) 
 public class Message extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;

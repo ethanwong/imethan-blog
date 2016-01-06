@@ -132,8 +132,6 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 	@Override
 	@Transactional(readOnly = false)
 	public ReturnDto deleteById(Long id) {
-	
-		
 		boolean isSuccess = true;
 		String message = "删除成功";
 		try {
@@ -193,6 +191,7 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 			}
 	    	
 			Specification<Article> spec = DynamicSpecifications.bySearchFilter(filters, Article.class);
+			
 			result = articleRepository.findAll(spec, pageable);
 			
 		} catch (Exception e) {
@@ -243,7 +242,6 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 	private Article getPrev(Long prevArticleId,Long channelId,Long prevCount,Long searchCount){
 		Article prev = articleRepository.findOne(prevArticleId);
 		
-//		&& (SecurityUtils.getSubject().isAuthenticated() && !prev.isPublish())
 		if(prev != null && prev.getChannelId().equals(channelId) && prev.isPublish()){
 			return prev;
 		}else{
@@ -294,7 +292,6 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 			Long searchCount = 0l;
 			Article prev = this.getPrev(articleId - 1l, channelId,prevCount,searchCount);
 			article.setPrev(prev);
-			
 		}
 		
 		return article;

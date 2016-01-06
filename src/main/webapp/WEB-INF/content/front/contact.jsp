@@ -8,7 +8,7 @@
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
-		loadUserInfo("imethan");//加载用户信息
+		loadUserInfo();//加载用户信息
 		loadMessage(1);//加载消息
 	});
 	
@@ -55,9 +55,9 @@
 	};
 	
 	//加载用户信息
-	function loadUserInfo(username){
+	function loadUserInfo(){
 		$.ajax({
-			url:"${root}/userinfo/getUserInfoByUsername/"+username,
+			url:"${root}/userinfo/getUserInfo",
 			type:"POST",
 			dateType:"json",
 			success:function(data){

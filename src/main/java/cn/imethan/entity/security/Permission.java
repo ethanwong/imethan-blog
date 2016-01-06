@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -23,6 +25,7 @@ import cn.imethan.common.entity.BaseEntity;
 @Entity
 @Table(name="imethan_security_permission")
 @JsonIgnoreProperties(value={"resource"})
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
 public class Permission extends BaseEntity {
 	
 	private static final long serialVersionUID = 3002097053120526602L;
@@ -31,6 +34,7 @@ public class Permission extends BaseEntity {
 	private String intro;//描述
 	private String permission;//权限
 	
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
 	@ManyToOne(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY)
 	@JoinColumn(name="resourceId")
 	private Resource resource = new Resource();//资源

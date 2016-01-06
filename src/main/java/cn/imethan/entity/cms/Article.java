@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -29,6 +31,7 @@ import cn.imethan.common.entity.BaseEntity;
 @Entity
 @Table(name="imethan_cms_article")
 @JsonIgnoreProperties(value={"channel"})
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache") 
 public class Article extends BaseEntity {
 
 	private static final long serialVersionUID = 3135828776040100046L;
@@ -37,6 +40,7 @@ public class Article extends BaseEntity {
 	private String content;//内容
 	private boolean isPublish;//是否发布
 	
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache") 
 	@ManyToOne(cascade = {CascadeType.REFRESH},fetch = FetchType.EAGER)
 	@JoinColumn(name="channelId")
 	private Channel channel;//栏目
@@ -69,7 +73,8 @@ public class Article extends BaseEntity {
 	//新增加article,并且添加一条article和lable的关系级联，不能配置CascadeType.PERSIST，否则hibernate会插入一条新记录中，但是因为ID相同导致插入失败
 	//CascadeType.PERSIST 级联添加，例如保存article时同时添加一条label记录
 	//CascadeType.REMOVE 级联删除记录和关系
-
+	
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache") 
 	@ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.MERGE})
     @JoinTable(name="imethan_cms_article_label",joinColumns = { @JoinColumn(name ="articleId" )} ,inverseJoinColumns = { @JoinColumn(name = "labelId")})
 	@OrderBy("orderNo")

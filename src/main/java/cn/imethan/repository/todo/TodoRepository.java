@@ -1,16 +1,15 @@
 package cn.imethan.repository.todo;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import cn.imethan.common.jpa.BaseJpaRepository;
 import cn.imethan.entity.todo.Todo;
 
 
 @Repository
-public interface TodoRepository extends JpaRepository<Todo, Long>,JpaSpecificationExecutor<Todo> {
+public interface TodoRepository extends BaseJpaRepository<Todo, Long>{
 	
 	@Modifying 
 	@Query("update Todo a set a.finish = ?2 where a.id = ?1")

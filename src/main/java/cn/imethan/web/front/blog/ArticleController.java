@@ -49,7 +49,7 @@ public class ArticleController extends SuperController{
 	private LabelService labelService;
 	
 	@ResponseBody
-	@RequestMapping(value = "json/{channelId}" , method = {RequestMethod.POST , RequestMethod.GET })
+	@RequestMapping(value = "json/{channelId}" , method = {RequestMethod.POST })
 	public String json(@RequestParam("page") Integer page,@RequestParam("rows") Integer size,@PathVariable("channelId") Long channelId){
 		PageRequest pageable = new PageRequest(page-1, size, Direction.DESC, "id");
 		List<SearchFilter> filters = new ArrayList<SearchFilter>();
@@ -69,7 +69,7 @@ public class ArticleController extends SuperController{
 	 */
 	@RequiresUser
 	@ResponseBody
-	@RequestMapping(value = "save" , method = {RequestMethod.POST,RequestMethod.GET })
+	@RequestMapping(value = "save" , method = {RequestMethod.POST,RequestMethod.GET})
 	public ReturnDto save(@Valid @ModelAttribute("article") Article article,
 			BindingResult result,ServletRequest request){
 		 
@@ -114,7 +114,7 @@ public class ArticleController extends SuperController{
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "detail/{id}" , method = RequestMethod.POST)
+	@RequestMapping(value = "detail/{id}" , method = {RequestMethod.POST})
 	public Article detail(@PathVariable Long id){
 		return articleService.getById(id);
 	} 
@@ -132,7 +132,7 @@ public class ArticleController extends SuperController{
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/top" , method = RequestMethod.POST)
+	@RequestMapping(value = "/top" , method = {RequestMethod.POST})
 	public List<Article> topArticle(){
 		
 		return articleService.getTopCountArticleList(0);

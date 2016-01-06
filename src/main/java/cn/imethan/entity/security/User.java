@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import cn.imethan.common.entity.BaseEntity;
 
@@ -23,6 +25,7 @@ import cn.imethan.common.entity.BaseEntity;
  */
 @Entity
 @Table(name="imethan_security_user")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
 public class User extends BaseEntity {
 	
 	private static final long serialVersionUID = 2732105841282347957L;
@@ -37,8 +40,8 @@ public class User extends BaseEntity {
 	private String avatar;//头像
 	private String qq;//QQ
 	
-	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
+	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="imethan_security_user_role",joinColumns = { @JoinColumn(name ="userId" )} ,inverseJoinColumns = { @JoinColumn(name = "roleId")})
 	@OrderBy("id")
 	private Set<Role> roles = new HashSet<Role>();//角色

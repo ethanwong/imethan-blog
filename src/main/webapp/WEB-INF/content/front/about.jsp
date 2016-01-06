@@ -10,13 +10,13 @@
 	//页面加载时初始化脚本
 	$(document).ready(function () {
 		//加载用户信息
-		loadUserInfo("imethan");
+		loadUserInfo();
 	});
 	
 	//加载用户信息
-	function loadUserInfo(username){
+	function loadUserInfo(){
 		$.ajax({
-			url:"${root}/userinfo/getUserInfoByUsername/"+username,
+			url:"${root}/userinfo/getUserInfo",
 			type:"POST",
 			dateType:"json",
 			success:function(data){

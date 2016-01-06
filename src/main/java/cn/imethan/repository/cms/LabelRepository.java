@@ -1,9 +1,8 @@
 package cn.imethan.repository.cms;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import cn.imethan.common.jpa.BaseJpaRepository;
 import cn.imethan.entity.cms.Label;
 
 
@@ -15,7 +14,7 @@ import cn.imethan.entity.cms.Label;
  * @datetime 2015年12月16日下午2:30:02
  */
 @Repository
-public interface LabelRepository extends JpaRepository<Label, Long>,JpaSpecificationExecutor<Label> {
+public interface LabelRepository extends BaseJpaRepository<Label, Long>{
 
 
 

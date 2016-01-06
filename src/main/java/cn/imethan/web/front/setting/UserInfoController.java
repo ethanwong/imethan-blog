@@ -36,4 +36,13 @@ public class UserInfoController {
 		}
 		return userInfo;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getUserInfo",method = RequestMethod.POST)
+	public UserInfo getUserInfoByUserid(){
+		//获取用户信息
+		User curUser = userService.getById(8l);
+		UserInfo userInfo = new UserInfo(curUser.getUsername(),curUser.getNickname(),curUser.getEmail(),curUser.getPhone(),curUser.getLocate(),curUser.getAvatar(),curUser.getQq());
+		return userInfo;
+	}
 }

@@ -59,7 +59,7 @@
         <!-- If you don't have a pre-built net.sf.ehcache.CacheManager instance to inject, but you want
              a specific Ehcache configuration to be used, specify that here.  If you don't, a default
              will be used.:-->
-<!--         <property name="cacheManagerConfigFile" value="classpath:/main/ehcache.xml"/>  -->
+        <property name="cacheManagerConfigFile" value="classpath:/cache/ehcache.xml"/> 
     </bean>
     
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">

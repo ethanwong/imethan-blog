@@ -16,6 +16,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -30,6 +32,7 @@ import cn.imethan.common.entity.BaseEntity;
 @Entity
 @Table(name="imethan_security_resource")
 @JsonIgnoreProperties(value={"parent","roles","modifyTime","createTime","url"})
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
 public class Resource extends BaseEntity {
 	
 	private static final long serialVersionUID = 6701956302298630995L;
@@ -115,14 +118,17 @@ public class Resource extends BaseEntity {
 		this.parentId = parentId;
 	}
 	
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
 	@ManyToOne(cascade = {CascadeType.REFRESH},fetch = FetchType.LAZY)
 	@JoinColumn(name="pid")
 	private Resource parent;//父级
 	
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
 	@OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY,mappedBy="parent")
 	@OrderBy("id")
 	private Set<Resource> childrens = new HashSet<Resource>();//子级
 	
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
 	@OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY,mappedBy="resource")
 	@OrderBy("id")
 	private Set<Permission> permissions = new HashSet<Permission>();//授权

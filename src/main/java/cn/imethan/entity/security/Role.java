@@ -14,6 +14,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -28,6 +30,7 @@ import cn.imethan.common.entity.BaseEntity;
 @Entity
 @Table(name="imethan_security_role")
 @JsonIgnoreProperties(value = {"users","createTime"})
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
 public class Role extends BaseEntity {
 	
 	private static final long serialVersionUID = -6601962016508223381L;
@@ -35,6 +38,7 @@ public class Role extends BaseEntity {
 	private String name;//角色名称
 	private String intro;//描述
 	
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
 	@ManyToMany(cascade = {CascadeType.PERSIST}, mappedBy = "roles", fetch = FetchType.LAZY)
 	private Set<User> users = new HashSet<User>();//用户集合
     
@@ -45,7 +49,8 @@ public class Role extends BaseEntity {
 		this.users = users;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="securityCache") 
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinTable(name="imethan_security_role_resource",joinColumns = { @JoinColumn(name ="roleId" )} ,inverseJoinColumns = { @JoinColumn(name = "resourceId")})
 	@OrderBy("id")
 	private Set<Resource> resources = new HashSet<Resource>();//资源
@@ -57,7 +62,7 @@ public class Role extends BaseEntity {
 		this.resources = resources;
 	}
 	
-	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinTable(name="imethan_security_role_permission",joinColumns = { @JoinColumn(name ="roleId" )} ,inverseJoinColumns = { @JoinColumn(name = "permissionId")})
 	@OrderBy("id")
 	private Set<Permission> permissions = new HashSet<Permission>();//授权
