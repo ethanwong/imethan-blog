@@ -12,6 +12,13 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.google.common.collect.Maps;
 
+/**
+ * SearchFilter.java
+ *
+ * @author Ethan Wong
+ * @since JDK 1.7
+ * @datetime 2016年1月7日上午11:30:30
+ */
 public class SearchFilter {
 
 	public enum Operator {

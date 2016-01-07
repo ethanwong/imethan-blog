@@ -183,7 +183,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12" >
-							 <a class="btn btn-info" type="button" href="${root}/todoitem/input"><span class="glyphicon glyphicon-plus"></span>&nbsp;New todo item</a>
+							 <a class="btn btn-info" type="button" href="${root}/todoitem/input"><span class="icon-plus"></span>&nbsp;Add todo item</a>
 						 </div>
 					</div>
 					<br>

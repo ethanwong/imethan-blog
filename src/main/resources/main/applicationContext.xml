@@ -94,7 +94,9 @@
                 <entry key="hibernate.bytecode.use_reflection_optimizer" value="true"/>
                 <entry key="hibernate.hbm2ddl.auto" value="update"/>
                 
+                <!-- 开启查询缓存 -->
                 <entry key="hibernate.cache.use_query_cache" value="true"/>
+                <!-- 开启二级缓存 -->
                 <entry key="hibernate.cache.use_second_level_cache" value="true"/>
                 <entry key="hibernate.cache.provider_class" value="net.sf.ehcache.hibernate.EhCacheProvider"/>
                 <entry key="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
@@ -120,5 +122,10 @@
 	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
 <!-- 	    <property name="from" value="我是发件人<WTTCS@zmyou.com>" /> -->
 	</bean>
+	
+	
+	<bean class="org.springframework.data.web.config.SpringDataWebConfiguration" />
+	<!-- If you're using Spring HATEOAS as well register this one *instead* of the former -->
+	<bean class="org.springframework.data.web.config.HateoasAwareSpringDataWebConfiguration" />
 
 </beans>

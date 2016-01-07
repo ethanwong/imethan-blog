@@ -21,6 +21,13 @@ import org.springframework.data.jpa.domain.Specification;
 
 import com.google.common.collect.Lists;
 
+/**
+ * DynamicSpecifications.java
+ *
+ * @author Ethan Wong
+ * @since JDK 1.7
+ * @datetime 2016年1月7日上午11:30:26
+ */
 public class DynamicSpecifications {
 
 	public static <T> Specification<T> bySearchFilter(final Collection<SearchFilter> filters, final Class<T> entityClazz) {

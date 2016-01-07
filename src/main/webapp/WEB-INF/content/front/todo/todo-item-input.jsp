@@ -46,7 +46,7 @@
 				<div class="panel-body">
 					<div class="row" style="padding-top: 0px;">
 						<div class="col-md-3">
-							<h4><span class="icon-plus"></span>&nbsp;&nbsp;New todo item</h4>
+							<h4><span class="icon-plus"></span>&nbsp;&nbsp;Add Todo Item</h4>
 						</div>
 						<div class="col-md-9"></div>
 					</div>

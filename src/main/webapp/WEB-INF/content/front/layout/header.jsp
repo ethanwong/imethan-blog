@@ -29,7 +29,6 @@ $(document).ready(function () {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-<%--           <img style="display: inline;vertical-align: top;" class="img-rounded" src="${root}/theme/images/e-rgb(76, 142, 250).png" width="22px" height="22px" /> --%>
 		  <a style="font-weight: 600;" class="navbar-brand" href="${root}/index" title="Hello I'm Ethan."> ImEthan</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
@@ -56,15 +55,36 @@ $(document).ready(function () {
 					</li>
 				</shiro:guest>
 				<shiro:user>
-					<li>
-						<a><i class="icon-user"></i> <shiro:principal/></a>
-					</li>
-					<li>
-						<a href="${root}/setting/profile"><i class="icon-cogs" data-placement="bottom" title="Setting"></i></a>
-					</li>
-					<li>
-						<a href="${root}/login/out"><i class="icon-signout" data-placement="bottom" title="Logout"></i></a>
-					</li>
+					<li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+			          aria-haspopup="true" aria-expanded="false"> <i class="icon-plus"></i> <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="${root}/blog/article/input/0/0">Publish Article</a></li>
+			            <li><a href="${root}/todo/input/0">Add Todo</a></li>
+			          </ul>
+			        </li>
+					<li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+			          aria-haspopup="true" aria-expanded="false">
+			          	<i class="icon-user"></i> <shiro:principal/> <span class="caret"></span>
+			          </a>
+			          <ul class="dropdown-menu">
+			            <li><a href="${root}/setting/profile">Profile</a></li>
+			            <li><a href="${root}/setting/account">Account</a></li>
+			            <li><a href="${root}/setting/about">About</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="${root}/login/out"><i class="icon-signout"></i> Log out</a></li>
+			          </ul>
+			        </li>
+<!-- 					<li> -->
+<%-- 						<a><i class="icon-user"></i> <shiro:principal/></a> --%>
+<!-- 					</li> -->
+<!-- 					<li> -->
+<%-- 						<a href="${root}/setting/profile"><i class="icon-cogs" data-placement="bottom" title="Setting"></i></a> --%>
+<!-- 					</li> -->
+<!-- 					<li> -->
+<%-- 						<a href="${root}/login/out"><i class="icon-signout" data-placement="bottom" title="Logout"></i></a> --%>
+<!-- 					</li> -->
 				</shiro:user>
 			</ul>
 		</div>

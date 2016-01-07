@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
@@ -31,6 +32,16 @@ public interface ChannelService{
 	 * @return
 	 */
 	public List<Channel> getList(List<SearchFilter> filters);
+	
+	/**
+	 * 获取分页列表
+	 * @param pageable
+	 * @return
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2016年1月7日下午1:40:47
+	 */
+	public Page<Channel> findAll(Pageable pageable);
 	
 	/**
 	 * 获取分页列表
@@ -83,6 +94,8 @@ public interface ChannelService{
 	 * @datetime 2016年1月5日下午3:46:08
 	 */
 	public Long getIndexChannelCount();
+	
+
 
 	
 	

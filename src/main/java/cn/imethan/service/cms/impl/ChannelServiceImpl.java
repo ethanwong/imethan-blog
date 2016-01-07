@@ -12,6 +12,7 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
@@ -201,6 +202,11 @@ public class ChannelServiceImpl implements ChannelService {
 	    filters.add(articleFilter3);    	
 		Specification<Channel> spec = DynamicSpecifications.bySearchFilter(filters, Channel.class);
 		return channelRepository.count(spec);
+	}
+
+	@Override
+	public Page<Channel> findAll(Pageable pageable) {
+		return channelRepository.findAll(pageable);
 	}
 
 }

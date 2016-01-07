@@ -36,6 +36,13 @@ public interface TodoService {
 	public ReturnDto finish(long id, boolean finish);
 	
 	/**
+	 * 更新是否完成
+	 * @param id
+	 * @return
+	 */
+	public ReturnDto finish(long id);
+	
+	/**
 	 * 删除
 	 * @param id
 	 * @return

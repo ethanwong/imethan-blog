@@ -172,7 +172,6 @@ public class TodoController extends SuperController{
 		}
 
 		Page<Todo> result = todoService.findPage(filters, pageable);
-		System.out.println("result:"+result);
 		return new GridPageDto<Todo>(result);
 	}
 	
@@ -184,9 +183,9 @@ public class TodoController extends SuperController{
 	 */
 	@RequiresUser//当前用户需为已认证用户或已记住用户 
 	@ResponseBody
-	@RequestMapping(value = "finish/{id}/{finish}" , method = {RequestMethod.POST})
-	public ReturnDto finish(@PathVariable long id,@PathVariable boolean finish){
-		return todoService.finish(id,finish);
+	@RequestMapping(value = "finish/{id}" , method = {RequestMethod.POST})
+	public ReturnDto finish(@PathVariable long id){
+		return todoService.finish(id);
 	}
 	
 	/**

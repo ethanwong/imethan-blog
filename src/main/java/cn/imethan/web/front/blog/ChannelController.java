@@ -32,7 +32,6 @@ public class ChannelController extends SuperController{
 	
 	@Autowired
 	private ChannelService channelService;
-
 	
 	@ResponseBody
 	@RequestMapping(value = "json" , method = RequestMethod.POST)

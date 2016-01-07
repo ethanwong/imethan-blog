@@ -77,12 +77,12 @@ public class TodoServiceImpl implements TodoService {
 			result = todoRepository.findAll(spec, pageable);
 			
 			List<Todo> list = result.getContent();
-			int i = 0;
+			
 			int size = list.size();
 			int last = size -1;
 
-			for(;i<size;i++){
-				Integer currentId = 0;
+			for(int i = 0;i<size;i++){
+				Integer currentOrderNo = 0;
 				Integer nextOrderNo = 0;
 				Integer previousOrderNo = 0;
 				
@@ -93,7 +93,7 @@ public class TodoServiceImpl implements TodoService {
 					previousOrderNo = list.get(i-1).getOrderNo();
 				}
 				
-				currentId = list.get(i).getOrderNo();
+				currentOrderNo = list.get(i).getOrderNo();
 				
 				list.get(i).setNextOrderNo(nextOrderNo);
 				list.get(i).setPreviousOrderNo(previousOrderNo);
@@ -115,6 +115,23 @@ public class TodoServiceImpl implements TodoService {
 		String message = "更新成功";
 		try {
 			int result = todoRepository.updateFinish(id,!finish);
+		} catch (Exception e) {
+			isSuccess = false;
+			message = "更新失败";
+			e.printStackTrace();
+		}
+		return new ReturnDto(isSuccess,message);
+	}
+	
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto finish(long id) {
+		boolean isSuccess = true;
+		String message = "更新成功";
+		try {
+			Todo todo = todoRepository.findOne(id);
+			todo.setFinish(!todo.isFinish());
+			todoRepository.save(todo);
 		} catch (Exception e) {
 			isSuccess = false;
 			message = "更新失败";

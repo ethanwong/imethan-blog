@@ -4,61 +4,9 @@
 <script type="text/javascript">
 	//页面加载时初始化脚本
 	$(document).ready(function () {
-		//加载todo列表
-		loadTodo(1);
+		
+		loadTodo(1);//加载todo列表
 	});
-	
-	//添加todo
-	function inputTodo(object){
-		location.href = "${root}/todo/input/"+$("#itemId").val();
-	};
-	
-	//设置item列表
-	function setItemList(checkItemId){
-		$("#todoItemId").html("");
-		$.ajax({
-			url:"${root}/todoitem/json",
-			type:"POST",
-			dateType:"json",
-			success:function(data){
-				
-				var result = eval("(" + data + ")");
-				$.each(result, function(i, item) {
-					if(checkItemId == item.id){
-						$("#todoItemId").append("<option value='"+item.id+"' selected='selected'>"+item.name+"</option>");
-					}else{
-						$("#todoItemId").append("<option value='"+item.id+"'>"+item.name+"</option>");
-					}
-					
-				});
-			}
-		});
-	}
-	
-	//保存todo信息
-	function saveTodo(){
-		if($("#todoForm").valid()){
-			var todo = $("#todo").val();
-			var todoItemId = $('#inputModal').find("#todoItemId").val();
-			$.ajax({
-				type:"POST",
-				url:"${root}/todo/save",
-				data: "content="+encodeURIComponent(todo)+"&todoItem.id="+todoItemId,
-				dateType:"json",
-				success:function(data){
-					var result = eval("(" + data + ")");
-					
-					$("#todo").val("");
-					$('#inputModal').modal('toggle');
-					
-					showMsg("success",result.message);
-					setTimeout(function(){
-						loadTodo(1);
-					},1500);
-				}
-			});
-		}
-	};
 	
 	//加载todo列表
 	function loadTodo(page){
@@ -68,21 +16,30 @@
 		var finish = $("#finishValue").val();
 		var itemId = $("#itemId").val();
 		
+		
+		if(beginTime == undefined){beginTime = "";}
+		if(endTime == undefined){endTime = "";}
+		if(finish == undefined){finish = "";}
+		if(itemId == undefined){itemId = "";}
+		
 		$("#todo-list").html("");
 		$.ajax({
 			url:"${root}/todo/json/"+page+"?beginTime="+beginTime+"&endTime="+endTime+"&finish="+finish+"&itemId="+itemId,
 			type:"POST",
 			dateType:"json",
 			success:function(data){
-				
 				var result = eval("(" + data + ")");
 				
+				//设置内容
+				if(result.records==0){
+					$("#todo-list").append("<tr class='warning'><td>暂无todo信息</td></tr>");
+				}
 				$.each(result.rows, function(i, item) {
 					var todo = generateTodo(item.id,item.content,item.createTime,item.finish,item.nextOrderNo,item.previousOrderNo);
 					$("#todo-list").append(todo);
 				});
-				console.log("result.records:"+result.records);
-				console.log("result.size:"+result.size);
+				
+				//设置分页条
 				$(".pager").html("");
 				if(result.records>result.size){
 					// 处理上页和下页按钮
@@ -96,13 +53,13 @@
 					var previousButton = "";
 					
 					if(previous ==  true){
-						previousButton ="<li><a href='#todoList' onclick='loadTodo("+(page-1)+")'>Previous</a></li>";
+						previousButton ="<li><a href='javascript:;' onclick='loadTodo("+(page-1)+")'>Previous</a></li>";
 					}else{
 						previousButton ="<li class='disabled'><a href='#todoList'>Previous</a></li>";
 					}
 					
 					if(next == true){
-					    nextButton = "<li><a href='#todoList' onclick='loadTodo("+(page+1)+")'>Next</a></li>";
+					    nextButton = "<li><a href='javascript:;' onclick='loadTodo("+(page+1)+")'>Next</a></li>";
 					}else{
 						nextButton ="<li class='disabled'><a href='#todoList'>Next</a></li>";
 					}
@@ -119,11 +76,9 @@
 					$(".pager").append("&nbsp;&nbsp;");
 					$(".pager").append(nextButton);
 				}
-				if(result.records==0){
-					$("#todo-list").append("<tr class='warning'><td>暂无todo信息</td></tr>");
-				}
 				
 				$("#page").val(result.page);
+				
 				
 				$('#loader').hide();
 			}
@@ -137,70 +92,51 @@
 			star = "<span class='icon-star-empty'></span>";
 		}
 		var todo = ""+
-					"<tr id='tr"+id+"' onclick='active(this)' onmouseenter='showMenu(this)' onmouseleave='hiddenMenu(this)' >"+
-						"<td width='20px;' id="+id+" finish="+finish+">"+star+"</td>"+
-						"<td id='content' previousOrderNo='"+previousOrderNo+"' nextOrderNo='"+nextOrderNo+"'><span>"+content+"</span></td>"+
+					"<tr onmouseenter='showMenu(this,"+id+","+previousOrderNo+","+nextOrderNo+","+finish+")' onmouseleave='hiddenMenu(this)' >"+
+						"<td width='20px;'>"+star+"</td>"+
+						"<td id='content'><span>"+content+"</span></td>"+
 						"<td width='80px;'>"+createTime+"</td>"+
 					"</tr>";
 		return todo;
 	};
 	
-	//管理菜单
-	var menu = "<shiro:user>"+
-				"<span class='btn-group' style='float:right' >"+
-				   	"<a href='javascript:;' onclick='changeFinish(this)'><span class='icon-ok' style='color:#5cb85c;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='javascript:;' onclick='orderUp(this)'><span class='icon-arrow-up' style='color:#337ab7;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='javascript:;' onclick='orderDown(this)'><span class='icon-arrow-down' style='color:#f0ad4e;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='javascript:;' onclick='updateOne(this)'><span class='icon-edit' style='color:#5bc0de;'></span></a>&nbsp;&nbsp;"+
-				    "<a href='javascript:;' onclick='deleteTodo(this)'><span class='icon-trash' style='color:#d9534f;'></span></a>"+
-				"</span>"+
-				"</shiro:user>";
 	
-	//展现菜单
-	function showMenu(object){
+	
+	//鼠标经过展现管理菜单
+	function showMenu(object,id,previousOrderNo,nextOrderNo,finish){
+		//管理菜单
+		var finishIcon = "<i class='icon-ok' style='color:#5cb85c;'></i>";
+		if(finish == true){
+			finishIcon = "<i class='icon-remove' style='color:#d9534f;'></i>";
+		}
+		var menu = "<shiro:user>"+
+					"<span class='btn-group' style='float:right' >"+
+					   	"<a href='javascript:;' onclick='changeFinish("+id+")'>"+finishIcon+"</a>&nbsp;&nbsp;"+
+					    "<a href='javascript:;' onclick='orderUp("+id+","+previousOrderNo+","+nextOrderNo+")'><i class='icon-arrow-up' style='color:#337ab7;'></i></a>&nbsp;&nbsp;"+
+					    "<a href='javascript:;' onclick='orderDown("+id+","+previousOrderNo+","+nextOrderNo+")'><i class='icon-arrow-down' style='color:#f0ad4e;'></i></a>&nbsp;&nbsp;"+
+					    "<a href='javascript:;' onclick='updateOne("+id+")'><i class='icon-edit' style='color:#5bc0de;'></i></a>&nbsp;&nbsp;"+
+					    "<a href='javascript:;' onclick='deleteTodo("+id+")'><i class='icon-trash' style='color:#d9534f;'></i></a>"+
+					"</span>"+
+					"</shiro:user>";
+					
 		$(object).find("#content").append(menu);
 	};
 	
-	//隐藏菜单
+	//鼠标移开隐藏管理菜单
 	function hiddenMenu(object){
 		$(object).find("#content").find(".btn-group").remove();
 	}
-	
-	//检索todo
-	//选中todo类型
-	function changeType(object){
-		var finish = $(object).html();
-		$("#finish").html(finish+"&nbsp;<span class='caret'></span>");
-		$("#finishValue").val(finish);
-		
-		loadTodo(1);
-	};
-	
-	//选中todo行
-	function active(object){
-		$("tr").attr("class","");
-		$(object).attr("class","info");
-	};
+
 	
 	//更新是否完成
-	function changeFinish(object){
-		var id = $(".info").find("td:first").attr("id");
-		var finish = $(".info").find("td:first").attr("finish");
+	function changeFinish(id){
 		$.ajax({
-			url:"${root}/todo/finish/"+id+"/"+finish,
+			url:"${root}/todo/finish/"+id,
 			type:"POST",
 			dateType:"json",
 			success:function(data){
 				var result = eval("(" + data + ")");
-				if(finish == 'false'){
-					$(".info").find("td:first").html("<span class='glyphicon glyphicon-star'></span>");
-					$(".info").find("td:first").attr("finish","true");
-				}else{
-					$(".info").find("td:first").html("<span class='glyphicon glyphicon-star-empty'></span>");
-					$(".info").find("td:first").attr("finish","false");
-				};
 				showMsg("success",result.message);
-				
 				setTimeout(function(){
 					loadTodo($("#page").val());
 				},1500);
@@ -208,10 +144,13 @@
 		});
 	};
 
+	//添加todo
+	function inputTodo(object){
+		location.href = "${root}/todo/input/"+$("#itemId").val();
+	};
+	
 	//删除todo
-	function deleteTodo(object){
-		var id = $(object).parent().parent().parent().find("td:first").attr("id");
-		
+	function deleteTodo(id){
 		layer.confirm('确定要删除吗？', {title: false, closeBtn: 0,icon:0,btn: ['确定','关闭']},
 		function(){
 			$.ajax({
@@ -220,36 +159,26 @@
 				dateType:"json",
 				success:function(data){
 					var result = eval("(" + data + ")");
-					$(".info").remove();
-					
 					showMsg("success",result.message);
-					
 					setTimeout(function(){
 						loadTodo($("#page").val());
 					},1500);
 				},
 				error:function(){
-					showError("删除失败");	
+					showMsg("error","删除失败");
 				}
 			});
 			}, function(){layer.close();}
 		);
-
-		
 	};
 	
 	//更新todo内容
-	function updateOne(object){
-		var id = $(object).parent().parent().parent().find("td:first").attr("id");
+	function updateOne(id){
 		location.href = "${root}/todo/edit/"+id;
 	};
 	
 	//提升排序
-	function orderUp(){
-		var id = $(".info").find("td:first").attr("id");
-		var nextOrderNo = $(".info").find("#content").attr("nextOrderNo");
-		var previousOrderNo = $(".info").find("#content").attr("previousOrderNo");
-		
+	function orderUp(id,previousOrderNo,nextOrderNo){
 		$.ajax({
 			type:"POST",
 			url:"${root}/todo/up",
@@ -268,11 +197,7 @@
 	};
 	
 	//降低排序
-	function orderDown(){
-		var id = $(".info").find("td:first").attr("id");
-		var nextOrderNo = $(".info").find("#content").attr("nextOrderNo");
-		var previousOrderNo = $(".info").find("#content").attr("previousOrderNo");
-		
+	function orderDown(id,previousOrderNo,nextOrderNo){
 		$.ajax({
 			type:"POST",
 			url:"${root}/todo/down",
@@ -288,19 +213,26 @@
 		});
 	};
 	
-	//重置检索
-	function resetPage(){
-		location.reload();
+	
+	//检索todo
+	//选中todo类型
+	function changeType(object){
+		var finish = $(object).html();
+		$("#finish").html(finish+"&nbsp;<span class='caret'></span>");
+		$("#finishValue").val(finish);
+		
+		loadTodo(1);
 	};
 	
-	//选择item
+	
+	//登录模式选择item
 	function checkItem(object,itemId,itemName){
-		$("#newTodo").html("New "+itemName+" todo");//替换New item信息
+		$("#newTodo").html("Add "+itemName+" todo");//替换New item信息
 		$("#itemId").val(itemId);//设置item参数
 		loadTodo($("#page").val());
 	};
 	
-	//选择Guestitem
+	//访客模式选择item
 	function checkGuestItem(object,itemId,itemName){
 		$("#newTodo").html(""+itemName+" todo");//替换New item信息
 		$("#itemId").val(itemId);//设置item参数
