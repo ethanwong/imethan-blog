@@ -56,5 +56,16 @@ public interface SettingService {
 	 * @datetime 2015年11月25日下午2:04:12
 	 */
 	public ReturnDto updateAboutSet(boolean isPublish, String content);
+	
+	/**
+	 * 更新网站信息
+	 * @param sitename
+	 * @param copyright
+	 * @return
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2016年1月8日下午2:04:09
+	 */
+	public ReturnDto updateSiteInfo(String sitename, String copyright);
 
 }

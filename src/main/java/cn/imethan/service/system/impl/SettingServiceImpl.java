@@ -94,10 +94,31 @@ public class SettingServiceImpl implements SettingService {
 		
 		return new ReturnDto(true,"更新成功");
 	}
-	
-	
-	
 
+	@Override
+	@Transactional(readOnly = false)
+	public ReturnDto updateSiteInfo(String sitename, String copyright) {
+		try {
+			Setting sitenameDb = this.getByCode(SettingCode.SITENAME.name());
+			Setting copyrightDb = this.getByCode(SettingCode.COPYRIGHT.name());
+			
+			if(sitenameDb != null && copyrightDb!=null ){
+				sitenameDb.setContent(sitename);
+				copyrightDb.setContent(copyright);
+				
+				settingRepository.save(sitenameDb);
+				settingRepository.save(copyrightDb);
+			}else{
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+			new ReturnDto(false,"更新异常");
+		}
+		
+		return new ReturnDto(true,"更新成功");
+	}
 }
-
-

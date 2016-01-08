@@ -3,6 +3,7 @@ package cn.imethan.web.front.setting;
 import java.io.File;
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -48,7 +49,7 @@ public class SettingController {
 	private SettingService settingService;
 	
 	/**
-	 * 系统设置首页
+	 * 系统设置通用首页
 	 * @param model
 	 * @param type
 	 * @return
@@ -61,21 +62,41 @@ public class SettingController {
 		
 		if(!StringUtils.isEmpty(type)){
 			
-			Subject subject =SecurityUtils.getSubject();
-			if(subject.getPrincipal() != null){
-				String username = subject.getPrincipal().toString();
-				User user = userService.getByUsername(username);
-				model.addAttribute("user", user);
+			switch(type){
+				case "about":
+					Setting setting = settingService.getByCode(SettingCode.RESUME.name());
+					if(setting != null){
+						model.addAttribute("isPublishResume", setting.getContent());
+						model.addAttribute("description", setting.getDescription());
+					} 
+					break;
+					
+				case "profile":
+					Subject subject =SecurityUtils.getSubject();
+					if(subject.getPrincipal() != null){
+						String username = subject.getPrincipal().toString();
+						User user = userService.getByUsername(username);
+						model.addAttribute("user", user);
+					}
+					break;
+					
+				case "main":
+					Setting sitename = settingService.getByCode(SettingCode.SITENAME.name());
+					Setting copyright = settingService.getByCode(SettingCode.COPYRIGHT.name());
+					if(sitename != null){
+						model.addAttribute("sitename", sitename);
+					} 
+					if(copyright != null){
+						model.addAttribute("copyright", copyright);
+					} 
+					break;	
+					
+				default:break;
 			}
-			
-			if(type.equals("about")){
-				Setting setting = settingService.getByCode(SettingCode.RESUME.name());
-				if(setting != null){
-					model.addAttribute("isPublishResume", setting.getContent());
-					model.addAttribute("description", setting.getDescription());
-				}
 
-			}
+			
+
+			return "front/setting/setting-"+type;
 		}
 		
 		return "front/setting/setting";
@@ -185,6 +206,20 @@ public class SettingController {
 		
 		
 		return settingService.updateAboutSet(isPublish,content);
+	}
+	
+	@RequiresUser//当前用户需为已认证用户或已记住用户 
+	@ResponseBody
+	@RequestMapping(value="/updateSiteInfo", method = RequestMethod.POST)
+	public ReturnDto updateSiteInfo(@RequestParam ("sitename") String sitename,
+			@RequestParam("copyright") String copyright,ServletContext context){
+		
+		ReturnDto result = settingService.updateSiteInfo(sitename,copyright);
+		if(result.isSuccess()){
+			context.setAttribute("SITENAME", sitename);
+			context.setAttribute("COPYRIGHT", copyright);
+		}
+		return result;
 	}
 
 }

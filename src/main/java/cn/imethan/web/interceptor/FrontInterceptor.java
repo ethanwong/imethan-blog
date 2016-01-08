@@ -8,10 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mobile.device.Device;
 import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import cn.imethan.entity.system.SettingCode;
+import cn.imethan.service.system.SettingService;
 
 
 /**
@@ -22,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public class FrontInterceptor implements HandlerInterceptor  {
 	
+
 	/** 
      * preHandle方法是进行处理器拦截用的，顾名思义，该方法将在Controller处理之前进行调用，SpringMVC中的Interceptor拦截器是链式的，可以同时存在 
      * 多个Interceptor，然后SpringMVC会根据声明的前后顺序一个接一个的执行，而且所有的Interceptor中的preHandle方法都会在 
@@ -31,7 +36,6 @@ public class FrontInterceptor implements HandlerInterceptor  {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		
 		
 		//底部版权年费，获取当前年份
 		Calendar calendar = Calendar.getInstance();

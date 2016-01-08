@@ -112,6 +112,12 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	<servlet>
+   		<servlet-name>WebInitServlet</servlet-name>
+   		<servlet-class>cn.imethan.web.WebInitServlet</servlet-class>
+   		<load-on-startup>10</load-on-startup>
+	</servlet>
+	
 	<filter>  
         <filter-name>openEntityManagerInViewFilter</filter-name>  
         <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class> 

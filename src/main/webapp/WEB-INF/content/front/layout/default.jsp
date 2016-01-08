@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<title>ImEthan独立博客 | Full Stack Engineer</title>
+<!-- 	<title>ImEthan独立博客 | Full Stack Engineer</title> -->
+	<title>${SITENAME}</title>
 	<jsp:include page="/WEB-INF/content/base/meta.jsp"></jsp:include>
 	
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
@@ -64,7 +65,6 @@
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();
-	
 
 	</script>
 	
@@ -80,7 +80,6 @@
 		</c:if>
 	</style>
 </head>
-
 <body>
 	<!-- loading -->
 	<div id="loader">

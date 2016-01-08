@@ -5,165 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Blog:ImEthan独立博客:Full Stack Engineer</title>
-<script type="text/javascript"  src="${root}/theme/ueditor1_4_3_1-utf8-jsp/ueditor.parse.js"> </script>
-<script type="text/javascript">
-//页面加载时初始化脚本
-$(document).ready(function () {
-	//代码展现
-    uParse('.content',{
-        rootPath : '${root}/theme/ueditor1_4_3_1-utf8-jsp/',
-        chartContainerHeight:500
-    });
-	
-	//更多内容
-	$('.content').readmore({
-		  speed: 2000,
-		  maxHeight: 110,
-		  moreLink:"<a href='#'>Read More</a>",
-		  lessLink:"<a href='#'>Close More</a>"
-	});
-	
-	//滚动加载文章
-	$(".articleList").infinitescroll({  
-        navSelector: "#navigation",
-        nextSelector: "#navigation a",  
-        itemSelector: ".articleList" , 
-        loading:{
-            finishedMsg: '没有更多内容了...',//结束显示信息
-            msgText: "正在加载内容...",
-            img: '${root}/theme/images/ajax-loader.gif'//loading图片
-        },
-        dataType: 'json',
-        appendCallback: false,
-        animate: true,  
-        maxPage: 100,
-        extraScrollPx: 50,  
-		template: function(data) {
-            return data;
-        }
-    }, 
-    function(data,opt) {
-    	generateArticle(data);
-     });
-	
-});
-
-//加载文章信息
-function generateArticle(json){
-	$.each(json, function(i, item) {
-		var publish = item.publish;
-		var titleIco = "";
-		if(publish == "true"){
-			titleIco = "<a href='#' onclick='publishArticle(this,"+item.id+")'><i class='icon-star' ></i></a>";
-		}else{
-			titleIco = "<a href='#' onclick='publishArticle(this,"+item.id+")'><i class='icon-star-empty'></i></a>";
-		}
-		
-		var labels = "";
-		
-		var length = item.labels.length;
-		if(length >0 ){
-			labels = "<i class='icon-tags'> ";
-			$.each(item.labels, function(j, label) {
-				labels += "<a href='${root}/blog/tag/"+label.id+"' >"+label.name+"</a>";
-				if(length != (j+1)){
-					labels += ",";
-				}
-			})
-			labels += "</i>";
-		}
-		
-		var article = ""+
-		"<div class='article'>"+
-			"<p class='title'>"+"<a href='${root}/blog/article/"+item.id+"'>"+item.title+"</a>"+"</p>"+
-			"<p class='info'>"+
-				"<a href='${root}/blog/"+item.channelId+"'><i class='icon-link'> "+item.channelName+"</i></a>"+
-				"<i class='icon-calendar'> "+item.createTime+"</i>"+labels+
-				"<shiro:user>"+
-					"<span class='blog-article-toolbar'>"+
-						titleIco+
-						"<a id='article"+item.id+"' href='#' onclick='deleteArticle("+item.id+",this)'><i class='icon-trash'></i></a>"+
-						"<a href='${root}/blog/article/input/"+item.channelId+"/"+item.id+"' ><i  class='icon-edit'></i></a>"+
-					"</span>"+
-				"</shiro:user>"+
-			"</p>"+
-			"<div class='content'>"+item.content+"</div>"+
-		"</div>";
-		
-		$(".articleList").append(article);
-		
-		$('.content').readmore({
-			  speed: 1000,
-			  maxHeight: 200,
-			  moreLink:"<a href='#'>Read More</a>",
-			  lessLink:"<a href='#'>Close More</a>"
-		});
-		
-	});
-};
-
-//删除文章
-function deleteArticle(id,object){
-	
-	layer.confirm('确定要删除吗？', {title: false, closeBtn: 0,icon:0,btn: ['确定','关闭']},
-		function(){
-			$.ajax({
-				url:"${root}/cms/article/delete/"+id,
-				type:"POST",
-				dateType:"json",
-				success:function(data){
-					var result = eval("(" + data + ")");
-					$(object).parent().parent().parent().remove();
-					showMsg("success",result.message);
-				},
-				error:function(){
-					showMsg("error","删除失败");
-				}
-			});
-		}, function(){
-		layer.close();
-	});
-	
-// 	setDeleteModal().bind('click',function(){
-// 		$.ajax({
-// 			url:"${root}/cms/article/delete/"+id,
-// 			type:"POST",
-// 			dateType:"json",
-// 			success:function(data){
-// 				var result = eval("(" + data + ")");
-// 				showMsg("success",result.message);
-				
-// 				$(object).parent().parent().parent().remove();
-// 			},
-// 			error:function(){
-// 				showError("删除失败");	
-// 			}
-// 		});
-// 	});
-};
-
-//更改文章发布状态
-function publishArticle(object,id){
-	$.ajax({
-		url:"${root}/cms/article/publish/"+id,
-		type:"POST",
-		dateType:"json",
-		success:function(data){
-			var result = eval("(" + data + ")");
-			showMsg("success",result.message);
-			
-			var color = $(object).children("span").css("color");
-			if(color =="rgb(53, 126, 189)"){
-				$(object).children("span").css("color","");
-			}else{
-				$(object).children("span").css("color","rgb(53, 126, 189)");
-			}
-		}
-	});
-};
-
-
-</script>
 </head>
 <body>
 <div class="container main">
@@ -238,5 +79,150 @@ function publishArticle(object,id){
 		</c:if>
 	</div>
 </div>
+
+<script type="text/javascript"  src="${root}/theme/ueditor1_4_3_1-utf8-jsp/ueditor.parse.js"> </script>
+<script type="text/javascript">
+//页面加载时初始化脚本
+$(document).ready(function () {
+	//代码展现
+    uParse('.content',{
+        rootPath : '${root}/theme/ueditor1_4_3_1-utf8-jsp/',
+        chartContainerHeight:500
+    });
+	
+	//更多内容
+	$('.content').readmore({
+		  speed: 2000,
+		  maxHeight: 110,
+		  moreLink:"<a href='#'>Read More</a>",
+		  lessLink:"<a href='#'>Close More</a>"
+	});
+	
+	//滚动加载文章
+	$(".articleList").infinitescroll({  
+        navSelector: "#navigation",
+        nextSelector: "#navigation a",  
+        itemSelector: ".articleList" , 
+        loading:{
+            finishedMsg: '没有更多内容了...',//结束显示信息
+            msgText: "正在加载内容...",
+            img: '${root}/theme/images/ajax-loader.gif'//loading图片
+        },
+        dataType: 'json',
+        appendCallback: false,
+        animate: true,  
+        maxPage: 100,
+        extraScrollPx: 50,  
+		template: function(data) {
+            return data;
+        }
+    }, function(data,opt) {
+    	generateArticle(data);
+     });
+	
+});
+
+//加载文章信息
+function generateArticle(json){
+	$.each(json, function(i, item) {
+		var publish = item.publish;
+		var id = item.id;
+		var title = item.title;
+		var channelName = item.channelName;
+		var channelId = item.channelId;
+		var createTime = item.createTime;
+		var content = item.content;
+		
+		var titleIco = "";
+		if(publish == "true"){
+			titleIco = "<a href='#' onclick='publishArticle(this,"+id+")'><i class='icon-star' ></i></a>";
+		}else{
+			titleIco = "<a href='#' onclick='publishArticle(this,"+id+")'><i class='icon-star-empty'></i></a>";
+		}
+		
+		var labels = "";
+		
+		var length = item.labels.length;
+		if(length >0 ){
+			labels = "<i class='icon-tags'> ";
+			$.each(item.labels, function(j, label) {
+				labels += "<a href='${root}/blog/tag/"+label.id+"' >"+label.name+"</a>";
+				if(length != (j+1)){
+					labels += ",";
+				}
+			})
+			labels += "</i>";
+		}
+		
+		var article = ""+
+		"<div class='article'>"+
+			"<p class='title'>"+"<a href='${root}/blog/article/"+id+"'>"+title+"</a>"+"</p>"+
+			"<p class='info'>"+
+				"<a href='${root}/blog/"+channelId+"'><i class='icon-link'> "+channelName+"</i></a>"+
+				"<i class='icon-calendar'> "+createTime+"</i>"+labels+
+				"<shiro:user>"+
+					"<span class='blog-article-toolbar'>"+
+						titleIco+
+						"<a id='article"+id+"' href='javascript:;' onclick='deleteArticle("+id+",this)'><i class='icon-trash'></i></a>"+
+						"<a href='${root}/blog/article/input/"+channelId+"/"+id+"' ><i  class='icon-edit'></i></a>"+
+					"</span>"+
+				"</shiro:user>"+
+			"</p>"+
+			"<div class='content'>"+content+"</div>"+
+		"</div>";
+		
+		$(".articleList").append(article);
+		
+		$('.content').readmore({
+			  speed: 1000,
+			  maxHeight: 200,
+			  moreLink:"<a href='#'>Read More</a>",
+			  lessLink:"<a href='#'>Close More</a>"
+		});
+		
+	});
+};
+
+//删除文章
+function deleteArticle(id,object){
+	layer.confirm('确定要删除吗？', {title: false, closeBtn: 0,icon:0,btn: ['确定','关闭']},
+		function(){
+			$.ajax({
+				url:"${root}/cms/article/delete/"+id,
+				type:"POST",
+				dateType:"json",
+				success:function(data){
+					var result = eval("(" + data + ")");
+					$(object).parent().parent().parent().remove();
+					showMsg("success",result.message);
+				},
+				error:function(){
+					showMsg("error","删除失败");
+				}
+			});
+		}, function(){
+		layer.close();
+	});
+};
+
+//更改文章发布状态
+function publishArticle(object,id){
+	$.ajax({
+		url:"${root}/cms/article/publish/"+id,
+		type:"POST",
+		dateType:"json",
+		success:function(data){
+			var result = eval("(" + data + ")");
+			showMsg("success",result.message);
+			var color = $(object).children("i").attr("class");
+			if(color =="icon-star"){
+				$(object).children("i").attr("class","icon-star-empty");
+			}else{
+				$(object).children("i").attr("class","icon-star");
+			}
+		}
+	});
+};
+</script>
 </body>
 </html>

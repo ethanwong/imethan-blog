@@ -10,6 +10,8 @@ package cn.imethan.entity.system;
 public enum SettingCode {
 	
 	RESUME("简历配置"),
+	SITENAME("站点名称"),
+	COPYRIGHT("版权信息"),
     OTHER("其他配置");
 	
 	private String context;

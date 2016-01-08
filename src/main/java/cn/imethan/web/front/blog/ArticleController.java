@@ -3,6 +3,7 @@ package cn.imethan.web.front.blog;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
@@ -22,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.common.web.SuperController;
@@ -133,9 +137,15 @@ public class ArticleController extends SuperController{
 	
 	@ResponseBody
 	@RequestMapping(value = "/top" , method = {RequestMethod.POST})
-	public List<Article> topArticle(){
-		
-		return articleService.getTopCountArticleList(0);
+	public List<Map<String,Object>> topArticle(){
+		List<Map<String,Object>> result = Lists.newArrayList();
+		for(Article article :articleService.getTopCountArticleList(0)){
+			Map<String,Object> map = Maps.newHashMap();
+			map.put("id",article.getId());
+			map.put("title",article.getTitle());
+			result.add(map);
+		}
+		return result;
 	} 
 	
 	

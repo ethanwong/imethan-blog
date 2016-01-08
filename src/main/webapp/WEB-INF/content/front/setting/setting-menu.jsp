@@ -8,6 +8,6 @@
 		<a href="${root}/setting/profile" class="list-group-item <c:if test="${type eq 'profile'}">selected</c:if>">Profile</a>
 		<a href="${root}/setting/account" class="list-group-item <c:if test="${type eq 'account'}">selected</c:if>">Account</a>
 		<a href="${root}/setting/about" class="list-group-item <c:if test="${type eq 'about'}">selected</c:if>">About</a>
-		<a href="${root}/setting/menu" class="list-group-item <c:if test="${type eq 'menu'}">selected</c:if>">Menu</a>
+		<a href="${root}/setting/main" class="list-group-item <c:if test="${type eq 'main'}">selected</c:if>">Main</a>
 	</div>
 </div>

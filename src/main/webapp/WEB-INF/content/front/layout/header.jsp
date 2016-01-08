@@ -72,6 +72,7 @@ $(document).ready(function () {
 			            <li><a href="${root}/setting/profile">Profile</a></li>
 			            <li><a href="${root}/setting/account">Account</a></li>
 			            <li><a href="${root}/setting/about">About</a></li>
+			            <li><a href="${root}/setting/main">Main</a></li>
 			            <li role="separator" class="divider"></li>
 			            <li><a href="${root}/login/out"><i class="icon-signout"></i> Log out</a></li>
 			          </ul>
