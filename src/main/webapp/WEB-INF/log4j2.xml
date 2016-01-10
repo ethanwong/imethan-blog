@@ -33,11 +33,12 @@
       <TimeBasedTriggeringPolicy />
     </RollingFile>
     
-    <!-- NoSql数据库记录 -->
+    <!-- NoSql数据库记录 
     <NoSql name="databaseAppender" ignoreExceptions="false">
       <MongoDb databaseName="database" collectionName="applicationLog" server="127.0.0.1"
                username="" password="" />
     </NoSql>
+    -->
         
   </Appenders>
   

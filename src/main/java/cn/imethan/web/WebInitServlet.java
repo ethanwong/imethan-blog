@@ -4,10 +4,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import cn.imethan.entity.system.Setting;
 import cn.imethan.entity.system.SettingCode;
 import cn.imethan.service.system.SettingService;
 
@@ -35,11 +35,14 @@ public class WebInitServlet extends HttpServlet {
         WebApplicationContext ac = WebApplicationContextUtils.getRequiredWebApplicationContext(sc);
         SettingService settingService = (SettingService) ac.getBean("settingServiceImpl");
         
-        String sitename = settingService.getByCode(SettingCode.SITENAME.name()).getContent();
-        String copyright = settingService.getByCode(SettingCode.COPYRIGHT.name()).getContent();
-        
-        ac.getServletContext().setAttribute("SITENAME", sitename);
-        ac.getServletContext().setAttribute("COPYRIGHT", copyright);
+        Setting sitename = settingService.getByCode(SettingCode.SITENAME.name());
+        Setting copyright = settingService.getByCode(SettingCode.COPYRIGHT.name());
+        if(sitename != null){
+        	ac.getServletContext().setAttribute("SITENAME", sitename.getContent());
+        }
+        if(copyright != null){
+        	ac.getServletContext().setAttribute("COPYRIGHT", copyright.getContent());
+        }
         
 	}
 	

@@ -1,5 +1,7 @@
 package cn.imethan.service.system.impl;
 
+import java.util.Date;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,14 +104,30 @@ public class SettingServiceImpl implements SettingService {
 			Setting sitenameDb = this.getByCode(SettingCode.SITENAME.name());
 			Setting copyrightDb = this.getByCode(SettingCode.COPYRIGHT.name());
 			
-			if(sitenameDb != null && copyrightDb!=null ){
+			if(sitenameDb != null){
 				sitenameDb.setContent(sitename);
-				copyrightDb.setContent(copyright);
-				
+				sitenameDb.setModifyTime(new Date());
 				settingRepository.save(sitenameDb);
+			}else{
+				sitenameDb = new Setting();
+				sitenameDb.setName(SettingCode.SITENAME.name());
+				sitenameDb.setCode(SettingCode.SITENAME.name());
+				sitenameDb.setContent(sitename);
+				sitenameDb.setCreateTime(new Date());
+				settingRepository.save(sitenameDb);
+			}
+			
+			if(copyrightDb != null ){
+				copyrightDb.setContent(copyright);
+				copyrightDb.setModifyTime(new Date());
 				settingRepository.save(copyrightDb);
 			}else{
-				
+				copyrightDb = new Setting();
+				copyrightDb.setCreateTime(new Date());
+				copyrightDb.setName(SettingCode.COPYRIGHT.name());
+				copyrightDb.setCode(SettingCode.COPYRIGHT.name());
+				copyrightDb.setContent(copyright);
+				settingRepository.save(copyrightDb);
 			}
 
 		} catch (Exception e) {

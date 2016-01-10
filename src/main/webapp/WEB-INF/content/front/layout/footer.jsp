@@ -21,7 +21,7 @@
 	<hr>
 	<div class="copyright">
 		<c:if test="${!isNormal}">Copyright © 2014-${year} ImEthan 黄应锋 </c:if>
-		<c:if test="${isNormal}">Copyright © 2014-${year} ImEthan 黄应锋  闽ICP备15016601号-1</c:if>
+		<c:if test="${isNormal}">${COPYRIGHT}</c:if>
 	</div>
 </div>
 <a href="#" id="back-to-top" ></a>

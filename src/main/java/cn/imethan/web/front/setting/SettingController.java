@@ -212,12 +212,13 @@ public class SettingController {
 	@ResponseBody
 	@RequestMapping(value="/updateSiteInfo", method = RequestMethod.POST)
 	public ReturnDto updateSiteInfo(@RequestParam ("sitename") String sitename,
-			@RequestParam("copyright") String copyright,ServletContext context){
+			@RequestParam("copyright") String copyright,HttpServletRequest request){
 		
 		ReturnDto result = settingService.updateSiteInfo(sitename,copyright);
 		if(result.isSuccess()){
-			context.setAttribute("SITENAME", sitename);
-			context.setAttribute("COPYRIGHT", copyright);
+			ServletContext servletContext = request.getSession().getServletContext();
+			servletContext.setAttribute("SITENAME", sitename);
+			servletContext.setAttribute("COPYRIGHT", copyright);
 		}
 		return result;
 	}
