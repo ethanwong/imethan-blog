@@ -21,8 +21,8 @@
 					  		<!-- 按钮开始 -->
 						  	<shiro:user>
 								<div class="btn-group">
-								  <button id="newTodo" type="button" class="btn btn-info" onclick="inputTodo(this)">Add imethan todo</button>
-								  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								  <button id="newTodo" type="button" class="btn btn-primary" onclick="inputTodo(this)">Add imethan todo</button>
+								  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 								    <span class="caret"></span>
 								    <span class="sr-only">Toggle Dropdown</span>
 								  </button>
@@ -38,8 +38,8 @@
 						  	</shiro:user>
 						  	<shiro:guest>
 						  		<div class="btn-group">
-								  <button id="newTodo" type="button" class="btn btn-info" >imethan todo</button>
-								  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								  <button id="newTodo" type="button" class="btn btn-primary" >imethan todo</button>
+								  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 								    <span class="caret"></span>
 								    <span class="sr-only">Toggle Dropdown</span>
 								  </button>
@@ -69,7 +69,7 @@
 								    <input type="text"  id="endTime" name="endTime"  class="form-control" placeholder="End Date" onClick="WdatePicker({dateFmt:'yyyy/MM/dd'})">
 								      <div class="input-group-btn">
 								      	<input type="hidden" id="finishValue" name="finish" value="all" />
-								        <button id="finish" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" >All&nbsp;<span class="caret"></span></button>
+								        <button id="finish" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" >All&nbsp;<span class="caret"></span></button>
 								        <ul class="dropdown-menu " role="menu" >
 								          <li><a href="javascript:;" onclick="changeType(this,'all')">All</a></li>
 								          <li><a href="javascript:;" onclick="changeType(this,'finish')"><i class='icon-star'></i></a></li>

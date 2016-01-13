@@ -187,7 +187,7 @@
 		</div>
 	</div>
 </div>
-<div class="container ">
+<div class="container">
 	<div class="row">
 		<div class="col-md-9" >
 			<div id="messageList"></div>
@@ -209,7 +209,7 @@
 					    <label for="content">Message<font color="red">*</font></label>
 					    <textarea rows="4" cols="20"  class="form-control required" id="content" name="content" placeholder="Enter you message" ></textarea>
 					  </div>
-					  <button type="button" class="button button-primary button-small" onclick="saveMessage()">Send Message</button>
+					  <button type="button" class="button button-primary" onclick="saveMessage()">Send Message</button>
 					  <span class="addWarm"></span>
 					</form>
 				</div>

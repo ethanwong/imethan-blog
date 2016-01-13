@@ -11,6 +11,9 @@
 	
 	<link rel="shortcut icon" href="${root}/theme/images/favicon.ico" type="image/x-icon" />
 	<link href="${root}/theme/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${root}/theme/animation/animate.css" rel="stylesheet">
+	<link href="${root}/theme/animation/source/attention_seekers/headShake.css" rel="stylesheet">
+	
 	<link href="${root}/theme/css/buttons.css" rel="stylesheet">
 	<link href="${root}/theme/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	

@@ -12,7 +12,7 @@
 	<div class="banner">
 		<div class="container" >
 			<div class="indexInfo">
-				<div class="title">Hello I'm Ethan</div>
+				<div class="title animated headShake">Hello I'm Ethan</div>
 				<div class='content'>A blog named ImEthan,based java.</div>
 				<div class='content' style="font-size: 16px;">我的知识我的国，欢迎访问我的知识部落格。</div>
 				<p></p>
