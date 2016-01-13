@@ -1,6 +1,10 @@
 @CHARSET "UTF-8";
-.blog-manage-button{
-	margin:10px 0px 0px 20px;float: right;
+.blog-manage{
+	float: right;
+	margin-top: 10px;
+}
+.blog-manage a{
+	padding-right: 10px;
 }
 .articleList{
 	padding: 10px 0px 10px 0px;

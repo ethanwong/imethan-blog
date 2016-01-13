@@ -61,6 +61,10 @@ $(document).ready(function () {
 			          <ul class="dropdown-menu">
 			            <li><a href="${root}/blog/article/input/0/0">Publish Article</a></li>
 			            <li><a href="${root}/todo/input/0">Add Todo</a></li>
+			            <li class="divider"></li>
+			            <li><a href="${root}/blog/channel">Channel Manage</a></li>
+			            <li><a href="${root}/blog/tag">Tag Manage</a></li>
+			            <li class="divider"></li>
 			          </ul>
 			        </li>
 					<li class="dropdown">

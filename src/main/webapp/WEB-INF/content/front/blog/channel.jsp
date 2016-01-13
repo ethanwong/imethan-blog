@@ -96,11 +96,13 @@
 		    <div class="col-sm-9">
 		    	<span class="main-title">Channel Manage</span>
 	    		<small class="main-second-title">栏目管理</small>
+	    		<div class="blog-manage">
 		    	<shiro:user>
-					<a title="添加栏目" class="blog-manage-button" href="${root}/blog/channel/input/0">
+					<a title="添加栏目" href="${root}/blog/channel/input/0">
 						<i class="icon-plus"></i> 添加栏目
 					</a>
 		    	</shiro:user>
+		    	</div>
 		    </div>
 		    <div class="col-sm-3" >
 		    	<form class="form-horizontal searchform" role="form">

@@ -216,10 +216,10 @@
 	
 	//检索todo
 	//选中todo类型
-	function changeType(object){
-		var finish = $(object).html();
-		$("#finish").html(finish+"&nbsp;<span class='caret'></span>");
-		$("#finishValue").val(finish);
+	function changeType(object,isFinish){
+		var finishSign = $(object).html();
+		$("#finish").html(finishSign+"&nbsp;<span class='caret'></span>");
+		$("#finishValue").val(isFinish);
 		
 		loadTodo(1);
 	};

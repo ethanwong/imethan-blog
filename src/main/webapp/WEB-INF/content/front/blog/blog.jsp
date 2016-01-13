@@ -20,11 +20,16 @@
 		<div class="col-md-9" >
 			<span class="main-title">My Blog</span>
 	    	<small class="main-second-title">我的工作和学习笔记</small>
-	    	<shiro:user>
-	    		<a title="管理栏目" class="blog-manage-button" href="${root}/blog/channel"><span class="icon-list-alt"></span> 栏目管理</a>
-	    		<a title="管理标签" class="blog-manage-button" href="${root}/blog/tag"><span class="icon-tags"></span> 标签管理</a>
-	    		<a title="发布文章" class="blog-manage-button" href="${root}/blog/article/input/${channelId}/0"><span class="icon-plus"></span> 发布文章</a>
+    		<shiro:user>
+    			<div class="blog-manage">
+	    			<span id="buttonBox">
+	    				<a title="发布文章" href="${root}/blog/article/input/${channelId}/0"><span class="icon-plus"></span></a>
+	    				<a title="管理栏目" href="${root}/blog/channel"><i class="icon-list-alt"></i></a>
+	    				<a title="管理标签" href="${root}/blog/tag"><i class="icon-tags"></i></a>
+	    			</span>
+	    		</div>
 	    	</shiro:user>
+	    	
 	    	<hr>
 		    	
 			<!-- 默认加载 -->
@@ -159,7 +164,8 @@ function generateArticle(json){
 			"<p class='title'>"+"<a href='${root}/blog/article/"+id+"'>"+title+"</a>"+"</p>"+
 			"<p class='info'>"+
 				"<a href='${root}/blog/"+channelId+"'><i class='icon-link'> "+channelName+"</i></a>"+
-				"<i class='icon-calendar'> "+createTime+"</i>"+labels+
+				"<i class='icon-calendar'> "+createTime+"</i>"+
+				labels+
 				"<shiro:user>"+
 					"<span class='blog-article-toolbar'>"+
 						titleIco+

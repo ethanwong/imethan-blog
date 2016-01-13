@@ -52,9 +52,10 @@
 <body>
 <div class="container main">
 	<div class="row">
-		<div class="col-sm-9">
+		<div class="col-sm-12">
 			<span class="main-title">About me</span>
 	    	<small class="main-second-title">我的个人简历</small>
+	    	
 			<shiro:user>
 				<a href="${root}/blog/article/24" title="查看简历" ><i  class='icon-eye-open'></i></a>
 				&nbsp;
@@ -63,10 +64,8 @@
 				<a href="${root}/setting/about" title="设置简历" ><i  class='icon-cog'></i></a>
 			</shiro:user>
 		</div>
-		<div class="col-sm-3"></div>
 	</div>	
-
-	<hr class="modelhr">
+	<hr>
 	<div class="row">
 		<div class="col-md-3">
 			<div class="userinfo"  >
@@ -76,10 +75,10 @@
 				<font size="4" class='nickname'>${userInfo.nickname}</font>
 				<hr>
 				<address style="line-height: 36px;">
-					<span class="icon-map-marker"></span>&nbsp;<span class="locate">${userInfo.locate}</span><br>
-					<span class='icon-phone'></span>&nbsp;<span class="phone">${userInfo.phone}</span><br>
+					<i class="icon-map-marker"></i>&nbsp;<span class="locate">${userInfo.locate}</span><br>
+					<i class='icon-phone'></i>&nbsp;<span class="phone">${userInfo.phone}</span><br>
 				  	<strong style="font-weight: 600;">qq</strong>&nbsp;<span class="qq"></span><br>
-					<span class="icon-envelope"></span>&nbsp;<span class="email"><a href="mailto:${userInfo.email}">${userInfo.email}</a></span>
+					<i class="icon-envelope"></i>&nbsp;<span class="email"><a href="mailto:${userInfo.email}">${userInfo.email}</a></span>
 				</address>
 			</div>
 		</div>

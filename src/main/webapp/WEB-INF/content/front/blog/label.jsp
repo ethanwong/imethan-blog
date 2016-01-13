@@ -86,11 +86,13 @@
 	    <div class="col-sm-9">
 	    	<span class="main-title">Label Manage</span>
 	    	<small class="main-second-title">标签管理</small>
+	    	<div class="blog-manage">
 	    	<shiro:user>
-				<a title="添加标签"  class="blog-manage-button" href="${root}/blog/tag/input">
+				<a title="添加标签"   href="${root}/blog/tag/input">
 					<i class="icon-plus"></i> 添加标签
 				</a>
 	    	</shiro:user>
+	    	</div>
 	    </div>
 	    <div class="col-sm-3" >
 	    	<form class="form-horizontal searchform" role="form" >

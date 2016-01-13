@@ -161,11 +161,11 @@ public class TodoController extends SuperController{
 		
 		//设置是否完成参数
 		if(!StringUtils.isEmpty(finish)){
-			if(finish.trim().equals("Finish")){
+			if(finish.trim().equals("finish")){
 				SearchFilter searchFilter = new SearchFilter("finish",SearchFilter.Operator.EQ,true);
 				filters.add(searchFilter);
 			}
-			if(finish.trim().equals("Unfinished")){
+			if(finish.trim().equals("unfinished")){
 				SearchFilter searchFilter = new SearchFilter("finish",SearchFilter.Operator.EQ,false);
 				filters.add(searchFilter);
 			}

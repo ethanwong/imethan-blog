@@ -31,7 +31,7 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <a href="${root}/blog"><h4 class="media-heading">Blog</h4></a>
+		    <a href="${root}/blog"><h3 class="media-heading">Blog</h3></a>
 		  	  博客文章模块，ImEthan的所有干货都在这里
 		  </div>
 		</div>
@@ -43,7 +43,7 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <a href="${root}/todo"><h4 class="media-heading">Todo</h4></a>
+		    <a href="${root}/todo"><h3 class="media-heading">Todo</h3></a>
 		  	 我的todo列表，记录待办事项，包括技能学习等事项的记录
 		  </div>
 		</div>
@@ -55,7 +55,7 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <a href="${root}/blog/23"><h4 class="media-heading">Item</h4></a>
+		    <a href="${root}/blog/23"><h3 class="media-heading">Item</h3></a>
 		  	 闲暇时间开发和整理的开放源代码项目介绍
 		  </div>
 		</div>
@@ -67,7 +67,7 @@
 				</a>
 		  </div>
 		  <div class="media-body">
-		    <a href="${root}/about"><h4 class="media-heading">About</h4></a>
+		    <a href="${root}/about"><h3 class="media-heading">About</h3></a>
 		  	 个人信息展示页面，正常情况下，将简历详情隐藏，待到派上用场的时候再设置公开
 		  </div>
 		</div>

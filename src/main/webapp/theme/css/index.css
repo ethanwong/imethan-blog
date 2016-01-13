@@ -3,13 +3,8 @@
 /* 	background-attachment: scroll, fixed; */
 /* 	background-image: url("../../upload/index/banner.jpg"); */
 	height: 400px;
-/* 	background-color: #339966; */
-/* 	background-color: #22b8eb; */
 	background-color: #006666;
-/* 	background-color: #009966; */
-/* 	background-color: #336633; */
-/* 	background-color: #999966; */
-/* 	background-color: #CC9966; */
+/* 	background-color: #006699; */
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: auto;
@@ -42,7 +37,7 @@
 	font-variant: small-caps;
 }
 .linkBox {
-	padding: 20px 20px 20px 20px !important;font-variant: small-caps;
+	padding: 30px 20px 20px 20px !important;font-variant: small-caps;
 }
 
 .linkBox a{ text-decoration:none;}
@@ -61,13 +56,13 @@
 }
 
 .labelBox{
-	padding: 60px 30px 60px 30px !important;
+	padding: 80px 30px 80px 30px !important;
 	background-color: #f8f8f8;
 	margin:20px 0px 0px 0px;
 }
 
 .indexLabel{
-	line-height:4 !important;padding: .6em .9em .6em .9em;margin-right: 10px;background-color: #337ab7;
+	line-height:4 !important;padding: .6em .9em .6em .9em;margin-right: 10px;
 }
 
 .searchBox{
@@ -82,4 +77,4 @@
 .countBox .countTitle .title{font-size: 40px;font-variant: small-caps;}
 .countBox .countTitle .icon{padding-top: 40px;}
 .countBox .countInfo{text-align: center;padding: 0px 20px 0px 20px;}
-.countBox .countInfo .count{font-size: 50px;}
+.countBox .countInfo .count{font-size: 60px;}

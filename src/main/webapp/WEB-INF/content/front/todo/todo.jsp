@@ -71,9 +71,9 @@
 								      	<input type="hidden" id="finishValue" name="finish" value="all" />
 								        <button id="finish" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" >All&nbsp;<span class="caret"></span></button>
 								        <ul class="dropdown-menu " role="menu" >
-								          <li><a href="#" onclick="changeType(this)">All</a></li>
-								          <li><a href="#" onclick="changeType(this)"><i class='icon-star'></i></a></li>
-								          <li><a href="#" onclick="changeType(this)"><i class='icon-star-empty'></i></a></li>
+								          <li><a href="javascript:;" onclick="changeType(this,'all')">All</a></li>
+								          <li><a href="javascript:;" onclick="changeType(this,'finish')"><i class='icon-star'></i></a></li>
+								          <li><a href="javascript:;" onclick="changeType(this,'unfinished')"><i class='icon-star-empty'></i></a></li>
 								        </ul>
 								      </div>
 								</div>
