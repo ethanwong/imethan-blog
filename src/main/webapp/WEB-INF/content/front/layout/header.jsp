@@ -7,7 +7,7 @@ $(document).ready(function () {
 	<c:if test="${isNormal}">
 	//向下滚动时将导航隐藏，想上滚动式展示
 	// 获取页面元素
-	var myElement = document.querySelector(".navbar-fixed-top");
+	var myElement = document.querySelector("#headroom");
 	// 创建 Headroom 对象，将页面元素传递进去
 	var headroom  = new Headroom(myElement);	
 	headroom.init(); // 初始化
@@ -19,7 +19,7 @@ $(document).ready(function () {
 	<nav class="navbar navbar-default navbar-static-top " role="navigation">
 </c:if>
 <c:if test="${isNormal}">
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="headroom">
 </c:if>
      <div class="container">
         <div class="navbar-header">

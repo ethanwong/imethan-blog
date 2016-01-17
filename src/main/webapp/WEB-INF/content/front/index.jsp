@@ -11,12 +11,16 @@
 <body>
 	<div class="banner">
 		<div class="container" >
-			<div class="indexInfo">
-				<div class="title animated headShake">Hello I'm Ethan</div>
-				<div class='content'>A blog named ImEthan,based java.</div>
-				<div class='content' style="font-size: 16px;">我的知识我的国，欢迎访问我的知识部落格。</div>
-				<p></p>
-				<p><a style="width: 200px;" class="button  button-default" href="${root}/blog/article/104"> Learn more </a></p>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="indexInfo">
+						<div class="title animated headShake">Hello I'm Ethan</div>
+						<div class='content'>A blog named ImEthan,based java and bootstrap.</div>
+						<div class='content' style="font-size: 16px;">我的知识我的国，欢迎访问我知识记录和分享的部落格。</div>
+						<p></p>
+						<p><a style="width: 200px;" class="button  button-default" href="${root}/blog/article/104"> Learn more </a></p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -72,7 +76,7 @@
 		  </div>
 		</div>
 	</div>
-	
+	<hr>
 	<div class="labelBox">
 		<div class="container" >
 			<div class="row">
@@ -90,7 +94,7 @@
 			</div>
 		</div>
 	</div>
-	
+	<hr>
 	<div class="container searchBox">
 		<h3 class="title" >Search for blog</h3>
 		<div class="row">
