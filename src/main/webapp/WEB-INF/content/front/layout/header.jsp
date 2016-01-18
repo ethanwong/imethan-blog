@@ -39,16 +39,8 @@ $(document).ready(function () {
 				<li <c:if test="${module eq 'contact'}">class="active"</c:if>><a href="${root}/contact">Contact</a></li>
 				<li <c:if test="${module eq 'about'}">class="active"</c:if>><a href="${root}/about">About</a></li>
 			</ul>
-			<!-- 
-			<form class="navbar-form navbar-left" role="search" action="${root}/blog">
-			  <div class="form-group">
-			    <input type="text" class="form-control" name="search_title" placeholder="Search" style="height: 30px;vertical-align: text-top;width: 200px;">
-			  </div>
-			</form>
-			 -->
-	        
         	<ul class="nav navbar-nav navbar-right" >
-				<li ><a href="https://github.com/ethanwong" target="_blank"><i class="icon-github"></i> GitHub</a></li>
+				<li><a href="https://github.com/ethanwong" target="_blank"><i class="icon-github"></i> GitHub</a></li>
 				<shiro:guest>  
 					<li>
 						<a href="${root}/login" title="Member login" ><i class="icon-signin"></i> Login</a>
@@ -69,7 +61,7 @@ $(document).ready(function () {
 			        </li>
 					<li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-			          aria-haspopup="true" aria-expanded="false">
+			          	aria-haspopup="true" aria-expanded="false">
 			          	<i class="icon-user"></i> <shiro:principal/> <span class="caret"></span>
 			          </a>
 			          <ul class="dropdown-menu">
@@ -81,15 +73,6 @@ $(document).ready(function () {
 			            <li><a href="${root}/login/out"><i class="icon-signout"></i> Log out</a></li>
 			          </ul>
 			        </li>
-<!-- 					<li> -->
-<%-- 						<a><i class="icon-user"></i> <shiro:principal/></a> --%>
-<!-- 					</li> -->
-<!-- 					<li> -->
-<%-- 						<a href="${root}/setting/profile"><i class="icon-cogs" data-placement="bottom" title="Setting"></i></a> --%>
-<!-- 					</li> -->
-<!-- 					<li> -->
-<%-- 						<a href="${root}/login/out"><i class="icon-signout" data-placement="bottom" title="Logout"></i></a> --%>
-<!-- 					</li> -->
 				</shiro:user>
 			</ul>
 		</div>

@@ -74,7 +74,7 @@
 				<br>
 				<c:forEach items="${allLabel}" var="label" varStatus="status">
 					<a href="${root}/blog/tag/${label.id}" >
-						<span class='label label-info indexLabel'>
+						<span class='label label-primary indexLabel'>
 							${label.name}
 						</span>
 					</a>

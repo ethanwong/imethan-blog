@@ -76,7 +76,7 @@
                 <property name="generateDdl" value="true"/>
                 <property name="database" value="MYSQL"/>
                 <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-                <property name="showSql" value="true"/>
+                <property name="showSql" value="false"/>
             </bean>
         </property>
         <property name="jpaDialect">
@@ -84,8 +84,8 @@
         </property>
         <property name="jpaPropertyMap">
             <map>
-                <entry key="hibernate.show_sql" value="true"/>
-                <entry key="hibernate.format_sql" value="true"/>
+                <entry key="hibernate.show_sql" value="false"/>
+                <entry key="hibernate.format_sql" value="false"/>
                 
                 <entry key="hibernate.query.substitutions" value="true 1, false 0"/>
                 <entry key="hibernate.default_batch_fetch_size" value="16"/>

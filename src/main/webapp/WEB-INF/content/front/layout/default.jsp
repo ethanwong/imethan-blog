@@ -18,6 +18,7 @@
 	<link href="${root}/theme/Font-Awesome-3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	
 	<link href="${root}/theme/css/common.css" rel="stylesheet">
+	<link href="${root}/theme/css/header.css" rel="stylesheet">
 	<link href="${root}/theme/css/article.css" rel="stylesheet">
 	<link href="${root}/theme/css/footer.css" rel="stylesheet">
 	

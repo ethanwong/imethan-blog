@@ -1,10 +1,8 @@
 @CHARSET "UTF-8";
 .banner {
-/* 	background-attachment: scroll, fixed; */
-/* 	background-image: url("../../upload/index/banner.jpg"); */
 	height: 400px;
-	background-color: #006666;
-/* 	background-color: #006699; */
+/* 	background-color: #006666; */
+	background-color: #009999;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: auto;
@@ -15,14 +13,14 @@
 .bannerInfo{
 	color: white;
 	position: absolute;
-	margin-top: 370px;
+	margin-top: 400px;
 	margin-left: 76%;
 	font-size: 14px;
 }
 .indexInfo {}
 .indexInfo .title {
 	font-size: 60px;
-	padding-top: 100px;
+	padding-top: 110px;
 	color: white;
 }
 .indexInfo .content {
@@ -56,8 +54,7 @@
 }
 
 .labelBox{
-	padding: 40px 30px 40px 30px !important;
-/* 	background-color: #f8f8f8; */
+	padding: 60px 30px 60px 30px !important;
 	margin:20px 0px 0px 0px;
 }
 
