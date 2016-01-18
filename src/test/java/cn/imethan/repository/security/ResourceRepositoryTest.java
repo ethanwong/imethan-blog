@@ -13,7 +13,7 @@ import cn.imethan.entity.security.Permission;
 import cn.imethan.entity.security.Resource;
 import cn.imethan.entity.security.Role;
 import cn.imethan.entity.security.User;
-import cn.imethan.repository.security.ResourceRepository;
+import cn.imethan.repository.jpa.security.ResourceRepository;
 
 /**
  * ResourceRepositoryTest.java

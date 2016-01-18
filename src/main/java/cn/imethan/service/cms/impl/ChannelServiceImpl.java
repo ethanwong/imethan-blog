@@ -26,7 +26,7 @@ import cn.imethan.common.repository.DynamicSpecifications;
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.cms.Channel;
-import cn.imethan.repository.cms.ChannelRepository;
+import cn.imethan.repository.jpa.cms.ChannelRepository;
 import cn.imethan.service.cms.ChannelService;
 
 /**

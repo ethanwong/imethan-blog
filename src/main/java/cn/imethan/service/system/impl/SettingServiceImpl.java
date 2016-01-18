@@ -12,7 +12,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.system.Setting;
 import cn.imethan.entity.system.SettingCode;
-import cn.imethan.repository.system.SettingRepository;
+import cn.imethan.repository.jpa.system.SettingRepository;
 import cn.imethan.service.system.SettingService;
 
 /**

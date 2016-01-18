@@ -1,4 +1,4 @@
-package cn.imethan.repository.security;
+package cn.imethan.repository.jpa.security;
 
 import java.util.Set;
 

@@ -22,7 +22,6 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 
-<!-- 	<context:property-placeholder location="classpath*:/main/jdbc.properties" /> -->
 
 	<bean class="cn.imethan.common.config.DecryptPropertyPlaceholderConfigurer">
 		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
@@ -31,6 +30,7 @@
 			<list>
 				<value>classpath*:/main/jdbc-bae.properties</value>
 				<value>classpath*:/main/jdbc-local.properties</value>
+				<value>classpath*:/mongodb/mongo.properties</value>
 			</list>
 		</property>
 		<property name="decodePropertyNames">
@@ -61,7 +61,7 @@
 	<!-- 开启注解事务 只对当前配置文件有效 -->
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 	
-    <jpa:repositories base-package="cn.imethan.repository" repository-impl-postfix="impl"
+    <jpa:repositories base-package="cn.imethan.repository.jpa" repository-impl-postfix="impl"
             entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager">
     </jpa:repositories>   
     

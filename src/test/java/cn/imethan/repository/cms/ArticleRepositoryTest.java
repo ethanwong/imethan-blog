@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.imethan.entity.cms.Article;
-import cn.imethan.repository.cms.ArticleRepository;
+import cn.imethan.repository.jpa.cms.ArticleRepository;
 
 /**
  * ArticleRepositoryTest.java

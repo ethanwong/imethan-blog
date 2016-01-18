@@ -19,8 +19,8 @@ import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.security.Role;
 import cn.imethan.entity.security.User;
-import cn.imethan.repository.security.RoleRepository;
-import cn.imethan.repository.security.UserRepository;
+import cn.imethan.repository.jpa.security.RoleRepository;
+import cn.imethan.repository.jpa.security.UserRepository;
 import cn.imethan.service.security.UserService;
 
 /**

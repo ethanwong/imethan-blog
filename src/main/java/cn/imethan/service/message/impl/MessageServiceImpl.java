@@ -18,7 +18,7 @@ import cn.imethan.common.repository.DynamicSpecifications;
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.message.Message;
-import cn.imethan.repository.message.MessageRepository;
+import cn.imethan.repository.jpa.message.MessageRepository;
 import cn.imethan.service.message.MessageService;
 
 /**

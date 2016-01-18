@@ -11,7 +11,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.system.Menu;
-import cn.imethan.repository.system.MenuRepository;
+import cn.imethan.repository.jpa.system.MenuRepository;
 import cn.imethan.service.system.MenuService;
 
 /**

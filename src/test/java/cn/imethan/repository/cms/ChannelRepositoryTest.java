@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.imethan.repository.cms.ChannelRepository;
+import cn.imethan.repository.jpa.cms.ChannelRepository;
 
 /**
  * ChannelRepositoryTest.java

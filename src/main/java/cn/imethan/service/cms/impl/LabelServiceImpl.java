@@ -19,7 +19,7 @@ import cn.imethan.common.repository.DynamicSpecifications;
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.cms.Label;
-import cn.imethan.repository.cms.LabelRepository;
+import cn.imethan.repository.jpa.cms.LabelRepository;
 import cn.imethan.service.cms.LabelService;
 
 /**

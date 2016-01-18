@@ -32,8 +32,8 @@ import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.cms.Article;
 import cn.imethan.entity.cms.Channel;
 import cn.imethan.entity.cms.Label;
-import cn.imethan.repository.cms.ArticleRepository;
-import cn.imethan.repository.cms.ChannelRepository;
+import cn.imethan.repository.jpa.cms.ArticleRepository;
+import cn.imethan.repository.jpa.cms.ChannelRepository;
 import cn.imethan.service.cms.ArticleService;
 import cn.imethan.service.cms.ChannelService;
 

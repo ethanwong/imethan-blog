@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.imethan.entity.security.Permission;
 import cn.imethan.entity.security.User;
-import cn.imethan.repository.security.PermissionRepository;
+import cn.imethan.repository.jpa.security.PermissionRepository;
 
 /**
  * UserRepositoryTest.java

@@ -1,4 +1,4 @@
-package cn.imethan.repository.comment;
+package cn.imethan.repository.jpa.comment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

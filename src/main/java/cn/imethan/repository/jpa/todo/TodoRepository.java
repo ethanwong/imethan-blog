@@ -1,4 +1,4 @@
-package cn.imethan.repository.todo;
+package cn.imethan.repository.jpa.todo;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

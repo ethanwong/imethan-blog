@@ -17,7 +17,7 @@ import cn.imethan.common.repository.DynamicSpecifications;
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.comment.Comment;
-import cn.imethan.repository.comment.CommentRepository;
+import cn.imethan.repository.jpa.comment.CommentRepository;
 import cn.imethan.service.comment.CommentService;
 
 

@@ -1,4 +1,4 @@
-package cn.imethan.repository.cms;
+package cn.imethan.repository.jpa.cms;
 
 import org.springframework.stereotype.Repository;
 

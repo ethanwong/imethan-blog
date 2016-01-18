@@ -1,4 +1,4 @@
-package cn.imethan.repository.system;
+package cn.imethan.repository.jpa.system;
 
 import javax.persistence.QueryHint;
 

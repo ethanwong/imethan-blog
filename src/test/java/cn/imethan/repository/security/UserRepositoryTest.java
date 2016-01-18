@@ -7,8 +7,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.imethan.entity.security.User;
-import cn.imethan.repository.security.RoleRepository;
-import cn.imethan.repository.security.UserRepository;
+import cn.imethan.repository.jpa.security.RoleRepository;
+import cn.imethan.repository.jpa.security.UserRepository;
 
 /**
  * UserRepositoryTest.java

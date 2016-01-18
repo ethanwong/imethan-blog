@@ -17,8 +17,8 @@ import cn.imethan.common.repository.DynamicSpecifications;
 import cn.imethan.common.repository.SearchFilter;
 import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.todo.Todo;
-import cn.imethan.repository.todo.TodoItemRepository;
-import cn.imethan.repository.todo.TodoRepository;
+import cn.imethan.repository.jpa.todo.TodoItemRepository;
+import cn.imethan.repository.jpa.todo.TodoRepository;
 import cn.imethan.service.todo.TodoService;
 
 

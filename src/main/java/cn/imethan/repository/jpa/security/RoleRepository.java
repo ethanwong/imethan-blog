@@ -1,4 +1,4 @@
-package cn.imethan.repository.security;
+package cn.imethan.repository.jpa.security;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;

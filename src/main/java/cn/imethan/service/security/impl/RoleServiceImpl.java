@@ -19,9 +19,9 @@ import cn.imethan.dto.common.ReturnDto;
 import cn.imethan.entity.security.Permission;
 import cn.imethan.entity.security.Resource;
 import cn.imethan.entity.security.Role;
-import cn.imethan.repository.security.PermissionRepository;
-import cn.imethan.repository.security.ResourceRepository;
-import cn.imethan.repository.security.RoleRepository;
+import cn.imethan.repository.jpa.security.PermissionRepository;
+import cn.imethan.repository.jpa.security.ResourceRepository;
+import cn.imethan.repository.jpa.security.RoleRepository;
 import cn.imethan.service.security.RoleService;
 
 /**
