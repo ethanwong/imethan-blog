@@ -84,8 +84,10 @@
 		</div>
 		
 		<div class="col-md-9 " >
-			<div class="articleList article content">
+			<div class="articleList article">
+					<div class="content">
 					${aboutMe.content}
+					</div>
 			</div>
 		</div>
 	</div>

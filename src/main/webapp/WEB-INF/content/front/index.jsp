@@ -31,7 +31,7 @@
 		<div class="media desktop">
 		  <div class="media-left">
 				<a href="${root}/blog">
-					<i class="icon-book color-primary" ></i>
+					<i class="icon-rss color-primary" ></i>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -55,7 +55,7 @@
 		<div class="media desktop">
 		  <div class="media-left">
 				<a href="${root}/blog/23">
-					<i class="icon-briefcase color-warning"></i>
+					<i class="icon-suitcase color-warning"></i>
 				</a>
 		  </div>
 		  <div class="media-body">

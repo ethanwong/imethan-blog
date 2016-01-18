@@ -11,7 +11,7 @@
 }
 
 .articleList .article{
-	margin-bottom:20px;
+	margin-bottom:30px;
 }
 
 .articleList .article .title{
@@ -39,6 +39,7 @@
 }
 
 .articleList .article .content{
+	padding-top:10px;
 	display: block !important;
 	word-break: break-all!important;
 	white-space:pre-wrap !important;

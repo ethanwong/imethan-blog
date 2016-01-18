@@ -21,7 +21,7 @@
 		<div class="media">
 		  <div class="media-left">
 				<a href="${root}/blog">
-					<span class="icon-book color-primary" style="font-size: 60px;"></span>
+					<span class="icon-rss color-primary" style="font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -45,7 +45,7 @@
 		<div class="media">
 		  <div class="media-left">
 				<a href="${root}/blog/23">
-					<span class="icon-briefcase color-warning" style="font-size: 60px;"></span>
+					<span class="icon-suitcase color-warning" style="font-size: 60px;"></span>
 				</a>
 		  </div>
 		  <div class="media-body">
@@ -66,7 +66,7 @@
 		  </div>
 		</div>
 	</div>
-	
+	<hr>
 	<div class="container labelBox" >
 		<div class="row">
 			<div class="col-md-12">
@@ -83,6 +83,7 @@
 			</div>
 		</div>
 	</div>
+	<hr>
 	<div class="container searchBox">
 		<div class="row" style="margin: 0px;">
 			<div class="col-md-3" ></div>

@@ -2,13 +2,12 @@
 <%@ include file="/WEB-INF/content/base/taglibs.jsp"%>
 <div class="form-group">
 	<form class="form-horizontal searchform" role="form"  action="${root}/blog">
-		<input type="search" name="search_title" value="${search_title}" 
+		<input style="height: 40px;" type="search" name="search_title" value="${search_title}" 
 		 class="form-control" placeholder="Search blog" />
-<!-- 		<button class="button button-primary button-small">Submit</button> -->
 	</form>
 </div>
 
-<div class="list-group">
+<div class="list-group" style="margin: 30px 0px 30px 0px;">
 	<shiro:user>
 		<span class="label label-primary" >publish channel</span>
 	</shiro:user>
