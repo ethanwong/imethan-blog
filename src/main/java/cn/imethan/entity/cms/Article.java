@@ -18,6 +18,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Index;
 import org.hibernate.search.annotations.Indexed;
@@ -37,7 +38,8 @@ import cn.imethan.common.entity.BaseEntity;
 @Table(name="imethan_cms_article")
 @JsonIgnoreProperties(value={"channel"})
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache")
-@Indexed
+@Indexed//标明这个实体需要被Lucene创建索引，从而使之可以被检索
+@Analyzer(impl = org.apache.lucene.analysis.standard.StandardAnalyzer.class)//告诉Hibernate Search来标记它的域以及更新Lucene索引的时候使用哪个Lucene分析器。
 public class Article extends BaseEntity {
 
 	private static final long serialVersionUID = 3135828776040100046L;
@@ -45,7 +47,7 @@ public class Article extends BaseEntity {
 	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String title;//标题
 	
-	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)//诉Hibernate Search为该字段创建爱你索引，并且提供一些其他信息，比如该字段在索引中需要被如何处置。
 	private String content;//内容
 	
 	private boolean isPublish;//是否发布

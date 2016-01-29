@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import org.hibernate.search.annotations.DocumentId;
+
 /**
  * IdEntity.java
  *
@@ -19,6 +21,7 @@ public class IdEntity implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@DocumentId//标明id字段应该被用作Lucene索引中文档的ID，这几乎总是和数据库中实体的主键是同一个字段。 
 	private Long id;//ID
 
 	public Long getId() {
