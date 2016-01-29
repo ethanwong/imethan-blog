@@ -17,6 +17,11 @@ import javax.persistence.Transient;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -31,13 +36,18 @@ import cn.imethan.common.entity.BaseEntity;
 @Entity
 @Table(name="imethan_cms_article")
 @JsonIgnoreProperties(value={"channel"})
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache") 
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache")
+@Indexed
 public class Article extends BaseEntity {
 
 	private static final long serialVersionUID = 3135828776040100046L;
 	
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String title;//标题
+	
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String content;//内容
+	
 	private boolean isPublish;//是否发布
 	
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,region="cmsCache") 

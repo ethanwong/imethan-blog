@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.hibernate.search.Search;
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.query.dsl.QueryBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +40,8 @@ public class ArticleServiceTest {
 	private ChannelService channelService;
 	@Autowired
 	private LabelService labelService;
+	@PersistenceContext 
+	protected EntityManager entityManger;
 	
 	@Test
 	public void testSave(){
@@ -93,6 +101,32 @@ public class ArticleServiceTest {
 		List<Article> list = articleService.getTopCountArticleList(0);
 		System.out.println(list);
 	}
+	
+	
+	/**
+	 * hibernate search创建索引测试
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2016年1月29日下午2:22:26
+	 */
+	@Test
+	public void testCreateIndexer(){
+		articleService.test();
+	}
+	
+	/**
+	 * hibernate search全文检索测试
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2016年1月29日下午2:22:55
+	 */
+	@Test
+	public void testSearch() {
+		articleService.testSearch();
+	}
+	
+	
+	
 
 }
 

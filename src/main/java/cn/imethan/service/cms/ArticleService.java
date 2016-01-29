@@ -26,6 +26,9 @@ public interface ArticleService {
 	 */
 	public void test();
 	
+	
+	public void  testSearch();
+	
 	/**
 	 * 保存或者修改
 	 * @param entity

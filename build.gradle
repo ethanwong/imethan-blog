@@ -43,22 +43,19 @@ dependencies {
 	//Spring end
 	
 	//hibernate begin
-	//compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final"
 	compile 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final'
-	
 	compile "org.hibernate:hibernate-core:5.0.3.Final"
-	
-	//compile "org.hibernate:hibernate-entitymanager:4.1.9.Final"
 	compile "org.hibernate:hibernate-entitymanager:5.0.3.Final"
-	
-	compile "org.hibernate:hibernate-validator:5.1.0.Final"
-	
-    //compile 'org.hibernate:hibernate-ehcache:4.1.9.Final'
     compile 'org.hibernate:hibernate-ehcache:5.0.3.Final'
-    
+	compile "org.hibernate:hibernate-validator:5.1.0.Final"
 	compile "org.jboss.logging:jboss-logging:3.3.0.Final"
 	compile 'org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.Final'
 	//hibernate end
+	
+	//hibernate search begin
+	compile "org.hibernate:hibernate-search-orm:5.4.0.Final"
+	compile "org.hibernate:hibernate-search-infinispan:5.4.0.Final"
+	//hibernate search end
 	
 	compile "javax.el:javax.el-api:2.2.4"
 	compile "org.glassfish.web:javax.el:2.2.4"
