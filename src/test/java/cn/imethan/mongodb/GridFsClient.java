@@ -43,12 +43,12 @@ public class GridFsClient {
 	@Test
 	public void storeFileToGridFs() {
 		DBObject metaData = new BasicDBObject();
-		metaData.put("extra1", "anything 1");
-		metaData.put("extra2", "anything 2");
+		metaData.put("name", "IMG_8586.JPG");
+		metaData.put("describe", "This is a picture named IMG_8586.JPG .");
 		InputStream inputStream = null;
 		try {
-			inputStream = new FileInputStream("C:/Users/ETHAN/Pictures/e.png");
-			GridFSFile gridFSFile = gridFsOperations.store(inputStream, "e.png", "image/png", metaData);
+			inputStream = new FileInputStream("D:/IMG_8586.JPG");
+			GridFSFile gridFSFile = gridFsOperations.store(inputStream, "IMG_8586.JPG", "image/jpg", metaData);
 			System.out.println("gridFSFile:"+gridFSFile.toString());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -72,17 +72,52 @@ public class GridFsClient {
 	 */
 	@Test
 	public void findFilesInGridFs() {
-		List<GridFSDBFile> result = gridFsOperations.find(new Query().addCriteria(Criteria.where("filename").is("e.png")));
+		List<GridFSDBFile> result = gridFsOperations.find(new Query().addCriteria(Criteria.where("filename").is("IMG_8586.JPG")));
 		for (GridFSDBFile file : result) {
 			try {
-				System.out.println(file.getFilename());
-				System.out.println(file.getContentType());
+				DBObject bBObject = file.getMetaData();
+				System.out.println("name:"+bBObject.get("name"));
+				System.out.println("describe:"+bBObject.get("describe"));
+				System.out.println("name:"+file.getFilename());
+				System.out.println("contentType:"+file.getContentType());
+				System.out.println("id:"+file.getId());
+				
 				//save as another image
-				file.writeTo("C:/Users/ETHAN/Pictures/e1.png");
+				file.writeTo("D:/1.JPG");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		System.out.println("Done");
+	}
+	
+	/**
+	 * 根据ID获取
+	 * 
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2017年3月15日下午5:41:13
+	 */
+	@Test
+	public void findFileByIdInGridFs(){
+		GridFSDBFile gridFSDBFile = gridFsOperations.findOne(new Query().addCriteria(Criteria.where("_id").is("58c9085a153e402807789352")));
+		System.out.println("id:"+gridFSDBFile.getId());
+		System.out.println("filename:"+gridFSDBFile.getFilename());
+		
+		DBObject bBObject = gridFSDBFile.getMetaData();
+		System.out.println("name:"+bBObject.get("name"));
+		System.out.println("describe:"+bBObject.get("describe"));
+	}
+	
+	/**
+	 * 删除测试
+	 * 
+	 *
+	 * @author Ethan Wong
+	 * @datetime 2017年3月15日下午5:31:22
+	 */
+	@Test
+	public void deleteFileInGridFs(){
+		gridFsOperations.delete(new Query().addCriteria(Criteria.where("_id").is("58c908bf153e928667d93637")));
 	}
 }

@@ -42,7 +42,8 @@ public class DecryptPropertyPlaceholderConfigurer extends PropertyPlaceholderCon
 					if(!SystemUtils.IS_OS_WINDOWS && !SystemUtils.IS_OS_MAC){
 						propertyValue =  props.getProperty("bae."+propertyName);
 					}
-					convertedValue = DigestUtils.decode(DigestUtils.decode(propertyValue));
+//					convertedValue = DigestUtils.decode(DigestUtils.decode(propertyValue));
+					convertedValue = propertyValue;
 					
 				} else {
 					convertedValue = convertPropertyValue(propertyValue);
