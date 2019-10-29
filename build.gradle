@@ -1,6 +1,12 @@
+group 'com.imethan.blog'
+version '1.0-SNAPSHOT'
+
+
 apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
 
 // tag::repositories[]
 repositories {
@@ -11,10 +17,10 @@ repositories {
 // end::repositories[]
 
 // tag::jar[]
-jar {
-    baseName = 'imethan'
-    version =  '0.1.0'
-}
+//jar {
+//    baseName = 'imethan'
+//    version =  '0.1.0'
+//}
 // end::jar[]
 
 // tag::dependencies[]
@@ -50,11 +56,13 @@ dependencies {
 	compile "org.hibernate:hibernate-validator:5.1.0.Final"
 	compile "org.jboss.logging:jboss-logging:3.3.0.Final"
 	compile 'org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.Final'
+	compile 'org.infinispan:infinispan-directory-provider:9.1.3.Final'
 	//hibernate end
 	
 	//hibernate search begin
-	compile "org.hibernate:hibernate-search-orm:5.4.0.Final"
-	compile "org.hibernate:hibernate-search-infinispan:5.4.0.Final"
+//	compile "org.hibernate:hibernate-search-orm:5.4.0.Final"
+//	compile "org.hibernate:hibernate-search-infinispan:5.4.0.Final"
+//	compile group: 'org.hibernate', name: 'hibernate-search-engine', version: '5.4.0.Final'
 	//hibernate search end
 	
 	compile "javax.el:javax.el-api:2.2.4"

@@ -37,17 +37,17 @@ public class DecryptPropertyPlaceholderConfigurer extends PropertyPlaceholderCon
 			String propertyValue = props.getProperty(propertyName);
 			String convertedValue = null;
 			if (this.decodePropertyNames != null && decodePropertyNames.size() > 0) {
-				if (this.decodePropertyNames.contains(propertyName)) {
-					//本机开发测试为windows，使用本机配置文件
-					if(!SystemUtils.IS_OS_WINDOWS && !SystemUtils.IS_OS_MAC){
-						propertyValue =  props.getProperty("bae."+propertyName);
-					}
-//					convertedValue = DigestUtils.decode(DigestUtils.decode(propertyValue));
-					convertedValue = propertyValue;
-					
-				} else {
+//				if (this.decodePropertyNames.contains(propertyName)) {
+//					//本机开发测试为windows，使用本机配置文件
+//					if(!SystemUtils.IS_OS_WINDOWS && !SystemUtils.IS_OS_MAC){
+//						propertyValue =  props.getProperty("bae."+propertyName);
+//					}
+////					convertedValue = DigestUtils.decode(DigestUtils.decode(propertyValue));
+//					convertedValue = propertyValue;
+//
+//				} else {
 					convertedValue = convertPropertyValue(propertyValue);
-				}
+//				}
 			} else {
 				convertedValue = convertPropertyValue(propertyValue);
 			}

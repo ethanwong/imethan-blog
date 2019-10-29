@@ -7,8 +7,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.search.Search;
-import org.hibernate.search.jpa.FullTextEntityManager;
+//import org.hibernate.search.Search;
+//import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -70,10 +70,10 @@ public class ArticleServiceTest {
 		System.out.println(articleService.updatePublish(39l));
 	}
 	
-	@Test
-	public void test(){
-		articleService.test();
-	}
+//	@Test
+//	public void test(){
+//		articleService.test();
+//	}
 	
 	@Test
 	public void testFindPage(){
@@ -109,10 +109,10 @@ public class ArticleServiceTest {
 	 * @author Ethan Wong
 	 * @datetime 2016年1月29日下午2:22:26
 	 */
-	@Test
-	public void testCreateIndexer(){
-		articleService.test();
-	}
+//	@Test
+//	public void testCreateIndexer(){
+//		articleService.test();
+//	}
 	
 	/**
 	 * hibernate search全文检索测试
@@ -120,10 +120,10 @@ public class ArticleServiceTest {
 	 * @author Ethan Wong
 	 * @datetime 2016年1月29日下午2:22:55
 	 */
-	@Test
-	public void testSearch() {
-		articleService.testSearch();
-	}
+//	@Test
+//	public void testSearch() {
+//		articleService.testSearch();
+//	}
 	
 	
 	

@@ -24,10 +24,10 @@ public interface ArticleService {
 	 * @author Ethan
 	 * @datetime 2015年9月1日 下午2:10:15
 	 */
-	public void test();
+//	public void test();
 	
 	
-	public void  testSearch();
+//	public void  testSearch();
 	
 	/**
 	 * 保存或者修改

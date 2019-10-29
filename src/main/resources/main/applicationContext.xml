@@ -103,8 +103,8 @@
                 <entry key="hibernate.cache.provider_configuration_file_resource_path" value="/cache/ehcache.xml"/>
                 
                 
-                <entry key="hibernate.search.default.directory_provider" value="filesystem"/>
-                <entry key="hibernate.search.default.indexBase" value="D:\filesystem"/>
+                <!--<entry key="hibernate.search.default.directory_provider" value="filesystem"/>-->
+                <!--<entry key="hibernate.search.default.indexBase" value="D:\filesystem"/>-->
             
             </map>
         </property>

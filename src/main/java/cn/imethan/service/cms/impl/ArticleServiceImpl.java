@@ -13,8 +13,8 @@ import javax.persistence.criteria.Root;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
-import org.hibernate.search.jpa.FullTextEntityManager;
-import org.hibernate.search.jpa.Search;
+//import org.hibernate.search.jpa.FullTextEntityManager;
+//import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -60,45 +60,45 @@ public class ArticleServiceImpl extends EntityManagerSupport<Article, Long> impl
 	@Autowired
 	private ChannelService channelService;
 	
-	@Override
-	public void test() {
-		// TODO Auto-generated method stub
-//		System.out.println("article test:"+this.entityManger.createQuery("from Article").getResultList());
-//		System.out.println("article test:"+this.entityManger.find(Article.class, 23l));
-		
-		try {
-			FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(super.entityManger);
-			fullTextEntityManager.createIndexer().startAndWait();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public void testSearch() {
-		FullTextEntityManager fullTextEntityManager = org.hibernate.search.jpa.Search.getFullTextEntityManager(entityManger);
-		// entityManger.getTransaction().begin();
-
-		// create native Lucene query unsing the query DSL
-		// alternatively you can write the Lucene query using the Lucene query
-		// parser
-		// or the Lucene programmatic API. The Hibernate Search DSL is
-		// recommended though
-		QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Article.class).get();
-		org.apache.lucene.search.Query luceneQuery = qb.keyword().onFields("title", "content").matching("imethan").createQuery();
-
-		// wrap Lucene query in a javax.persistence.Query
-		javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Article.class);
-
-		// execute search
-		List<Article> result = jpaQuery.getResultList();
-		for(Article article:result){
-			System.out.println(article.getTitle());
-		}
-
-		// entityManger.getTransaction().commit();
-		// entityManger.close();
-	}
+//	@Override
+//	public void test() {
+//		// TODO Auto-generated method stub
+////		System.out.println("article test:"+this.entityManger.createQuery("from Article").getResultList());
+////		System.out.println("article test:"+this.entityManger.find(Article.class, 23l));
+//
+//		try {
+//			FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(super.entityManger);
+//			fullTextEntityManager.createIndexer().startAndWait();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
+//
+//	public void testSearch() {
+//		FullTextEntityManager fullTextEntityManager = org.hibernate.search.jpa.Search.getFullTextEntityManager(entityManger);
+//		// entityManger.getTransaction().begin();
+//
+//		// create native Lucene query unsing the query DSL
+//		// alternatively you can write the Lucene query using the Lucene query
+//		// parser
+//		// or the Lucene programmatic API. The Hibernate Search DSL is
+//		// recommended though
+//		QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Article.class).get();
+//		org.apache.lucene.search.Query luceneQuery = qb.keyword().onFields("title", "content").matching("imethan").createQuery();
+//
+//		// wrap Lucene query in a javax.persistence.Query
+//		javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Article.class);
+//
+//		// execute search
+//		List<Article> result = jpaQuery.getResultList();
+//		for(Article article:result){
+//			System.out.println(article.getTitle());
+//		}
+//
+//		// entityManger.getTransaction().commit();
+//		// entityManger.close();
+//	}
 	
 	@Override
 	@Transactional(readOnly = false)

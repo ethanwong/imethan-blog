@@ -27,7 +27,7 @@ public class PasswordTest {
 	
 	@Test
 	public void t2(){
-		String key = "";
+		String key = "12345678";
 	    String MD5Password = EncryptUtils.Encrypt(key, "MD5");
 	    System.out.println(MD5Password);
 	    System.out.println(EncryptUtils.Encrypt(MD5Password, "SHA-1"));
