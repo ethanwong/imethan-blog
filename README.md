@@ -1,38 +1,25 @@
 <p>
-    <br/>
-</p>
-<p>
     <span style="color:#548dd4;font-family:微软雅黑, Microsoft YaHei;font-size:24px">开发环境</span>
 </p>
 <ol>
     <li>
         <p>
-            IDE使用Spring tool suite,简称“<span style="line-height: 22.8571434020996px; white-space: normal;">STS</span>”，是Spring自行定制的Eclispe，好用，为它点个赞。
+            移除开发环境配置文件，仅保留项目源代码和gradle配置文件，自由选择开发工具。
         </p>
     </li>
     <li>
         <p>
-            使用自动化工具Gradle作为项目的构建工具，Gradle为类似Maven类的构建工具，比Maven简洁。
+            使用自动化工具Gradle 4作为项目的构建工具，Gradle为类似Maven类的构建工具，比Maven简洁。
         </p>
     </li>
     <li>
         <p>
-            本地开发调试使用的是Jetty 6，生产环境使用的是Tomcat 7。
+             JDK版本为1.8，使用tomcat 8作为运行服务， 数据库使用的是MySQL 5。
         </p>
     </li>
     <li>
         <p>
-            在Windows NT环境下开发，部署于Linux环境。
-        </p>
-    </li>
-    <li>
-        <p>
-            数据库使用的是MySQL 5。
-        </p>
-    </li>
-    <li>
-        <p>
-            JDK版本为1.7。
+            在Windows NT环境下开发，部署于云服务环境。
         </p>
     </li>
 </ol>
@@ -101,13 +88,3 @@
         树形展现插件使用的是国产的Ztree。
     </li>
 </ul>
-<p>
-    <br/>
-</p>
-
-<p>
-    <br/>
-</p>
-<p>
-    <br/>
-</p>
